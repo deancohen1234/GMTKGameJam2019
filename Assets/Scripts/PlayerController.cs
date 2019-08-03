@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [Header("Attack Properties")]
     public float m_AttackDistance = 1.0f;
     public float m_AttackSphereRadius = 0.35f;
+    public float m_KnockbackForce = 2500.0f;
 
     public SpriteHandler m_SpriteHandler;
     public AttackHitboxController m_AttackHitboxController;
@@ -42,9 +43,14 @@ public class PlayerController : MonoBehaviour
     [Header("Actions")]
     public PlayerAction m_DashAction;
     public PlayerAction m_AttackAction;
+    public PlayerAction m_DisarmAction;
 
     [Header("Testing")]
     public GameObject m_HitboxTestObject;
+
+    private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
+    private bool m_HasWeapon;
+    private bool m_IsDisarming;
 
     private PlayerOrientation m_PlayerOrientation;
     private bool m_CanMove = true;
@@ -61,6 +67,9 @@ public class PlayerController : MonoBehaviour
         SetupInputStrings(m_PlayerNum);
 
         m_DashAction.IsAvailable = true;
+
+        //default to disarmAction
+        m_RTriggerAction = m_DisarmAction;
     }
 
     private void OnEnable()
@@ -71,6 +80,10 @@ public class PlayerController : MonoBehaviour
 
         m_AttackAction.ActionHandler += Attack;
         m_AttackAction.OnActionEnd += OnAttackEnd;
+
+        m_DisarmAction.ActionHandler += Disarm;
+        m_DisarmAction.OnActionStart += OnDisarmStart;
+        m_DisarmAction.OnActionEnd += OnDisarmEnd;
 
         m_HealthComponent.m_OnDeath += OnPlayerDeath;
     }
@@ -83,6 +96,10 @@ public class PlayerController : MonoBehaviour
 
         m_AttackAction.ActionHandler -= Attack;
         m_AttackAction.OnActionEnd -= OnAttackEnd;
+
+        m_DisarmAction.ActionHandler -= Disarm;
+        m_DisarmAction.OnActionStart -= OnDisarmStart;
+        m_DisarmAction.OnActionEnd -= OnDisarmEnd;
 
         m_HealthComponent.m_OnDeath -= OnPlayerDeath;
     }
@@ -124,12 +141,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis(m_InputStrings.RTrigger) >= 0.8f && m_DashAction.IsAvailable)
         {
-            m_AttackAction.ExecuteAction();
+            m_RTriggerAction.ExecuteAction();
         }
 
         //if dash has been started
         m_DashAction.CheckActionCompleteness(x, y);
         m_AttackAction.CheckActionCompleteness(x, y);
+        m_DisarmAction.CheckActionCompleteness(x, y);
 
 
         m_PlayerOrientation = CalculateOrientation(new Vector2(x, y).normalized);
@@ -198,11 +216,34 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
+    public void EquipWeapon()
+    {
+        if (m_HasWeapon == false)
+        {
+            m_HasWeapon = true;
+            m_RTriggerAction = m_AttackAction;
+        }
+    }
+
+    #region Action Methods
     private void Dash(Vector3 direction)
     {
         StartCoroutine(DisablePlayerMovement(m_DisabledMovementTime));
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
+    }
+
+    public void AttemptAttack(PlayerController attackingPlayer)
+    {
+        if (m_IsDisarming)
+        {
+            //attacking player loses weapon, no damage
+            ApplyBounceBackForce(attackingPlayer);
+        }
+        else
+        {
+            m_HealthComponent.DealDamage(200f);
+        }
     }
 
     private void Attack(Vector3  direction)
@@ -238,6 +279,23 @@ public class PlayerController : MonoBehaviour
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    private void OnDisarmStart()
+    {
+        m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.black;
+    }
+
+    private void Disarm(Vector3 direction)
+    {
+        m_IsDisarming = true;
+    }
+
+    private void OnDisarmEnd()
+    {
+        m_IsDisarming = false;
+        m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    #endregion
+
     //player dies
     private void OnPlayerDeath()
     {
@@ -255,6 +313,20 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void ApplyBounceBackForce(PlayerController otherPlayer)
+    {
+        DisablePlayerMovement(0.2f);
+
+        Vector3 direction = otherPlayer.gameObject.transform.position - transform.position;
+
+        m_Rigidbody.AddForce(-direction.normalized * m_KnockbackForce);
+        otherPlayer.m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
+
+        /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
+        otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
+
     }
 }
 

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
 {
+    private PlayerController m_ParentPlayerController;
+
+    private void Start()
+    {
+        m_ParentPlayerController = transform.parent.parent.GetComponent<PlayerController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != this.gameObject)
@@ -11,7 +18,7 @@ public class AttackHitbox : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 //deal damage
-                other.gameObject.GetComponent<HealthComponent>().DealDamage(200f);
+                other.gameObject.GetComponent<PlayerController>().AttemptAttack(m_ParentPlayerController);
             }
 
         }
