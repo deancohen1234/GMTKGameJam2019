@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public enum PlayerType {Player1, Player2}
+public enum PlayerOrientation { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft}
 
 public struct InputStrings
 {
@@ -28,9 +29,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Attack Properties")]
     public float m_AttackDistance = 1.0f;
+    public float m_AttackSphereRadius = 0.35f;
 
-    [Header("Sprite Handling")]
     public SpriteHandler m_SpriteHandler;
+    public AttackHitboxController m_AttackHitboxController;
 
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [Header("Testing")]
     public GameObject m_HitboxTestObject;
 
+    private PlayerOrientation m_PlayerOrientation;
     private bool m_CanMove = true;
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
@@ -63,8 +66,8 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionEnd += OnDashEnd;
         m_DashAction.ActionHandler += Dash;
 
-        m_AttackAction.ActionHandler += StartLungeAttack;
-        m_AttackAction.OnActionEnd += Attack;
+        m_AttackAction.ActionHandler += Attack;
+        m_AttackAction.OnActionEnd += OnAttackEnd;
     }
 
     private void OnDisable()
@@ -73,8 +76,8 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionEnd -= OnDashEnd;
         m_DashAction.ActionHandler -= Dash;
 
-        m_AttackAction.ActionHandler -= StartLungeAttack;
-        m_AttackAction.OnActionEnd -= Attack;
+        m_AttackAction.ActionHandler -= Attack;
+        m_AttackAction.OnActionEnd -= OnAttackEnd;
     }
 
     private void SetupInputStrings(PlayerType playerNum)
@@ -121,8 +124,64 @@ public class PlayerController : MonoBehaviour
         m_DashAction.CheckActionCompleteness(x, y);
         m_AttackAction.CheckActionCompleteness(x, y);
 
-        m_SpriteHandler.SetSprite(new Vector2(x, y).normalized);
 
+        m_PlayerOrientation = CalculateOrientation(new Vector2(x, y).normalized);
+
+        if (new Vector2(x, y).sqrMagnitude >= .2f)
+        {
+            m_SpriteHandler.SetSprite(m_PlayerOrientation);
+        }
+
+    }
+
+    private PlayerOrientation CalculateOrientation(Vector2 vector)
+    {
+        PlayerOrientation orientation = PlayerOrientation.Up;
+        float atan2 = Mathf.Atan2(vector.y, vector.x);
+
+        atan2 = atan2 * Mathf.Rad2Deg;
+
+        if (IsInRange(atan2, 67.5f, 112.5f))
+        {
+            //12 o clock
+            orientation = PlayerOrientation.Up;
+        }
+        else if (IsInRange(atan2, 22.5f, 67.5f))
+        {
+            //1:30
+            orientation = PlayerOrientation.UpRight;
+        }
+        else if (IsInRange(atan2, -22.5f, 22.5f))
+        {
+            //3:00
+            orientation = PlayerOrientation.Right;
+        }
+        else if (IsInRange(atan2, -67.5f, -22.5f))
+        {
+            //4:30
+            orientation = PlayerOrientation.DownRight;
+        }
+        else if (IsInRange(atan2, -112.5f, -67.5f))
+        {
+            //6:00
+            orientation = PlayerOrientation.Down;
+        }
+        else if (IsInRange(atan2, -157.5f, -112.5f))
+        {
+            orientation = PlayerOrientation.DownLeft;
+        }
+        else if (IsInRange(atan2, 112.5f, 157.5f))
+        {
+            //10:30
+            orientation = PlayerOrientation.UpLeft;
+        }
+        else
+        {
+            //9
+            orientation = PlayerOrientation.Left;
+        }
+
+        return orientation;
     }
 
     private void Move(float x, float y)
@@ -139,24 +198,16 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = direction * m_DashSpeed;
     }
 
-    private void StartLungeAttack(Vector3 direction)
+    private void Attack(Vector3  direction)
     {
-        //first dash
-        //then attack
         Dash(direction);
 
-        m_AttackDirection = direction;
+        m_AttackHitboxController.ActivateHitBox(m_PlayerOrientation);
     }
 
-    private void Attack()
+    private void OnAttackEnd()
     {
-        GameObject g = Instantiate(m_HitboxTestObject);
-        Vector3 attackPosition = transform.position;
-
-        g.transform.position = transform.position;
-
-        Debug.Log("Our Position: " + transform.position);
-        Debug.Log("Its Position: " + m_HitboxTestObject.transform.position);
+        m_AttackHitboxController.DisableAllHitBoxes();
     }
 
     private IEnumerator DisablePlayerMovement(float time)
@@ -178,6 +229,19 @@ public class PlayerController : MonoBehaviour
     {
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    //inclusive min and exclusive max
+    private bool IsInRange(float value, float min, float max)
+    {
+        if (value >= min && value < max)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

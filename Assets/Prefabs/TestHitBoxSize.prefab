@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 374618165890054940}
   - component: {fileID: 374618165890054941}
   - component: {fileID: 374618165890054942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestHitBoxSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 374618165890054943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7110667, y: 0.24, z: -0.526108}
-  m_LocalScale: {x: 0.29134047, y: 0.29134047, z: 0.29134047}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,7 +86,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374618165890054943}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

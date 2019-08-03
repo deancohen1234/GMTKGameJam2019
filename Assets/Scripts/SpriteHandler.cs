@@ -24,52 +24,34 @@ public class SpriteHandler : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void SetSprite(Vector2 vector)
+    public void SetSprite(PlayerOrientation orientation)
     {
-        if (vector.sqrMagnitude <= .2f)
+        switch (orientation)
         {
-            return;
-        }
-
-        float atan2 = Mathf.Atan2(vector.y, vector.x);
-
-        atan2 = atan2 * Mathf.Rad2Deg;
-
-        if (IsInRange(atan2, 67.5f, 112.5f))
-        {
-            //12 o clock
-            m_PlayerSprite = m_12oClock;
-        }
-        else if (IsInRange(atan2, 22.5f, 67.5f))
-        {
-            //1:30
-            m_PlayerSprite = m_130oClock;
-        }
-        else if (IsInRange(atan2, -22.5f, 22.5f))
-        {
-            //3:00
-            m_PlayerSprite = m_3oClock;
-        }
-        else if (IsInRange(atan2, -67.5f, -22.5f))
-        {
-            //4:30
-            m_PlayerSprite = m_430oClock;
-        }
-        else if (IsInRange(atan2, -112.5f, -67.5f))
-        {
-            //6:00
-            m_PlayerSprite = m_6oClock;
-        }
-        else if (IsInRange(atan2, -157.5f, -112.5f))
-        {
-            //10:30
-            m_PlayerSprite = m_1030oClock;
-
-        }
-        else
-        {
-            //9
-            m_PlayerSprite = m_9oClock;
+            case PlayerOrientation.Up:
+                m_PlayerSprite = m_12oClock;
+                break;
+            case PlayerOrientation.UpRight:
+                m_PlayerSprite = m_130oClock;
+                break;
+            case PlayerOrientation.Right:
+                m_PlayerSprite = m_3oClock;
+                break;
+            case PlayerOrientation.DownRight:
+                m_PlayerSprite = m_430oClock;
+                break;
+            case PlayerOrientation.Down:
+                m_PlayerSprite = m_6oClock;
+                break;
+            case PlayerOrientation.DownLeft:
+                m_PlayerSprite = m_730oClock;
+                break;
+            case PlayerOrientation.Left:
+                m_PlayerSprite = m_9oClock;
+                break;
+            case PlayerOrientation.UpLeft:
+                m_PlayerSprite = m_1030oClock;
+                break;
         }
 
         m_SpriteRenderer.sprite = m_PlayerSprite;
@@ -81,17 +63,6 @@ public class SpriteHandler : MonoBehaviour
         //transform.LookAt(m_Camera);
     }
 
-    //inclusive min and exclusive max
-    private bool IsInRange(float value, float min, float max)
-    {
-        if (value >= min && value < max)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
 
 }
