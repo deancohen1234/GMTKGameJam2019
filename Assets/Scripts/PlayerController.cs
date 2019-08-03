@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Properties")]
     public float m_DashSpeed = 15.0f;
     public float m_DisabledMovementTime = 0.10f; //in seconds
+    public int m_DashStartDelay = 15; //in frames
+    public int m_DashLength = 21; //in frames
     public float m_DashCooldown = 0.5f;
 
     private InputStrings m_InputStrings;
@@ -31,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
     private bool m_CanMove = true;
     private bool m_HasDash = true;
+
+    private int m_FrameStarted = -1;
+    private bool m_IsDashing;
 
     private void Awake()
     {
@@ -74,8 +79,28 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis(m_InputStrings.LTrigger) >= 0.8f && m_HasDash)
         {
-            Vector3 direction = new Vector3(x, 0, y);
-            Dash(direction.normalized);
+            m_FrameStarted = Time.frameCount;
+            m_IsDashing = true;
+            m_HasDash = false;
+            OnDashStart();
+        }
+
+        //if dash has been started
+        if (m_IsDashing)
+        {
+            if (Time.frameCount - m_FrameStarted >= m_DashLength + m_DashStartDelay)
+            {
+                //End dash
+                m_FrameStarted = 0; //reset counter
+                OnDashEnd();
+            }
+            else if (Time.frameCount - m_FrameStarted >= m_DashStartDelay)
+            {
+                //Do dash
+                Vector3 direction = new Vector3(x, 0, y);
+                Dash(direction.normalized);
+            }
+            
         }
 
     }
@@ -111,5 +136,15 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         m_HasDash = true;
+    }
+
+    private void OnDashStart()
+    {
+        GetComponent<Renderer>().material.color = Random.ColorHSV();
+    }
+
+    private void OnDashEnd()
+    {
+        GetComponent<Renderer>().material.color = Color.white;
     }
 }
