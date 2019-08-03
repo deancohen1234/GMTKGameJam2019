@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private HealthComponent m_HealthComponent;
     private CameraShake m_CameraShake;
+    private RippleEffect m_RippleEffect;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_HealthComponent = GetComponent<HealthComponent>();
         m_CameraShake = FindObjectOfType<CameraShake>();
+        m_RippleEffect = FindObjectOfType<RippleEffect>();
     }
     // Start is called before the first frame update
     void Start()
@@ -251,6 +253,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = direction * m_DashSpeed;
 
         m_CameraShake.AddTrauma(0.2f);
+        m_RippleEffect.ActivateRipple(transform.position);
     }
 
     public void AttemptAttack(PlayerController attackingPlayer)

@@ -65,8 +65,6 @@ public class CameraShake : MonoBehaviour {
         float y = m_MaxAngle * shake * ((perlinValueY * 2) - 1); //puts perlin between -1, 1
         float z = m_MaxAngle * shake * ((perlinValueZ * 2) - 1); //puts perlin between -1, 1
 
-        Debug.Log("X: " + x + "\tY: " + y + "\tZ: " + z);
-
         Quaternion q = Quaternion.Euler(x, y, z);
 
         GetComponent<Camera>().transform.rotation = q * m_StableCamera.transform.rotation; //potentially could just be a vector not a camera
