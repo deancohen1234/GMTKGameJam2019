@@ -8,6 +8,13 @@ public class MegaWeapon : MonoBehaviour
     public float m_ArenaWidth;
     public float m_ArenaHeight;
 
+    private float m_WeaponStartHeight;
+
+    private void Start()
+    {
+        m_WeaponStartHeight = transform.position.y;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -22,7 +29,9 @@ public class MegaWeapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        Vector3 newPosition = m_ArenaCenter.position + new Vector3(m_ArenaWidth, 0, m_ArenaHeight);
+        float randomX = Random.Range(0.0f, 1.0f) * m_ArenaWidth;
+        float randomY = Random.Range(0.0f, 1.0f) * m_ArenaHeight;
+        Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY);
 
         transform.position = newPosition;
     }
