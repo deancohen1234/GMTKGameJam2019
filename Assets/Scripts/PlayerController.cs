@@ -15,6 +15,7 @@ public struct InputStrings
 }
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(HealthComponent))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
+    private HealthComponent m_HealthComponent;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_HealthComponent = GetComponent<HealthComponent>();
     }
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
 
         m_AttackAction.ActionHandler += Attack;
         m_AttackAction.OnActionEnd += OnAttackEnd;
+
+        m_HealthComponent.m_OnDeath += OnPlayerDeath;
     }
 
     private void OnDisable()
@@ -78,6 +83,8 @@ public class PlayerController : MonoBehaviour
 
         m_AttackAction.ActionHandler -= Attack;
         m_AttackAction.OnActionEnd -= OnAttackEnd;
+
+        m_HealthComponent.m_OnDeath -= OnPlayerDeath;
     }
 
     private void SetupInputStrings(PlayerType playerNum)
@@ -229,6 +236,12 @@ public class PlayerController : MonoBehaviour
     {
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    //player dies
+    private void OnPlayerDeath()
+    {
+        gameObject.SetActive(false);
     }
 
     //inclusive min and exclusive max
