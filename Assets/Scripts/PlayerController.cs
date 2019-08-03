@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dash Properties")]
     public float m_DashSpeed = 15.0f;
-    public float m_DisabledMovementTime = 0.10f; //in seconds
+    public int m_DisabledMovementTime = 6; //in frames
 
     [Header("Attack Properties")]
     public float m_AttackDistance = 1.0f;
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             m_DashAction.ExecuteAction();
         }
 
-        if (Input.GetAxis(m_InputStrings.RTrigger) >= 0.8f && m_DashAction.IsAvailable)
+        if (Input.GetAxis(m_InputStrings.RTrigger) >= 0.8f && m_RTriggerAction.IsAvailable)
         {
             m_RTriggerAction.ExecuteAction();
         }
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
     #region Action Methods
     private void Dash(Vector3 direction)
     {
-        StartCoroutine(DisablePlayerMovement(m_DisabledMovementTime));
+        StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
     }
