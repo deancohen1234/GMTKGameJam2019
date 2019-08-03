@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
     private HealthComponent m_HealthComponent;
+    private CameraShake m_CameraShake;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_HealthComponent = GetComponent<HealthComponent>();
+        m_CameraShake = FindObjectOfType<CameraShake>();
     }
     // Start is called before the first frame update
     void Start()
@@ -247,6 +249,8 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
+
+        m_CameraShake.AddTrauma(0.2f);
     }
 
     public void AttemptAttack(PlayerController attackingPlayer)
