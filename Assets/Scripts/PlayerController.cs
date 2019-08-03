@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum PlayerType {Player1, Player2}
 
@@ -24,9 +25,9 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Properties")]
     public float m_DashSpeed = 15.0f;
     public float m_DisabledMovementTime = 0.10f; //in seconds
-    public int m_DashStartDelay = 15; //in frames
-    public int m_DashLength = 21; //in frames
-    public float m_DashCooldown = 0.5f;
+
+    [Header("Attack Properties")]
+    public float m_AttackDistance = 1.0f;
 
     [Header("Sprite Handling")]
     public SpriteHandler m_SpriteHandler;
@@ -34,11 +35,15 @@ public class PlayerController : MonoBehaviour
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
 
-    private bool m_CanMove = true;
-    private bool m_HasDash = true;
+    [Header("Actions")]
+    public PlayerAction m_DashAction;
+    public PlayerAction m_AttackAction;
 
-    private int m_FrameStarted = -1;
-    private bool m_IsDashing;
+    [Header("Testing")]
+    public GameObject m_HitboxTestObject;
+
+    private bool m_CanMove = true;
+    private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
     private void Awake()
     {
@@ -48,6 +53,28 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         SetupInputStrings(m_PlayerNum);
+
+        m_DashAction.IsAvailable = true;
+    }
+
+    private void OnEnable()
+    {
+        m_DashAction.OnActionStart += OnDashStart;
+        m_DashAction.OnActionEnd += OnDashEnd;
+        m_DashAction.ActionHandler += Dash;
+
+        m_AttackAction.ActionHandler += StartLungeAttack;
+        m_AttackAction.OnActionEnd += Attack;
+    }
+
+    private void OnDisable()
+    {
+        m_DashAction.OnActionStart -= OnDashStart;
+        m_DashAction.OnActionEnd -= OnDashEnd;
+        m_DashAction.ActionHandler -= Dash;
+
+        m_AttackAction.ActionHandler -= StartLungeAttack;
+        m_AttackAction.OnActionEnd -= Attack;
     }
 
     private void SetupInputStrings(PlayerType playerNum)
@@ -80,31 +107,19 @@ public class PlayerController : MonoBehaviour
             Move(x, y);
         }
 
-        if (Input.GetAxis(m_InputStrings.LTrigger) >= 0.8f && m_HasDash)
+        if (Input.GetAxis(m_InputStrings.LTrigger) >= 0.8f && m_DashAction.IsAvailable)
         {
-            m_FrameStarted = Time.frameCount;
-            m_IsDashing = true;
-            m_HasDash = false;
-            OnDashStart();
+            m_DashAction.ExecuteAction();
+        }
+
+        if (Input.GetAxis(m_InputStrings.RTrigger) >= 0.8f && m_DashAction.IsAvailable)
+        {
+            m_AttackAction.ExecuteAction();
         }
 
         //if dash has been started
-        if (m_IsDashing)
-        {
-            if (Time.frameCount - m_FrameStarted >= m_DashLength + m_DashStartDelay)
-            {
-                //End dash
-                m_FrameStarted = 0; //reset counter
-                OnDashEnd();
-            }
-            else if (Time.frameCount - m_FrameStarted >= m_DashStartDelay)
-            {
-                //Do dash
-                Vector3 direction = new Vector3(x, 0, y);
-                Dash(direction.normalized);
-            }
-            
-        }
+        m_DashAction.CheckActionCompleteness(x, y);
+        m_AttackAction.CheckActionCompleteness(x, y);
 
         m_SpriteHandler.SetSprite(new Vector2(x, y).normalized);
 
@@ -120,9 +135,28 @@ public class PlayerController : MonoBehaviour
     private void Dash(Vector3 direction)
     {
         StartCoroutine(DisablePlayerMovement(m_DisabledMovementTime));
-        StartCoroutine(CooldownDash(m_DashCooldown));
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
+    }
+
+    private void StartLungeAttack(Vector3 direction)
+    {
+        //first dash
+        //then attack
+        Dash(direction);
+
+        m_AttackDirection = direction;
+    }
+
+    private void Attack()
+    {
+        GameObject g = Instantiate(m_HitboxTestObject);
+        Vector3 attackPosition = transform.position;
+
+        g.transform.position = transform.position;
+
+        Debug.Log("Our Position: " + transform.position);
+        Debug.Log("Its Position: " + m_HitboxTestObject.transform.position);
     }
 
     private IEnumerator DisablePlayerMovement(float time)
@@ -134,24 +168,96 @@ public class PlayerController : MonoBehaviour
         m_CanMove = true;
     }
 
-    private IEnumerator CooldownDash(float time)
-    {
-        m_HasDash = false;
-
-        yield return new WaitForSeconds(time);
-
-        m_HasDash = true;
-    }
-
     private void OnDashStart()
     {
         //GetComponent<Renderer>().material.color = Random.ColorHSV();
-        m_SpriteHandler.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+        m_SpriteHandler.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
     }
 
     private void OnDashEnd()
     {
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+}
+
+[System.Serializable]
+public class PlayerAction
+{
+    [HideInInspector]
+    public bool IsAvailable = true;
+    [HideInInspector]
+    public bool IsExecuting = false;
+
+    public int CooldownTime; //in frames
+    public int StartDelay; //in frames
+    public int ActionLength; //in frames
+
+    public Action OnActionStart;
+    public Action OnActionEnd;
+    public Action<Vector3> ActionHandler; //holds references to other scripts that actually do action lik dash and attack
+
+    private int StartingFrame;
+
+    public void SetStartingFrame(int frameNum)
+    {
+        StartingFrame = frameNum;
+    }
+
+    public int GetStartingFrame()
+    {
+        return StartingFrame;
+    }
+
+    public void ExecuteAction()
+    {
+        StartingFrame = Time.frameCount;
+        IsAvailable = false;
+        IsExecuting = true;
+
+        if (OnActionStart != null)
+        {
+            OnActionStart.Invoke();
+        }
+    }
+
+    //called every frame once action starts
+    public void CheckActionCompleteness(float xInput, float yInput)
+    {
+        //if dash has been started
+        if (IsExecuting)
+        {
+            if (Time.frameCount - StartingFrame >= ActionLength + StartDelay)
+            {
+                //End dash
+                StartingFrame = Time.frameCount; //star timer for cooldown
+                IsExecuting = false;
+
+                if (OnActionEnd != null)
+                {
+                    OnActionEnd.Invoke();
+                }
+            }
+            //start delay finished
+            else if (Time.frameCount - StartingFrame >= StartDelay)
+            {
+                //Do dash
+                Vector3 direction = new Vector3(xInput, 0, yInput);
+
+                ActionHandler.DynamicInvoke(direction);
+            }
+
+        }
+
+        //if action is complete and cooldown still is going on
+        else if (!IsAvailable)
+        {
+            //check cooldown
+            if (Time.frameCount - StartingFrame >= CooldownTime)
+            {
+                StartingFrame = 0;
+                IsAvailable = true;
+            }
+        }
     }
 }

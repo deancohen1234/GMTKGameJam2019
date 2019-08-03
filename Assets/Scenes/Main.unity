@@ -241,10 +241,21 @@ MonoBehaviour:
   m_MoveSpeed: 3
   m_DashSpeed: 15
   m_DisabledMovementTime: 0.075
-  m_DashStartDelay: 3
-  m_DashLength: 6
-  m_DashCooldown: 0.75
+  m_AttackDistance: 1
   m_SpriteHandler: {fileID: 0}
+  m_DashAction:
+    IsAvailable: 0
+    IsExecuting: 0
+    CooldownTime: 0
+    StartDelay: 0
+    ActionLength: 0
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 0
+    StartDelay: 0
+    ActionLength: 0
+  m_HitboxTestObject: {fileID: 0}
 --- !u!54 &306205929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -999,10 +1010,22 @@ MonoBehaviour:
   m_MoveSpeed: 3
   m_DashSpeed: 15
   m_DisabledMovementTime: 0.075
-  m_DashStartDelay: 3
-  m_DashLength: 6
-  m_DashCooldown: 0.75
+  m_AttackDistance: 1
   m_SpriteHandler: {fileID: 1162640997}
+  m_DashAction:
+    IsAvailable: 0
+    IsExecuting: 0
+    CooldownTime: 20
+    StartDelay: 3
+    ActionLength: 6
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 20
+    StartDelay: 3
+    ActionLength: 6
+  m_HitboxTestObject: {fileID: 374618165890054943, guid: c8bc3f9649e12e44bb3d8ef892af2dca,
+    type: 3}
 --- !u!1 &1471828809
 GameObject:
   m_ObjectHideFlags: 0
