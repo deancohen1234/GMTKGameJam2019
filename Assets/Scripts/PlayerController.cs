@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
+    private SpriteHandler m_SpriteHandler;
 
     private bool m_CanMove = true;
     private bool m_HasDash = true;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_SpriteHandler = GetComponent<SpriteHandler>();
     }
     // Start is called before the first frame update
     void Start()
@@ -102,6 +104,8 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+
+        m_SpriteHandler.SetSprite(new Vector2(x, y).normalized);
 
     }
 
