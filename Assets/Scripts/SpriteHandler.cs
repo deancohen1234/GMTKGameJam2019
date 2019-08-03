@@ -16,17 +16,24 @@ public class SpriteHandler : MonoBehaviour
     private Sprite m_PlayerSprite;
     private SpriteRenderer m_SpriteRenderer;
 
+    private Transform m_Camera;
+
     private void Awake()
     {
+        m_Camera = Camera.main.transform;
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetSprite(Vector2 vector)
     {
+        if (vector.sqrMagnitude <= .2f)
+        {
+            return;
+        }
+
         float atan2 = Mathf.Atan2(vector.y, vector.x);
 
         atan2 = atan2 * Mathf.Rad2Deg;
-        Debug.Log("Angle: " + atan2);
 
         if (IsInRange(atan2, 67.5f, 112.5f))
         {
@@ -51,7 +58,6 @@ public class SpriteHandler : MonoBehaviour
         else if (IsInRange(atan2, -112.5f, -67.5f))
         {
             //6:00
-            Debug.Log("6");
             m_PlayerSprite = m_6oClock;
         }
         else if (IsInRange(atan2, -157.5f, -112.5f))
@@ -67,6 +73,12 @@ public class SpriteHandler : MonoBehaviour
         }
 
         m_SpriteRenderer.sprite = m_PlayerSprite;
+    }
+
+    private void LateUpdate()
+    {
+        //face sprites to camera
+        //transform.LookAt(m_Camera);
     }
 
     //inclusive min and exclusive max

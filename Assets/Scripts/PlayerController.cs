@@ -28,9 +28,11 @@ public class PlayerController : MonoBehaviour
     public int m_DashLength = 21; //in frames
     public float m_DashCooldown = 0.5f;
 
+    [Header("Sprite Handling")]
+    public SpriteHandler m_SpriteHandler;
+
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
-    private SpriteHandler m_SpriteHandler;
 
     private bool m_CanMove = true;
     private bool m_HasDash = true;
@@ -41,7 +43,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_SpriteHandler = GetComponent<SpriteHandler>();
     }
     // Start is called before the first frame update
     void Start()
@@ -144,11 +145,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnDashStart()
     {
-        GetComponent<Renderer>().material.color = Random.ColorHSV();
+        //GetComponent<Renderer>().material.color = Random.ColorHSV();
+        m_SpriteHandler.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
     }
 
     private void OnDashEnd()
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        //GetComponent<Renderer>().material.color = Color.white;
+        m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
