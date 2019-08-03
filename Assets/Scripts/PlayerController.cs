@@ -266,7 +266,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Attack(Vector3  direction)
+    private void Attack(Vector3 direction)
     {
         Dash(direction);
 
@@ -307,6 +307,9 @@ public class PlayerController : MonoBehaviour
     private void Disarm(Vector3 direction)
     {
         m_IsDisarming = true;
+
+        m_Rigidbody.velocity = Vector3.zero;
+        StartCoroutine(DisablePlayerMovement((float)m_DisarmAction.ActionLength / 60f));
     }
 
     private void OnDisarmEnd()
