@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public GameObject m_HitboxTestObject;
 
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
+
+    private MegaWeapon m_EquippedWeapon;
     private bool m_HasWeapon;
     private bool m_IsDisarming;
 
@@ -216,13 +218,27 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
-    public void EquipWeapon()
+    public void EquipWeapon(MegaWeapon weapon)
     {
         if (m_HasWeapon == false)
         {
+            m_EquippedWeapon = weapon;
+
             m_HasWeapon = true;
             m_RTriggerAction = m_AttackAction;
         }
+    }
+
+    public void LoseWeapon()
+    {
+        m_EquippedWeapon.Unequip();
+        m_EquippedWeapon = null;
+
+        m_HasWeapon = false;
+
+        m_RTriggerAction.ForceStopAction();
+
+        m_RTriggerAction = m_DisarmAction;
     }
 
     #region Action Methods
@@ -239,6 +255,10 @@ public class PlayerController : MonoBehaviour
         {
             //attacking player loses weapon, no damage
             ApplyBounceBackForce(attackingPlayer);
+
+            attackingPlayer.LoseWeapon();
+
+            m_RTriggerAction.ForceStopAction();
         }
         else
         {
@@ -291,6 +311,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisarmEnd()
     {
+        Debug.Log("Ending disarm");
         m_IsDisarming = false;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }
@@ -368,6 +389,13 @@ public class PlayerAction
         {
             OnActionStart.Invoke();
         }
+    }
+
+    public void ForceStopAction()
+    {
+        IsExecuting = false;
+
+        OnActionEnd.Invoke();
     }
 
     //called every frame once action starts

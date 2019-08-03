@@ -2376,7 +2376,7 @@ GameObject:
   - component: {fileID: 1405402271}
   - component: {fileID: 1405402272}
   m_Layer: 0
-  m_Name: MeagWeapon
+  m_Name: MegaWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2390,7 +2390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405402267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.707, y: 0.206, z: -0.813}
+  m_LocalPosition: {x: 0.84, y: 0.206, z: -0.813}
   m_LocalScale: {x: 0.19548, y: 0.19548, z: 0.19548}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2469,6 +2469,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947b0bb55537ddd46ad88d99d15e780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ArenaCenter: {fileID: 574776829}
+  m_ArenaWidth: 2.5
+  m_ArenaHeight: 2.5
 --- !u!54 &1405402272
 Rigidbody:
   m_ObjectHideFlags: 0
