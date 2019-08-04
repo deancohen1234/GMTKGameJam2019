@@ -6929,7 +6929,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 20
     StartDelay: 1
-    ActionLength: 15
+    ActionLength: 200
   m_HitboxTestObject: {fileID: 374618165890054943, guid: c8bc3f9649e12e44bb3d8ef892af2dca,
     type: 3}
   m_WeaponIcon: {fileID: 1906476049}
@@ -9839,7 +9839,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 20
     StartDelay: 1
-    ActionLength: 15
+    ActionLength: 200
   m_HitboxTestObject: {fileID: 374618165890054943, guid: c8bc3f9649e12e44bb3d8ef892af2dca,
     type: 3}
   m_WeaponIcon: {fileID: 832805478}

@@ -296,30 +296,32 @@ public class PlayerController : MonoBehaviour
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
 
-        m_CameraShake.AddTrauma(0.2f);
-        m_RippleEffect.ActivateRipple(transform.position);
     }
 
     public void AttemptAttack(PlayerController attackingPlayer)
     {
+        m_CameraShake.AddTrauma(0.5f);
+
+        //attacking player loses weapon, no damage
+        attackingPlayer.ApplyBounceBackForce(transform.position);
+        ApplyBounceBackForce(attackingPlayer.gameObject.transform.position);
+
         if (m_IsDisarming)
         {
             DisarmOppponent(attackingPlayer);
         }
         else
         {
-            m_HealthComponent.DealDamage(200f);
+            m_HealthComponent.DealDamage(34f);
         }
     }
 
     private void DisarmOppponent(PlayerController attackingPlayer)
     {
+        m_RippleEffect.ActivateRipple(transform.position);
+
         m_RTriggerAction.ForceStopAction();
         attackingPlayer.m_RTriggerAction.ForceStopAction();
-
-        //attacking player loses weapon, no damage
-        attackingPlayer.ApplyBounceBackForce(transform.position);
-        ApplyBounceBackForce(attackingPlayer.gameObject.transform.position);
 
         EquipWeapon(attackingPlayer.m_EquippedWeapon);
         attackingPlayer.LoseWeapon();
