@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private InputStrings m_InputStrings;
     private Rigidbody m_Rigidbody;
+    private AudioSource m_AudioSource;
     private HealthComponent m_HealthComponent;
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
@@ -53,6 +54,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject m_WeaponIcon;
 
+    [Header("Sound Effects")]
+    public AudioClip m_SwordSlash;
+
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
 
     private MegaWeapon m_EquippedWeapon;
@@ -67,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_AudioSource = GetComponent<AudioSource>();
         m_HealthComponent = GetComponent<HealthComponent>();
         m_PlayerAnimation = GetComponent<PlayerAnimation>();
         m_CameraShake = FindObjectOfType<CameraShake>();
@@ -325,6 +330,10 @@ public class PlayerController : MonoBehaviour
     private void Attack(Vector3 direction)
     {
         Dash(direction);
+
+        m_AudioSource.clip = m_SwordSlash;
+        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.Play();
 
         m_AttackHitboxController.ActivateHitBox(m_PlayerOrientation);
     }
