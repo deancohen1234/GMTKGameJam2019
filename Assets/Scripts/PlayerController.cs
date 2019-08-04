@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
     private PlayerAnimation m_PlayerAnimation;
+    private EffectsController m_EffectsController;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
         m_HealthComponent = GetComponent<HealthComponent>();
         m_PlayerAnimation = GetComponent<PlayerAnimation>();
+        m_EffectsController = GetComponent<EffectsController>();
         m_CameraShake = FindObjectOfType<CameraShake>();
         m_RippleEffect = FindObjectOfType<RippleEffect>();
     }
@@ -386,6 +388,7 @@ public class PlayerController : MonoBehaviour
     {
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.black;
         m_PlayerAnimation.StartDisarm();
+        m_EffectsController.ActivateDisarmSystem();
     }
 
     private void Disarm(Vector3 direction)
@@ -400,6 +403,8 @@ public class PlayerController : MonoBehaviour
     {
         m_IsDisarming = false;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+        m_EffectsController.DeActiviateDisarmSystem();
+
     }
     #endregion
 
