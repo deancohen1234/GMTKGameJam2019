@@ -11,6 +11,7 @@ public class HealthComponent : MonoBehaviour
     public Action m_OnDeath;
 
     private float m_CurrentHealth;
+    private bool m_IsDead;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,14 @@ public class HealthComponent : MonoBehaviour
             //player is dead
             if (m_OnDeath != null)
             {
+                m_IsDead = true;
                 m_OnDeath.Invoke();
             }
         }
+    }
+
+    public bool IsDead()
+    {
+        return m_IsDead;
     }
 }

@@ -276,6 +276,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public HealthComponent GetHealthComponent()
+    {
+        return m_HealthComponent;
+    }
+
     #region Action Methods
     private void Dash(Vector3 direction)
     {
