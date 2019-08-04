@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private HealthComponent m_HealthComponent;
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
+    private PlayerAnimation m_PlayerAnimation;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_HealthComponent = GetComponent<HealthComponent>();
+        m_PlayerAnimation = GetComponent<PlayerAnimation>();
         m_CameraShake = FindObjectOfType<CameraShake>();
         m_RippleEffect = FindObjectOfType<RippleEffect>();
     }
@@ -161,6 +163,7 @@ public class PlayerController : MonoBehaviour
         if (new Vector2(x, y).sqrMagnitude >= .2f)
         {
             m_SpriteHandler.SetSprite(m_PlayerOrientation);
+            m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
         }
 
     }
