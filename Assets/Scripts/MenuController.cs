@@ -8,10 +8,13 @@ using UnityEngine.InputSystem;
 public class MenuController : MonoBehaviour
 {
     public GameObject m_MainMenu;
+    public GameObject m_TutorialMenu;
     public GameObject m_CreditsMenu;
 
-    public Button m_BackButton; //in credits
+    public Button m_CreditsBackButton; //in credits
     public Button m_CreditsButton; //in main menu
+    public Button m_TutorialBackButton; //in credits
+    public Button m_TutorialButton;
 
     private void Start()
     {
@@ -24,7 +27,7 @@ public class MenuController : MonoBehaviour
         m_MainMenu.SetActive(false);
         m_CreditsMenu.SetActive(true);
 
-        m_BackButton.Select();
+        m_CreditsBackButton.Select();
     }
 
     public void CloseCreditsMenu()
@@ -35,6 +38,21 @@ public class MenuController : MonoBehaviour
         m_CreditsButton.Select();
     }
 
+    public void OpenTutorialMenu()
+    {
+        m_MainMenu.SetActive(false);
+        m_TutorialMenu.SetActive(true);
+
+        m_TutorialBackButton.Select();
+    }
+
+    public void CloseTutorialMenu()
+    {
+        m_MainMenu.SetActive(true);
+        m_TutorialMenu.SetActive(false);
+
+        m_TutorialButton.Select();
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("Arena");
