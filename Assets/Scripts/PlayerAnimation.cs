@@ -57,9 +57,9 @@ public class PlayerAnimation : MonoBehaviour
         m_PreviousPlayerOrientation = orientation;
     }
 
-    public void FreezeAnimation()
+    public void SetPlayerMoveStatus(bool isNotMoving)
     {
-        m_Animator.StopPlayback();
+        m_Animator.SetBool("IsNotMoving", isNotMoving);
     }
 
     private void ResetAllAnimationBools()

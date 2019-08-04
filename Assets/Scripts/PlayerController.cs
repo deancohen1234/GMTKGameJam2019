@@ -169,6 +169,11 @@ public class PlayerController : MonoBehaviour
         {
             //m_SpriteHandler.SetSprite(m_PlayerOrientation);
             m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
+            m_PlayerAnimation.SetPlayerMoveStatus(false);
+        }
+        else
+        {
+            m_PlayerAnimation.SetPlayerMoveStatus(true);
         }
 
     }
