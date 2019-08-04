@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ArenaCenter: {fileID: 574776829}
-  m_ArenaWidth: 2.5
-  m_ArenaHeight: 1.88
+  m_ArenaWidth: 2.3
+  m_ArenaHeight: 1.1
   m_Offset: {x: 0, y: 0, z: -1.38}
   m_FallSpeed: 1
 --- !u!65 &101229746
@@ -10830,9 +10830,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6a79d6a9bde11744b89c4cfb46cf3d6c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: db84e4bc019ebb14f8d42c7cbaf8aa0c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.051
+  m_Volume: 0.19
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17483,7 +17483,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18005,18 +18005,18 @@ MonoBehaviour:
     CooldownTime: 40
     StartDelay: 1
     ActionLength: 9
-  m_SwordSlash: {fileID: 8300000, guid: 166b77c77d48c9641a398935370fd73c, type: 3}
+  m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
   m_DamageSounds:
-  - {fileID: 8300000, guid: 606e0a5ba3e255442a88facc41618c8b, type: 3}
-  - {fileID: 8300000, guid: bd0381e9b52bef14f86d07d3b0f4dc8a, type: 3}
-  - {fileID: 8300000, guid: b8f0e71670a285f48a3c0fd97b572849, type: 3}
-  - {fileID: 8300000, guid: 83963b15bfdbc98459043303a04e3908, type: 3}
-  - {fileID: 8300000, guid: c1ed727008a785a4da20f19d18174882, type: 3}
+  - {fileID: 8300000, guid: 42db1224a4d96c644ad5daf0cb176688, type: 3}
+  - {fileID: 8300000, guid: 64076f01d34885e47b5f7fb15743d740, type: 3}
+  - {fileID: 8300000, guid: 7b09060b9492e434b8764345aa1cd1b9, type: 3}
+  - {fileID: 8300000, guid: b217e27f6911cc74aad3bf01d84acf73, type: 3}
+  - {fileID: 8300000, guid: c294beddffeb3a84dbbb7381ce2b6667, type: 3}
   m_DisarmSounds:
-  - {fileID: 8300000, guid: ee532ba15348f3943a8c14435de4c8aa, type: 3}
-  - {fileID: 8300000, guid: c215f7afcc8525b4eb2d3da5841e3143, type: 3}
-  - {fileID: 8300000, guid: 27f316be72d5b404f92fa9e8a1855169, type: 3}
-  - {fileID: 8300000, guid: 943a86d859195024197bc74818fad451, type: 3}
+  - {fileID: 8300000, guid: 9cfd052709e54314dae3b7a0fa00dd19, type: 3}
+  - {fileID: 8300000, guid: fc197b18d7e68de43920c5ccd38530b0, type: 3}
+  - {fileID: 8300000, guid: 733f125074c6cbb4b89642a9721ffe40, type: 3}
+  - {fileID: 8300000, guid: 964d22b0113af8b49849bde59c783b6d, type: 3}
   m_WeaponIcon: {fileID: 1906476049}
 --- !u!54 &694545660
 Rigidbody:
@@ -18032,7 +18032,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!136 &694545661
 CapsuleCollider:
@@ -20106,7 +20106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1063642468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21242,7 +21242,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!136 &1344863977
 CapsuleCollider:
@@ -21350,18 +21350,18 @@ MonoBehaviour:
     CooldownTime: 40
     StartDelay: 1
     ActionLength: 9
-  m_SwordSlash: {fileID: 8300000, guid: 166b77c77d48c9641a398935370fd73c, type: 3}
+  m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
   m_DamageSounds:
-  - {fileID: 8300000, guid: 606e0a5ba3e255442a88facc41618c8b, type: 3}
-  - {fileID: 8300000, guid: bd0381e9b52bef14f86d07d3b0f4dc8a, type: 3}
-  - {fileID: 8300000, guid: b8f0e71670a285f48a3c0fd97b572849, type: 3}
-  - {fileID: 8300000, guid: 83963b15bfdbc98459043303a04e3908, type: 3}
-  - {fileID: 8300000, guid: c1ed727008a785a4da20f19d18174882, type: 3}
+  - {fileID: 8300000, guid: 42db1224a4d96c644ad5daf0cb176688, type: 3}
+  - {fileID: 8300000, guid: 64076f01d34885e47b5f7fb15743d740, type: 3}
+  - {fileID: 8300000, guid: 7b09060b9492e434b8764345aa1cd1b9, type: 3}
+  - {fileID: 8300000, guid: b217e27f6911cc74aad3bf01d84acf73, type: 3}
+  - {fileID: 8300000, guid: c294beddffeb3a84dbbb7381ce2b6667, type: 3}
   m_DisarmSounds:
-  - {fileID: 8300000, guid: ee532ba15348f3943a8c14435de4c8aa, type: 3}
-  - {fileID: 8300000, guid: c215f7afcc8525b4eb2d3da5841e3143, type: 3}
-  - {fileID: 8300000, guid: 27f316be72d5b404f92fa9e8a1855169, type: 3}
-  - {fileID: 8300000, guid: 943a86d859195024197bc74818fad451, type: 3}
+  - {fileID: 8300000, guid: 9cfd052709e54314dae3b7a0fa00dd19, type: 3}
+  - {fileID: 8300000, guid: fc197b18d7e68de43920c5ccd38530b0, type: 3}
+  - {fileID: 8300000, guid: 733f125074c6cbb4b89642a9721ffe40, type: 3}
+  - {fileID: 8300000, guid: 964d22b0113af8b49849bde59c783b6d, type: 3}
   m_WeaponIcon: {fileID: 832805478}
 --- !u!114 &1344863982
 MonoBehaviour:
