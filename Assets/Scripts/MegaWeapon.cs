@@ -57,8 +57,8 @@ public class MegaWeapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        float randomX = Random.Range(0.0f, 1.0f) * m_ArenaWidth;
-        float randomY = Random.Range(0.0f, 1.0f) * m_ArenaHeight;
+        float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
+        float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
 
