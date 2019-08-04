@@ -363,6 +363,8 @@ public class PlayerController : MonoBehaviour
         m_CanMove = true;
 
         attackingPlayer.m_RTriggerAction.ForceStopAction();
+
+        m_EffectsController.ActivateOnDisarmedSystem(transform.position);
     }
 
     private void OnAttackStart()
