@@ -64,8 +64,6 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetDashStatus(bool isDashing)
     {
-        Debug.Log("Frame Count 2: " + Time.frameCount);
-
         m_Animator.SetBool("Dashing", isDashing);
 
         if (isDashing == true)

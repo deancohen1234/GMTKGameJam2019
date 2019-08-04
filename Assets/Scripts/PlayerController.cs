@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using System;
 
 public enum PlayerType {Player1, Player2}
@@ -145,20 +147,50 @@ public class PlayerController : MonoBehaviour
     {
         if (m_BlockAllInput) { return; }
 
-        float x = Input.GetAxis(m_InputStrings.Horizontal);
-        float y = Input.GetAxis(m_InputStrings.Vertical);
+        var gamepads = Gamepad.all;
+        Vector2 input = Vector2.zero;
+
+        if (gamepads.Count < 2)
+        {
+            Debug.LogError("Less than two inputs found");
+        }
+
+        if (m_PlayerNum == PlayerType.Player1)
+        {
+            input = gamepads[0].leftStick.ReadValue();
+        }
+        else
+        {
+            input = gamepads[1].leftStick.ReadValue();
+        }
+
+        float x = input.x;
+        float y = input.y;
 
         if (m_CanMove)
         {
             Move(x, y);
         }
 
-        if (Input.GetAxis(m_InputStrings.LTrigger) >= 0.8f && m_DashAction.IsAvailable)
+        bool LTriggerPressed = false;
+        bool RTriggerPressed = false;
+        if (m_PlayerNum == PlayerType.Player1)
+        {
+            LTriggerPressed = gamepads[0].leftTrigger.isPressed;
+            RTriggerPressed = gamepads[0].rightTrigger.isPressed;
+        }
+        else
+        {
+            LTriggerPressed = gamepads[1].leftTrigger.isPressed;
+            RTriggerPressed = gamepads[1].rightTrigger.isPressed;
+        }
+
+        if (LTriggerPressed && m_DashAction.IsAvailable)
         {
             m_DashAction.ExecuteAction();
         }
 
-        if (Input.GetAxis(m_InputStrings.RTrigger) >= 0.8f && m_RTriggerAction.IsAvailable)
+        if (RTriggerPressed && m_RTriggerAction.IsAvailable)
         {
             m_RTriggerAction.ExecuteAction();
         }

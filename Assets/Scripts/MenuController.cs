@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MenuController : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class MenuController : MonoBehaviour
 
     public Button m_BackButton; //in credits
     public Button m_CreditsButton; //in main menu
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     public void OpenCreditsMenu()
     {
