@@ -64,7 +64,7 @@ public class RippleEffect : MonoBehaviour
     Droplet[] droplets;
     Texture2D gradTexture;
     Material material;
-    float timer;
+    public float timer;
     int dropCount;
 
     void UpdateShaderParameters()
