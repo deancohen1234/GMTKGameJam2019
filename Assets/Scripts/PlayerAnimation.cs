@@ -62,6 +62,33 @@ public class PlayerAnimation : MonoBehaviour
         m_Animator.SetBool("IsNotMoving", isNotMoving);
     }
 
+    public void SetDashStatus(bool isDashing)
+    {
+        Debug.Log("Frame Count 2: " + Time.frameCount);
+
+        m_Animator.SetBool("Dashing", isDashing);
+
+        if (isDashing == true)
+        {
+            m_Animator.SetTrigger("StartDash");
+        }
+    }
+
+    public void SetAttackStatus(bool isAttacking)
+    {
+        m_Animator.SetBool("Attacking", isAttacking);
+
+        if (isAttacking)
+        {
+            m_Animator.SetTrigger("StartAttack");
+        }
+    }
+
+    public void StartDisarm()
+    {
+        m_Animator.SetTrigger("StartDisarm");
+    }
+
     private void ResetAllAnimationBools()
     {
         m_Animator.SetBool(Up, false);

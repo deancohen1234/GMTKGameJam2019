@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.ActionHandler += Dash;
 
         m_AttackAction.ActionHandler += Attack;
+        m_AttackAction.OnActionStart += OnAttackStart;
         m_AttackAction.OnActionEnd += OnAttackEnd;
 
         m_DisarmAction.ActionHandler += Disarm;
@@ -327,6 +328,11 @@ public class PlayerController : MonoBehaviour
         attackingPlayer.m_RTriggerAction.ForceStopAction();
     }
 
+    private void OnAttackStart()
+    {
+        m_PlayerAnimation.SetAttackStatus(true);
+    }
+
     private void Attack(Vector3 direction)
     {
         Dash(direction);
@@ -341,6 +347,7 @@ public class PlayerController : MonoBehaviour
     private void OnAttackEnd()
     {
         m_AttackHitboxController.DisableAllHitBoxes();
+        m_PlayerAnimation.SetAttackStatus(false);
     }
 
     private IEnumerator DisablePlayerMovement(float time)
@@ -363,12 +370,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnDashStart()
     {
+        m_PlayerAnimation.SetDashStatus(true);
         //GetComponent<Renderer>().material.color = Random.ColorHSV();
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
     }
 
     private void OnDashEnd()
     {
+        m_PlayerAnimation.SetDashStatus(false);
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }
@@ -376,6 +385,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisarmStart()
     {
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.black;
+        m_PlayerAnimation.StartDisarm();
     }
 
     private void Disarm(Vector3 direction)
