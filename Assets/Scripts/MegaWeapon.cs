@@ -27,12 +27,12 @@ public class MegaWeapon : MonoBehaviour
 
     public void Unequip()
     {
-        gameObject.SetActive(true);
+        /*gameObject.SetActive(true);
 
         float randomX = Random.Range(0.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(0.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY);
 
-        transform.position = newPosition;
+        transform.position = newPosition;*/
     }
 }

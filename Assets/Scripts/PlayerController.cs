@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [Header("Testing")]
     public GameObject m_HitboxTestObject;
 
+    public GameObject m_WeaponIcon;
+
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
 
     private MegaWeapon m_EquippedWeapon;
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerOrientation m_PlayerOrientation;
     private bool m_CanMove = true;
+    private bool m_BlockAllInput = false;
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
     private void Awake()
@@ -134,6 +137,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_BlockAllInput) { return; }
+
         float x = Input.GetAxis(m_InputStrings.Horizontal);
         float y = Input.GetAxis(m_InputStrings.Vertical);
 
@@ -163,7 +168,7 @@ public class PlayerController : MonoBehaviour
         if (new Vector2(x, y).sqrMagnitude >= .2f)
         {
             m_SpriteHandler.SetSprite(m_PlayerOrientation);
-            m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
+            //m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
         }
 
     }
@@ -230,9 +235,12 @@ public class PlayerController : MonoBehaviour
         if (m_HasWeapon == false)
         {
             m_EquippedWeapon = weapon;
+            Debug.Log(m_EquippedWeapon);
 
             m_HasWeapon = true;
             m_RTriggerAction = m_AttackAction;
+
+            m_WeaponIcon.SetActive(true);
         }
     }
 
@@ -243,9 +251,24 @@ public class PlayerController : MonoBehaviour
 
         m_HasWeapon = false;
 
-        m_RTriggerAction.ForceStopAction();
-
         m_RTriggerAction = m_DisarmAction;
+
+        m_RTriggerAction.IsExecuting = false;
+
+        m_WeaponIcon.SetActive(false);
+    }
+
+
+    public void ApplyBounceBackForce(Vector3 otherPlayerPos)
+    {
+        StartCoroutine(DisableAllMovement(0.2f));
+
+        Vector3 direction = transform.position - otherPlayerPos;
+        m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
+
+        /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
+        otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
+
     }
 
     #region Action Methods
@@ -263,17 +286,30 @@ public class PlayerController : MonoBehaviour
     {
         if (m_IsDisarming)
         {
-            //attacking player loses weapon, no damage
-            ApplyBounceBackForce(attackingPlayer);
-
-            attackingPlayer.LoseWeapon();
-
-            m_RTriggerAction.ForceStopAction();
+            DisarmOppponent(attackingPlayer);
         }
         else
         {
             m_HealthComponent.DealDamage(200f);
         }
+    }
+
+    private void DisarmOppponent(PlayerController attackingPlayer)
+    {
+        m_RTriggerAction.ForceStopAction();
+        attackingPlayer.m_RTriggerAction.ForceStopAction();
+
+        //attacking player loses weapon, no damage
+        attackingPlayer.ApplyBounceBackForce(transform.position);
+        ApplyBounceBackForce(attackingPlayer.gameObject.transform.position);
+
+        EquipWeapon(attackingPlayer.m_EquippedWeapon);
+        attackingPlayer.LoseWeapon();
+
+        attackingPlayer.m_CanMove = true;
+        m_CanMove = true;
+
+        attackingPlayer.m_RTriggerAction.ForceStopAction();
     }
 
     private void Attack(Vector3 direction)
@@ -295,6 +331,15 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         m_CanMove = true;
+    }
+
+    private IEnumerator DisableAllMovement(float time)
+    {
+        m_BlockAllInput = true;
+
+        yield return new WaitForSeconds(time);
+
+        m_BlockAllInput = false;
     }
 
     private void OnDashStart()
@@ -324,7 +369,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisarmEnd()
     {
-        Debug.Log("Ending disarm");
         m_IsDisarming = false;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }
@@ -347,20 +391,6 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-    }
-
-    private void ApplyBounceBackForce(PlayerController otherPlayer)
-    {
-        DisablePlayerMovement(0.2f);
-
-        Vector3 direction = otherPlayer.gameObject.transform.position - transform.position;
-
-        m_Rigidbody.AddForce(-direction.normalized * m_KnockbackForce);
-        otherPlayer.m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
-
-        /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
-        otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
-
     }
 }
 
