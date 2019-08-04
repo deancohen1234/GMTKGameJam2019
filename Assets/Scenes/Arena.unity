@@ -5078,7 +5078,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &157158496
 GameObject:
@@ -5969,7 +5969,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6a79d6a9bde11744b89c4cfb46cf3d6c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.051
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11077,7 +11077,7 @@ RectTransform:
   - {fileID: 235653862}
   - {fileID: 1717077823}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12983,6 +12983,17 @@ MonoBehaviour:
     StartDelay: 1
     ActionLength: 200
   m_SwordSlash: {fileID: 8300000, guid: 166b77c77d48c9641a398935370fd73c, type: 3}
+  m_DamageSounds:
+  - {fileID: 8300000, guid: 606e0a5ba3e255442a88facc41618c8b, type: 3}
+  - {fileID: 8300000, guid: bd0381e9b52bef14f86d07d3b0f4dc8a, type: 3}
+  - {fileID: 8300000, guid: b8f0e71670a285f48a3c0fd97b572849, type: 3}
+  - {fileID: 8300000, guid: 83963b15bfdbc98459043303a04e3908, type: 3}
+  - {fileID: 8300000, guid: c1ed727008a785a4da20f19d18174882, type: 3}
+  m_DisarmSounds:
+  - {fileID: 8300000, guid: ee532ba15348f3943a8c14435de4c8aa, type: 3}
+  - {fileID: 8300000, guid: c215f7afcc8525b4eb2d3da5841e3143, type: 3}
+  - {fileID: 8300000, guid: 27f316be72d5b404f92fa9e8a1855169, type: 3}
+  - {fileID: 8300000, guid: 943a86d859195024197bc74818fad451, type: 3}
   m_WeaponIcon: {fileID: 1906476049}
 --- !u!54 &694545660
 Rigidbody:
@@ -16236,6 +16247,17 @@ MonoBehaviour:
     StartDelay: 1
     ActionLength: 200
   m_SwordSlash: {fileID: 8300000, guid: 166b77c77d48c9641a398935370fd73c, type: 3}
+  m_DamageSounds:
+  - {fileID: 8300000, guid: 606e0a5ba3e255442a88facc41618c8b, type: 3}
+  - {fileID: 8300000, guid: bd0381e9b52bef14f86d07d3b0f4dc8a, type: 3}
+  - {fileID: 8300000, guid: b8f0e71670a285f48a3c0fd97b572849, type: 3}
+  - {fileID: 8300000, guid: 83963b15bfdbc98459043303a04e3908, type: 3}
+  - {fileID: 8300000, guid: c1ed727008a785a4da20f19d18174882, type: 3}
+  m_DisarmSounds:
+  - {fileID: 8300000, guid: ee532ba15348f3943a8c14435de4c8aa, type: 3}
+  - {fileID: 8300000, guid: c215f7afcc8525b4eb2d3da5841e3143, type: 3}
+  - {fileID: 8300000, guid: 27f316be72d5b404f92fa9e8a1855169, type: 3}
+  - {fileID: 8300000, guid: 943a86d859195024197bc74818fad451, type: 3}
   m_WeaponIcon: {fileID: 832805478}
 --- !u!114 &1344863982
 MonoBehaviour:
@@ -31573,54 +31595,6 @@ Transform:
   m_Father: {fileID: 1344863980}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1857827705
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1857827707}
-  - component: {fileID: 1857827706}
-  m_Layer: 10
-  m_Name: PPV
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1857827706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857827705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 4019320eceb4a5b4e8d596791418413d, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!4 &1857827707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857827705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1881605185
 GameObject:
   m_ObjectHideFlags: 0
@@ -31649,7 +31623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1906476049
 GameObject:

@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sound Effects")]
     public AudioClip m_SwordSlash;
+    public AudioClip[] m_DamageSounds;
+    public AudioClip[] m_DisarmSounds;
 
     public Action<int, float> m_OnPlayerDamaged;
     public GameObject m_WeaponIcon;
@@ -325,7 +327,6 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
 
         m_Rigidbody.velocity = direction * m_DashSpeed;
-
     }
 
     public void AttemptAttack(PlayerController attackingPlayer)
@@ -346,6 +347,12 @@ public class PlayerController : MonoBehaviour
 
             int hurtPlayerIndex = m_PlayerNum == PlayerType.Player1 ? 1 : 2;
             m_OnPlayerDamaged.DynamicInvoke(hurtPlayerIndex, m_HealthComponent.GetCurrentHealth());
+
+            int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
+            AudioClip clip = m_DamageSounds[randomClipIndex];
+
+            m_AudioSource.clip = clip;
+            m_AudioSource.Play();
         }
     }
 
@@ -365,6 +372,12 @@ public class PlayerController : MonoBehaviour
         attackingPlayer.m_RTriggerAction.ForceStopAction();
 
         m_EffectsController.ActivateOnDisarmedSystem(transform.position);
+
+        int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
+        AudioClip clip = m_DisarmSounds[randomClipIndex];
+
+        m_AudioSource.clip = clip;
+        m_AudioSource.Play();
     }
 
     private void OnAttackStart()
