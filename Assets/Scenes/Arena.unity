@@ -6053,7 +6053,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346289468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39f5cb5f679ccb64fb385fd686f6e3de, type: 3}
   m_Name: 
@@ -6065,7 +6065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346289468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6a25317eeddbba44a3a1c58cff2d00d, type: 3}
   m_Name: 
@@ -6280,6 +6280,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerOne: {fileID: 1344863981}
   m_PlayerTwo: {fileID: 694545659}
+  m_P1_Health_1: {fileID: 1658458443}
+  m_P1_Health_2: {fileID: 1243652158}
+  m_P1_Health_3: {fileID: 760603310}
+  m_P2_Health_1: {fileID: 157158498}
+  m_P2_Health_2: {fileID: 235653863}
+  m_P2_Health_3: {fileID: 1717077824}
 --- !u!1 &367728538
 GameObject:
   m_ObjectHideFlags: 0
@@ -6841,7 +6847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &577135362
 Transform:
   m_ObjectHideFlags: 0
@@ -6871,7 +6877,7 @@ MonoBehaviour:
   PlayerOne: {fileID: 1344863981}
   PlayerTwo: {fileID: 694545659}
   m_VictoryCanvas: {fileID: 1063642467}
-  m_VictoryText: {fileID: 367728540}
+  m_VictoryText: {fileID: 1667548456}
 --- !u!1 &668644723
 GameObject:
   m_ObjectHideFlags: 0
@@ -9108,7 +9114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1063642468
 MonoBehaviour:
   m_ObjectHideFlags: 0

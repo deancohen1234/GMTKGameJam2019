@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sound Effects")]
     public AudioClip m_SwordSlash;
 
-    public Action<int> m_OnPlayerDamaged;
+    public Action<int, float> m_OnPlayerDamaged;
     public GameObject m_WeaponIcon;
 
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
             m_HealthComponent.DealDamage(34f);
 
             int hurtPlayerIndex = m_PlayerNum == PlayerType.Player1 ? 1 : 2;
-            m_OnPlayerDamaged.DynamicInvoke(hurtPlayerIndex);
+            m_OnPlayerDamaged.DynamicInvoke(hurtPlayerIndex, m_HealthComponent.GetCurrentHealth());
         }
     }
 

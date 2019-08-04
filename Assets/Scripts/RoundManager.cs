@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class RoundManager : MonoBehaviour
 {
@@ -24,10 +25,15 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("P1_AButton") || Input.GetButtonDown("P2_AButton"))
+        var gamePads = Gamepad.all;
+
+        for (int i = 0; i < gamePads.Count; i++)
         {
-            //restart scene
-            SceneManager.LoadScene("Arena");
+            if (gamePads[i].aButton.isPressed)
+            {
+                //restart scene
+                SceneManager.LoadScene("Arena");
+            }
         }
     }
 
