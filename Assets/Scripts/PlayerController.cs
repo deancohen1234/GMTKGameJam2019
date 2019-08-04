@@ -167,8 +167,8 @@ public class PlayerController : MonoBehaviour
 
         if (new Vector2(x, y).sqrMagnitude >= .2f)
         {
-            m_SpriteHandler.SetSprite(m_PlayerOrientation);
-            //m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
+            //m_SpriteHandler.SetSprite(m_PlayerOrientation);
+            m_PlayerAnimation.SetOrientation(m_PlayerOrientation);
         }
 
     }
