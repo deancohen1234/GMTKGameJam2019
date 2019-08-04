@@ -17,6 +17,22 @@ public class RippleEffect : MonoBehaviour
         new Keyframe(0.99f, 0.50f, 0, 0)
     );
 
+    public AnimationCurve agressiveWaveForm = new AnimationCurve(
+        new Keyframe(0.00f, 0.50f, 0, 0),
+        new Keyframe(0.05f, 1.00f, 0, 0),
+        new Keyframe(0.15f, 0.10f, 0, 0),
+        new Keyframe(0.25f, 0.80f, 0, 0),
+        new Keyframe(0.35f, 0.30f, 0, 0),
+        new Keyframe(0.45f, 0.60f, 0, 0),
+        new Keyframe(0.55f, 0.40f, 0, 0),
+        new Keyframe(0.65f, 0.55f, 0, 0),
+        new Keyframe(0.75f, 0.46f, 0, 0),
+        new Keyframe(0.85f, 0.52f, 0, 0),
+        new Keyframe(0.99f, 0.50f, 0, 0)
+    );
+
+    private bool m_UseAgressiveWaveform;
+
     [Range(0.01f, 1.0f)]
     public float refractionStrength = 0.5f;
 
@@ -93,7 +109,7 @@ public class RippleEffect : MonoBehaviour
         for (var i = 0; i < gradTexture.width; i++)
         {
             var x = 1.0f / gradTexture.width * i;
-            var a = waveform.Evaluate(x);
+            var a = m_UseAgressiveWaveform ? waveform.Evaluate(x): agressiveWaveForm.Evaluate(x);
             gradTexture.SetPixel(i, 0, new Color(a, a, a, a));
         }
         gradTexture.Apply();
@@ -129,6 +145,7 @@ public class RippleEffect : MonoBehaviour
 
     public void Emit()
     {
+        m_UseAgressiveWaveform = false;
         droplets[0].Reset();
     }
 
@@ -140,6 +157,7 @@ public class RippleEffect : MonoBehaviour
 
         droplets[0].position = screenPos;
 
+        m_UseAgressiveWaveform = true;
         Emit();
     }
 }

@@ -13314,7 +13314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The Sacrafice of Sludaqh''Thiss '
+  m_Text: 'The Sacrifice of Sludaqh''Thiss '
 --- !u!222 &1667548457
 CanvasRenderer:
   m_ObjectHideFlags: 0

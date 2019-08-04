@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
     public void LoseWeapon()
     {
-        m_EquippedWeapon.Unequip();
+        //m_EquippedWeapon.Unequip();
         m_EquippedWeapon = null;
 
         m_HasWeapon = false;

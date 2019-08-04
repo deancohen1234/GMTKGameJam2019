@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class RoundManager : MonoBehaviour
 {
+    public GameObject m_EvilMan;
+    public MegaWeapon m_MegaWeapon;
+
     public PlayerController PlayerOne;
     public PlayerController PlayerTwo;
 
@@ -14,6 +17,14 @@ public class RoundManager : MonoBehaviour
     public Text m_VictoryText;
 
     private bool m_RoundComplete;
+    private CameraShake m_CameraShake;
+    private RippleEffect m_RippleEffect;
+
+    private void Awake()
+    {
+        m_CameraShake = FindObjectOfType<CameraShake>();
+        m_RippleEffect = FindObjectOfType<RippleEffect>();
+    }
 
     private void Start()
     {
@@ -21,6 +32,11 @@ public class RoundManager : MonoBehaviour
 
         PlayerOne.GetHealthComponent().m_OnDeath += OnRoundComplete;
         PlayerTwo.GetHealthComponent().m_OnDeath += OnRoundComplete;
+
+        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
+
+        m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
+
     }
 
     private void Update()
@@ -54,6 +70,15 @@ public class RoundManager : MonoBehaviour
         }
 
         m_RoundComplete = true;
+    }
+
+    private void OnSlamFinished()
+    {
+        Debug.Log("Slam Finished");
+        m_CameraShake.AddTrauma(2.0f);
+
+        m_RippleEffect.ActivateRipple(m_EvilMan.transform.position);
+        m_MegaWeapon.RandomizeLocation();
     }
 
     private void OnDestroy()
