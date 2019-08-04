@@ -383,6 +383,8 @@ public class PlayerController : MonoBehaviour
     private void OnAttackStart()
     {
         m_PlayerAnimation.SetAttackStatus(true);
+
+        m_EffectsController.StartVisualAttack();
     }
 
     private void Attack(Vector3 direction)
@@ -400,6 +402,8 @@ public class PlayerController : MonoBehaviour
     {
         m_AttackHitboxController.DisableAllHitBoxes();
         m_PlayerAnimation.SetAttackStatus(false);
+
+        m_EffectsController.EndVisualAttack();
     }
 
     private IEnumerator DisablePlayerMovement(float time)

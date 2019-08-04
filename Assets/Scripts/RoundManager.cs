@@ -7,12 +7,16 @@ using UnityEngine.InputSystem;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Scene Objects")]
     public GameObject m_EvilMan;
     public MegaWeapon m_MegaWeapon;
+    public AudioSource m_Music;
 
+    [Header("Player References")]
     public PlayerController PlayerOne;
     public PlayerController PlayerTwo;
 
+    [Header("UI References")]
     public GameObject m_VictoryCanvas;
     public Text m_VictoryText;
 
@@ -79,6 +83,10 @@ public class RoundManager : MonoBehaviour
 
         m_RippleEffect.ActivateRipple(m_EvilMan.transform.position);
         m_MegaWeapon.RandomizeLocation();
+
+        m_EvilMan.GetComponent<AudioSource>().Play();
+
+        m_Music.Play();
     }
 
     private void OnDestroy()

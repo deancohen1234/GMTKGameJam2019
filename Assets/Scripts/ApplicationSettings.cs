@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ApplicationSettings : MonoBehaviour
 {
@@ -9,5 +10,13 @@ public class ApplicationSettings : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0; //disable vsync
         Application.targetFrameRate = 60;
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.escapeKey.isPressed)
+        {
+            Application.Quit();
+        }
     }
 }
