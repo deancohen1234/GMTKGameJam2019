@@ -19,12 +19,6 @@ public class HealthComponent : MonoBehaviour
         m_CurrentHealth = m_StartingHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetCurrentHealth()
     {
         return m_CurrentHealth;

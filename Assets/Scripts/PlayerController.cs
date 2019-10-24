@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
         if (gamepads.Count < 2)
         {
             Debug.LogError("Less than two inputs found");
+            //return;
         }
 
         if (m_PlayerNum == PlayerType.Player1)
@@ -346,6 +347,7 @@ public class PlayerController : MonoBehaviour
             m_HealthComponent.DealDamage(34f);
 
             int hurtPlayerIndex = m_PlayerNum == PlayerType.Player1 ? 1 : 2;
+            Debug.Log(m_OnPlayerDamaged);
             m_OnPlayerDamaged.DynamicInvoke(hurtPlayerIndex, m_HealthComponent.GetCurrentHealth());
 
             int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
@@ -496,7 +498,7 @@ public class PlayerAction
 
     public Action OnActionStart;
     public Action OnActionEnd;
-    public Action<Vector3> ActionHandler; //holds references to other scripts that actually do action lik dash and attack
+    public Action<Vector3> ActionHandler; //holds references to other scripts that actually do action like dash and attack
 
     private int StartingFrame;
 

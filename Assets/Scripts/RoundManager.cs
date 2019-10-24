@@ -7,22 +7,34 @@ using UnityEngine.InputSystem;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Round Settings")]
+    public int m_RoundsNeededToWin = 2;
+
     [Header("Scene Objects")]
     public GameObject m_EvilMan;
     public MegaWeapon m_MegaWeapon;
+    public UIHandler m_UIHandler;
     public AudioSource m_Music;
 
-    [Header("Player References")]
-    public PlayerController PlayerOne;
-    public PlayerController PlayerTwo;
+    [Header("Player Prefabs")]
+    public GameObject m_PlayerOnePrefab;
+    public GameObject m_PlayerTwoPrefab;
+    public Transform m_PlayerOneStartPosition;
+    public Transform m_PlayerTwoStartPosition;
 
     [Header("UI References")]
     public GameObject m_VictoryCanvas;
     public Text m_VictoryText;
 
+    private PlayerController m_PlayerOne;
+    private PlayerController m_PlayerTwo;
+
     private bool m_RoundComplete;
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
+
+    private int m_Player1RoundWins;
+    private int m_Player2RoundWins;
 
     private void Awake()
     {
@@ -32,15 +44,9 @@ public class RoundManager : MonoBehaviour
 
     private void Start()
     {
-        m_VictoryCanvas.SetActive(false);
+        InitializeGame();
 
-        PlayerOne.GetHealthComponent().m_OnDeath += OnRoundComplete;
-        PlayerTwo.GetHealthComponent().m_OnDeath += OnRoundComplete;
-
-        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
-
-        m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
-
+        StartRound();
     }
 
     private void Update()
@@ -59,9 +65,65 @@ public class RoundManager : MonoBehaviour
 
     public void OnRoundComplete()
     {
+        if (m_PlayerOne.GetHealthComponent().IsDead())
+        {
+            //PlayerTwo wins
+            m_VictoryText.text = "Player Two Takes a Round";
+            m_Player2RoundWins++;
+        }
+        else
+        {
+            //PlayerOne wins
+            m_VictoryText.text = "Player One Takes a Round";
+            m_Player1RoundWins++;
+        }
+
+        m_PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
+        m_PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
+
+        if (m_Player1RoundWins >= m_RoundsNeededToWin || m_Player2RoundWins >= m_RoundsNeededToWin)
+        {
+            //End Game
+            OnMatchComplete();
+            return;
+        }
+
+        //start new round
+        StartRound();
+
+    }
+
+    private bool IsMatchComplete()
+    {
+        return false;
+    }
+
+    private void InitializeGame()
+    {
+        m_VictoryCanvas.SetActive(false);
+
+        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
+
+        m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
+    }
+
+    private void StartRound()
+    {
+        //Spawn players
+        m_PlayerOne = Instantiate(m_PlayerOnePrefab).GetComponent<PlayerController>();
+        m_PlayerTwo = Instantiate(m_PlayerTwoPrefab).GetComponent<PlayerController>();
+
+        m_PlayerOne.GetHealthComponent().m_OnDeath += OnRoundComplete;
+        m_PlayerTwo.GetHealthComponent().m_OnDeath += OnRoundComplete;
+
+        m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
+    }
+
+    private void OnMatchComplete()
+    {
         m_VictoryCanvas.SetActive(true);
 
-        if (PlayerOne.GetHealthComponent().IsDead())
+        if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
             m_VictoryText.text = "Player Two Wins!!!";
@@ -72,8 +134,6 @@ public class RoundManager : MonoBehaviour
             m_VictoryText.text = "Player One Wins!!!";
 
         }
-
-        m_RoundComplete = true;
     }
 
     private void OnSlamFinished()
@@ -91,7 +151,7 @@ public class RoundManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
-        PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
+        m_PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
+        m_PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
     }
 }

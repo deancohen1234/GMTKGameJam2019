@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
-    public PlayerController m_PlayerOne;
-    public PlayerController m_PlayerTwo;
-
     public Image m_P1_Health_1;
     public Image m_P1_Health_2;
     public Image m_P1_Health_3;
@@ -16,16 +13,16 @@ public class UIHandler : MonoBehaviour
     public Image m_P2_Health_2;
     public Image m_P2_Health_3;
 
-    private void OnEnable()
+    private PlayerController m_PlayerOne;
+    private PlayerController m_PlayerTwo;
+
+    public void Initialize(PlayerController P1, PlayerController P2)
     {
+        m_PlayerOne = P1;
+        m_PlayerTwo = P2;
+
         m_PlayerOne.m_OnPlayerDamaged += OnPlayerDamaged;
         m_PlayerTwo.m_OnPlayerDamaged += OnPlayerDamaged;
-    }
-
-    private void OnDisable()
-    {
-        m_PlayerOne.m_OnPlayerDamaged -= OnPlayerDamaged;
-        m_PlayerTwo.m_OnPlayerDamaged -= OnPlayerDamaged;
     }
 
     private void OnPlayerDamaged(int playerIndex, float currentHealth)
