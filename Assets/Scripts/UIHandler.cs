@@ -13,6 +13,14 @@ public class UIHandler : MonoBehaviour
     public Image m_P2_Health_2;
     public Image m_P2_Health_3;
 
+    public Image m_P1_Round_1;
+    public Image m_P1_Round_2;
+    public Image m_P1_Round_3;
+
+    public Image m_P2_Round_1;
+    public Image m_P2_Round_2;
+    public Image m_P2_Round_3;
+
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
@@ -29,14 +37,70 @@ public class UIHandler : MonoBehaviour
         m_P1_Health_2.gameObject.SetActive(true);
         m_P1_Health_3.gameObject.SetActive(true);
 
-        Debug.Log("P1 Health: " + m_P1_Health_1.IsActive());
-
         m_P2_Health_1.gameObject.SetActive(true);
         m_P2_Health_2.gameObject.SetActive(true);
         m_P2_Health_3.gameObject.SetActive(true);
     }
 
-    private void OnPlayerDamaged(PlayerController player, float currentHealth)
+    public void UpdateRoundScore(int p1RoundsWon, int p2RoundsWon)
+    {
+        switch (p1RoundsWon)
+        {
+            case 0:
+                m_P1_Round_1.gameObject.SetActive(false);
+                m_P1_Round_2.gameObject.SetActive(false);
+                m_P1_Round_3.gameObject.SetActive(false);
+                break;
+            case 1:
+                m_P1_Round_1.gameObject.SetActive(true);
+                m_P1_Round_2.gameObject.SetActive(false);
+                m_P1_Round_3.gameObject.SetActive(false);
+                break;
+            case 2:
+                m_P1_Round_1.gameObject.SetActive(true);
+                m_P1_Round_2.gameObject.SetActive(true);
+                m_P1_Round_3.gameObject.SetActive(false);
+                break;
+            case 3:
+                m_P1_Round_1.gameObject.SetActive(true);
+                m_P1_Round_2.gameObject.SetActive(true);
+                m_P1_Round_3.gameObject.SetActive(true);
+                break;
+            default:
+                Debug.LogError("Player One Rounds Not in normal values: " + p1RoundsWon);
+                break;
+        }
+
+        switch (p2RoundsWon)
+        {
+            case 0:
+                m_P2_Round_1.gameObject.SetActive(false);
+                m_P2_Round_2.gameObject.SetActive(false);
+                m_P2_Round_3.gameObject.SetActive(false);
+                break;
+            case 1:
+                m_P2_Round_1.gameObject.SetActive(true);
+                m_P2_Round_2.gameObject.SetActive(false);
+                m_P2_Round_3.gameObject.SetActive(false);
+                break;
+            case 2:
+                m_P2_Round_1.gameObject.SetActive(true);
+                m_P2_Round_2.gameObject.SetActive(true);
+                m_P2_Round_3.gameObject.SetActive(false);
+                break;
+            case 3:
+                m_P2_Round_1.gameObject.SetActive(true);
+                m_P2_Round_2.gameObject.SetActive(true);
+                m_P2_Round_3.gameObject.SetActive(true);
+                break;
+            default:
+                Debug.LogError("Player Two Rounds Not in normal values: " + p2RoundsWon);
+                break;
+        }
+
+    }
+
+        private void OnPlayerDamaged(PlayerController player, float currentHealth)
     {
         int divisor = Mathf.CeilToInt(currentHealth / 33.0f);
 

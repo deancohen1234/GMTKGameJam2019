@@ -70,11 +70,9 @@ public class RoundManager : MonoBehaviour
         
     }
 
+    //TODO split this into multiple functions
     public void OnRoundComplete()
     {
-        Debug.Log("Round Complete 1 " + m_PlayerOne.GetHealthComponent().IsDead());
-        Debug.Log("Round Complete 2 " + m_PlayerTwo.GetHealthComponent().IsDead());
-
         if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
@@ -87,6 +85,8 @@ public class RoundManager : MonoBehaviour
             m_VictoryText.text = "Player One Takes a Round";
             m_Player1RoundWins++;
         }
+
+        m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
 
         m_PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
         m_PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
@@ -105,7 +105,25 @@ public class RoundManager : MonoBehaviour
 
         //start new round
         StartRound();
+    }
 
+    private void OnMatchComplete(bool playerOneWon)
+    {
+        m_VictoryCanvas.SetActive(true);
+
+        if (m_PlayerOne.GetHealthComponent().IsDead())
+        {
+            //PlayerTwo wins
+            m_VictoryText.text = "Player Two Wins!!!";
+        }
+        else
+        {
+            //PlayerOne wins
+            m_VictoryText.text = "Player One Wins!!!";
+
+        }
+
+        m_IsGameComplete = true;
     }
 
     private bool IsMatchComplete()
@@ -117,6 +135,8 @@ public class RoundManager : MonoBehaviour
     {
         m_IsGameComplete = false;
         m_VictoryCanvas.SetActive(false);
+
+        m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
 
         m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
     }
@@ -138,25 +158,6 @@ public class RoundManager : MonoBehaviour
 
         m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
 
-    }
-
-    private void OnMatchComplete(bool playerOneWon)
-    {
-        m_VictoryCanvas.SetActive(true);
-
-        if (m_PlayerOne.GetHealthComponent().IsDead())
-        {
-            //PlayerTwo wins
-            m_VictoryText.text = "Player Two Wins!!!";
-        }
-        else
-        {
-            //PlayerOne wins
-            m_VictoryText.text = "Player One Wins!!!";
-
-        }
-
-        m_IsGameComplete = true;
     }
 
     private void OnSlamFinished()
