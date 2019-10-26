@@ -36,6 +36,8 @@ public class RoundManager : MonoBehaviour
     private int m_Player1RoundWins;
     private int m_Player2RoundWins;
 
+    private bool m_IsGameComplete;
+
     private void Awake()
     {
         m_CameraShake = FindObjectOfType<CameraShake>();
@@ -51,20 +53,28 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        var gamePads = Gamepad.all;
 
-        for (int i = 0; i < gamePads.Count; i++)
+        if (m_IsGameComplete)
         {
-            if (gamePads[i].aButton.isPressed)
+            var gamePads = Gamepad.all;
+
+            for (int i = 0; i < gamePads.Count; i++)
             {
-                //restart scene
-                SceneManager.LoadScene("Arena");
+                if (gamePads[i].aButton.isPressed)
+                {
+                    //restart scene
+                    SceneManager.LoadScene("Arena");
+                }
             }
         }
+        
     }
 
     public void OnRoundComplete()
     {
+        Debug.Log("Round Complete 1 " + m_PlayerOne.GetHealthComponent().IsDead());
+        Debug.Log("Round Complete 2 " + m_PlayerTwo.GetHealthComponent().IsDead());
+
         if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
@@ -81,10 +91,15 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
         m_PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
 
-        if (m_Player1RoundWins >= m_RoundsNeededToWin || m_Player2RoundWins >= m_RoundsNeededToWin)
+        if (m_Player1RoundWins >= m_RoundsNeededToWin)
         {
             //End Game
-            OnMatchComplete();
+            OnMatchComplete(true);
+            return;
+        }
+        else if (m_Player2RoundWins >= m_RoundsNeededToWin)
+        {
+            OnMatchComplete(false);
             return;
         }
 
@@ -100,9 +115,8 @@ public class RoundManager : MonoBehaviour
 
     private void InitializeGame()
     {
+        m_IsGameComplete = false;
         m_VictoryCanvas.SetActive(false);
-
-        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
 
         m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
     }
@@ -110,6 +124,10 @@ public class RoundManager : MonoBehaviour
     private void StartRound()
     {
         //Spawn players
+
+        if (m_PlayerOne) { Destroy(m_PlayerOne.gameObject); m_PlayerOne = null; }
+        if (m_PlayerTwo) { Destroy(m_PlayerTwo.gameObject); m_PlayerTwo = null; }
+
         m_PlayerOne = Instantiate(m_PlayerOnePrefab).GetComponent<PlayerController>();
         m_PlayerTwo = Instantiate(m_PlayerTwoPrefab).GetComponent<PlayerController>();
 
@@ -117,9 +135,12 @@ public class RoundManager : MonoBehaviour
         m_PlayerTwo.GetHealthComponent().m_OnDeath += OnRoundComplete;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
+
+        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
+
     }
 
-    private void OnMatchComplete()
+    private void OnMatchComplete(bool playerOneWon)
     {
         m_VictoryCanvas.SetActive(true);
 
@@ -134,6 +155,8 @@ public class RoundManager : MonoBehaviour
             m_VictoryText.text = "Player One Wins!!!";
 
         }
+
+        m_IsGameComplete = true;
     }
 
     private void OnSlamFinished()

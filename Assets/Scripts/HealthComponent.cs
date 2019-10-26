@@ -8,6 +8,7 @@ public class HealthComponent : MonoBehaviour
 {
     public float m_StartingHealth;
 
+    public Action<PlayerController, float> m_OnPlayerDamaged;
     public Action m_OnDeath;
 
     private float m_CurrentHealth;
@@ -27,6 +28,8 @@ public class HealthComponent : MonoBehaviour
     public void DealDamage(float damage)
     {
         m_CurrentHealth = Mathf.Clamp(m_CurrentHealth - damage, 0, m_StartingHealth);
+
+        m_OnPlayerDamaged.DynamicInvoke(gameObject.GetComponent<PlayerController>(), m_CurrentHealth);
 
         if (m_CurrentHealth == 0)
         {

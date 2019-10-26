@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] m_DamageSounds;
     public AudioClip[] m_DisarmSounds;
 
-    public Action<int, float> m_OnPlayerDamaged;
     public GameObject m_WeaponIcon;
 
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
@@ -344,11 +343,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            //player failed to disarm they now take damage
             m_HealthComponent.DealDamage(34f);
-
-            int hurtPlayerIndex = m_PlayerNum == PlayerType.Player1 ? 1 : 2;
-            Debug.Log(m_OnPlayerDamaged);
-            m_OnPlayerDamaged.DynamicInvoke(hurtPlayerIndex, m_HealthComponent.GetCurrentHealth());
 
             int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
             AudioClip clip = m_DamageSounds[randomClipIndex];
