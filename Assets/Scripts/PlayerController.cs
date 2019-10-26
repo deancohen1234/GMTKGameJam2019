@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private RippleEffect m_RippleEffect;
     private PlayerAnimation m_PlayerAnimation;
     private EffectsController m_EffectsController;
+    private HeadLauncher m_HeadLauncher;
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         m_EffectsController = GetComponent<EffectsController>();
         m_CameraShake = FindObjectOfType<CameraShake>();
         m_RippleEffect = FindObjectOfType<RippleEffect>();
+        m_HeadLauncher = GetComponent<HeadLauncher>();
     }
     // Start is called before the first frame update
     void Start()
@@ -470,6 +472,7 @@ public class PlayerController : MonoBehaviour
         //gameObject.SetActive(false);
         m_BlockAllInput = true;
         m_EffectsController.ActivateOnDeathSystem();
+        m_HeadLauncher.LaunchHead(transform.position, m_CameraShake.gameObject.transform.position);
 
         Invoke("CompleteDeath", m_DeathLength);
     }
