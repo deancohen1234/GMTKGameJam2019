@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public float m_AttackSphereRadius = 0.35f;
     public float m_KnockbackForce = 2500.0f;
 
+    [Header("Death Properties")]
+    public float m_DeathLength = 4.0f; //in seconds
+
     public SpriteHandler m_SpriteHandler;
     public AttackHitboxController m_AttackHitboxController;
 
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] m_DisarmSounds;
 
     public GameObject m_WeaponIcon;
+    public Action m_OnDeathComplete;
 
     private PlayerAction m_RTriggerAction; //abstract class so we can swap in disarm or attack
 
@@ -464,6 +468,12 @@ public class PlayerController : MonoBehaviour
     private void OnPlayerDeath()
     {
         gameObject.SetActive(false);
+        Invoke("CompleteDeath", m_DeathLength);
+    }
+
+    private void CompleteDeath()
+    {
+        m_OnDeathComplete.Invoke();
     }
 
     //inclusive min and exclusive max

@@ -88,8 +88,8 @@ public class RoundManager : MonoBehaviour
 
         m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
 
-        m_PlayerOne.GetHealthComponent().m_OnDeath -= OnRoundComplete;
-        m_PlayerTwo.GetHealthComponent().m_OnDeath -= OnRoundComplete;
+        m_PlayerOne.m_OnDeathComplete -= OnRoundComplete;
+        m_PlayerTwo.m_OnDeathComplete -= OnRoundComplete;
 
         if (m_Player1RoundWins >= m_RoundsNeededToWin)
         {
@@ -151,8 +151,8 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne = Instantiate(m_PlayerOnePrefab).GetComponent<PlayerController>();
         m_PlayerTwo = Instantiate(m_PlayerTwoPrefab).GetComponent<PlayerController>();
 
-        m_PlayerOne.GetHealthComponent().m_OnDeath += OnRoundComplete;
-        m_PlayerTwo.GetHealthComponent().m_OnDeath += OnRoundComplete;
+        m_PlayerOne.m_OnDeathComplete += OnRoundComplete;
+        m_PlayerTwo.m_OnDeathComplete += OnRoundComplete;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
 
