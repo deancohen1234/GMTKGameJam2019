@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_BlockAllInput) { return; }
+        if (m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
 
         var gamepads = Gamepad.all;
         Vector2 input = Vector2.zero;
@@ -470,7 +470,7 @@ public class PlayerController : MonoBehaviour
     private void OnPlayerDeath()
     {
         //gameObject.SetActive(false);
-        m_BlockAllInput = true;
+        m_EffectsController.m_CharacterSprite.enabled = false; //hide player sprite
         m_EffectsController.ActivateOnDeathSystem();
         m_HeadLauncher.LaunchHead(transform.position, m_CameraShake.gameObject.transform.position);
 
