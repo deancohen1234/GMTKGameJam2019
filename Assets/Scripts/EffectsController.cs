@@ -6,6 +6,7 @@ public class EffectsController : MonoBehaviour
 {
     public ParticleSystem m_DisarmSystem;
     public ParticleSystem m_OnDisarmedSystem;
+    public ParticleSystem m_OnDeathSystem;
 
     public SpriteRenderer m_CharacterSprite;
     public Color m_TintColor;
@@ -28,6 +29,12 @@ public class EffectsController : MonoBehaviour
         m_OnDisarmedSystem.transform.position = position;
 
         m_OnDisarmedSystem.Emit(50);
+    }
+
+    public void ActivateOnDeathSystem()
+    {
+        int bloodAmount = Random.Range(150, 250);
+        m_OnDeathSystem.Emit(bloodAmount);
     }
 
     public void StartVisualAttack()

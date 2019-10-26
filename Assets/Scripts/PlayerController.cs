@@ -467,7 +467,10 @@ public class PlayerController : MonoBehaviour
     //player dies
     private void OnPlayerDeath()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        m_BlockAllInput = true;
+        m_EffectsController.ActivateOnDeathSystem();
+
         Invoke("CompleteDeath", m_DeathLength);
     }
 
