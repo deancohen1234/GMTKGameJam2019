@@ -62,7 +62,7 @@ public class MegaWeapon : MonoBehaviour
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
 
-        int numTries = 0;
+        /*int numTries = 0;
         while (true)
         {
             numTries++;
@@ -81,7 +81,7 @@ public class MegaWeapon : MonoBehaviour
             {
                 RandomizeLocation();
             }
-        }
+        }*/
 
         m_DestinationPos = newPosition;
         m_StartPos = m_DestinationPos + new Vector3(0, 7.5f, 0);
@@ -92,13 +92,14 @@ public class MegaWeapon : MonoBehaviour
 
     public void RandomizeLocationFromPlayer(Vector3 playerPos)
     {
+        
         gameObject.SetActive(true);
 
         float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
-
+        /*
         int numTries = 0;
         while (true)
         {
@@ -119,7 +120,7 @@ public class MegaWeapon : MonoBehaviour
                 RandomizeLocationFromPlayer(playerPos);
                 break;
             }
-        }
+        }*/
 
         m_DestinationPos = newPosition;
         m_StartPos = playerPos + new Vector3(0, 0.5f, 0);

@@ -8,10 +8,14 @@ public class UIHandler : MonoBehaviour
     public Image m_P1_Health_1;
     public Image m_P1_Health_2;
     public Image m_P1_Health_3;
+    public Image m_P1_Health_4;
+    public Image m_P1_Health_5;
 
     public Image m_P2_Health_1;
     public Image m_P2_Health_2;
     public Image m_P2_Health_3;
+    public Image m_P2_Health_4;
+    public Image m_P2_Health_5;
 
     public Image m_P1_Round_1;
     public Image m_P1_Round_2;
@@ -36,10 +40,14 @@ public class UIHandler : MonoBehaviour
         m_P1_Health_1.gameObject.SetActive(true);
         m_P1_Health_2.gameObject.SetActive(true);
         m_P1_Health_3.gameObject.SetActive(true);
+        m_P1_Health_4.gameObject.SetActive(true);
+        m_P1_Health_5.gameObject.SetActive(true);
 
         m_P2_Health_1.gameObject.SetActive(true);
         m_P2_Health_2.gameObject.SetActive(true);
         m_P2_Health_3.gameObject.SetActive(true);
+        m_P2_Health_4.gameObject.SetActive(true);
+        m_P2_Health_5.gameObject.SetActive(true);
     }
 
     public void UpdateRoundScore(int p1RoundsWon, int p2RoundsWon)
@@ -102,37 +110,56 @@ public class UIHandler : MonoBehaviour
 
         private void OnPlayerDamaged(PlayerController player, float currentHealth)
     {
-        int divisor = Mathf.CeilToInt(currentHealth / 33.0f);
+        //total health is 500
+        //dividing by 100 gives correct numbers for divisors
+
+        int divisor = Mathf.CeilToInt(currentHealth / 100f);
+
+        Image healthBar_1 = (int)player.m_PlayerNum == 0 ? m_P1_Health_1 : m_P2_Health_1;
+        Image healthBar_2 = (int)player.m_PlayerNum == 0 ? m_P1_Health_2 : m_P2_Health_2;
+        Image healthBar_3 = (int)player.m_PlayerNum == 0 ? m_P1_Health_3 : m_P2_Health_3;
+        Image healthBar_4 = (int)player.m_PlayerNum == 0 ? m_P1_Health_4 : m_P2_Health_4;
+        Image healthBar_5 = (int)player.m_PlayerNum == 0 ? m_P1_Health_5 : m_P2_Health_5;
 
         if (divisor <= 0)
         {
-            Image healthBar_1 = (int)player.m_PlayerNum == 0 ? m_P1_Health_1 : m_P2_Health_1;
-            Image healthBar_2 = (int)player.m_PlayerNum == 0 ? m_P1_Health_2 : m_P2_Health_2;
-            Image healthBar_3 = (int)player.m_PlayerNum == 0 ? m_P1_Health_3 : m_P2_Health_3;
-
             healthBar_1.gameObject.SetActive(false);
             healthBar_2.gameObject.SetActive(false);
             healthBar_3.gameObject.SetActive(false);
+            healthBar_4.gameObject.SetActive(false);
+            healthBar_5.gameObject.SetActive(false);
         }
         else if (divisor == 1)
         {
-            Image healthBar_1 = (int)player.m_PlayerNum == 0 ? m_P1_Health_1 : m_P2_Health_1;
-            Image healthBar_2 = (int)player.m_PlayerNum == 0 ? m_P1_Health_2 : m_P2_Health_2;
-            Image healthBar_3 = (int)player.m_PlayerNum == 0 ? m_P1_Health_3 : m_P2_Health_3;
-
             healthBar_1.gameObject.SetActive(true);
             healthBar_2.gameObject.SetActive(false);
             healthBar_3.gameObject.SetActive(false);
+            healthBar_4.gameObject.SetActive(false);
+            healthBar_5.gameObject.SetActive(false);
         }
         else if (divisor == 2)
         {
-            Image healthBar_1 = (int)player.m_PlayerNum == 0 ? m_P1_Health_1 : m_P2_Health_1;
-            Image healthBar_2 = (int)player.m_PlayerNum == 0 ? m_P1_Health_2 : m_P2_Health_2;
-            Image healthBar_3 = (int)player.m_PlayerNum == 0 ? m_P1_Health_3 : m_P2_Health_3;
-
             healthBar_1.gameObject.SetActive(true);
             healthBar_2.gameObject.SetActive(true);
             healthBar_3.gameObject.SetActive(false);
+            healthBar_4.gameObject.SetActive(false);
+            healthBar_5.gameObject.SetActive(false);
+        }
+        else if (divisor == 3)
+        {
+            healthBar_1.gameObject.SetActive(true);
+            healthBar_2.gameObject.SetActive(true);
+            healthBar_3.gameObject.SetActive(true);
+            healthBar_4.gameObject.SetActive(false);
+            healthBar_5.gameObject.SetActive(false);
+        }
+        else if (divisor == 4)
+        {
+            healthBar_1.gameObject.SetActive(true);
+            healthBar_2.gameObject.SetActive(true);
+            healthBar_3.gameObject.SetActive(true);
+            healthBar_4.gameObject.SetActive(true);
+            healthBar_5.gameObject.SetActive(false);
         }
     }
 

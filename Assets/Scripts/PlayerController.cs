@@ -378,7 +378,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //player failed to disarm they now take damage
-            m_HealthComponent.DealDamage(34f);
+            m_HealthComponent.DealDamage(100);
 
             int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
             AudioClip clip = m_DamageSounds[randomClipIndex];

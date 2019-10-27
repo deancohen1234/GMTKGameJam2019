@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RockObject: {fileID: 9103894815554106718}
+  m_Index: 0
 --- !u!1 &9103894815554106718
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: badb8afb6892fd440863d720e421e005, type: 3}
+  - {fileID: 2100000, guid: 08f89b2391105d54987c39d75829cc6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
