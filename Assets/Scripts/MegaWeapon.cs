@@ -117,6 +117,7 @@ public class MegaWeapon : MonoBehaviour
             else
             {
                 RandomizeLocationFromPlayer(playerPos);
+                break;
             }
         }
 

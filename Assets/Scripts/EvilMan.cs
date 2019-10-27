@@ -123,6 +123,8 @@ public class EvilMan : MonoBehaviour
     {
         m_CameraShake.AddTrauma(2.0f);
         m_RippleEffect.ActivateRipple(transform.position);
+
+        PlaceStalagmites();
     }
 
     private void ImpatientSlamComplete()
@@ -147,7 +149,7 @@ public class EvilMan : MonoBehaviour
 
             float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
             float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
-            Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY) + m_Offset;
+            Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, .25f, randomY) + m_Offset;
 
             GameObject s = Instantiate(m_StalagmitePrefab);
             s.transform.position = newPosition;

@@ -314,6 +314,21 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void LoseWeapon()
+    {
+        //m_EquippedWeapon.Unequip();
+        m_EquippedWeapon = null;
+
+        m_HasWeapon = false;
+
+        m_RTriggerAction = m_DisarmAction;
+
+        m_RTriggerAction.IsExecuting = false;
+
+        m_WeaponIcon.SetActive(false);
+
+    }
+
 
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
     {
@@ -397,7 +412,7 @@ public class PlayerController : MonoBehaviour
         attackingPlayer.m_RTriggerAction.ForceStopAction();
 
         EquipWeapon(attackingPlayer.m_EquippedWeapon);
-        attackingPlayer.DropWeapon();
+        attackingPlayer.LoseWeapon();
 
         attackingPlayer.m_CanMove = true;
         m_CanMove = true;
