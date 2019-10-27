@@ -87,6 +87,8 @@ public class EvilMan : MonoBehaviour
 
         m_PlayerOne.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
         m_PlayerTwo.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
+
+        m_LastSlamTime = Time.time;
     }
 
     public void StartSlam(SlamType slamType)
