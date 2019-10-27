@@ -297,16 +297,21 @@ public class PlayerController : MonoBehaviour
 
     public void DropWeapon()
     {
-        //m_EquippedWeapon.Unequip();
-        m_EquippedWeapon = null;
+        if (m_EquippedWeapon != null)
+        {
+            m_EquippedWeapon.RandomizeLocationFromPlayer(transform.position);
+            //m_EquippedWeapon.Unequip();
+            m_EquippedWeapon = null;
 
-        m_HasWeapon = false;
+            m_HasWeapon = false;
 
-        m_RTriggerAction = m_DisarmAction;
+            m_RTriggerAction = m_DisarmAction;
 
-        m_RTriggerAction.IsExecuting = false;
+            m_RTriggerAction.IsExecuting = false;
 
-        m_WeaponIcon.SetActive(false);
+            m_WeaponIcon.SetActive(false);
+        }
+        
     }
 
 
@@ -379,7 +384,6 @@ public class PlayerController : MonoBehaviour
         //attacking player hit this player, lose your weapon
         if (m_HasWeapon)
         {
-            m_EquippedWeapon.RandomizeLocationFromPlayer(transform.position);
             //m_EquippedWeapon.RandomizeLocation();
             DropWeapon();
         }

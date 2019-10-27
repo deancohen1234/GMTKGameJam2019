@@ -62,6 +62,27 @@ public class MegaWeapon : MonoBehaviour
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
 
+        int numTries = 0;
+        while (true)
+        {
+            numTries++;
+
+            if (numTries >= 20)
+            {
+                Debug.LogError("Num Tries Exceeded for location");
+                break;
+            }
+
+            if (IsValidPosition(newPosition))
+            {
+                break;
+            }
+            else
+            {
+                RandomizeLocation();
+            }
+        }
+
         m_DestinationPos = newPosition;
         m_StartPos = m_DestinationPos + new Vector3(0, 7.5f, 0);
 
@@ -78,10 +99,39 @@ public class MegaWeapon : MonoBehaviour
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
 
+        int numTries = 0;
+        while (true)
+        {
+            numTries++;
+
+            if (numTries >= 20)
+            {
+                Debug.LogError("Num Tries Exceeded for location");
+                break;
+            }
+
+            if (IsValidPosition(newPosition))
+            {
+                break;   
+            }
+            else
+            {
+                RandomizeLocationFromPlayer(playerPos);
+            }
+        }
+
         m_DestinationPos = newPosition;
         m_StartPos = playerPos + new Vector3(0, 0.5f, 0);
 
         transform.position = m_StartPos;
         m_IsLerping = true;
+    }
+
+    private bool IsValidPosition(Vector3 position)
+    {
+        bool check = Physics.CheckSphere(position + new Vector3(0, 0.3f, 0), 0.3f);
+
+        //if true then good position, if false then try a new position
+        return !check;
     }
 }

@@ -11,7 +11,7 @@ public class RoundManager : MonoBehaviour
     public int m_RoundsNeededToWin = 2;
 
     [Header("Scene Objects")]
-    public GameObject m_EvilMan;
+    public EvilMan m_EvilMan;
     public MegaWeapon m_MegaWeapon;
     public UIHandler m_UIHandler;
     public AudioSource m_Music;
@@ -31,8 +31,6 @@ public class RoundManager : MonoBehaviour
     private PlayerController m_PlayerTwo;
 
     private bool m_RoundComplete;
-    private CameraShake m_CameraShake;
-    private RippleEffect m_RippleEffect;
 
     private int m_Player1RoundWins;
     private int m_Player2RoundWins;
@@ -41,8 +39,7 @@ public class RoundManager : MonoBehaviour
 
     private void Awake()
     {
-        m_CameraShake = FindObjectOfType<CameraShake>();
-        m_RippleEffect = FindObjectOfType<RippleEffect>();
+        
     }
 
     private void Start()
@@ -139,7 +136,7 @@ public class RoundManager : MonoBehaviour
 
         m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
 
-        m_EvilMan.GetComponent<AnimationEventRouter>().m_OnAnimationComplete += OnSlamFinished;
+        m_EvilMan.m_OnRoundSlamFinished += OnSlamFinished;
     }
 
     private void StartRound()
@@ -156,23 +153,19 @@ public class RoundManager : MonoBehaviour
         m_PlayerTwo.m_OnDeathComplete += OnRoundComplete;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
+        m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
 
         m_StartRoundScreen.GetComponent<Animator>().SetTrigger("StartRound");
 
-        m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
+        m_EvilMan.StartSlam(SlamType.RoundStarting);
 
     }
 
     private void OnSlamFinished()
     {
         Debug.Log("Slam Finished");
-        m_CameraShake.AddTrauma(2.0f);
 
-        m_RippleEffect.ActivateRipple(m_EvilMan.transform.position);
         m_MegaWeapon.RandomizeLocation();
-
-        m_EvilMan.GetComponent<AudioSource>().Play();
-
         m_Music.Play();
     }
 
