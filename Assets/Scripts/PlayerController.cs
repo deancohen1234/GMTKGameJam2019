@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sound Effects")]
     public AudioClip m_Poof;
+    public AudioClip m_NudgeDisarm;
     public AudioClip m_SwordSlash;
     public AudioClip[] m_DamageSounds;
     public AudioClip[] m_DisarmSounds;
@@ -423,6 +424,8 @@ public class PlayerController : MonoBehaviour
         //attacking player hit this player, lose your weapon
         if (m_HasWeapon)
         {
+            m_AudioSource.clip = m_NudgeDisarm;
+            m_AudioSource.Play();
             //m_EquippedWeapon.RandomizeLocation();
             DropWeapon();
         }
