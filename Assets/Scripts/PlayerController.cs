@@ -295,7 +295,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LoseWeapon()
+    public void DropWeapon()
     {
         //m_EquippedWeapon.Unequip();
         m_EquippedWeapon = null;
@@ -379,8 +379,9 @@ public class PlayerController : MonoBehaviour
         //attacking player hit this player, lose your weapon
         if (m_HasWeapon)
         {
-            m_EquippedWeapon.RandomizeLocation();
-            LoseWeapon();
+            m_EquippedWeapon.RandomizeLocationFromPlayer(transform.position);
+            //m_EquippedWeapon.RandomizeLocation();
+            DropWeapon();
         }
     }
 
@@ -392,7 +393,7 @@ public class PlayerController : MonoBehaviour
         attackingPlayer.m_RTriggerAction.ForceStopAction();
 
         EquipWeapon(attackingPlayer.m_EquippedWeapon);
-        attackingPlayer.LoseWeapon();
+        attackingPlayer.DropWeapon();
 
         attackingPlayer.m_CanMove = true;
         m_CanMove = true;

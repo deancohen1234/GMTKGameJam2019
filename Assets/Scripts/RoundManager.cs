@@ -23,6 +23,7 @@ public class RoundManager : MonoBehaviour
     public Transform m_PlayerTwoStartPosition;
 
     [Header("UI References")]
+    public GameObject m_StartRoundScreen;
     public GameObject m_VictoryCanvas;
     public Text m_VictoryText;
 
@@ -155,6 +156,8 @@ public class RoundManager : MonoBehaviour
         m_PlayerTwo.m_OnDeathComplete += OnRoundComplete;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
+
+        m_StartRoundScreen.GetComponent<Animator>().SetTrigger("StartRound");
 
         m_EvilMan.GetComponent<Animator>().SetTrigger("SlamDown");
 

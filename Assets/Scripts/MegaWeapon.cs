@@ -13,7 +13,7 @@ public class MegaWeapon : MonoBehaviour
 
     private float m_WeaponStartHeight;
 
-    private bool m_IsFalling;
+    private bool m_IsLerping;
     private float m_StartFallTime;
     private Vector3 m_DestinationPos;
     private Vector3 m_StartPos;
@@ -26,7 +26,7 @@ public class MegaWeapon : MonoBehaviour
 
     private void Update()
     {
-        if (m_IsFalling)
+        if (m_IsLerping)
         {
             //lerp downward
             Vector3 newLerpPos = Vector3.Lerp(m_StartPos, m_DestinationPos, m_Timer);
@@ -37,7 +37,7 @@ public class MegaWeapon : MonoBehaviour
             if (m_Timer >= 1.0f)
             {
                 m_Timer = 0;
-                m_IsFalling = false;
+                m_IsLerping = false;
                 transform.position = m_DestinationPos;
             }
         }
@@ -66,6 +66,22 @@ public class MegaWeapon : MonoBehaviour
         m_StartPos = m_DestinationPos + new Vector3(0, 7.5f, 0);
 
         transform.position = m_StartPos;
-        m_IsFalling = true;
+        m_IsLerping = true;
+    }
+
+    public void RandomizeLocationFromPlayer(Vector3 playerPos)
+    {
+        gameObject.SetActive(true);
+
+        float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
+        float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
+        Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
+        newPosition.y = transform.position.y;
+
+        m_DestinationPos = newPosition;
+        m_StartPos = playerPos + new Vector3(0, 0.5f, 0);
+
+        transform.position = m_StartPos;
+        m_IsLerping = true;
     }
 }
