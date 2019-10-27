@@ -39,6 +39,9 @@ public class MegaWeapon : MonoBehaviour
                 m_Timer = 0;
                 m_IsLerping = false;
                 transform.position = m_DestinationPos;
+
+                //helps get dagger off tip of stalagmite
+                GetComponent<Rigidbody>().AddForce(transform.forward * 5);
             }
         }
     }

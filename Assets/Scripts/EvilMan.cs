@@ -45,6 +45,8 @@ public class EvilMan : MonoBehaviour
         m_RippleEffect = FindObjectOfType<RippleEffect>();
 
         m_Stalagmites = new Stalagmite[m_NumStalagmites];
+
+        m_LastSlamTime = Time.time;
     }
 
 

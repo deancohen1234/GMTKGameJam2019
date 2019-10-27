@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 101229745}
   - component: {fileID: 101229744}
   - component: {fileID: 101229746}
-  - component: {fileID: 101229747}
+  - component: {fileID: 101229748}
   m_Layer: 0
   m_Name: MegaWeapon
   m_TagString: Untagged
@@ -350,19 +350,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.33185214, y: 0.34215695, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &101229747
-BoxCollider:
+--- !u!135 &101229748
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101229740}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 670dc1e2728dbed4791a7c8cb4affd7c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07761523, y: 0.36156577, z: 0.020104032}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.11
+  m_Center: {x: 0, y: -0.17, z: 0}
 --- !u!1 &110526845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6801,7 +6801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd6fa8d1e67c499582c47a55c4445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoundsNeededToWin: 3
+  m_RoundsNeededToWin: 1
   m_EvilMan: {fileID: 632142562}
   m_MegaWeapon: {fileID: 101229745}
   m_UIHandler: {fileID: 365113849}
