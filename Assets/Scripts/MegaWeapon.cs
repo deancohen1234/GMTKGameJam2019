@@ -129,7 +129,7 @@ public class MegaWeapon : MonoBehaviour
 
     private bool IsValidPosition(Vector3 position)
     {
-        bool check = Physics.CheckSphere(position + new Vector3(0, 0.5f, 0), 0.2f);
+        bool check = Physics.CheckSphere(position + new Vector3(0, 0.5f, 0), 0.1f);
 
         //if true then good position, if false then try a new position
         return !check;

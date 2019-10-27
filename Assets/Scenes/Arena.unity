@@ -7591,8 +7591,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
-  m_ImpatienceTime: 20
+  m_ImpatienceTime: 5
   m_TimeSavedPerAttack: 5
+  m_StalagmitePrefab: {fileID: 5695513784316316208, guid: d428433b49397ef4e89d8a1a99d1a4ce,
+    type: 3}
+  m_ArenaCenter: {fileID: 574776829}
+  m_ArenaWidth: 2.3
+  m_ArenaHeight: 1.1
 --- !u!1 &680959294
 GameObject:
   m_ObjectHideFlags: 0

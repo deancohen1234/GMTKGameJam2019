@@ -14,6 +14,11 @@ public class EvilMan : MonoBehaviour
     public float m_ImpatienceTime = 20f; //in seconds
     public float m_TimeSavedPerAttack = 5f;
 
+    public GameObject m_StalagmitePrefab;
+    public Transform m_ArenaCenter;
+    public float m_ArenaWidth;
+    public float m_ArenaHeight;
+
     private SlamType m_LastSlamType;
     private AudioSource m_AudioSource;
     private Animator m_Animator;
@@ -23,6 +28,8 @@ public class EvilMan : MonoBehaviour
 
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
+
+    private Stalagmite m_Stalagmite;
 
     private float m_LastSlamTime;
     // Start is called before the first frame update
@@ -119,6 +126,30 @@ public class EvilMan : MonoBehaviour
 
         m_PlayerOne.DropWeapon();
         m_PlayerTwo.DropWeapon();
+
+        PlaceStalagmite();
+    }
+
+    private void PlaceStalagmite()
+    {
+        if (m_Stalagmite != null)
+        {
+            m_Stalagmite.Hide();
+        }
+
+        float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
+        float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
+        Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY);
+
+        GameObject s = Instantiate(m_StalagmitePrefab);
+        s.transform.position = newPosition;
+
+        float degX = UnityEngine.Random.Range(-20, 20f);
+        float degY = UnityEngine.Random.Range(-1.0f, 1.0f);
+        float degZ = UnityEngine.Random.Range(-20f, 20f);
+        s.transform.rotation = Quaternion.Euler(degX, degY, degZ);
+
+        m_Stalagmite = s.GetComponent<Stalagmite>();
     }
 
     private void OnGUI()
