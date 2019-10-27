@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -20309,7 +20309,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 20
     StartDelay: 3
-    ActionLength: 6
+    ActionLength: 4
   m_AttackAction:
     IsAvailable: 1
     IsExecuting: 0
@@ -20516,7 +20516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HeadPrefab: {fileID: 3395506490530013309, guid: 09eced850ea97af488e96103b97734fe,
     type: 3}
-  m_Camera: {fileID: 0}
   m_Force: 100
   m_LaunchVariance: 0.5
 --- !u!1 &4482629906959125277

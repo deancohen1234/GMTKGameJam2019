@@ -328,17 +328,25 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Action Methods
-    private void Dash(Vector3 direction)
-    {
-        StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
-
-        m_Rigidbody.velocity = direction * m_DashSpeed;
-    }
-
     public void AttemptAttack(PlayerController attackingPlayer)
     {
         m_CameraShake.AddTrauma(0.5f);
 
+        if (attackingPlayer.m_RTriggerAction == attackingPlayer.m_AttackAction)
+        {
+            if (!attackingPlayer.m_DashAction.IsExecuting)
+            {
+                AttemptAttackHit(attackingPlayer);
+            }
+        }
+        else if (attackingPlayer.m_RTriggerAction == attackingPlayer.m_DisarmAction)
+        {
+            AttemptDashHit(attackingPlayer);
+        }
+    }
+
+    private void AttemptAttackHit(PlayerController attackingPlayer)
+    {
         //attacking player loses weapon, no damage
         attackingPlayer.ApplyBounceBackForce(transform.position);
         ApplyBounceBackForce(attackingPlayer.gameObject.transform.position);
@@ -357,6 +365,22 @@ public class PlayerController : MonoBehaviour
 
             m_AudioSource.clip = clip;
             m_AudioSource.Play();
+        }
+    }
+
+    private void AttemptDashHit(PlayerController attackingPlayer)
+    {
+        Debug.Log("Has Weapon, About to Lose it");
+
+        //attacking player loses weapon, no damage
+        attackingPlayer.ApplyBounceBackForce(transform.position);
+        ApplyBounceBackForce(attackingPlayer.gameObject.transform.position);
+
+        //attacking player hit this player, lose your weapon
+        if (m_HasWeapon)
+        {
+            m_EquippedWeapon.RandomizeLocation();
+            LoseWeapon();
         }
     }
 
@@ -435,9 +459,19 @@ public class PlayerController : MonoBehaviour
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
     }
 
+    private void Dash(Vector3 direction)
+    {
+        StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
+
+        m_Rigidbody.velocity = direction * m_DashSpeed;
+
+        m_AttackHitboxController.ActivateHitBox(m_PlayerOrientation); //for nudging weapon out of player's hand
+    }
+
     private void OnDashEnd()
     {
         m_PlayerAnimation.SetDashStatus(false);
+        m_AttackHitboxController.DisableAllHitBoxes();
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
     }

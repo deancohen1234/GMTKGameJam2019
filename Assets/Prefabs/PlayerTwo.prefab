@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -24366,7 +24366,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 20
     StartDelay: 3
-    ActionLength: 6
+    ActionLength: 4
   m_AttackAction:
     IsAvailable: 1
     IsExecuting: 0
