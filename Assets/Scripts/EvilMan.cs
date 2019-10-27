@@ -168,6 +168,6 @@ public class EvilMan : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(20, 20, 100, 100), "Time Left: " + (m_ImpatienceTime - (Time.time - m_LastSlamTime)));
+        //GUI.Label(new Rect(20, 20, 100, 100), "Time Left: " + (m_ImpatienceTime - (Time.time - m_LastSlamTime)));
     }
 }

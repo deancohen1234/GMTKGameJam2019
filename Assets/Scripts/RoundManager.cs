@@ -52,7 +52,7 @@ public class RoundManager : MonoBehaviour
     private void Update()
     {
 
-        if (m_IsGameComplete || true)
+        if (m_IsGameComplete)
         {
             var gamePads = Gamepad.all;
 
