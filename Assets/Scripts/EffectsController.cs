@@ -6,6 +6,7 @@ public class EffectsController : MonoBehaviour
 {
     public ParticleSystem m_DisarmSystem;
     public ParticleSystem m_OnDisarmedSystem;
+    public ParticleSystem m_OnDamagedSystem;
     public ParticleSystem m_OnDeathSystem;
 
     public SpriteRenderer m_CharacterSprite;
@@ -35,6 +36,12 @@ public class EffectsController : MonoBehaviour
     {
         int bloodAmount = Random.Range(150, 250);
         m_OnDeathSystem.Emit(bloodAmount);
+    }
+
+    public void ActivateDamagedSystem()
+    {
+        int bloodAmount = Random.Range(25, 50);
+        m_OnDamagedSystem.Emit(bloodAmount);
     }
 
     public void StartVisualAttack()

@@ -382,6 +382,7 @@ public class PlayerController : MonoBehaviour
 
             int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
             AudioClip clip = m_DamageSounds[randomClipIndex];
+            m_EffectsController.ActivateDamagedSystem();
 
             m_AudioSource.clip = clip;
             m_AudioSource.Play();
