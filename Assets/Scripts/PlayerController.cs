@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAction m_DisarmAction;
 
     [Header("Sound Effects")]
+    public AudioClip m_Poof;
     public AudioClip m_SwordSlash;
     public AudioClip[] m_DamageSounds;
     public AudioClip[] m_DisarmSounds;
@@ -286,6 +287,12 @@ public class PlayerController : MonoBehaviour
     {
         m_BlockAllInput = true;
         m_Rigidbody.velocity = Vector3.zero;
+    }
+
+    public void PlayPoofEffect()
+    {
+        m_AudioSource.clip = m_Poof;
+        m_AudioSource.Play();
     }
 
     public void EquipWeapon(MegaWeapon weapon)

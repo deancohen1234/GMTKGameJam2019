@@ -34001,6 +34001,7 @@ MonoBehaviour:
     CooldownTime: 40
     StartDelay: 1
     ActionLength: 9
+  m_Poof: {fileID: 8300000, guid: b9dd262ddddd92849a47c3412dfc6a44, type: 3}
   m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
   m_DamageSounds:
   - {fileID: 8300000, guid: 42db1224a4d96c644ad5daf0cb176688, type: 3}

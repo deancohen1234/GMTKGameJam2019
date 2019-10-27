@@ -112,6 +112,7 @@ public class RoundManager : MonoBehaviour
         if (m_PlayerOne.GetHealthComponent().IsDead() == false)
         {
             m_PlayerOne.DisableAllMovement();
+            m_PlayerOne.PlayPoofEffect();
             m_PlayerOne.GetEffectsController().ActivatePoofSystem();
             m_PlayerOne.GetEffectsController().m_CharacterSprite.enabled = false;
         }
@@ -119,6 +120,7 @@ public class RoundManager : MonoBehaviour
         if (m_PlayerTwo.GetHealthComponent().IsDead() == false)
         {
             m_PlayerTwo.DisableAllMovement();
+            m_PlayerTwo.PlayPoofEffect();
             m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
             m_PlayerTwo.GetEffectsController().m_CharacterSprite.enabled = false;
         }
@@ -175,6 +177,9 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne.m_OnDeathComplete += OnRoundComplete;
         m_PlayerTwo.m_OnDeathComplete += OnRoundComplete;
 
+        m_PlayerOne.PlayPoofEffect();
+        m_PlayerTwo.PlayPoofEffect();
+        
         m_PlayerOne.GetEffectsController().ActivatePoofSystem();
         m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
 
