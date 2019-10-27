@@ -12,6 +12,7 @@ public class EvilMan : MonoBehaviour
     public Action m_OnRoundSlamFinished;
     public Action m_OnImpatientSlamFinished;
     public float m_ImpatienceTime = 20f; //in seconds
+    public float m_TimeSavedPerAttack = 5f;
 
     private SlamType m_LastSlamType;
     private AudioSource m_AudioSource;
@@ -55,8 +56,22 @@ public class EvilMan : MonoBehaviour
 
     public void SetPlayers(PlayerController p1, PlayerController p2)
     {
+        if (m_PlayerOne)
+        {
+            m_PlayerOne.GetHealthComponent().m_OnPlayerDamaged -= OnPlayerDamaged;
+            m_PlayerOne = null;
+        }
+        if (m_PlayerTwo)
+        {
+            m_PlayerTwo.GetHealthComponent().m_OnPlayerDamaged -= OnPlayerDamaged;
+            m_PlayerTwo = null;
+        }
+
         m_PlayerOne = p1;
         m_PlayerTwo = p2;
+
+        m_PlayerOne.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
+        m_PlayerTwo.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
     }
 
     public void StartSlam(SlamType slamType)
@@ -84,9 +99,11 @@ public class EvilMan : MonoBehaviour
         }
     }
 
-    public void OnPlayerDamaged()
+    public void OnPlayerDamaged(PlayerController player, float currentHealth)
     {
-        m_LastSlamTime += 10f; //give ten more seconds before Slqth'thiss slams again when player is damaged
+        //give more seconds before Slqth'thiss slams again when player is damaged
+        float newTime = Mathf.Clamp(m_LastSlamTime + m_TimeSavedPerAttack, 0, Time.time);
+        m_LastSlamTime = newTime;
     }
     
     private void RoundSlamComplete()
@@ -102,5 +119,10 @@ public class EvilMan : MonoBehaviour
 
         m_PlayerOne.DropWeapon();
         m_PlayerTwo.DropWeapon();
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(20, 20, 100, 100), "Time Left: " + (m_ImpatienceTime - (Time.time - m_LastSlamTime)));
     }
 }

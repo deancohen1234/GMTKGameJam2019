@@ -7591,7 +7591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
-  m_ImpatienceTime: 30
+  m_ImpatienceTime: 20
+  m_TimeSavedPerAttack: 5
 --- !u!1 &680959294
 GameObject:
   m_ObjectHideFlags: 0
