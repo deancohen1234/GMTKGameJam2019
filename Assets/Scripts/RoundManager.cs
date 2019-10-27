@@ -113,16 +113,18 @@ public class RoundManager : MonoBehaviour
         {
             m_PlayerOne.DisableAllMovement();
             m_PlayerOne.GetEffectsController().ActivatePoofSystem();
+            m_PlayerOne.GetEffectsController().m_CharacterSprite.enabled = false;
         }
 
         if (m_PlayerTwo.GetHealthComponent().IsDead() == false)
         {
             m_PlayerTwo.DisableAllMovement();
             m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
+            m_PlayerTwo.GetEffectsController().m_CharacterSprite.enabled = false;
         }
 
         //give .5 second gap to finish particle effect
-        Invoke("StartRound", 1f);
+        Invoke("StartRound", 1.5f);
         //start new round
     }
 
@@ -179,8 +181,12 @@ public class RoundManager : MonoBehaviour
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_Player1RoundWins + m_Player2RoundWins + 1)); //+1 for 0 based
         m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
 
-        m_EvilMan.StartSlam(SlamType.RoundStarting);
+        Invoke("DelayedSlam", 3.0f);
+    }
 
+    private void DelayedSlam()
+    {
+        m_EvilMan.StartSlam(SlamType.RoundStarting);
     }
 
     private void OnSlamFinished()
