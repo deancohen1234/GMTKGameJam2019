@@ -34013,6 +34013,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fc197b18d7e68de43920c5ccd38530b0, type: 3}
   - {fileID: 8300000, guid: 733f125074c6cbb4b89642a9721ffe40, type: 3}
   - {fileID: 8300000, guid: 964d22b0113af8b49849bde59c783b6d, type: 3}
+  m_DeathSounds:
+  - {fileID: 8300000, guid: 2cecd018afc7c1b4fb2cd3eb68b89218, type: 3}
+  - {fileID: 8300000, guid: 7f939b492fa296942b01c3cf8bc188bd, type: 3}
+  - {fileID: 8300000, guid: 1e066ffff26baa448af0a4dcf90cc442, type: 3}
+  - {fileID: 8300000, guid: 16e778af8a9bd734cbf5a2890f92e619, type: 3}
   m_WeaponIcon: {fileID: 5130787525799176140}
 --- !u!114 &5130787526742937383
 MonoBehaviour:

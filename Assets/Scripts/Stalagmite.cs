@@ -6,6 +6,10 @@ public class Stalagmite : MonoBehaviour
 {
     public GameObject m_RockObject;
     public ParticleSystem m_Pebbles;
+
+    public AudioClip m_EarthPuncture;
+
+    [HideInInspector]
     public int m_Index; //set from Evil Man
 
     public void SetTimeToSelfDestruct(float time)
@@ -17,6 +21,12 @@ public class Stalagmite : MonoBehaviour
     {
         m_Index = index;
         m_Pebbles.Emit(50);
+
+        AudioSource source = GetComponent<AudioSource>();
+        source.clip = m_EarthPuncture;
+        source.pitch = Random.Range(0.8f, 1.2f);
+
+        source.Play();
     }
 
     public void Hide()

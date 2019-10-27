@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip m_SwordSlash;
     public AudioClip[] m_DamageSounds;
     public AudioClip[] m_DisarmSounds;
+    public AudioClip[] m_DeathSounds;
 
     public GameObject m_WeaponIcon;
     public Action m_OnDeathComplete;
@@ -391,12 +392,16 @@ public class PlayerController : MonoBehaviour
             //player failed to disarm they now take damage
             m_HealthComponent.DealDamage(100);
 
-            int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
-            AudioClip clip = m_DamageSounds[randomClipIndex];
-            m_EffectsController.ActivateDamagedSystem();
+            if (!m_HealthComponent.IsDead())
+            {
+                int randomClipIndex = UnityEngine.Random.Range(0, m_DamageSounds.Length - 1);
+                AudioClip clip = m_DamageSounds[randomClipIndex];
+                m_EffectsController.ActivateDamagedSystem();
 
-            m_AudioSource.clip = clip;
-            m_AudioSource.Play();
+                m_AudioSource.clip = clip;
+                m_AudioSource.Play();
+            }
+
         }
     }
 
@@ -539,6 +544,12 @@ public class PlayerController : MonoBehaviour
         m_EffectsController.m_CharacterSprite.enabled = false; //hide player sprite
         m_EffectsController.ActivateOnDeathSystem();
         m_HeadLauncher.LaunchHead(transform.position, m_CameraShake.gameObject.transform.position);
+
+        int randomClipIndex = UnityEngine.Random.Range(0, m_DeathSounds.Length - 1);
+        AudioClip clip = m_DeathSounds[randomClipIndex];
+        m_AudioSource.clip = clip;
+        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.Play();
 
         Invoke("CompleteDeath", m_DeathLength);
     }
