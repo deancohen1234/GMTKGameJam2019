@@ -89,6 +89,7 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne.m_OnDeathComplete -= OnRoundComplete;
         m_PlayerTwo.m_OnDeathComplete -= OnRoundComplete;
 
+
         if (m_Player1RoundWins >= m_RoundsNeededToWin)
         {
             //End Game
@@ -101,8 +102,28 @@ public class RoundManager : MonoBehaviour
             return;
         }
 
+        //poof away player and then start new round
+        PoofAwayLeftoverPlayer();
+    }
+
+    private void PoofAwayLeftoverPlayer()
+    {
+        //kill leftover player then start new round
+        if (m_PlayerOne.GetHealthComponent().IsDead() == false)
+        {
+            m_PlayerOne.DisableAllMovement();
+            m_PlayerOne.GetEffectsController().ActivatePoofSystem();
+        }
+
+        if (m_PlayerTwo.GetHealthComponent().IsDead() == false)
+        {
+            m_PlayerTwo.DisableAllMovement();
+            m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
+        }
+
+        //give .5 second gap to finish particle effect
+        Invoke("StartRound", 1f);
         //start new round
-        StartRound();
     }
 
     private void OnMatchComplete(bool playerOneWon)
@@ -152,10 +173,11 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne.m_OnDeathComplete += OnRoundComplete;
         m_PlayerTwo.m_OnDeathComplete += OnRoundComplete;
 
-        m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo);
-        m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
+        m_PlayerOne.GetEffectsController().ActivatePoofSystem();
+        m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
 
-        m_StartRoundScreen.GetComponent<Animator>().SetTrigger("StartRound");
+        m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_Player1RoundWins + m_Player2RoundWins + 1)); //+1 for 0 based
+        m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
 
         m_EvilMan.StartSlam(SlamType.RoundStarting);
 

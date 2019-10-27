@@ -281,6 +281,12 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
+    public void DisableAllMovement()
+    {
+        m_BlockAllInput = true;
+        m_Rigidbody.velocity = Vector3.zero;
+    }
+
     public void EquipWeapon(MegaWeapon weapon)
     {
         if (m_HasWeapon == false)
@@ -345,6 +351,11 @@ public class PlayerController : MonoBehaviour
     public HealthComponent GetHealthComponent()
     {
         return m_HealthComponent;
+    }
+
+    public EffectsController GetEffectsController()
+    {
+        return m_EffectsController;
     }
 
     #region Action Methods

@@ -42,6 +42,11 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public void Kill()
+    {
+        DealDamage(10000000000);
+    }
+
     public bool IsDead()
     {
         return m_IsDead;

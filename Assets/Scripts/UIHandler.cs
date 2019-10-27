@@ -5,30 +5,38 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    [Header("Player One Health")]
     public Image m_P1_Health_1;
     public Image m_P1_Health_2;
     public Image m_P1_Health_3;
     public Image m_P1_Health_4;
     public Image m_P1_Health_5;
 
+    [Header("Player Two Health")]
     public Image m_P2_Health_1;
     public Image m_P2_Health_2;
     public Image m_P2_Health_3;
     public Image m_P2_Health_4;
     public Image m_P2_Health_5;
 
+    [Header("Player One Rounds")]
     public Image m_P1_Round_1;
     public Image m_P1_Round_2;
     public Image m_P1_Round_3;
 
+    [Header("Player Two Rounds")]
     public Image m_P2_Round_1;
     public Image m_P2_Round_2;
     public Image m_P2_Round_3;
 
+    [Header("Start Round Panel")]
+    public GameObject m_MainPanel;
+    public Text m_RoundText;
+
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
-    public void Initialize(PlayerController P1, PlayerController P2)
+    public void Initialize(PlayerController P1, PlayerController P2, int roundCount)
     {
         m_PlayerOne = P1;
         m_PlayerTwo = P2;
@@ -48,6 +56,9 @@ public class UIHandler : MonoBehaviour
         m_P2_Health_3.gameObject.SetActive(true);
         m_P2_Health_4.gameObject.SetActive(true);
         m_P2_Health_5.gameObject.SetActive(true);
+
+        m_MainPanel.GetComponent<Animator>().SetTrigger("StartRound");
+        m_RoundText.text = "Round " + roundCount;
     }
 
     public void UpdateRoundScore(int p1RoundsWon, int p2RoundsWon)
