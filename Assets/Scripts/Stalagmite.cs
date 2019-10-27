@@ -5,6 +5,7 @@ using UnityEngine;
 public class Stalagmite : MonoBehaviour
 {
     public GameObject m_RockObject;
+    public ParticleSystem m_Pebbles;
     public int m_Index; //set from Evil Man
 
     public void SetTimeToSelfDestruct(float time)
@@ -15,6 +16,7 @@ public class Stalagmite : MonoBehaviour
     public void Create(int index)
     {
         m_Index = index;
+        m_Pebbles.Emit(50);
     }
 
     public void Hide()
