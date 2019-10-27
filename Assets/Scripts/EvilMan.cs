@@ -15,7 +15,10 @@ public class EvilMan : MonoBehaviour
     public float m_TimeSavedPerAttack = 5f;
 
     public GameObject m_StalagmitePrefab;
+    public int m_NumStalagmites = 2;
+
     public Transform m_ArenaCenter;
+    public Vector3 m_Offset;
     public float m_ArenaWidth;
     public float m_ArenaHeight;
 
@@ -29,7 +32,7 @@ public class EvilMan : MonoBehaviour
     private CameraShake m_CameraShake;
     private RippleEffect m_RippleEffect;
 
-    private Stalagmite m_Stalagmite;
+    private Stalagmite[] m_Stalagmites;
 
     private float m_LastSlamTime;
     // Start is called before the first frame update
@@ -40,7 +43,10 @@ public class EvilMan : MonoBehaviour
 
         m_CameraShake = FindObjectOfType<CameraShake>();
         m_RippleEffect = FindObjectOfType<RippleEffect>();
+
+        m_Stalagmites = new Stalagmite[m_NumStalagmites];
     }
+
 
     private void Update()
     {
@@ -127,29 +133,33 @@ public class EvilMan : MonoBehaviour
         m_PlayerOne.DropWeapon();
         m_PlayerTwo.DropWeapon();
 
-        PlaceStalagmite();
+        PlaceStalagmites();
     }
 
-    private void PlaceStalagmite()
+    private void PlaceStalagmites()
     {
-        if (m_Stalagmite != null)
+        for (int i = 0; i < m_Stalagmites.Length; i++)
         {
-            m_Stalagmite.Hide();
+            if (m_Stalagmites[i] != null)
+            {
+                m_Stalagmites[i].Hide();
+            }
+
+            float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
+            float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
+            Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY) + m_Offset;
+
+            GameObject s = Instantiate(m_StalagmitePrefab);
+            s.transform.position = newPosition;
+
+            float degX = UnityEngine.Random.Range(-20, 20f);
+            float degY = UnityEngine.Random.Range(-1.0f, 1.0f);
+            float degZ = UnityEngine.Random.Range(-20f, 20f);
+            s.transform.rotation = Quaternion.Euler(degX, degY, degZ);
+
+            m_Stalagmites[i] = s.GetComponent<Stalagmite>();
         }
-
-        float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
-        float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
-        Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, 0, randomY);
-
-        GameObject s = Instantiate(m_StalagmitePrefab);
-        s.transform.position = newPosition;
-
-        float degX = UnityEngine.Random.Range(-20, 20f);
-        float degY = UnityEngine.Random.Range(-1.0f, 1.0f);
-        float degZ = UnityEngine.Random.Range(-20f, 20f);
-        s.transform.rotation = Quaternion.Euler(degX, degY, degZ);
-
-        m_Stalagmite = s.GetComponent<Stalagmite>();
+        
     }
 
     private void OnGUI()
