@@ -186,6 +186,8 @@ public class RoundManager : MonoBehaviour
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_Player1RoundWins + m_Player2RoundWins + 1)); //+1 for 0 based
         m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
 
+        m_MegaWeapon.gameObject.SetActive(false); //prevents a double pickup of the weapon
+
         Invoke("DelayedSlam", 3.0f);
     }
 
