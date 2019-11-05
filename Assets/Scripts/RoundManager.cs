@@ -36,6 +36,7 @@ public class RoundManager : MonoBehaviour
     private int m_Player2RoundWins;
 
     private bool m_IsGameComplete;
+    private bool m_DEBUG_RestartRound;
 
     private void Awake()
     {
@@ -65,13 +66,23 @@ public class RoundManager : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            m_DEBUG_RestartRound = true;
+            OnRoundComplete();
+        }
         
     }
 
     //TODO split this into multiple functions
     public void OnRoundComplete()
     {
-        if (m_PlayerOne.GetHealthComponent().IsDead())
+        if (m_DEBUG_RestartRound)
+        {
+            m_DEBUG_RestartRound = false;
+        }
+        else if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
             m_VictoryText.text = "Player Two Takes a Round";
