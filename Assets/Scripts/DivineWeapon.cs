@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaWeapon : MonoBehaviour
+public class DivineWeapon : MonoBehaviour
 {
     public Transform m_ArenaCenter;
     public float m_ArenaWidth;
@@ -10,6 +10,9 @@ public class MegaWeapon : MonoBehaviour
     public Vector3 m_Offset;
 
     public float m_FallSpeed = 0.3f;
+
+    [Header("Action Details")]
+    public PlayerAction m_AttackAction;
 
     private float m_WeaponStartHeight;
 
@@ -24,7 +27,7 @@ public class MegaWeapon : MonoBehaviour
         m_WeaponStartHeight = transform.position.y;
     }
 
-    private void Update()
+    protected void Update()
     {
         if (m_IsLerping)
         {
@@ -50,9 +53,51 @@ public class MegaWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //deal damage
+            //Pickup weapon
             other.gameObject.GetComponent<PlayerController>().EquipWeapon(this);
             gameObject.SetActive(false);
+        }
+    }
+
+    protected virtual void OnWeaponPickup()
+    {
+
+    }
+
+    public virtual void WeaponAttack(PlayerController player, Vector3 direction)
+    {
+
+    }
+
+    //player drops weapon
+    //has parameter of the player who dropped the weapon
+    public virtual void Drop(PlayerController lastControlledPlayer)
+    {
+        RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
+    }
+
+    public virtual void OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
+    {
+        //attacking player loses weapon, no damage
+        attackingPlayer.ApplyBounceBackForce(hitPlayer.transform.position);
+        hitPlayer.ApplyBounceBackForce(attackingPlayer.transform.position);
+
+        if (hitPlayer.IsDisarming())
+        {
+            hitPlayer.DisarmOppponent(attackingPlayer);
+        }
+        else
+        {
+            //player failed to disarm they now take damage
+
+            HealthComponent h = hitPlayer.GetHealthComponent();
+            h.DealDamage(100);
+
+            if (!h.IsDead())
+            {
+                hitPlayer.GetEffectsController().ActivateDamagedSystem();
+            }
+
         }
     }
 
