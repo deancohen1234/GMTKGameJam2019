@@ -307,6 +307,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //have weapon completely be lost
+    public void LoseWeapon()
+    {
+        if (m_EquippedWeapon != null)
+        {
+            m_EquippedWeapon = null;
+            m_WeaponIcon.SetActive(false);
+
+            m_AttackAction.IsExecuting = false;
+        }
+
+    }
+
     public void PlaySoundEffect(PlayerSound playerSound)
     {
         switch (playerSound)
@@ -396,7 +409,7 @@ public class PlayerController : MonoBehaviour
         attackingPlayer.m_AttackAction.ForceStopAction();
 
         EquipWeapon(attackingPlayer.m_EquippedWeapon);
-        attackingPlayer.DropWeapon();
+        attackingPlayer.LoseWeapon();
 
         attackingPlayer.m_CanMove = true;
         m_CanMove = true;
@@ -448,7 +461,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            OnDisarmStart();
+            OnDisarmEnd();
         }
     }
 
