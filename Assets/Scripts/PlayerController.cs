@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Actions")]
     public PlayerAction m_DashAction;
-    public PlayerAction m_AttackAction;
+    public PlayerAction m_DisarmAction;
     //public PlayerAction m_DefaultDisarmAction;
 
     [Header("Sound Effects")]
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     public GameObject m_WeaponIcon;
     public Action m_OnDeathComplete;
 
+    private PlayerAction m_AttackAction;
     private DivineWeapon m_EquippedWeapon;
     private bool m_IsDisarming;
 
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private bool m_BlockAllInput = false;
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
+    #region Monobehavior Methods
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -92,53 +94,8 @@ public class PlayerController : MonoBehaviour
     {
         SetupInputStrings(m_PlayerNum);
 
+        m_AttackAction = m_DisarmAction;
         m_DashAction.IsAvailable = true;
-    }
-
-    //
-    private void OnEnable()
-    {
-        m_DashAction.OnActionStart += OnDashStart;
-        m_DashAction.OnActionEnd += OnDashEnd;
-        m_DashAction.ActionHandler += Dash;
-
-        m_AttackAction.ActionHandler += AttackDecider;
-        m_AttackAction.OnActionStart += OnAttackStartDecider;
-        m_AttackAction.OnActionEnd += OnAttackEndDecider;
-
-        m_HealthComponent.m_OnDeath += OnPlayerDeath;
-    }
-
-    private void OnDisable()
-    {
-        m_DashAction.OnActionStart -= OnDashStart;
-        m_DashAction.OnActionEnd -= OnDashEnd;
-        m_DashAction.ActionHandler -= Dash;
-
-        m_AttackAction.ActionHandler -= AttackDecider;
-        m_AttackAction.OnActionStart -= OnAttackStartDecider;
-        m_AttackAction.OnActionEnd -= OnAttackEndDecider;
-
-        m_HealthComponent.m_OnDeath -= OnPlayerDeath;
-    }
-
-    private void SetupInputStrings(PlayerType playerNum)
-    {
-        switch (playerNum)
-        {
-            case PlayerType.Player1:
-                m_InputStrings.Horizontal = "P1_Horizontal";
-                m_InputStrings.Vertical = "P1_Vertical";
-                m_InputStrings.RTrigger = "P1_RTrigger";
-                m_InputStrings.LTrigger = "P1_LTrigger";
-                break;
-            case PlayerType.Player2:
-                m_InputStrings.Horizontal = "P2_Horizontal";
-                m_InputStrings.Vertical = "P2_Vertical";
-                m_InputStrings.RTrigger = "P2_RTrigger";
-                m_InputStrings.LTrigger = "P2_LTrigger";
-                break;
-        }
     }
 
     // Update is called once per frame
@@ -214,6 +171,53 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //
+    private void OnEnable()
+    {
+        m_DashAction.OnActionStart += OnDashStart;
+        m_DashAction.OnActionEnd += OnDashEnd;
+        m_DashAction.ActionHandler += Dash;
+
+        m_DisarmAction.ActionHandler += AttackDecider;
+        m_DisarmAction.OnActionStart += OnAttackStartDecider;
+        m_DisarmAction.OnActionEnd += OnAttackEndDecider;
+
+        m_HealthComponent.m_OnDeath += OnPlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        m_DashAction.OnActionStart -= OnDashStart;
+        m_DashAction.OnActionEnd -= OnDashEnd;
+        m_DashAction.ActionHandler -= Dash;
+
+        m_DisarmAction.ActionHandler -= AttackDecider;
+        m_DisarmAction.OnActionStart -= OnAttackStartDecider;
+        m_DisarmAction.OnActionEnd -= OnAttackEndDecider;
+
+        m_HealthComponent.m_OnDeath -= OnPlayerDeath;
+    }
+    #endregion
+
+    private void SetupInputStrings(PlayerType playerNum)
+    {
+        switch (playerNum)
+        {
+            case PlayerType.Player1:
+                m_InputStrings.Horizontal = "P1_Horizontal";
+                m_InputStrings.Vertical = "P1_Vertical";
+                m_InputStrings.RTrigger = "P1_RTrigger";
+                m_InputStrings.LTrigger = "P1_LTrigger";
+                break;
+            case PlayerType.Player2:
+                m_InputStrings.Horizontal = "P2_Horizontal";
+                m_InputStrings.Vertical = "P2_Vertical";
+                m_InputStrings.RTrigger = "P2_RTrigger";
+                m_InputStrings.LTrigger = "P2_LTrigger";
+                break;
+        }
+    }
+
     private PlayerOrientation CalculateOrientation(Vector2 vector)
     {
         PlayerOrientation orientation = PlayerOrientation.Up;
@@ -283,6 +287,8 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
+    #region Weapon Methods
+
     public void EquipWeapon(DivineWeapon weapon)
     {
         //only equip weapon when you have none in hand
@@ -290,6 +296,8 @@ public class PlayerController : MonoBehaviour
         {
             m_EquippedWeapon = weapon;
             m_WeaponIcon.SetActive(true);
+
+            m_AttackAction = m_EquippedWeapon.m_AttackAction;
         }
     }
 
@@ -319,6 +327,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    #endregion
 
     public void PlaySoundEffect(PlayerSound playerSound)
     {

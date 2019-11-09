@@ -27,6 +27,20 @@ public class DivineWeapon : MonoBehaviour
         m_WeaponStartHeight = transform.position.y;
     }
 
+    private void OnEnable()
+    {
+        m_AttackAction.OnActionStart += OnWeaponAttackStart;
+        //m_AttackAction.ActionHandler += WeaponAttack; //currently isn't set up
+        m_AttackAction.OnActionEnd += OnWeaponAttackEnd;
+    }
+
+    private void OnDisable()
+    {
+        m_AttackAction.OnActionStart -= OnWeaponAttackStart;
+        //m_AttackAction.ActionHandler -= WeaponAttack;
+        m_AttackAction.OnActionEnd -= OnWeaponAttackEnd;
+    }
+
     protected void Update()
     {
         if (m_IsLerping)
@@ -64,7 +78,17 @@ public class DivineWeapon : MonoBehaviour
 
     }
 
+    public virtual void OnWeaponAttackStart()
+    {
+
+    }
+
     public virtual void WeaponAttack(PlayerController player, Vector3 direction)
+    {
+
+    }
+
+    public virtual void OnWeaponAttackEnd()
     {
 
     }
