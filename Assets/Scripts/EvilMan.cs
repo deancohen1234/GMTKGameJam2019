@@ -136,8 +136,8 @@ public class EvilMan : MonoBehaviour
         m_CameraShake.AddTrauma(2.0f);
         m_RippleEffect.ActivateRipple(transform.position);
 
-        m_PlayerOne.DropWeapon();
-        m_PlayerTwo.DropWeapon();
+        m_PlayerOne.DropWeapon(false);
+        m_PlayerTwo.DropWeapon(false);
 
         PlaceStalagmites();
     }

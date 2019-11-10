@@ -14,6 +14,7 @@ public class DivineWeapon : MonoBehaviour
     [Header("Action Details")]
     public PlayerAction m_AttackAction;
 
+    protected PlayerController m_PlayerRef;
     private float m_WeaponStartHeight;
 
     private bool m_IsLerping;
@@ -25,19 +26,18 @@ public class DivineWeapon : MonoBehaviour
     private void Start()
     {
         m_WeaponStartHeight = transform.position.y;
-    }
 
-    private void OnEnable()
-    {
+        //assign all actions for delegate when game starts
         m_AttackAction.OnActionStart += OnWeaponAttackStart;
-        //m_AttackAction.ActionHandler += WeaponAttack; //currently isn't set up
+        m_AttackAction.ActionHandler += WeaponAttack; //currently isn't set up
         m_AttackAction.OnActionEnd += OnWeaponAttackEnd;
     }
 
-    private void OnDisable()
+    //When closing remove all delegates
+    private void OnDestroy()
     {
         m_AttackAction.OnActionStart -= OnWeaponAttackStart;
-        //m_AttackAction.ActionHandler -= WeaponAttack;
+        m_AttackAction.ActionHandler -= WeaponAttack;
         m_AttackAction.OnActionEnd -= OnWeaponAttackEnd;
     }
 
@@ -69,13 +69,22 @@ public class DivineWeapon : MonoBehaviour
         {
             //Pickup weapon
             other.gameObject.GetComponent<PlayerController>().EquipWeapon(this);
+            //OnWeaponPickup(other.gameObject.GetComponent<PlayerController>());
             gameObject.SetActive(false);
         }
     }
 
-    protected virtual void OnWeaponPickup()
+    //on weapon pickup set player reference for this weapon's attack action
+    public virtual void OnWeaponPickup(PlayerController player)
     {
+        m_PlayerRef = player;
+        m_AttackAction.SetPlayerReference(player);
+    }
 
+    protected virtual void OnWeaponDropped()
+    {
+        m_PlayerRef = null;
+        m_AttackAction.SetPlayerReference(null); //set reference for actions to null
     }
 
     public virtual void OnWeaponAttackStart()
@@ -98,6 +107,7 @@ public class DivineWeapon : MonoBehaviour
     public virtual void Drop(PlayerController lastControlledPlayer)
     {
         RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
+        OnWeaponDropped();
     }
 
     public virtual void OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
@@ -134,27 +144,6 @@ public class DivineWeapon : MonoBehaviour
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
 
-        /*int numTries = 0;
-        while (true)
-        {
-            numTries++;
-
-            if (numTries >= 20)
-            {
-                Debug.LogError("Num Tries Exceeded for location");
-                break;
-            }
-
-            if (IsValidPosition(newPosition))
-            {
-                break;
-            }
-            else
-            {
-                RandomizeLocation();
-            }
-        }*/
-
         m_DestinationPos = newPosition;
         m_StartPos = m_DestinationPos + new Vector3(0, 7.5f, 0);
 
@@ -171,28 +160,6 @@ public class DivineWeapon : MonoBehaviour
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
         newPosition.y = transform.position.y;
-        /*
-        int numTries = 0;
-        while (true)
-        {
-            numTries++;
-
-            if (numTries >= 20)
-            {
-                Debug.LogError("Num Tries Exceeded for location");
-                break;
-            }
-
-            if (IsValidPosition(newPosition))
-            {
-                break;   
-            }
-            else
-            {
-                RandomizeLocationFromPlayer(playerPos);
-                break;
-            }
-        }*/
 
         m_DestinationPos = newPosition;
         m_StartPos = playerPos + new Vector3(0, 0.5f, 0);

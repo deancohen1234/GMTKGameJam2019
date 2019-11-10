@@ -475,6 +475,12 @@ MonoBehaviour:
   m_ArenaHeight: 1.1
   m_Offset: {x: 0, y: 0, z: -1.38}
   m_FallSpeed: 1
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 3
+    StartDelay: 3
+    ActionLength: 6
 --- !u!1 &110526845
 GameObject:
   m_ObjectHideFlags: 0
@@ -12169,7 +12175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
-  m_ImpatienceTime: 10
+  m_ImpatienceTime: 30
   m_TimeSavedPerAttack: 5
   m_StalagmitePrefab: {fileID: 5695513784316316208, guid: d428433b49397ef4e89d8a1a99d1a4ce,
     type: 3}

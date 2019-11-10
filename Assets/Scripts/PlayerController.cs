@@ -88,6 +88,9 @@ public class PlayerController : MonoBehaviour
         m_CameraShake = FindObjectOfType<CameraShake>();
         m_RippleEffect = FindObjectOfType<RippleEffect>();
         m_HeadLauncher = GetComponent<HeadLauncher>();
+
+        m_DashAction.SetPlayerReference(this);
+        m_DisarmAction.SetPlayerReference(this);
     }
     // Start is called before the first frame update
     void Start()
@@ -178,7 +181,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionEnd += OnDashEnd;
         m_DashAction.ActionHandler += Dash;
 
-        m_DisarmAction.ActionHandler += AttackDecider;
+        m_DisarmAction.ActionHandler += Disarm;
         m_DisarmAction.OnActionStart += OnAttackStartDecider;
         m_DisarmAction.OnActionEnd += OnAttackEndDecider;
 
@@ -191,7 +194,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionEnd -= OnDashEnd;
         m_DashAction.ActionHandler -= Dash;
 
-        m_DisarmAction.ActionHandler -= AttackDecider;
+        m_DisarmAction.ActionHandler -= Disarm;
         m_DisarmAction.OnActionStart -= OnAttackStartDecider;
         m_DisarmAction.OnActionEnd -= OnAttackEndDecider;
 
@@ -297,33 +300,28 @@ public class PlayerController : MonoBehaviour
             m_EquippedWeapon = weapon;
             m_WeaponIcon.SetActive(true);
 
+            m_EquippedWeapon.OnWeaponPickup(this);
             m_AttackAction = m_EquippedWeapon.m_AttackAction;
         }
     }
 
-    public void DropWeapon()
+    //if true, then weapon is gone completlely, not dropped (ie being disarmed)
+    public void DropWeapon(bool loseCompletely)
     {
         if (m_EquippedWeapon != null)
         {
-            m_EquippedWeapon.Drop(this);
+            if (!loseCompletely)
+            {
+                m_EquippedWeapon.Drop(this);
+            }
 
             m_EquippedWeapon = null;
             m_WeaponIcon.SetActive(false);
 
-            m_AttackAction.IsExecuting = false;
-        }
-
-    }
-
-    //have weapon completely be lost
-    public void LoseWeapon()
-    {
-        if (m_EquippedWeapon != null)
-        {
-            m_EquippedWeapon = null;
-            m_WeaponIcon.SetActive(false);
+            m_AttackAction = m_DisarmAction; //when losing weapon, attack action is now disarming
 
             m_AttackAction.IsExecuting = false;
+
         }
 
     }
@@ -406,7 +404,7 @@ public class PlayerController : MonoBehaviour
             m_AudioSource.clip = m_NudgeDisarm;
             m_AudioSource.Play();
             //m_EquippedWeapon.RandomizeLocation();
-            DropWeapon();
+            DropWeapon(false);
         }
     }
 
@@ -417,8 +415,10 @@ public class PlayerController : MonoBehaviour
         m_AttackAction.ForceStopAction();
         attackingPlayer.m_AttackAction.ForceStopAction();
 
-        EquipWeapon(attackingPlayer.m_EquippedWeapon);
-        attackingPlayer.LoseWeapon();
+        //store reference to weapon, then have attacking player drop the weapon and have disarming player equip it
+        DivineWeapon weapon = attackingPlayer.m_EquippedWeapon;
+        attackingPlayer.DropWeapon(true);
+        EquipWeapon(weapon);
 
         attackingPlayer.m_CanMove = true;
         m_CanMove = true;
@@ -445,6 +445,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
     //press right trigger and do action based on whether or not you have weapon
     private void AttackDecider(Vector3 direction)
     {
@@ -457,7 +458,7 @@ public class PlayerController : MonoBehaviour
         {
             Disarm(direction);
         }
-    }
+    }*/
 
     private void OnAttackEndDecider()
     {
@@ -481,7 +482,7 @@ public class PlayerController : MonoBehaviour
         m_EffectsController.StartVisualAttack();
     }
 
-    private void Attack(Vector3 direction)
+    /*private void Attack(Vector3 direction)
     {
         Dash(direction);
 
@@ -490,7 +491,7 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
 
         m_AttackHitboxController.ActivateHitBox(m_PlayerOrientation);
-    }
+    }*/
 
     private void OnAttackEnd()
     {
@@ -525,7 +526,7 @@ public class PlayerController : MonoBehaviour
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
     }
 
-    public void Dash(Vector3 direction)
+    public void Dash(PlayerController player, Vector3 direction)
     {
         StartCoroutine(DisablePlayerMovement((float)m_DisabledMovementTime / 60f));
 
@@ -549,7 +550,7 @@ public class PlayerController : MonoBehaviour
         m_EffectsController.ActivateDisarmSystem();
     }
 
-    private void Disarm(Vector3 direction)
+    private void Disarm(PlayerController player, Vector3 direction)
     {
         m_IsDisarming = true;
 
@@ -630,90 +631,3 @@ public class PlayerController : MonoBehaviour
     #endregion
 }
 
-[System.Serializable]
-public class PlayerAction
-{
-    [HideInInspector]
-    public bool IsAvailable = true;
-    [HideInInspector]
-    public bool IsExecuting = false;
-
-    public int CooldownTime; //in frames
-    public int StartDelay; //in frames
-    public int ActionLength; //in frames
-
-    public Action OnActionStart;
-    public Action OnActionEnd;
-    public Action<Vector3> ActionHandler; //holds references to other scripts that actually do action like dash and attack
-
-    private int StartingFrame;
-
-    public void SetStartingFrame(int frameNum)
-    {
-        StartingFrame = frameNum;
-    }
-
-    public int GetStartingFrame()
-    {
-        return StartingFrame;
-    }
-
-    public void ExecuteAction()
-    {
-        StartingFrame = Time.frameCount;
-        IsAvailable = false;
-        IsExecuting = true;
-
-        if (OnActionStart != null)
-        {
-            OnActionStart.Invoke();
-        }
-    }
-
-    public void ForceStopAction()
-    {
-        IsExecuting = false;
-
-        OnActionEnd.Invoke();
-    }
-
-    //called every frame once action starts
-    public void CheckActionCompleteness(float xInput, float yInput)
-    {
-        //if dash has been started
-        if (IsExecuting)
-        {
-            if (Time.frameCount - StartingFrame >= ActionLength + StartDelay)
-            {
-                //End dash
-                StartingFrame = Time.frameCount; //star timer for cooldown
-                IsExecuting = false;
-
-                if (OnActionEnd != null)
-                {
-                    OnActionEnd.Invoke();
-                }
-            }
-            //start delay finished
-            else if (Time.frameCount - StartingFrame >= StartDelay)
-            {
-                //Do dash
-                Vector3 direction = new Vector3(xInput, 0, yInput);
-
-                ActionHandler.DynamicInvoke(direction);
-            }
-
-        }
-
-        //if action is complete and cooldown still is going on
-        else if (!IsAvailable)
-        {
-            //check cooldown
-            if (Time.frameCount - StartingFrame >= CooldownTime)
-            {
-                StartingFrame = 0;
-                IsAvailable = true;
-            }
-        }
-    }
-}

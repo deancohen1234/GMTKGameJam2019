@@ -33994,7 +33994,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 3
     StartDelay: 3
-    ActionLength: 6
+    ActionLength: 120
   m_Poof: {fileID: 8300000, guid: b9dd262ddddd92849a47c3412dfc6a44, type: 3}
   m_NudgeDisarm: {fileID: 8300000, guid: 351902ea8338619479dedd35af249d6e, type: 3}
   m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}

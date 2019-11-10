@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SacrificeDagger : DivineWeapon
 {
-    protected override void OnWeaponPickup()
+    public override void OnWeaponPickup(PlayerController player)
     {
-        base.OnWeaponPickup();
+        base.OnWeaponPickup(player);
         Debug.Log("Sacrifice Dagger Pickup");
     }
 
@@ -15,8 +15,13 @@ public class SacrificeDagger : DivineWeapon
         //base.WeaponAttack(player, direction);
         Debug.Log("Overriding Weapon Attack");
 
-        player.Dash(direction);
+        player.Dash(player, direction);
         player.m_AttackHitboxController.ActivateHitBox(player.GetPlayerOrientation());
+    }
 
+    public override void OnWeaponAttackEnd()
+    {
+        base.OnWeaponAttackEnd();
+        m_PlayerRef.m_AttackHitboxController.DisableAllHitBoxes();
     }
 }
