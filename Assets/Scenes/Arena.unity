@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 101229741}
   - component: {fileID: 101229743}
   - component: {fileID: 101229742}
-  - component: {fileID: 101229745}
+  - component: {fileID: 101229750}
   - component: {fileID: 101229744}
   - component: {fileID: 101229746}
   - component: {fileID: 101229748}
@@ -323,23 +323,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &101229745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101229740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947b0bb55537ddd46ad88d99d15e780f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ArenaCenter: {fileID: 574776829}
-  m_ArenaWidth: 2.3
-  m_ArenaHeight: 1.1
-  m_Offset: {x: 0, y: 0, z: -1.38}
-  m_FallSpeed: 1
 --- !u!65 &101229746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -475,6 +458,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxMagnitude: 5
+--- !u!114 &101229750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101229740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d720f89dc38a95c4e9fc5290338e3d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ArenaCenter: {fileID: 574776829}
+  m_ArenaWidth: 2.3
+  m_ArenaHeight: 1.1
+  m_Offset: {x: 0, y: 0, z: -1.38}
+  m_FallSpeed: 1
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 3
+    StartDelay: 3
+    ActionLength: 6
 --- !u!1 &110526845
 GameObject:
   m_ObjectHideFlags: 0
@@ -11913,7 +11919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RoundsNeededToWin: 3
   m_EvilMan: {fileID: 632142562}
-  m_MegaWeapon: {fileID: 101229745}
+  m_MegaWeapon: {fileID: 101229750}
   m_UIHandler: {fileID: 365113849}
   m_Music: {fileID: 287729089}
   m_PlayerOnePrefab: {fileID: 4482629906860492806, guid: cb33e24fd87aa5648befc449716f1c01,
@@ -12169,7 +12175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
-  m_ImpatienceTime: 10
+  m_ImpatienceTime: 30
   m_TimeSavedPerAttack: 5
   m_StalagmitePrefab: {fileID: 5695513784316316208, guid: d428433b49397ef4e89d8a1a99d1a4ce,
     type: 3}

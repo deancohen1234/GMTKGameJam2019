@@ -12,7 +12,7 @@ public class RoundManager : MonoBehaviour
 
     [Header("Scene Objects")]
     public EvilMan m_EvilMan;
-    public MegaWeapon m_MegaWeapon;
+    public DivineWeapon m_MegaWeapon;
     public UIHandler m_UIHandler;
     public AudioSource m_Music;
 
