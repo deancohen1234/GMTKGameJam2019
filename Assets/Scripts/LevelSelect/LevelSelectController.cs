@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
     [Header("Scene References")]
     public LevelSelect[] m_Levels;
     public Camera m_MainCamera;
+
+    [Header("UI References")]
+    public GameObject m_DetailsPanel;
+    public Text m_Title;
+    public Image m_WeaponImage;
+    public Text m_WeaponDescription;
+    public Text m_StageDescription;
 
     [Header("Camera Move Settings")]
     public float m_TransitionTotalTime = 1.5f; //in seconds
@@ -17,6 +25,12 @@ public class LevelSelectController : MonoBehaviour
     private Quaternion m_CamStartRotation;
     private float m_TransitionStartTime;
     private bool m_IsTransitioning;
+
+    private void Start()
+    {
+        //default panel to being invisible
+        if (m_DetailsPanel.activeInHierarchy) { m_DetailsPanel.SetActive(false); }
+    }
 
     private void OnEnable()
     {
@@ -42,7 +56,6 @@ public class LevelSelectController : MonoBehaviour
             //lerp position
             float lerpAmount = Mathf.Clamp((Time.time - m_TransitionStartTime), 0, m_TransitionStartTime + m_TransitionTotalTime); //getting time from start
             float normalizedLerpAmount = DeanUtils.Map(lerpAmount, 0, m_TransitionTotalTime, 0, 1);
-            Debug.Log(normalizedLerpAmount);
 
             //Vector3 newPos = Vector3.Lerp(m_CamStartPosition, m_CurrentSelectedLevel.GetCamTransform().position, normalizedLerpAmount);
 
@@ -67,8 +80,13 @@ public class LevelSelectController : MonoBehaviour
 
     private void OnLevelSelected(LevelSelect level)
     {
+        if (!m_DetailsPanel.activeInHierarchy) { m_DetailsPanel.SetActive(true); }
+
         //Lerp Camera to map location
         StartTransition(level);
+
+        //Populate fields for the level description
+        SetDescriptionFields(level);
     }
 
     private void StartTransition(LevelSelect level)
@@ -80,5 +98,13 @@ public class LevelSelectController : MonoBehaviour
 
         m_CamStartPosition = m_MainCamera.transform.position;
         m_CamStartRotation = m_MainCamera.transform.rotation;
+    }
+
+    private void SetDescriptionFields(LevelSelect level)
+    {
+        m_Title.text = level.m_Title;
+        m_WeaponImage.sprite = level.m_WeaponSprite;
+        m_WeaponDescription.text = level.m_WeaponDescription;
+        m_StageDescription.text = level.m_StageDescription;
     }
 }

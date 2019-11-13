@@ -6,8 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    [Header("General Settings")]
     public Transform m_CamTransform;
     public string m_LevelName;
+
+    //TODO make these private but setable, and make getter function for these lads
+    [Header("Level Details")]
+    public string m_Title;
+    public Sprite m_WeaponSprite;
+    [TextArea]
+    public string m_WeaponDescription;
+    [TextArea]
+    public string m_StageDescription;
 
     public Action<LevelSelect> m_OnSelected; //on select event that sends this object back through
     
