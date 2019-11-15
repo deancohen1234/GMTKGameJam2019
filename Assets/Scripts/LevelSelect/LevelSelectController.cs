@@ -23,6 +23,8 @@ public class LevelSelectController : MonoBehaviour
 
     private Vector3 m_CamStartPosition;
     private Quaternion m_CamStartRotation;
+    private Color m_PanelStartColor;
+
     private float m_TransitionStartTime;
     private bool m_IsTransitioning;
 
@@ -66,9 +68,11 @@ public class LevelSelectController : MonoBehaviour
 
             Vector3 newPos = Vector3.Slerp(m_CamStartPosition, m_CurrentSelectedLevel.GetCamTransform().position, amountToMovePerFrame);
             Quaternion newRot = Quaternion.Lerp(m_CamStartRotation, m_CurrentSelectedLevel.GetCamTransform().rotation, amountToMovePerFrame);
+            Color newColor = Color.Lerp(m_PanelStartColor, m_CurrentSelectedLevel.m_PanelColor, amountToMovePerFrame);
 
             m_MainCamera.transform.position = newPos;
             m_MainCamera.transform.rotation = newRot;
+            m_DetailsPanel.GetComponent<Image>().color = newColor;
 
             if (normalizedLerpAmount >= 1)
             {
@@ -98,6 +102,7 @@ public class LevelSelectController : MonoBehaviour
 
         m_CamStartPosition = m_MainCamera.transform.position;
         m_CamStartRotation = m_MainCamera.transform.rotation;
+        m_PanelStartColor = m_DetailsPanel.GetComponent<Image>().color;
     }
 
     private void SetDescriptionFields(LevelSelect level)

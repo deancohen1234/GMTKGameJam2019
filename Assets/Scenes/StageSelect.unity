@@ -354,6 +354,26 @@ PrefabInstance:
         in this ancient arena. It is said those who fall are granted the most noble
         and divine welcomes in The Beyond.
       objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.g
+      value: 0.8458963
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.b
+      value: 0.5896226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.a
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1494,6 +1514,26 @@ PrefabInstance:
       propertyPath: m_CamTransform
       value: 
       objectReference: {fileID: 2109957745}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.r
+      value: 0.3443396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.b
+      value: 0.56179047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.a
+      value: 0.16862746
+      objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2436,6 +2476,26 @@ PrefabInstance:
       value: The Festering Pits are the prime for arena for those who follow Slqth;sssjdsko.
         His vile liquids flow into a large monument made to his name. He is a bit
         of a dick and kinda stinky.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.r
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.g
+      value: 0.11569952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.b
+      value: 0.11569952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_PanelColor.a
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}

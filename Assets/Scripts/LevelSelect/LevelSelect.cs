@@ -12,6 +12,7 @@ public class LevelSelect : MonoBehaviour
 
     //TODO make these private but setable, and make getter function for these lads
     [Header("Level Details")]
+    public Color m_PanelColor = Color.white;
     public string m_Title;
     public Sprite m_WeaponSprite;
     [TextArea]
