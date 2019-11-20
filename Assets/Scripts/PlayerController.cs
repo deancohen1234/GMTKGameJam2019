@@ -7,7 +7,7 @@ using System;
 
 public enum PlayerType {Player1, Player2}
 public enum PlayerOrientation { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft}
-public enum PlayerSound { Damaged, Disarm, Death }
+public enum PlayerSound { Damaged, Disarm, Death, Attack }
 
 public struct InputStrings
 {
@@ -332,24 +332,40 @@ public class PlayerController : MonoBehaviour
         switch (playerSound)
         {
             case PlayerSound.Damaged:
-                PlayRandomSound(m_DamageSounds);
+                PlaySoundFromArray(m_DamageSounds);
                 break;
             case PlayerSound.Disarm:
-                PlayRandomSound(m_DisarmSounds);
+                PlaySoundFromArray(m_DisarmSounds);
                 break;
             case PlayerSound.Death:
-                PlayRandomSound(m_DeathSounds);
+                PlaySoundFromArray(m_DeathSounds);
+                break;
+            case PlayerSound.Attack:
+                //TODO make this an array
+                PlaySound(m_SwordSlash);
                 break;
         }
     }
 
-    private void PlayRandomSound(AudioClip[] allSoundClips)
+    private void PlaySoundFromArray(AudioClip[] allSoundClips)
     {
         int randomClipIndex = UnityEngine.Random.Range(0, allSoundClips.Length - 1);
         AudioClip clip = allSoundClips[randomClipIndex];
 
+        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+
+        m_AudioSource.clip = clip;
+        m_AudioSource.Play();
+
+        Debug.Log("Playing Sound");
     }
 
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
@@ -434,10 +450,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttackStartDecider()
     {
+        Debug.Log("OnAttack Start");
+
         if (m_EquippedWeapon != null)
         {
             m_PlayerAnimation.SetAttackStatus(true);
             m_EffectsController.StartVisualAttack();
+
+            PlaySound(m_EquippedWeapon.m_AttackSound);
         }
         else
         {

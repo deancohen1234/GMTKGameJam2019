@@ -12,7 +12,7 @@ public class SacrificeDagger : DivineWeapon
 
     public override void WeaponAttack(PlayerController player, Vector3 direction)
     {
-        //base.WeaponAttack(player, direction);
+        base.WeaponAttack(player, direction);
         Debug.Log("Overriding Weapon Attack");
 
         player.Dash(player, direction);

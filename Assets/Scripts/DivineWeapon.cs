@@ -14,14 +14,29 @@ public class DivineWeapon : MonoBehaviour
     [Header("Action Details")]
     public PlayerAction m_AttackAction;
 
-    protected PlayerController m_PlayerRef;
-    private float m_WeaponStartHeight;
+    [Header("Sounds")]
+    public AudioClip m_AttackSound;
 
+    protected PlayerController m_PlayerRef;
+
+    private AudioSource m_AudioSource;
+
+    private float m_WeaponStartHeight;
     private bool m_IsLerping;
     private float m_StartFallTime;
     private Vector3 m_DestinationPos;
     private Vector3 m_StartPos;
     private float m_Timer;
+
+    private void Awake()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -89,7 +104,7 @@ public class DivineWeapon : MonoBehaviour
 
     public virtual void OnWeaponAttackStart()
     {
-
+        m_PlayerRef.PlaySound(m_AttackSound);
     }
 
     public virtual void WeaponAttack(PlayerController player, Vector3 direction)
@@ -123,6 +138,8 @@ public class DivineWeapon : MonoBehaviour
         else
         {
             //player failed to disarm they now take damage
+
+            hitPlayer.PlaySoundEffect(PlayerSound.Damaged);
 
             HealthComponent h = hitPlayer.GetHealthComponent();
             h.DealDamage(100);

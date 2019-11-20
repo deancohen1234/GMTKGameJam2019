@@ -346,9 +346,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 531b591d3ec3e85438a43d29fc2901fa, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.289
+  m_Volume: 0.733
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -481,6 +481,7 @@ MonoBehaviour:
     CooldownTime: 3
     StartDelay: 3
     ActionLength: 6
+  m_AttackSound: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
 --- !u!1 &110526845
 GameObject:
   m_ObjectHideFlags: 0
