@@ -11097,6 +11097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48076a1a64cd024899c61a81fd5bd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SystemInput: {fileID: 11400000, guid: 5a8714dccaded104f941e88d41b5053a, type: 2}
+  m_ArcadeMode: 1
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0

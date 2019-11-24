@@ -47,12 +47,14 @@ public class InputReader : MonoBehaviour
 
         m_OnInputPressedOutput = p1_input.Direction.ToString() + "\n" + p2_input.Direction.ToString();
 
+        //m_OnInputPressedOutput = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_DashButton).ToString();
+
     }
 
     private ArcadeInput GetArcadeInput(bool isPlayerOne)
     {
-        string horizontalInputStr = isPlayerOne ? "Arcade_P1_LR" : "Arcade_P2_LR";
-        string verticalInputStr = isPlayerOne ? "Arcade_P1_UD" : "Arcade_P2_UD";
+        string horizontalInputStr = isPlayerOne ? ApplicationSettings.m_GlobalInput.P1_HorizonalAxis : ApplicationSettings.m_GlobalInput.P2_HorizonalAxis;
+        string verticalInputStr = isPlayerOne ? ApplicationSettings.m_GlobalInput.P1_VerticalAxis : ApplicationSettings.m_GlobalInput.P2_VerticalAxis;
 
         int horizonatalInput = (int)Input.GetAxis(horizontalInputStr);
         int verticalInput = (int)Input.GetAxis(verticalInputStr);

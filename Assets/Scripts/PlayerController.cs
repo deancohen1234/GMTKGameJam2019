@@ -104,24 +104,60 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
 
-        var gamepads = Gamepad.all;
+
         Vector2 input = Vector2.zero;
+        bool LTriggerPressed = false;
+        bool RTriggerPressed = false;
 
-        if (gamepads.Count < 2)
+        if (ApplicationSettings.m_GlobalInput.UsingArcadeControls)
         {
-            Debug.LogError("Less than two inputs found");
-            //return;
+            if (m_PlayerNum == PlayerType.Player1)
+            {
+                input.x = Input.GetAxis(ApplicationSettings.m_GlobalInput.P1_HorizonalAxis);
+                input.y = Input.GetAxis(ApplicationSettings.m_GlobalInput.P1_VerticalAxis);
+
+                LTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_DashButton);
+                RTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ActionButton);
+            }
+            else
+            {
+                input.x = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_HorizonalAxis);
+                input.y = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_VerticalAxis);
+
+                LTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_DashButton);
+                RTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_ActionButton);
+            }
+
+            input.Normalize(); //normalize input for arcade values and any weird values
         }
 
-        if (m_PlayerNum == PlayerType.Player1)
-        {
-            input = gamepads[0].leftStick.ReadValue();
-        }
         else
         {
-            input = gamepads[1].leftStick.ReadValue();
+            var gamepads = Gamepad.all;
+
+            if (gamepads.Count < 2)
+            {
+                Debug.LogError("Less than two inputs found");
+                return;
+            }
+
+            if (m_PlayerNum == PlayerType.Player1)
+            {
+                input = gamepads[0].leftStick.ReadValue();
+
+                LTriggerPressed = gamepads[0].leftTrigger.isPressed;
+                RTriggerPressed = gamepads[0].rightTrigger.isPressed;
+            }
+            else
+            {
+                input = gamepads[1].leftStick.ReadValue();
+
+                LTriggerPressed = gamepads[1].leftTrigger.isPressed;
+                RTriggerPressed = gamepads[1].rightTrigger.isPressed;
+            }
         }
 
         float x = input.x;
@@ -136,19 +172,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.CheckActionCompleteness(x, y);
         m_AttackAction.CheckActionCompleteness(x, y);
 
-        bool LTriggerPressed = false;
-        bool RTriggerPressed = false;
-        if (m_PlayerNum == PlayerType.Player1)
-        {
-            LTriggerPressed = gamepads[0].leftTrigger.isPressed;
-            RTriggerPressed = gamepads[0].rightTrigger.isPressed;
-        }
-        else
-        {
-            LTriggerPressed = gamepads[1].leftTrigger.isPressed;
-            RTriggerPressed = gamepads[1].rightTrigger.isPressed;
-        }
-
+        
         if (LTriggerPressed && m_DashAction.IsAvailable)
         {
             m_DashAction.ExecuteAction();
