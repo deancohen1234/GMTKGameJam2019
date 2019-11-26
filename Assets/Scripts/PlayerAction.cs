@@ -18,8 +18,9 @@ public class PlayerAction
     public Action OnActionEnd;
     public Action<PlayerController, Vector3> ActionHandler; //holds references to other scripts that actually do action like dash and attack
 
+    protected int StartingFrame;
+
     private PlayerController m_ControllingPlayer;
-    private int StartingFrame;
 
     //called when weapon is picked up, and when initializing player actions
     public void SetPlayerReference(PlayerController player)
@@ -57,7 +58,7 @@ public class PlayerAction
     }
 
     //called every frame once action starts
-    public void CheckActionCompleteness(float xInput, float yInput)
+    public virtual void CheckActionCompleteness(float xInput, float yInput)
     {
         //if dash has been started
         if (IsExecuting)

@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private HeadLauncher m_HeadLauncher;
 
     [Header("Actions")]
-    public PlayerAction m_DashAction;
+    public DashAction m_DashAction;
     public PlayerAction m_DisarmAction;
     //public PlayerAction m_DefaultDisarmAction;
 
@@ -204,6 +204,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionStart += OnDashStart;
         m_DashAction.OnActionEnd += OnDashEnd;
         m_DashAction.ActionHandler += Dash;
+        m_DashAction.OnDashDisarmEnd += OnDashDisarmEnd; 
 
         m_DisarmAction.ActionHandler += Disarm;
         m_DisarmAction.OnActionStart += OnAttackStartDecider;
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionStart -= OnDashStart;
         m_DashAction.OnActionEnd -= OnDashEnd;
         m_DashAction.ActionHandler -= Dash;
+        m_DashAction.OnDashDisarmEnd -= OnDashDisarmEnd;
 
         m_DisarmAction.ActionHandler -= Disarm;
         m_DisarmAction.OnActionStart -= OnAttackStartDecider;
@@ -582,9 +584,14 @@ public class PlayerController : MonoBehaviour
     private void OnDashEnd()
     {
         m_PlayerAnimation.SetDashStatus(false);
-        m_AttackHitboxController.DisableAllHitBoxes();
+        //m_AttackHitboxController.DisableAllHitBoxes();
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private void OnDashDisarmEnd()
+    {
+        m_AttackHitboxController.DisableAllHitBoxes();
     }
 
     private void OnDisarmStart()
