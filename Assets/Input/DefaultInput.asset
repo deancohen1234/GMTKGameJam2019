@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54a2a9e61aa83346b137c8d2bca6ede, type: 3}
+  m_Name: DefaultInput
+  m_EditorClassIdentifier: 
+  Normal_P1_HorizonalAxis: P1_Horizontal
+  Normal_P1_VerticalAxis: P1_Vertical
+  Normal_P1_ActionButton: P1_RTrigger
+  Normal_P1_DashButton: P1_LTrigger
+  Normal_P1_ConfirmButton: P1_AButton
+  Normal_P2_HorizonalAxis: P2_Horizontal
+  Normal_P2_VerticalAxis: P2_Vertical
+  Normal_P2_ActionButton: P2_RTrigger
+  Normal_P2_DashButton: P2_LTrigger
+  Normal_P2_ConfirmButton: P2_AButton
+  Arcade_P1_HorizonalAxis: Arcade_P1_LR
+  Arcade_P1_VerticalAxis: Arcade_P1_UD
+  Arcade_P1_ActionButton: Arcade_P1_Red
+  Arcade_P1_DashButton: Arcade_P1_Black
+  Arcade_P1_ConfirmButton: 
+  Arcade_P2_HorizonalAxis: Arcade_P2_LR
+  Arcade_P2_VerticalAxis: Arcade_P2_UD
+  Arcade_P2_ActionButton: Arcade_P2_Red
+  Arcade_P2_DashButton: Arcade_P2_Black
+  Arcade_P2_ConfirmButton: 
