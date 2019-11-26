@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public PlayerType m_PlayerNum;
 
     [Header("Move Properties")]
-    public float m_MoveSpeed = 5.0f;
+    public float m_DefaultMoveSpeed = 2.1f;
 
     [Header("Dash Properties")]
     public float m_DashSpeed = 15.0f;
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     private bool m_IsDisarming;
 
     private PlayerOrientation m_PlayerOrientation;
+
+    private float m_MoveSpeed; //move speed that can be default or weapon effected;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
@@ -91,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
         m_DashAction.SetPlayerReference(this);
         m_DisarmAction.SetPlayerReference(this);
+
+        m_MoveSpeed = m_DefaultMoveSpeed;
     }
     // Start is called before the first frame update
     void Start()
@@ -328,6 +332,9 @@ public class PlayerController : MonoBehaviour
 
             m_EquippedWeapon.OnWeaponPickup(this);
             m_AttackAction = m_EquippedWeapon.m_AttackAction;
+
+            //set player move speed to weapon move speed
+            m_MoveSpeed = m_MoveSpeed * m_EquippedWeapon.m_PlayerSpeedModifier;
         }
     }
 
@@ -347,6 +354,9 @@ public class PlayerController : MonoBehaviour
             m_AttackAction = m_DisarmAction; //when losing weapon, attack action is now disarming
 
             m_AttackAction.IsExecuting = false;
+
+            //when losing weapon, set move speed back to default
+            m_MoveSpeed = m_DefaultMoveSpeed;
 
         }
 
