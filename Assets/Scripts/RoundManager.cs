@@ -32,8 +32,12 @@ public class RoundManager : MonoBehaviour
 
     private bool m_RoundComplete;
 
-    private int m_Player1RoundWins;
-    private int m_Player2RoundWins;
+    private int m_PlayerOneRoundWins;
+    private int m_PlayerTwoRoundWins;
+
+    private bool m_IsPlayerOneReady;
+    private bool m_IsPlayerTwoReady;
+    private bool m_GameIsStarted;
 
     private bool m_IsGameComplete;
     private bool m_DEBUG_RestartRound;
@@ -47,11 +51,16 @@ public class RoundManager : MonoBehaviour
     {
         InitializeGame();
 
-        StartRound();
+        //StartRound();
     }
 
     private void Update()
     {
+        //if game is not started, listen for both players being ready, and if so then start game
+        if (!m_GameIsStarted)
+        {
+            CheckPlayerReadiness();
+        }
 
         if (m_IsGameComplete)
         {
@@ -86,28 +95,28 @@ public class RoundManager : MonoBehaviour
         {
             //PlayerTwo wins
             m_VictoryText.text = "Player Two Takes a Round";
-            m_Player2RoundWins++;
+            m_PlayerTwoRoundWins++;
         }
         else
         {
             //PlayerOne wins
             m_VictoryText.text = "Player One Takes a Round";
-            m_Player1RoundWins++;
+            m_PlayerOneRoundWins++;
         }
 
-        m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
+        m_UIHandler.UpdateRoundScore(m_PlayerOneRoundWins, m_PlayerTwoRoundWins);
 
         m_PlayerOne.m_OnDeathComplete -= OnRoundComplete;
         m_PlayerTwo.m_OnDeathComplete -= OnRoundComplete;
 
 
-        if (m_Player1RoundWins >= m_RoundsNeededToWin)
+        if (m_PlayerOneRoundWins >= m_RoundsNeededToWin)
         {
             //End Game
             OnMatchComplete(true);
             return;
         }
-        else if (m_Player2RoundWins >= m_RoundsNeededToWin)
+        else if (m_PlayerTwoRoundWins >= m_RoundsNeededToWin)
         {
             OnMatchComplete(false);
             return;
@@ -115,6 +124,47 @@ public class RoundManager : MonoBehaviour
 
         //poof away player and then start new round
         PoofAwayLeftoverPlayer();
+    }
+
+    private void CheckPlayerReadiness()
+    {
+        bool playerOnePressedConfirm = false;
+        bool playerTwoPressedConfirm = false;
+
+        if (ApplicationSettings.m_GlobalInput.UsingArcadeControls)
+        {
+            playerOnePressedConfirm = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ConfirmButton);
+            playerTwoPressedConfirm = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_ConfirmButton);
+        }
+        else
+        {
+            var gamePads = Gamepad.all;
+
+            if (gamePads.Count >= 2)
+            {
+                playerOnePressedConfirm = gamePads[0].aButton.isPressed;
+                playerTwoPressedConfirm = gamePads[1].aButton.isPressed;
+            }
+        }
+
+        if (playerOnePressedConfirm)
+        {
+            m_IsPlayerOneReady = true;
+            m_UIHandler.SetPlayerReadyStatus(true, true);
+        }
+
+        if (playerTwoPressedConfirm)
+        {
+            m_IsPlayerTwoReady = true;
+            m_UIHandler.SetPlayerReadyStatus(false, true);
+        }
+
+        if (m_IsPlayerOneReady && m_IsPlayerTwoReady)
+        {
+            //start game
+            m_GameIsStarted = true;
+            StartRound();
+        }
     }
 
     private void PoofAwayLeftoverPlayer()
@@ -168,9 +218,16 @@ public class RoundManager : MonoBehaviour
     private void InitializeGame()
     {
         m_IsGameComplete = false;
+        m_GameIsStarted = false;
+
+        m_IsPlayerOneReady = false;
+        m_IsPlayerTwoReady = false;
+
         m_VictoryCanvas.SetActive(false);
 
-        m_UIHandler.UpdateRoundScore(m_Player1RoundWins, m_Player2RoundWins);
+        m_UIHandler.UpdateRoundScore(m_PlayerOneRoundWins, m_PlayerTwoRoundWins);
+        m_UIHandler.SetPlayerReadyStatus(true, false);
+        m_UIHandler.SetPlayerReadyStatus(false, false);
 
         m_EvilMan.m_OnRoundSlamFinished += OnSlamFinished;
     }
@@ -194,7 +251,7 @@ public class RoundManager : MonoBehaviour
         m_PlayerOne.GetEffectsController().ActivatePoofSystem();
         m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
 
-        m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_Player1RoundWins + m_Player2RoundWins + 1)); //+1 for 0 based
+        m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_PlayerOneRoundWins + m_PlayerTwoRoundWins + 1)); //+1 for 0 based
         m_EvilMan.SetPlayers(m_PlayerOne, m_PlayerTwo);
 
         m_MegaWeapon.gameObject.SetActive(false); //prevents a double pickup of the weapon
