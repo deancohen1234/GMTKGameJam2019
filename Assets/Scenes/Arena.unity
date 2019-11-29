@@ -11381,6 +11381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abd870c111ef08438e6ce99837e4925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_P1Ready: {fileID: 1004059541}
+  m_P2Ready: {fileID: 999824887}
   m_P1_Health_1: {fileID: 1658458443}
   m_P1_Health_2: {fileID: 1243652158}
   m_P1_Health_3: {fileID: 760603310}
