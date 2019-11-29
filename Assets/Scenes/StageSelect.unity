@@ -477,7 +477,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4100416900782682990}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1966270885}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61086aace581a104d9f8fd4d1b8bfba4, type: 3}
@@ -1018,10 +1018,10 @@ RectTransform:
   m_Father: {fileID: 1960238272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -459, y: 0}
-  m_SizeDelta: {x: -992.9, y: -103.3}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 160.5, y: 0}
+  m_SizeDelta: {x: 246.09998, y: 448.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262385020
 MonoBehaviour:
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1966270885}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1580630546
@@ -2083,6 +2083,12 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &1966270885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4100416901003836070, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4100416900782682990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011134559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2507,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 2.8399963
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836069, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836069, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836069, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836069, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70e515130429a9d4fbf46cdf5c84d7eb, type: 3}
