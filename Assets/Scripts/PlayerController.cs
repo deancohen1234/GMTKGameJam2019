@@ -140,11 +140,12 @@ public class PlayerController : MonoBehaviour
 
         else
         {
+            Debug.Log(Joystick.all.Count);
             var gamepads = Gamepad.all;
 
             if (gamepads.Count < 2)
             {
-                Debug.LogError("Less than two inputs found");
+                Debug.LogError("Less than two inputs found\nInputs found: " + gamepads.Count);
                 return;
             }
 

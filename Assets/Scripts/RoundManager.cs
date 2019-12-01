@@ -51,16 +51,16 @@ public class RoundManager : MonoBehaviour
     {
         InitializeGame();
 
-        //StartRound();
+        StartRound();
     }
 
     private void Update()
     {
         //if game is not started, listen for both players being ready, and if so then start game
-        if (!m_GameIsStarted)
+        /*if (!m_GameIsStarted)
         {
             CheckPlayerReadiness();
-        }
+        }*/
 
         if (m_IsGameComplete)
         {
