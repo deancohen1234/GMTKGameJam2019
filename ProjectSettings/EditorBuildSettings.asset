@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ArcadeIdleScreen.unity
+    guid: b036eb067a27d6e458999dc4fb482357
+  - enabled: 1
     path: Assets/Scenes/StartScreen.unity
     guid: 549be4c4356fb394a891c98c2631a3a6
+  - enabled: 1
+    path: Assets/Scenes/StageSelect.unity
+    guid: 5a55d6b5a6f6b2e4cbc152784ef98b3c
   - enabled: 1
     path: Assets/Scenes/Arena.unity
     guid: 87b21f77dcd97ef4aa7406e04e99eb15

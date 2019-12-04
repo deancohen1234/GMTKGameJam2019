@@ -15,6 +15,7 @@ public class LevelSelectController : MonoBehaviour
     public Image m_WeaponImage;
     public Text m_WeaponDescription;
     public Text m_StageDescription;
+    public Button m_StartButton;
 
     [Header("Camera Move Settings")]
     public float m_TransitionTotalTime = 1.5f; //in seconds
@@ -111,5 +112,13 @@ public class LevelSelectController : MonoBehaviour
         m_WeaponImage.sprite = level.m_WeaponSprite;
         m_WeaponDescription.text = level.m_WeaponDescription;
         m_StageDescription.text = level.m_StageDescription;
+
+        m_StartButton.onClick.RemoveAllListeners();
+        m_StartButton.onClick.AddListener(delegate { OnDescriptionButtonSelected(level); });
+    }
+
+    private void OnDescriptionButtonSelected(LevelSelect level)
+    {
+        level.LoadLevel();
     }
 }

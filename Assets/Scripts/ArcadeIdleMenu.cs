@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ArcadeIdleMenu : MonoBehaviour
 {
     public Image m_P1_Ready;
     public Image m_P2_Ready;
+
+    public string m_StageSelectName = "StageSelect";
 
     private bool m_GameIsReadyToStart;
 
@@ -30,6 +33,7 @@ public class ArcadeIdleMenu : MonoBehaviour
             if (Input.GetButtonDown("StartGame"))
             {
                 Debug.Log("Starting Game...");
+                SceneManager.LoadScene(m_StageSelectName);
             }
         }
 
@@ -41,11 +45,15 @@ public class ArcadeIdleMenu : MonoBehaviour
         {
             Debug.Log("P1 Entered Coin");
             m_P1EnteredCoin = true;
+
+            m_P1_Ready.gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("P2 Entered Coin");
             m_P2EnteredCoin = true;
+
+            m_P2_Ready.gameObject.SetActive(true);
         }
 
         m_GameIsReadyToStart = CheckForGameReady();

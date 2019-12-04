@@ -963,7 +963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &601964545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11261,6 +11261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_P1_Ready: {fileID: 1391152232}
   m_P2_Ready: {fileID: 601964546}
+  m_StageSelectName: StageSelect
 --- !u!4 &840769279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 6082a75a29168ec418a41d10d02d3a3c,
@@ -18735,7 +18736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1391152231
 RectTransform:
   m_ObjectHideFlags: 0
