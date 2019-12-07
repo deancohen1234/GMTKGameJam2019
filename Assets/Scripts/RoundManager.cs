@@ -64,7 +64,7 @@ public class RoundManager : MonoBehaviour
 
         if (m_IsGameComplete)
         {
-            var gamePads = Gamepad.all;
+            /*var gamePads = Gamepad.all;
 
             for (int i = 0; i < gamePads.Count; i++)
             {
@@ -73,7 +73,7 @@ public class RoundManager : MonoBehaviour
                     //restart scene
                     SceneManager.LoadScene("Arena");
                 }
-            }
+            }*/
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -208,6 +208,13 @@ public class RoundManager : MonoBehaviour
         }
 
         m_IsGameComplete = true;
+
+        Invoke("LoadArcadeIdleScreen", 3.0f); //after game is complete, load back to start screen
+    }
+
+    private void LoadArcadeIdleScreen()
+    {
+        SceneManager.LoadScene("ArcadeIdleScreen");
     }
 
     private bool IsMatchComplete()
