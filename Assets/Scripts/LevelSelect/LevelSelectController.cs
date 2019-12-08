@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LevelSelectController : MonoBehaviour
 {
@@ -115,6 +116,8 @@ public class LevelSelectController : MonoBehaviour
 
         m_StartButton.onClick.RemoveAllListeners();
         m_StartButton.onClick.AddListener(delegate { OnDescriptionButtonSelected(level); });
+
+        EventSystem.current.SetSelectedGameObject(m_StartButton.gameObject);
     }
 
     private void OnDescriptionButtonSelected(LevelSelect level)
