@@ -1,6 +1,7 @@
 ﻿Shader "Custom/DistortionFlow" {
 	Properties{
 		_Color("Color", Color) = (1,1,1,1)
+		_EffectStength("Alpha Override", Range(0, 1)) = 1
 		_BrightnessMul("Brightness Boost", Float) = 1
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		[NoScaleOffset] _FlowMap ("Flow (RG, A noise)", 2D) = "black" {}
@@ -27,7 +28,7 @@
 		#include "Flow.cginc"
 
 		sampler2D _MainTex, _FlowMap, _DerivHeightMap;
-		float _UJump, _VJump, _Tiling, _Speed, _FlowStrength, _FlowOffset, _BrightnessMul;
+		float _UJump, _VJump, _Tiling, _Speed, _FlowStrength, _FlowOffset, _BrightnessMul, _EffectStength;
 		float _HeightScale, _HeightScaleModulated;
 
 		struct Input {
@@ -70,13 +71,17 @@
 			float3 dhB =
 				UnpackDerivativeHeight(tex2D(_DerivHeightMap, uvwB.xy)) *
 				(uvwB.z * finalHeightScale);
-			o.Normal = normalize(float3(-(dhA.xy + dhB.xy), 1));
+			//o.Normal = normalize(float3(-(dhA.xy + dhB.xy), 1));
+			float3 waterNormals = normalize(float3(-(dhA.xy + dhB.xy), 1));
+			o.Normal = (float3)lerp(waterNormals, float3(1, 1, 1), _EffectStength);
 
 			fixed4 texA = tex2D(_MainTex, uvwA.xy) * uvwA.z;
 			fixed4 texB = tex2D(_MainTex, uvwB.xy) * uvwB.z;
 
 			fixed4 c = (texA + texB) * _Color * _BrightnessMul;
-			o.Albedo = c.rgb;
+
+			fixed4 finalColor = lerp(c, fixed4(1, 1, 1, 1) * _Color * _BrightnessMul, _EffectStength);
+			o.Albedo = finalColor;
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
 			o.Alpha = c.a;
