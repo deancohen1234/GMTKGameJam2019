@@ -74,4 +74,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< Updated upstream
     - _EmissionColor: {r: 4.8251452, g: 0.7731434, b: 0, a: 1.4512529}
+=======
+    - _EmissionColor: {r: 4.9625645, g: 0.79144067, b: 0, a: 1.4871585}
+>>>>>>> Stashed changes
