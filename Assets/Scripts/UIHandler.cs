@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    [Header("Player Ready Icons")]
+    public Image m_P1Ready;
+    public Image m_P2Ready;
+
     [Header("Player One Health")]
     public Image m_P1_Health_1;
     public Image m_P1_Health_2;
@@ -171,6 +175,18 @@ public class UIHandler : MonoBehaviour
             healthBar_3.gameObject.SetActive(true);
             healthBar_4.gameObject.SetActive(true);
             healthBar_5.gameObject.SetActive(false);
+        }
+    }
+
+    public void SetPlayerReadyStatus(bool isPlayerOne, bool status)
+    {
+        if (isPlayerOne)
+        {
+            m_P1Ready.gameObject.SetActive(status);
+        }
+        else
+        {
+            m_P2Ready.gameObject.SetActive(status);
         }
     }
 

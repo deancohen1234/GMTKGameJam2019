@@ -10,6 +10,8 @@ public class DivineWeapon : MonoBehaviour
     public Vector3 m_Offset;
 
     public float m_FallSpeed = 0.3f;
+    [Header("Player Modifiers")]
+    public float m_PlayerSpeedModifier = 1.0f; // will be multiplyed by player default speed
 
     [Header("Action Details")]
     public PlayerAction m_AttackAction;

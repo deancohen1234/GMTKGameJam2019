@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public PlayerType m_PlayerNum;
 
     [Header("Move Properties")]
-    public float m_MoveSpeed = 5.0f;
+    public float m_DefaultMoveSpeed = 2.1f;
 
     [Header("Dash Properties")]
     public float m_DashSpeed = 15.0f;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private HeadLauncher m_HeadLauncher;
 
     [Header("Actions")]
-    public PlayerAction m_DashAction;
+    public DashAction m_DashAction;
     public PlayerAction m_DisarmAction;
     //public PlayerAction m_DefaultDisarmAction;
 
@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     private bool m_IsDisarming;
 
     private PlayerOrientation m_PlayerOrientation;
+
+    private float m_MoveSpeed; //move speed that can be default or weapon effected;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
@@ -91,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
         m_DashAction.SetPlayerReference(this);
         m_DisarmAction.SetPlayerReference(this);
+
+        m_MoveSpeed = m_DefaultMoveSpeed;
     }
     // Start is called before the first frame update
     void Start()
@@ -136,11 +140,12 @@ public class PlayerController : MonoBehaviour
 
         else
         {
+            Debug.Log(Joystick.all.Count);
             var gamepads = Gamepad.all;
 
             if (gamepads.Count < 2)
             {
-                Debug.LogError("Less than two inputs found");
+                Debug.LogError("Less than two inputs found\nInputs found: " + gamepads.Count);
                 return;
             }
 
@@ -204,6 +209,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionStart += OnDashStart;
         m_DashAction.OnActionEnd += OnDashEnd;
         m_DashAction.ActionHandler += Dash;
+        m_DashAction.OnDashDisarmEnd += OnDashDisarmEnd; 
 
         m_DisarmAction.ActionHandler += Disarm;
         m_DisarmAction.OnActionStart += OnAttackStartDecider;
@@ -217,6 +223,7 @@ public class PlayerController : MonoBehaviour
         m_DashAction.OnActionStart -= OnDashStart;
         m_DashAction.OnActionEnd -= OnDashEnd;
         m_DashAction.ActionHandler -= Dash;
+        m_DashAction.OnDashDisarmEnd -= OnDashDisarmEnd;
 
         m_DisarmAction.ActionHandler -= Disarm;
         m_DisarmAction.OnActionStart -= OnAttackStartDecider;
@@ -326,6 +333,9 @@ public class PlayerController : MonoBehaviour
 
             m_EquippedWeapon.OnWeaponPickup(this);
             m_AttackAction = m_EquippedWeapon.m_AttackAction;
+
+            //set player move speed to weapon move speed
+            m_MoveSpeed = m_MoveSpeed * m_EquippedWeapon.m_PlayerSpeedModifier;
         }
     }
 
@@ -345,6 +355,9 @@ public class PlayerController : MonoBehaviour
             m_AttackAction = m_DisarmAction; //when losing weapon, attack action is now disarming
 
             m_AttackAction.IsExecuting = false;
+
+            //when losing weapon, set move speed back to default
+            m_MoveSpeed = m_DefaultMoveSpeed;
 
         }
 
@@ -582,9 +595,14 @@ public class PlayerController : MonoBehaviour
     private void OnDashEnd()
     {
         m_PlayerAnimation.SetDashStatus(false);
-        m_AttackHitboxController.DisableAllHitBoxes();
+        //m_AttackHitboxController.DisableAllHitBoxes();
         //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private void OnDashDisarmEnd()
+    {
+        m_AttackHitboxController.DisableAllHitBoxes();
     }
 
     private void OnDisarmStart()
