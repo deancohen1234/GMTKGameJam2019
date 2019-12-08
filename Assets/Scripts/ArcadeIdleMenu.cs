@@ -25,15 +25,15 @@ public class ArcadeIdleMenu : MonoBehaviour
         Debug.Log("Coin Input: " + GetCoinInsertedInput());
         Debug.Log("Start Game Input: " + GetGameStartInput());
 
-        /*if (Input.GetButtonDown("P1_CoinSlot"))
+        if (GetCoinInsertedInput())
         {
             OnCoinEntered();
         }
 
-        if (Input.GetButtonDown("P2_CoinSlot"))
+        if (GetCoinInsertedInput())
         {
             OnCoinEntered();
-        }*/
+        }
 
         if (Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ActionButton))
         {
@@ -47,7 +47,7 @@ public class ArcadeIdleMenu : MonoBehaviour
 
         if (m_GameIsReadyToStart)
         {
-            if (Input.GetButtonDown("StartGame"))
+            if (GetGameStartInput())
             {
                 Debug.Log("Starting Game...");
                 SceneManager.LoadScene(m_StageSelectName);
@@ -89,10 +89,8 @@ public class ArcadeIdleMenu : MonoBehaviour
     {
         bool check = false;
 
-        float p2CoinInput = Input.GetAxis("P2_CoinSlot");
-        float p1_startGameInput = Input.GetAxis("P1_StartGame_Input");
-
-        Debug.Log("In1: " + p2CoinInput + "\nIn2: " + p1_startGameInput);
+        float p2CoinInput = Input.GetAxis("ArcadeSpecialInputOne");
+        float p1_startGameInput = Input.GetAxis("ArcadeSpecialInputTwo");
 
         p2CoinInput = Mathf.Round(p2CoinInput);
         p1_startGameInput = Mathf.Round(p1_startGameInput);
@@ -114,7 +112,7 @@ public class ArcadeIdleMenu : MonoBehaviour
     {
         bool check = false;
 
-        float p1_startGameInput = Input.GetAxis("P2_CoinSlot");
+        float p1_startGameInput = Input.GetAxis("ArcadeSpecialInputOne");
         p1_startGameInput = Mathf.Round(p1_startGameInput);
 
         if (DeanUtils.IsAlmostEqual(p1_startGameInput, 1f, 0.01f))
