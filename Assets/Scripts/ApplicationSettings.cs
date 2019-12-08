@@ -86,6 +86,7 @@ public class ApplicationSettings : MonoBehaviour
 
         m_GlobalInput.UsingArcadeControls = gameInput.UsingArcadeControls;
     }
+
 }
 
 public struct GameInput
