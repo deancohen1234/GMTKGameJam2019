@@ -131,21 +131,9 @@ public class RoundManager : MonoBehaviour
         bool playerOnePressedConfirm = false;
         bool playerTwoPressedConfirm = false;
 
-        if (ApplicationSettings.m_GlobalInput.UsingArcadeControls)
-        {
-            playerOnePressedConfirm = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ConfirmButton);
-            playerTwoPressedConfirm = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_ConfirmButton);
-        }
-        else
-        {
-            var gamePads = Gamepad.all;
 
-            if (gamePads.Count >= 2)
-            {
-                playerOnePressedConfirm = gamePads[0].aButton.isPressed;
-                playerTwoPressedConfirm = gamePads[1].aButton.isPressed;
-            }
-        }
+        playerOnePressedConfirm = ApplicationSettings.m_Singleton.m_InputManager.IsConfirmButtonPressedDown(true);
+        playerTwoPressedConfirm = ApplicationSettings.m_Singleton.m_InputManager.IsConfirmButtonPressedDown(false);
 
         if (playerOnePressedConfirm)
         {

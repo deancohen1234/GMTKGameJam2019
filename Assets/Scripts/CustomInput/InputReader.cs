@@ -6,16 +6,65 @@ using UnityEngine.InputSystem;
 public class InputReader : MonoBehaviour
 {
     private string m_OnInputPressedOutput;
+
+    private Joystick m_P1_Joystick;
+    private Joystick m_P2_Joystick;
     // Start is called before the first frame update
     void Start()
     {
+        //fill joystick objects
+        var joysticks = Joystick.all;
+        Debug.Log(joysticks.Count);
 
+        if (joysticks.Count > 0)
+        {
+            for (int i = 0; i < joysticks.Count; i++)
+            {
+                if (joysticks[i].GetType() == typeof(Joystick))
+                {
+                    Joystick joystick = (Joystick)joysticks[i];
+
+                    Debug.Log(joystick.valueSizeInBytes);
+                    if (joystick.valueSizeInBytes > 5)
+                    {
+                        //arcade controller is greater than 5 bytes (40 bits)
+                        continue;
+                    }
+
+                    if (m_P1_Joystick == null)
+                    {
+                        m_P1_Joystick = joystick;
+                        continue;
+                    }
+
+                    if (m_P1_Joystick.Equals(joystick))
+                    {
+                        //we are referencing P1 Joystick and it already has been filled
+                        continue;
+                    }
+                    else if (m_P2_Joystick == null)
+                    {
+                        m_P2_Joystick = joystick;
+                    }
+                    else
+                    {
+                        //p1 and p2 joysticks are filled and there is an extra joystick
+                    }
+                    
+                }
+            }
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        if (m_P1_Joystick != null && m_P2_Joystick != null)
+        {
+            m_OnInputPressedOutput = "P1: " + m_P1_Joystick.stick.ReadValue() + "\nP2: " + m_P2_Joystick.stick.ReadValue();
+        }
+
         /*
         if (Input.GetButton("Arcade_P1_LR"))
         {
@@ -42,15 +91,13 @@ public class InputReader : MonoBehaviour
             m_OnInputPressedOutput = "Nada...";
         }*/
 
-        ArcadeInput p1_input = GetArcadeInput(true);
-        ArcadeInput p2_input = GetArcadeInput(false);
-
-        m_OnInputPressedOutput = p1_input.Direction.ToString() + "\n" + p2_input.Direction.ToString();
+        //m_OnInputPressedOutput = p1_input.Direction.ToString() + "\n" + p2_input.Direction.ToString();
 
         //m_OnInputPressedOutput = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_DashButton).ToString();
 
     }
 
+    /*
     private ArcadeInput GetArcadeInput(bool isPlayerOne)
     {
         string horizontalInputStr = isPlayerOne ? ApplicationSettings.m_GlobalInput.P1_HorizonalAxis : ApplicationSettings.m_GlobalInput.P2_HorizonalAxis;
@@ -67,7 +114,7 @@ public class InputReader : MonoBehaviour
         input.Direction = direction;
 
         return input;
-    }
+    }*/
 
     private Vector2 GetArcadeInputDirection(int horizontalInput, int verticalInput)
     {

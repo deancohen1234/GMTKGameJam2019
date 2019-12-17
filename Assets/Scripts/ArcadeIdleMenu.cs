@@ -35,12 +35,12 @@ public class ArcadeIdleMenu : MonoBehaviour
             OnCoinEntered();
         }
 
-        if (Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ActionButton))
+        if (ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(true))
         {
             OnPlayerReady(true);
         }
 
-        if (Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_ActionButton))
+        if (ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(false))
         {
             OnPlayerReady(false);
         }

@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using System;
 
 public enum PlayerType {Player1, Player2}
@@ -116,54 +114,22 @@ public class PlayerController : MonoBehaviour
         bool LTriggerPressed = false;
         bool RTriggerPressed = false;
 
-        if (ApplicationSettings.m_GlobalInput.UsingArcadeControls)
+        if (m_PlayerNum == PlayerType.Player1)
         {
-            if (m_PlayerNum == PlayerType.Player1)
-            {
-                input.x = Input.GetAxis(ApplicationSettings.m_GlobalInput.P1_HorizonalAxis);
-                input.y = Input.GetAxis(ApplicationSettings.m_GlobalInput.P1_VerticalAxis);
+            input = ApplicationSettings.m_Singleton.m_InputManager.GetStickValue(true);
 
-                LTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_DashButton);
-                RTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P1_ActionButton);
-            }
-            else
-            {
-                input.x = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_HorizonalAxis);
-                input.y = Input.GetAxis(ApplicationSettings.m_GlobalInput.P2_VerticalAxis);
-
-                LTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_DashButton);
-                RTriggerPressed = Input.GetButtonDown(ApplicationSettings.m_GlobalInput.P2_ActionButton);
-            }
-
-            input.Normalize(); //normalize input for arcade values and any weird values
+            LTriggerPressed = ApplicationSettings.m_Singleton.m_InputManager.IsDashButtonPressedDown(true);
+            RTriggerPressed = ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(true);
         }
-
         else
         {
-            Debug.Log(Joystick.all.Count);
-            var gamepads = Gamepad.all;
+            input = ApplicationSettings.m_Singleton.m_InputManager.GetStickValue(false);
 
-            if (gamepads.Count < 2)
-            {
-                Debug.LogError("Less than two inputs found\nInputs found: " + gamepads.Count);
-                return;
-            }
-
-            if (m_PlayerNum == PlayerType.Player1)
-            {
-                input = gamepads[0].leftStick.ReadValue();
-
-                LTriggerPressed = gamepads[0].leftTrigger.isPressed;
-                RTriggerPressed = gamepads[0].rightTrigger.isPressed;
-            }
-            else
-            {
-                input = gamepads[1].leftStick.ReadValue();
-
-                LTriggerPressed = gamepads[1].leftTrigger.isPressed;
-                RTriggerPressed = gamepads[1].rightTrigger.isPressed;
-            }
+            LTriggerPressed = ApplicationSettings.m_Singleton.m_InputManager.IsDashButtonPressedDown(false);
+            RTriggerPressed = ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(false);
         }
+
+        input.Normalize(); //normalize any potenially weird input data       
 
         float x = input.x;
         float y = input.y;
