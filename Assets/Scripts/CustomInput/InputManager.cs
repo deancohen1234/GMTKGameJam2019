@@ -22,14 +22,14 @@ public class InputManager : MonoBehaviour
             GetArcadeJoysticks(out p1Stick, out p2Stick);
 
             input.P1_Stick = p1Stick.stick;
-            input.P1_ActionButton = m_SystemInput.Arcade_P1_ActionButton;
-            input.P1_DashButton = m_SystemInput.Arcade_P1_DashButton;
-            input.P1_ConfirmButton = m_SystemInput.Arcade_P1_ConfirmButton;
+            input.P1_ActionButton = new GameButton(null, m_SystemInput.Arcade_P1_ActionButton, false);
+            input.P1_DashButton = new GameButton(null, m_SystemInput.Arcade_P1_DashButton, false);
+            input.P1_ConfirmButton = new GameButton(null, m_SystemInput.Arcade_P1_ConfirmButton, false);
 
             input.P2_Stick = p2Stick.stick;
-            input.P2_ActionButton = m_SystemInput.Arcade_P2_ActionButton;
-            input.P2_DashButton = m_SystemInput.Arcade_P2_DashButton;
-            input.P2_ConfirmButton = m_SystemInput.Arcade_P2_ConfirmButton;
+            input.P2_ActionButton = new GameButton(null, m_SystemInput.Arcade_P2_ActionButton, false);
+            input.P2_DashButton = new GameButton(null, m_SystemInput.Arcade_P2_DashButton, false);
+            input.P2_ConfirmButton = new GameButton(null, m_SystemInput.Arcade_P2_ConfirmButton, false);
         }
         else
         {
@@ -41,15 +41,17 @@ public class InputManager : MonoBehaviour
                 return;
             }
 
+            ButtonControl buttonControl = new ButtonControl();
+
             input.P1_Stick = allGamepads[0].leftStick;
-            input.P1_ActionButton = m_SystemInput.Normal_P1_ActionButton;
-            input.P1_DashButton = m_SystemInput.Normal_P1_DashButton;
-            input.P1_ConfirmButton = m_SystemInput.Normal_P1_ConfirmButton;
+            input.P1_ActionButton = new GameButton(allGamepads[0].rightTrigger, "", true);
+            input.P1_DashButton = new GameButton(allGamepads[0].leftTrigger, "", true);
+            input.P1_ConfirmButton = new GameButton(allGamepads[0].aButton, "", true);
 
             input.P2_Stick = allGamepads[1].leftStick;
-            input.P2_ActionButton = m_SystemInput.Normal_P2_ActionButton;
-            input.P2_DashButton = m_SystemInput.Normal_P2_DashButton;
-            input.P2_ConfirmButton = m_SystemInput.Normal_P2_ConfirmButton;
+            input.P2_ActionButton = new GameButton(allGamepads[1].rightTrigger, "", true);
+            input.P2_DashButton = new GameButton(allGamepads[1].leftTrigger, "", true);
+            input.P2_ConfirmButton = new GameButton(allGamepads[1].aButton, "", true);
 
         }
 
@@ -123,22 +125,22 @@ public class InputManager : MonoBehaviour
 
     public bool IsActionButtonPressedDown(bool isPlayerOne)
     {
-        string inputString = isPlayerOne ? m_GlobalInput.P1_ActionButton : m_GlobalInput.P2_ActionButton;
-        bool isPressed = Input.GetButtonDown(inputString);
+        GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ActionButton : m_GlobalInput.P2_ActionButton;
+        bool isPressed = gameButton.GetButtonInput();
         return isPressed;
     }
 
     public bool IsDashButtonPressedDown(bool isPlayerOne)
     {
-        string inputString = isPlayerOne ? m_GlobalInput.P1_DashButton : m_GlobalInput.P2_DashButton;
-        bool isPressed = Input.GetButtonDown(inputString);
+        GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_DashButton : m_GlobalInput.P2_DashButton;
+        bool isPressed = gameButton.GetButtonInput();
         return isPressed;
     }
 
     public bool IsConfirmButtonPressedDown(bool isPlayerOne)
     {
-        string inputString = isPlayerOne ? m_GlobalInput.P1_ConfirmButton : m_GlobalInput.P2_ConfirmButton;
-        bool isPressed = Input.GetButtonDown(inputString);
+        GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ConfirmButton : m_GlobalInput.P2_ConfirmButton;
+        bool isPressed = gameButton.GetButtonInput();
         return isPressed;
     }
 
@@ -147,12 +149,43 @@ public class InputManager : MonoBehaviour
 public struct GameInput
 {
     public StickControl P1_Stick;
-    public string P1_ActionButton;
-    public string P1_DashButton;
-    public string P1_ConfirmButton;
+    public GameButton P1_ActionButton;
+    public GameButton P1_DashButton;
+    public GameButton P1_ConfirmButton;
 
     public StickControl P2_Stick;
-    public string P2_ActionButton;
-    public string P2_DashButton;
-    public string P2_ConfirmButton;
+    public GameButton P2_ActionButton;
+    public GameButton P2_DashButton;
+    public GameButton P2_ConfirmButton;
+}
+
+//needed since gamepads need a buttonControl
+public class GameButton
+{
+    public ButtonControl m_ButtonControl;
+    public string m_ButtonInputName;
+
+    private bool m_UseButtonControl;
+
+    public GameButton (ButtonControl buttonControl, string alternateButtonName, bool useButtonControl)
+    {
+        m_ButtonControl = buttonControl;
+        m_ButtonInputName = alternateButtonName;
+        m_UseButtonControl = useButtonControl;
+    }
+
+    public bool GetButtonInput()
+    {
+        bool input = false;
+        if (m_UseButtonControl)
+        {
+            input = m_ButtonControl.isPressed;
+        }
+        else
+        {
+            input = Input.GetButtonDown(m_ButtonInputName);
+        }
+
+        return input;
+    }
 }

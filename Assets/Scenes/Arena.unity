@@ -6577,11 +6577,11 @@ GameObject:
   m_Component:
   - component: {fileID: 346289469}
   - component: {fileID: 346289470}
+  - component: {fileID: 346289475}
   - component: {fileID: 346289471}
   - component: {fileID: 346289472}
   - component: {fileID: 346289473}
   - component: {fileID: 346289474}
-  - component: {fileID: 346289475}
   m_Layer: 0
   m_Name: ApplicationSettings
   m_TagString: Untagged
@@ -6616,7 +6616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 1
+  m_ArcadeMode: 0
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
