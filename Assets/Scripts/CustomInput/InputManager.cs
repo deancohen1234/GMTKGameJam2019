@@ -153,6 +153,22 @@ public class InputManager : MonoBehaviour
         return isPressed;
     }
 
+    public bool IsCoinButtonPressedDown()
+    {
+        Debug.Log("Input: " + Input.GetButtonDown("ArcadeSpecialInputTwo"));
+        Debug.Log("Input 2: " + Input.GetButtonDown("ArcadeSpecialInputOne"));
+
+
+        bool isPressed = Input.GetButtonDown("ArcadeSpecialInputTwo") | Input.GetButtonDown("ArcadeSpecialInputOne");
+        return isPressed;
+    }
+
+    public bool IsStartButtonPressedDown()
+    {
+        bool isPressed = Input.GetButtonDown("StartGame");
+        return isPressed;
+    }
+
 }
 
 public struct GameInput
