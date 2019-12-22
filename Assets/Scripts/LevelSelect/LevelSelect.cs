@@ -19,6 +19,8 @@ public class LevelSelect : MonoBehaviour
     public string m_WeaponDescription;
     [TextArea]
     public string m_StageDescription;
+    [TextArea]
+    public string m_GodDescription;
 
     public Action<LevelSelect> m_OnSelected; //on select event that sends this object back through
     
