@@ -77,7 +77,6 @@ public class InputManager : MonoBehaviour
                 {
                     Joystick joystick = (Joystick)joysticks[i];
 
-                    Debug.Log(joystick.valueSizeInBytes);
                     if (joystick.valueSizeInBytes > 5)
                     {
                         //arcade controller is greater than 5 bytes (40 bits)
@@ -155,10 +154,6 @@ public class InputManager : MonoBehaviour
 
     public bool IsCoinButtonPressedDown()
     {
-        Debug.Log("Input: " + Input.GetButtonDown("ArcadeSpecialInputTwo"));
-        Debug.Log("Input 2: " + Input.GetButtonDown("ArcadeSpecialInputOne"));
-
-
         bool isPressed = Input.GetButtonDown("ArcadeSpecialInputTwo") | Input.GetButtonDown("ArcadeSpecialInputOne");
         return isPressed;
     }

@@ -11,12 +11,19 @@ public class ArcadeIdleMenu : MonoBehaviour
     public Image m_P1_Ready;
     public Image m_P2_Ready;
 
+    public Text m_CreditText;
+
     public string m_StageSelectName = "StageSelect";
 
     private bool m_GameIsReadyToStart;
 
     private bool m_PlayerOneReady;
     private bool m_PlayerTwoReady;
+
+    private void Start()
+    {
+        m_CreditText.text = "Credits: " + CreditsManager.m_Singleton.GetNumCredits().ToString();
+    }
 
     void Update()
     {
@@ -26,15 +33,20 @@ public class ArcadeIdleMenu : MonoBehaviour
             OnCoinEntered();
         }
 
-        if (m_GameIsReadyToStart)
+        if (CanGameStart())
         {
             if (ApplicationSettings.m_Singleton.m_InputManager.IsStartButtonPressedDown())
             {
-                Debug.Log("Starting Game...");
-                SceneManager.LoadScene(m_StageSelectName);
+                StartGame();
             }       
         }
 
+    }
+
+    private bool CanGameStart()
+    {
+        bool check = (CreditsManager.m_Singleton.GetNumCredits() > 0);
+        return check;
     }
 
     private void OnCoinEntered()
@@ -42,10 +54,22 @@ public class ArcadeIdleMenu : MonoBehaviour
         m_CoinInsertedImage.gameObject.SetActive(true);
 
         m_GameIsReadyToStart = true;
+
+        int numCredits = CreditsManager.m_Singleton.ModifyCredits(1);
+        m_CreditText.text = "Credits: " + numCredits.ToString();
     }
 
     private bool CheckForGameReady()
     {
         return m_PlayerOneReady & m_PlayerTwoReady;
+    }
+
+    private void StartGame()
+    {
+        Debug.Log("Starting Game...");
+
+        CreditsManager.m_Singleton.ModifyCredits(-1);
+
+        SceneManager.LoadScene("ArcadeIdleScreen");
     }
 }
