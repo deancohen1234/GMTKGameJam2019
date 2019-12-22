@@ -16,6 +16,7 @@ public class LevelSelectController : MonoBehaviour
     public Image m_WeaponImage;
     public Text m_WeaponDescription;
     public Text m_StageDescription;
+    public Text m_GodDescription;
     public Button m_StartButton;
 
     [Header("Camera Move Settings")]
@@ -113,6 +114,7 @@ public class LevelSelectController : MonoBehaviour
         m_WeaponImage.sprite = level.m_WeaponSprite;
         m_WeaponDescription.text = level.m_WeaponDescription;
         m_StageDescription.text = level.m_StageDescription;
+        m_GodDescription.text = level.m_GodDescription;
 
         m_StartButton.onClick.RemoveAllListeners();
         m_StartButton.onClick.AddListener(delegate { OnDescriptionButtonSelected(level); });

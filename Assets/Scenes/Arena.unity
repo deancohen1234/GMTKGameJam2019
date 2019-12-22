@@ -6686,6 +6686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SystemInput: {fileID: 11400000, guid: 5a8714dccaded104f941e88d41b5053a, type: 2}
+  m_DeadZone: 0.15
 --- !u!1 &351778157
 GameObject:
   m_ObjectHideFlags: 0
