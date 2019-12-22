@@ -6616,7 +6616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 0
+  m_ArcadeMode: 1
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6624,7 +6624,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346289468}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39f5cb5f679ccb64fb385fd686f6e3de, type: 3}
   m_Name: 

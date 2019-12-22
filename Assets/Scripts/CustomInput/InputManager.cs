@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour
 {
     public SystemInput m_SystemInput;
 
+    public float m_DeadZone = 0.15f;
+
     private GameInput m_GlobalInput; //input used for entire game
 
     public void InitializeInput(bool useArcadeControls)
@@ -120,7 +122,14 @@ public class InputManager : MonoBehaviour
     public Vector2 GetStickValue(bool isPlayerOne)
     {
         StickControl stick = isPlayerOne ? m_GlobalInput.P1_Stick : m_GlobalInput.P2_Stick;
-        return stick.ReadValue();
+
+        
+        Vector2 value = stick.ReadValue();
+
+        if (Mathf.Abs(value.x) <= m_DeadZone) { value.x = 0; }
+        if (Mathf.Abs(value.y) <= m_DeadZone) { value.y = 0; }
+
+        return value;
     }
 
     public bool IsActionButtonPressedDown(bool isPlayerOne)
