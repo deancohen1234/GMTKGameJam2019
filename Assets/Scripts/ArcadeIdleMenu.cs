@@ -70,6 +70,6 @@ public class ArcadeIdleMenu : MonoBehaviour
 
         CreditsManager.m_Singleton.ModifyCredits(-1);
 
-        SceneManager.LoadScene("ArcadeIdleScreen");
+        SceneManager.LoadScene(m_StageSelectName);
     }
 }
