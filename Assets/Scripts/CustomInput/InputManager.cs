@@ -77,7 +77,6 @@ public class InputManager : MonoBehaviour
                 {
                     Joystick joystick = (Joystick)joysticks[i];
 
-                    Debug.Log(joystick.valueSizeInBytes);
                     if (joystick.valueSizeInBytes > 5)
                     {
                         //arcade controller is greater than 5 bytes (40 bits)
@@ -150,6 +149,18 @@ public class InputManager : MonoBehaviour
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ConfirmButton : m_GlobalInput.P2_ConfirmButton;
         bool isPressed = gameButton.GetButtonInput();
+        return isPressed;
+    }
+
+    public bool IsCoinButtonPressedDown()
+    {
+        bool isPressed = Input.GetButtonDown("ArcadeSpecialInputTwo") | Input.GetButtonDown("ArcadeSpecialInputOne");
+        return isPressed;
+    }
+
+    public bool IsStartButtonPressedDown()
+    {
+        bool isPressed = Input.GetButtonDown("StartGame");
         return isPressed;
     }
 

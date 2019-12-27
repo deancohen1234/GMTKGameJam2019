@@ -11,6 +11,8 @@ public class ArcadeIdleMenu : MonoBehaviour
     public Image m_P1_Ready;
     public Image m_P2_Ready;
 
+    public Text m_CreditText;
+
     public string m_StageSelectName = "StageSelect";
 
     private bool m_GameIsReadyToStart;
@@ -18,65 +20,43 @@ public class ArcadeIdleMenu : MonoBehaviour
     private bool m_PlayerOneReady;
     private bool m_PlayerTwoReady;
 
-    private bool m_CoinIsEntered;
+    private void Start()
+    {
+        m_CreditText.text = "Credits: " + CreditsManager.m_Singleton.GetNumCredits().ToString();
+    }
 
     void Update()
     {
-        Debug.Log("Coin Input: " + GetCoinInsertedInput());
-        Debug.Log("Start Game Input: " + GetGameStartInput());
 
-        if (GetCoinInsertedInput())
+        if (ApplicationSettings.m_Singleton.m_InputManager.IsCoinButtonPressedDown())
         {
             OnCoinEntered();
         }
 
-        if (GetCoinInsertedInput())
+        if (CanGameStart())
         {
-            OnCoinEntered();
-        }
-
-        if (ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(true))
-        {
-            OnPlayerReady(true);
-        }
-
-        if (ApplicationSettings.m_Singleton.m_InputManager.IsActionButtonPressedDown(false))
-        {
-            OnPlayerReady(false);
-        }
-
-        if (m_GameIsReadyToStart)
-        {
-            if (GetGameStartInput())
+            if (ApplicationSettings.m_Singleton.m_InputManager.IsStartButtonPressedDown())
             {
-                Debug.Log("Starting Game...");
-                SceneManager.LoadScene(m_StageSelectName);
-            }
+                StartGame();
+            }       
         }
 
+    }
+
+    private bool CanGameStart()
+    {
+        bool check = (CreditsManager.m_Singleton.GetNumCredits() > 0);
+        return check;
     }
 
     private void OnCoinEntered()
     {
-        m_CoinIsEntered = true;
-
         m_CoinInsertedImage.gameObject.SetActive(true);
-    }
 
-    private void OnPlayerReady(bool isPlayerOne)
-    {
-        if (isPlayerOne)
-        {
-            m_PlayerOneReady = true;
-            m_P1_Ready.gameObject.SetActive(true);
-        }
-        else
-        {
-            m_PlayerTwoReady = true;
-            m_P2_Ready.gameObject.SetActive(true);
-        }
+        m_GameIsReadyToStart = true;
 
-        m_GameIsReadyToStart = CheckForGameReady();
+        int numCredits = CreditsManager.m_Singleton.ModifyCredits(1);
+        m_CreditText.text = "Credits: " + numCredits.ToString();
     }
 
     private bool CheckForGameReady()
@@ -84,42 +64,12 @@ public class ArcadeIdleMenu : MonoBehaviour
         return m_PlayerOneReady & m_PlayerTwoReady;
     }
 
-    //Arcade special inputs
-    public bool GetCoinInsertedInput()
+    private void StartGame()
     {
-        bool check = false;
+        Debug.Log("Starting Game...");
 
-        float p2CoinInput = Input.GetAxis("ArcadeSpecialInputOne");
-        float p1_startGameInput = Input.GetAxis("ArcadeSpecialInputTwo");
+        CreditsManager.m_Singleton.ModifyCredits(-1);
 
-        p2CoinInput = Mathf.Round(p2CoinInput);
-        p1_startGameInput = Mathf.Round(p1_startGameInput);
-
-        if (DeanUtils.IsAlmostEqual(p2CoinInput, -1f, 0.01f))
-        {
-            check = true;
-        }
-
-        if (DeanUtils.IsAlmostEqual(p1_startGameInput, -1f, 0.01f))
-        {
-            check = true;
-        }
-
-        return check;
-    }
-
-    public bool GetGameStartInput()
-    {
-        bool check = false;
-
-        float p1_startGameInput = Input.GetAxis("ArcadeSpecialInputOne");
-        p1_startGameInput = Mathf.Round(p1_startGameInput);
-
-        if (DeanUtils.IsAlmostEqual(p1_startGameInput, 1f, 0.01f))
-        {
-            check = true;
-        }
-
-        return check;
+        SceneManager.LoadScene(m_StageSelectName);
     }
 }
