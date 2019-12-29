@@ -67,7 +67,6 @@ public class InputManager : MonoBehaviour
 
         //fill joystick objects
         var joysticks = Joystick.all;
-        Debug.Log(joysticks.Count);
 
         if (joysticks.Count > 0)
         {

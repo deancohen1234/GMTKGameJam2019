@@ -5,12 +5,10 @@ using System;
 
 public enum SlamType {Impatient, RoundStarting}
 
-public class EvilMan : MonoBehaviour
+public class SldqhThss : DivineStatue
 {
     public AudioClip m_Slam;
 
-    public Action m_OnRoundSlamFinished;
-    public Action m_OnImpatientSlamFinished;
     public float m_ImpatienceTime = 20f; //in seconds
     public float m_TimeSavedPerAttack = 5f;
 
@@ -21,6 +19,8 @@ public class EvilMan : MonoBehaviour
     public Vector3 m_Offset;
     public float m_ArenaWidth;
     public float m_ArenaHeight;
+
+    private DivineWeapon m_Weapon;
 
     private SlamType m_LastSlamType;
     private AudioSource m_AudioSource;
@@ -35,7 +35,8 @@ public class EvilMan : MonoBehaviour
     private Stalagmite[] m_Stalagmites;
 
     private float m_LastSlamTime;
-    // Start is called before the first frame update
+
+    #region Monobehavior Methods
     void Awake()
     {
         m_AudioSource = GetComponent<AudioSource>();
@@ -69,7 +70,15 @@ public class EvilMan : MonoBehaviour
         GetComponent<AnimationEventRouter>().m_OnAnimationComplete -= OnSlamFinished;
     }
 
-    public void SetPlayers(PlayerController p1, PlayerController p2)
+    #endregion
+
+    #region Divine Statue Methods
+    public override void OnGameIntialized()
+    {
+
+    }
+
+    public override void SetPlayers(PlayerController p1, PlayerController p2)
     {
         if (m_PlayerOne)
         {
@@ -91,7 +100,35 @@ public class EvilMan : MonoBehaviour
         m_LastSlamTime = Time.time;
     }
 
-    public void StartSlam(SlamType slamType)
+    public override void SetDivineWeapon(DivineWeapon weapon)
+    {
+        m_Weapon = weapon;
+    }
+
+    public override void OnRoundStarted()
+    {
+        Invoke("DelayedSlam", 3.0f);
+    }
+
+    public override void OnRoundComplete()
+    {
+        
+    }
+
+    public override void OnGameComplete()
+    {
+        
+    }
+    #endregion
+
+    #region Private Methods
+
+    private void DelayedSlam()
+    {
+        StartSlam(SlamType.RoundStarting);
+    }
+
+    private void StartSlam(SlamType slamType)
     {
         m_Animator.SetTrigger("SlamDown");
 
@@ -99,7 +136,7 @@ public class EvilMan : MonoBehaviour
         m_LastSlamType = slamType;
     }
 
-    public void OnSlamFinished()
+    private void OnSlamFinished()
     {
         m_AudioSource.clip = m_Slam;
         m_AudioSource.Play();
@@ -107,16 +144,14 @@ public class EvilMan : MonoBehaviour
         if (m_LastSlamType == SlamType.RoundStarting)
         {
             RoundSlamComplete();
-            m_OnRoundSlamFinished?.Invoke();
         }
         else if (m_LastSlamType == SlamType.Impatient)
         {
             ImpatientSlamComplete();
-            m_OnImpatientSlamFinished?.Invoke();
         }
     }
 
-    public void OnPlayerDamaged(PlayerController player, float currentHealth)
+    private void OnPlayerDamaged(PlayerController player, float currentHealth)
     {
         //give more seconds before Slqth'thiss slams again when player is damaged
         float newTime = Mathf.Clamp(m_LastSlamTime + m_TimeSavedPerAttack, 0, Time.time);
@@ -125,6 +160,9 @@ public class EvilMan : MonoBehaviour
     
     private void RoundSlamComplete()
     {
+        m_Weapon.RandomizeLocation();
+        MusicController.m_Singleton.Play();
+
         m_CameraShake.AddTrauma(2.0f);
         m_RippleEffect.ActivateRipple(transform.position);
 
@@ -172,4 +210,5 @@ public class EvilMan : MonoBehaviour
     {
         //GUI.Label(new Rect(20, 20, 100, 100), "Time Left: " + (m_ImpatienceTime - (Time.time - m_LastSlamTime)));
     }
+    #endregion
 }
