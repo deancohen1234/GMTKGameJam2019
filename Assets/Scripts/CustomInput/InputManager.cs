@@ -96,6 +96,8 @@ public class InputManager : MonoBehaviour
                     else if (p2_Stick == null)
                     {
                         p2_Stick = joystick;
+
+                        Debug.Log("P2: " + p2_Stick.name);
                     }
                 }
             }

@@ -10,8 +10,6 @@ public class CreditsManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(m_Singleton);
-
         if (m_Singleton != null)
         {
             Destroy(this.gameObject);

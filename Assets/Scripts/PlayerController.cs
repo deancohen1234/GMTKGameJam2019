@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = Vector3.zero;
     }
 
-    public void PlayPoofEffect()
+    public void PlayPoofSound()
     {
         m_AudioSource.clip = m_Poof;
         m_AudioSource.Play();
@@ -367,8 +367,6 @@ public class PlayerController : MonoBehaviour
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
-
-        Debug.Log("Playing Sound");
     }
 
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)

@@ -6946,6 +6946,8 @@ MonoBehaviour:
   m_P2_Round_3: {fileID: 1438653052}
   m_MainPanel: {fileID: 1026376951}
   m_RoundText: {fileID: 1714631286}
+  m_VictoryPanel: {fileID: 1063642467}
+  m_VictoryText: {fileID: 1667548456}
 --- !u!1 &367728538
 GameObject:
   m_ObjectHideFlags: 0
@@ -7480,7 +7482,6 @@ MonoBehaviour:
     type: 3}
   m_PlayerOneStartPosition: {fileID: 1981253778}
   m_PlayerTwoStartPosition: {fileID: 110526846}
-  m_StartRoundScreen: {fileID: 1026376951}
   m_VictoryCanvas: {fileID: 1063642467}
   m_VictoryText: {fileID: 1667548456}
 --- !u!1 &618032304
