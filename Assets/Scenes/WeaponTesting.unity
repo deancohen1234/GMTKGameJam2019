@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 101229741}
   - component: {fileID: 101229743}
   - component: {fileID: 101229742}
-  - component: {fileID: 101229750}
+  - component: {fileID: 101229745}
   - component: {fileID: 101229744}
   - component: {fileID: 101229746}
   - component: {fileID: 101229748}
@@ -557,6 +557,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &101229745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101229740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83fd482b368d164ca50f75a03e85fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ArenaCenter: {fileID: 574776829}
+  m_ArenaWidth: 2.3
+  m_ArenaHeight: 1.1
+  m_Offset: {x: 0, y: 0, z: -1.38}
+  m_FallSpeed: 1
+  m_PlayerSpeedModifier: 2
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 3
+    StartDelay: 4
+    ActionLength: 15
+  m_AttackSound: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
+  m_JumpPath:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.011098526
+      outSlope: 0.011098526
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4359083
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_JumpRange: 1.75
+  m_JumpModifier: 1.25
 --- !u!65 &101229746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -692,31 +752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxMagnitude: 5
---- !u!114 &101229750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101229740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d720f89dc38a95c4e9fc5290338e3d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ArenaCenter: {fileID: 574776829}
-  m_ArenaWidth: 2.3
-  m_ArenaHeight: 1.1
-  m_Offset: {x: 0, y: 0, z: -1.38}
-  m_FallSpeed: 1
-  m_PlayerSpeedModifier: 1
-  m_AttackAction:
-    IsAvailable: 1
-    IsExecuting: 0
-    CooldownTime: 3
-    StartDelay: 3
-    ActionLength: 6
-  m_AttackSound: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
 --- !u!1 &110526845
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,7 +7509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RoundsNeededToWin: 3
   m_DivineStatue: {fileID: 675738982}
-  m_DivineWeapon: {fileID: 101229750}
+  m_DivineWeapon: {fileID: 101229745}
   m_UIHandler: {fileID: 365113849}
   m_PlayerOnePrefab: {fileID: 4482629906860492806, guid: cb33e24fd87aa5648befc449716f1c01,
     type: 3}

@@ -58,7 +58,7 @@ public class DivineWeapon : MonoBehaviour
         m_AttackAction.OnActionEnd -= OnWeaponAttackEnd;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (m_IsLerping)
         {
@@ -87,7 +87,7 @@ public class DivineWeapon : MonoBehaviour
             //Pickup weapon
             other.gameObject.GetComponent<PlayerController>().EquipWeapon(this);
             //OnWeaponPickup(other.gameObject.GetComponent<PlayerController>());
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 

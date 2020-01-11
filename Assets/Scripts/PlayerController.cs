@@ -449,6 +449,11 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
+    public void ExternalDisablePlayerMovement(float time)
+    {
+        StartCoroutine(DisablePlayerMovement(time));
+    }
+
     private void OnAttackStartDecider()
     {
         Debug.Log("OnAttack Start");
