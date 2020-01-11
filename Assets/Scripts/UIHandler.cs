@@ -37,6 +37,10 @@ public class UIHandler : MonoBehaviour
     public GameObject m_MainPanel;
     public Text m_RoundText;
 
+    [Header("Victory Panel")]
+    public GameObject m_VictoryPanel;
+    public Text m_VictoryText;
+
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
@@ -188,6 +192,16 @@ public class UIHandler : MonoBehaviour
         {
             m_P2Ready.gameObject.SetActive(status);
         }
+    }
+
+    public void SetVictoryCanvasActive(bool isActive)
+    {
+        m_VictoryPanel.SetActive(isActive);
+    }
+
+    public void SetVictoryText(string text)
+    {
+        m_VictoryText.text = text;
     }
 
     private void OnDestroy()

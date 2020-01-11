@@ -67,7 +67,6 @@ public class InputManager : MonoBehaviour
 
         //fill joystick objects
         var joysticks = Joystick.all;
-        Debug.Log(joysticks.Count);
 
         if (joysticks.Count > 0)
         {
@@ -97,6 +96,8 @@ public class InputManager : MonoBehaviour
                     else if (p2_Stick == null)
                     {
                         p2_Stick = joystick;
+
+                        Debug.Log("P2: " + p2_Stick.name);
                     }
                 }
             }
