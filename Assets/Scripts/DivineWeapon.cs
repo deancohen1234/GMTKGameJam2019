@@ -22,6 +22,9 @@ public class DivineWeapon : MonoBehaviour
     protected PlayerController m_PlayerRef;
 
     private AudioSource m_AudioSource;
+    private SpriteRenderer m_SpriteRenderer;
+    private Rigidbody m_Rigidbody;
+    private Collider[] m_AllColliders;
 
     private float m_WeaponStartHeight;
     private bool m_IsLerping;
@@ -33,15 +36,15 @@ public class DivineWeapon : MonoBehaviour
     private void Awake()
     {
         m_AudioSource = GetComponent<AudioSource>();
-    }
-
-    private void OnEnable()
-    {
-        m_AudioSource = GetComponent<AudioSource>();
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_AllColliders = GetComponents<Collider>();
     }
 
     private void Start()
     {
+        SetWeaponActive(false);
+
         m_WeaponStartHeight = transform.position.y;
 
         //assign all actions for delegate when game starts
@@ -87,7 +90,7 @@ public class DivineWeapon : MonoBehaviour
             //Pickup weapon
             other.gameObject.GetComponent<PlayerController>().EquipWeapon(this);
             //OnWeaponPickup(other.gameObject.GetComponent<PlayerController>());
-            //gameObject.SetActive(false);
+            SetWeaponActive(false);
         }
     }
 
@@ -154,9 +157,31 @@ public class DivineWeapon : MonoBehaviour
         }
     }
 
+    //when weapon is picked up set weapon inactive without disabling monobehavior
+    public void SetWeaponActive(bool isActive)
+    {
+        //hide/show sprite
+        m_SpriteRenderer.enabled = isActive;
+
+        //freeze all rigidbody control on inactive
+        m_Rigidbody.constraints = isActive ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
+        
+        //set all colliders to enabled/disabled
+        for (int i = 0; i < m_AllColliders.Length; i++)
+        {
+            m_AllColliders[i].enabled = isActive;
+        }
+
+        //set all children to active/inactive
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            gameObject.transform.GetChild(i).gameObject.SetActive(isActive);
+        }
+    }
+
     public void RandomizeLocation()
     {
-        gameObject.SetActive(true);
+        SetWeaponActive(true);
 
         float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
@@ -172,8 +197,7 @@ public class DivineWeapon : MonoBehaviour
 
     public void RandomizeLocationFromPlayer(Vector3 playerPos)
     {
-        
-        gameObject.SetActive(true);
+        SetWeaponActive(true);
 
         float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;

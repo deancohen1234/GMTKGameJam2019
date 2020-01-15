@@ -87,7 +87,7 @@ public class RoundManager : MonoBehaviour
         m_DivineStatue.OnRoundStarted();
 
         //prevents a double pickup of the weapon incase the weapon was left there from the previous round
-        m_DivineWeapon.gameObject.SetActive(false); 
+        m_DivineWeapon.SetWeaponActive(false); 
     }
 
     public void OnRoundComplete()
