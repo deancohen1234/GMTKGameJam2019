@@ -37,25 +37,14 @@ public class PhysicsTesting : MonoBehaviour
         m_Range = direction.magnitude;
 
         direction = direction.normalized;
-        
-        float angleX = Vector3.Angle(direction, Vector3.right);
-        float angleZ = Vector3.Angle(direction, Vector3.forward);
 
         direction.x *= Mathf.Cos(m_Angle * Mathf.Deg2Rad);
-        direction.z *= Mathf.Cos(m_Angle * Mathf.Deg2Rad);      
+        direction.z *= Mathf.Cos(m_Angle * Mathf.Deg2Rad);
+
         direction.y = Mathf.Sin(m_Angle * Mathf.Deg2Rad);
-        //Quaternion pitchRot = Quaternion.Euler(new Vector3(m_Angle, 0, 0));
-        //direction = pitchRot * direction;
 
         float velocityMagnitude = Mathf.Sqrt((m_Range * Mathf.Abs(Physics.gravity.y)) / Mathf.Sin(2 * Mathf.Deg2Rad * m_Angle));
 
-        Debug.Log("Range: " + m_Range);
-        Debug.Log("AngleX: " + angleX);
-        Debug.Log("AngleZ: " + angleZ);
-
-        Debug.Log("Unnormalized: " + direction);
-        Debug.Log("Normalized: " + direction.normalized);
-        //direction = new Vector3(Mathf.Cos(m_Angle * Mathf.Deg2Rad), Mathf.Sin(m_Angle * Mathf.Deg2Rad), 0);
 
         m_RB.velocity = direction.normalized * velocityMagnitude;
     }
