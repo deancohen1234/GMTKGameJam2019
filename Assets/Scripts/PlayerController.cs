@@ -107,6 +107,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        //TESTING
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            m_PlayerAnimation.SetAttackStatus(true);
+        }
+
         if (m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
 
 
