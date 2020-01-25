@@ -29931,7 +29931,7 @@ MonoBehaviour:
     IsExecuting: 0
     CooldownTime: 20
     StartDelay: 3
-    ActionLength: 4
+    ActionLength: 6
     DashDisarmLength: 1
   m_DisarmAction:
     IsAvailable: 1

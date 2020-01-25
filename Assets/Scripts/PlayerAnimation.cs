@@ -79,6 +79,7 @@ public class PlayerAnimation : MonoBehaviour
         if (isAttacking)
         {
             m_Animator.SetTrigger("StartAttack");
+            Debug.Log("Started Attack");
         }
     }
 

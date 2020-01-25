@@ -713,7 +713,7 @@ MonoBehaviour:
   m_AttackAction:
     IsAvailable: 1
     IsExecuting: 0
-    CooldownTime: 3
+    CooldownTime: 12
     StartDelay: 3
     ActionLength: 6
   m_AttackSound: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
