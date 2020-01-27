@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ArcadeIdleMenu : MonoBehaviour
 {
     public Image m_CoinInsertedImage;
+
+    public GameObject m_CoinInsertedText;
+    public GameObject m_InsertCoinText;
+
+    public GameObject m_SelectMenu;
+    public bool menuBool = false;
+
+    public Button vsSelect;
+    public Button tutSelect;
+    public Button creditSelect;
 
     public Image m_P1_Ready;
     public Image m_P2_Ready;
@@ -23,6 +34,21 @@ public class ArcadeIdleMenu : MonoBehaviour
     private void Start()
     {
         m_CreditText.text = "Credits: " + CreditsManager.m_Singleton.GetNumCredits().ToString();
+
+        menuBool = false;
+        if(menuBool == false)
+        {
+            m_SelectMenu.gameObject.SetActive(false);
+        }
+
+        if(CreditsManager.m_Singleton.GetNumCredits() == 0)
+        {
+            m_InsertCoinText.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_CoinInsertedText.gameObject.SetActive(true);
+        }
     }
 
     void Update()
@@ -37,10 +63,19 @@ public class ArcadeIdleMenu : MonoBehaviour
         {
             if (ApplicationSettings.m_Singleton.m_InputManager.IsStartButtonPressedDown())
             {
-                StartGame();
-            }       
+                //StartGame();
+                menuBool = true;
+                m_CoinInsertedText.gameObject.SetActive(false);
+                m_SelectMenu.gameObject.SetActive(true);
+                vsSelect.Select();
+            }
         }
 
+    }
+
+    public void vsClick()
+    {
+        StartGame();
     }
 
     private bool CanGameStart()
@@ -51,7 +86,12 @@ public class ArcadeIdleMenu : MonoBehaviour
 
     private void OnCoinEntered()
     {
-        m_CoinInsertedImage.gameObject.SetActive(true);
+        m_InsertCoinText.gameObject.SetActive(false);
+
+        if(menuBool == false)
+        {
+            m_CoinInsertedText.gameObject.SetActive(true);
+        }
 
         m_GameIsReadyToStart = true;
 
