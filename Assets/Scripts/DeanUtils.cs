@@ -26,5 +26,11 @@ public static class DeanUtils
         bool check = Mathf.Abs(a - b) <= threshold;
         return check;
     }
+
+    public struct MinMaxValue
+    {
+        public float min;
+        public float max;
+    }
 }
 

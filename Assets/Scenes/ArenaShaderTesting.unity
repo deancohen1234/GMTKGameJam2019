@@ -11002,7 +11002,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39746bc1112df884a8124753e254e58c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39746bc1112df884a8124753e254e58c,
         type: 3}
@@ -11058,6 +11058,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -759995742479547333, guid: 39746bc1112df884a8124753e254e58c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5483c7f7aec2d4f41ac9812f297d1d57, type: 2}
+    - target: {fileID: -7902724092925725420, guid: 39746bc1112df884a8124753e254e58c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7902724092925725420, guid: 39746bc1112df884a8124753e254e58c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.407
       objectReference: {fileID: 0}
     - target: {fileID: -577605670871123898, guid: 39746bc1112df884a8124753e254e58c,
         type: 3}
@@ -11164,7 +11179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48076a1a64cd024899c61a81fd5bd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SystemInput: {fileID: 11400000, guid: 5a8714dccaded104f941e88d41b5053a, type: 2}
+  m_InputManager: {fileID: 0}
   m_ArcadeMode: 1
 --- !u!114 &346289471
 MonoBehaviour:
@@ -11499,6 +11514,8 @@ MonoBehaviour:
   m_P2_Round_3: {fileID: 1438653052}
   m_MainPanel: {fileID: 1026376951}
   m_RoundText: {fileID: 1714631286}
+  m_VictoryPanel: {fileID: 0}
+  m_VictoryText: {fileID: 0}
 --- !u!1 &367728538
 GameObject:
   m_ObjectHideFlags: 0
@@ -12023,19 +12040,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RoundsNeededToWin: 3
-  m_EvilMan: {fileID: 675738982}
-  m_MegaWeapon: {fileID: 101229750}
+  m_DivineStatue: {fileID: 0}
+  m_DivineWeapon: {fileID: 0}
   m_UIHandler: {fileID: 365113849}
-  m_Music: {fileID: 287729089}
   m_PlayerOnePrefab: {fileID: 4482629906860492806, guid: cb33e24fd87aa5648befc449716f1c01,
     type: 3}
   m_PlayerTwoPrefab: {fileID: 5130787526742937384, guid: 2ce44d6ad18f0ac4db7d2598f469f337,
     type: 3}
   m_PlayerOneStartPosition: {fileID: 1981253778}
   m_PlayerTwoStartPosition: {fileID: 110526846}
-  m_StartRoundScreen: {fileID: 1026376951}
-  m_VictoryCanvas: {fileID: 1063642467}
-  m_VictoryText: {fileID: 1667548456}
 --- !u!1 &618032304
 GameObject:
   m_ObjectHideFlags: 0
@@ -12279,6 +12292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d29c4140b8f9cf4bb03b2fc24f6dc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Test: {fileID: 0}
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
   m_ImpatienceTime: 30
   m_TimeSavedPerAttack: 5
@@ -12307,6 +12321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d29c4140b8f9cf4bb03b2fc24f6dc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Test: {fileID: 0}
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
   m_ImpatienceTime: 30
   m_TimeSavedPerAttack: 5
