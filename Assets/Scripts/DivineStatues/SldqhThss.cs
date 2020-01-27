@@ -22,6 +22,7 @@ public class SldqhThss : DivineStatue
 
     [Header("Aura Settings")]
     public ParticleSystem m_SwishSystem;
+    public ParticleSystem m_ImpatienceBurst;
     public AnimationCurve m_AuraIntensityCurve;
     public float m_StartEmission;
     public float m_StartLifetime;
@@ -168,6 +169,12 @@ public class SldqhThss : DivineStatue
 
     private void StartSlam(SlamType slamType)
     {
+        if (slamType == SlamType.Impatient)
+        {
+            m_ImpatienceBurst.Emit(30);
+            m_CameraShake.AddTrauma(.99f, .80f);
+        }
+
         m_Animator.SetTrigger("SlamDown");
 
         m_LastSlamTime = Time.time;

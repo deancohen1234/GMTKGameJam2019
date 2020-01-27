@@ -11,12 +11,13 @@ public class CameraShake : MonoBehaviour {
     [Range(.01f, .99f)]
     public float m_FalloffSpeed = .5f;
 
+    private float m_StartingFalloffSpeed;
     private float m_Trauma = 0;
 
 	// Use this for initialization
 	void Start ()
     {
-
+        m_StartingFalloffSpeed = m_Trauma;
 	}
 	
 	// Update is called once per frame
@@ -88,6 +89,19 @@ public class CameraShake : MonoBehaviour {
         {
             return;
         }
+
+        m_FalloffSpeed = m_StartingFalloffSpeed;
+        m_Trauma += value;
+    }
+
+    public void AddTrauma(float value, float falloffSpeed)
+    {
+        if (m_Trauma + value > 1)
+        {
+            return;
+        }
+
+        m_FalloffSpeed = falloffSpeed;
         m_Trauma += value;
     }
 }
