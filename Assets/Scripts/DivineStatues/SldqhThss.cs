@@ -159,7 +159,7 @@ public class SldqhThss : DivineStatue
         Vector3 velocity = Vector3.Lerp(m_StartVelocity, m_EndVelocity, lerpTime);
         float trailLength = Mathf.Lerp(m_StartTrailLength, m_EndTrailLength, lerpTime);
 
-        SetParticleProperties(emission, lifetime, orbitalSpeed, velocity, trailLength);
+        //SetParticleProperties(emission, lifetime, orbitalSpeed, velocity, trailLength);
     }
 
     private void DelayedSlam()
@@ -171,8 +171,8 @@ public class SldqhThss : DivineStatue
     {
         if (slamType == SlamType.Impatient)
         {
-            m_ImpatienceBurst.Emit(30);
-            m_CameraShake.AddTrauma(.99f, .80f);
+            m_ImpatienceBurst.Emit(300);
+            m_CameraShake.AddTrauma(.99f, .97f);
         }
 
         m_Animator.SetTrigger("SlamDown");
