@@ -20,6 +20,21 @@ public class SldqhThss : DivineStatue
     public float m_ArenaWidth;
     public float m_ArenaHeight;
 
+    [Header("Aura Settings")]
+    public ParticleSystem m_SwishSystem;
+    public ParticleSystem m_ImpatienceBurst;
+    public AnimationCurve m_AuraIntensityCurve;
+    public float m_StartEmission;
+    public float m_StartLifetime;
+    public Vector3 m_StartOrbitalSpeed;
+    public Vector3 m_StartVelocity;
+    public float m_StartTrailLength;
+    public float m_EndEmission;
+    public float m_EndLifetime;
+    public Vector3 m_EndOrbitalSpeed;
+    public Vector3 m_EndVelocity;
+    public float m_EndTrailLength;
+
     private DivineWeapon m_Weapon;
 
     private SlamType m_LastSlamType;
@@ -53,6 +68,8 @@ public class SldqhThss : DivineStatue
 
     private void Update()
     {
+        UpdateImpatienceStatue();
+
         if (Time.time - m_LastSlamTime >= m_ImpatienceTime)
         {
             //he's impatient, he gonna slam
@@ -68,6 +85,11 @@ public class SldqhThss : DivineStatue
     private void OnDisable()
     {
         GetComponent<AnimationEventRouter>().m_OnAnimationComplete -= OnSlamFinished;
+    }
+
+    private void OnDestroy()
+    {
+        //SetMaterialProperties(m_StartOutlineWidth, m_StartBrightness);
     }
 
     #endregion
@@ -123,6 +145,23 @@ public class SldqhThss : DivineStatue
 
     #region Private Methods
 
+    //make statue more angry and fill with more light as impatience grows
+    private void UpdateImpatienceStatue()
+    {
+        //get lerp time for impatience
+        //float lerpTime = Mathf.Lerp(m_LastSlamTime, m_LastSlamTime + m_ImpatienceTime, Time.time);
+        float time = DeanUtils.Map(Time.time, m_LastSlamTime, m_LastSlamTime + m_ImpatienceTime, 0, 1);
+        float lerpTime = m_AuraIntensityCurve.Evaluate(time);
+
+        float emission = Mathf.Lerp(m_StartEmission, m_EndEmission, lerpTime);
+        float lifetime = Mathf.Lerp(m_StartLifetime, m_EndLifetime, lerpTime);
+        Vector3 orbitalSpeed = Vector3.Lerp(m_StartOrbitalSpeed, m_EndOrbitalSpeed, lerpTime);
+        Vector3 velocity = Vector3.Lerp(m_StartVelocity, m_EndVelocity, lerpTime);
+        float trailLength = Mathf.Lerp(m_StartTrailLength, m_EndTrailLength, lerpTime);
+
+        SetParticleProperties(emission, lifetime, orbitalSpeed, velocity, trailLength);
+    }
+
     private void DelayedSlam()
     {
         StartSlam(SlamType.RoundStarting);
@@ -130,6 +169,12 @@ public class SldqhThss : DivineStatue
 
     private void StartSlam(SlamType slamType)
     {
+        if (slamType == SlamType.Impatient)
+        {
+            m_ImpatienceBurst.Emit(300);
+            m_CameraShake.AddTrauma(.99f, .97f);
+        }
+
         m_Animator.SetTrigger("SlamDown");
 
         m_LastSlamTime = Time.time;
@@ -204,6 +249,27 @@ public class SldqhThss : DivineStatue
             m_Stalagmites[i] = s.GetComponent<Stalagmite>();
         }
         
+    }
+
+    private void SetParticleProperties(float emission, float lifetime, Vector3 orbitalSpeed, Vector3 velocity, float trailLength)
+    {
+        ParticleSystem.MainModule mainModule = m_SwishSystem.main;
+        ParticleSystem.EmissionModule emissionModule = m_SwishSystem.emission;
+        ParticleSystem.VelocityOverLifetimeModule velocityOverLifetime = m_SwishSystem.velocityOverLifetime;
+        ParticleSystem.TrailModule trailModule = m_SwishSystem.trails;
+
+        mainModule.startLifetime = lifetime;
+        emissionModule.rateOverTime = emission;
+
+        velocityOverLifetime.x = velocity.x;
+        velocityOverLifetime.y = velocity.y;
+        velocityOverLifetime.z = velocity.z;
+
+        velocityOverLifetime.orbitalX = orbitalSpeed.x;
+        velocityOverLifetime.orbitalY = orbitalSpeed.y;
+        velocityOverLifetime.orbitalZ = orbitalSpeed.z;
+
+        trailModule.lifetime = new ParticleSystem.MinMaxCurve(trailLength, (trailLength * 1.20f)); //length and max of 20% more of length
     }
 
     private void OnGUI()
