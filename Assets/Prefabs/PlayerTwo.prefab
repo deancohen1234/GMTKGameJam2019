@@ -33899,6 +33899,7 @@ GameObject:
   - component: {fileID: 5130787526742937387}
   - component: {fileID: 5130787526742937386}
   - component: {fileID: 3587837933513019723}
+  - component: {fileID: 4585008311844633013}
   m_Layer: 9
   m_Name: PlayerTwo
   m_TagString: Player
@@ -34201,6 +34202,19 @@ MonoBehaviour:
     type: 3}
   m_Force: 100
   m_LaunchVariance: 0.5
+--- !u!114 &4585008311844633013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130787526742937384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438bf2656ecbbb941a3a818d59cb83f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteSheetName: Cultist_1
 --- !u!1 &5130787526786270212
 GameObject:
   m_ObjectHideFlags: 0
@@ -34502,7 +34516,7 @@ Animator:
   m_GameObject: {fileID: 5130787527022548683}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e23437d619a78a94e819ac688fbecd73, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6774b38c034739f409b46b27c12ce07c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

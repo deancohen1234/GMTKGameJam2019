@@ -159,7 +159,7 @@ public class SldqhThss : DivineStatue
         Vector3 velocity = Vector3.Lerp(m_StartVelocity, m_EndVelocity, lerpTime);
         float trailLength = Mathf.Lerp(m_StartTrailLength, m_EndTrailLength, lerpTime);
 
-        //SetParticleProperties(emission, lifetime, orbitalSpeed, velocity, trailLength);
+        SetParticleProperties(emission, lifetime, orbitalSpeed, velocity, trailLength);
     }
 
     private void DelayedSlam()

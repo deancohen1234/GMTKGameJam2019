@@ -16,7 +16,7 @@ TextureImporter:
     second: UpRight_Idle
   - first:
       213: 7762335300668699977
-    second: Cultist_02_4
+    second: Up_Idle
   - first:
       213: 6261347447087594540
     second: UpLeft_Idle
@@ -510,7 +510,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cultist_02_4
+      name: Up_Idle
       rect:
         serializedVersion: 2
         x: 512
