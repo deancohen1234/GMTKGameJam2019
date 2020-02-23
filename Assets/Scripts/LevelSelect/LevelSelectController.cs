@@ -69,7 +69,7 @@ public class LevelSelectController : MonoBehaviour
             float fractionOfTotalFrames = normalizedLerpAmount * totalFrames;
             float amountToMovePerFrame = fractionOfTotalFrames / totalFrames;
 
-            Vector3 newPos = Vector3.Slerp(m_CamStartPosition, m_CurrentSelectedLevel.GetCamTransform().position, amountToMovePerFrame);
+            Vector3 newPos = Vector3.Lerp(m_CamStartPosition, m_CurrentSelectedLevel.GetCamTransform().position, amountToMovePerFrame);
             Quaternion newRot = Quaternion.Lerp(m_CamStartRotation, m_CurrentSelectedLevel.GetCamTransform().rotation, amountToMovePerFrame);
             Color newColor = Color.Lerp(m_PanelStartColor, m_CurrentSelectedLevel.m_PanelColor, amountToMovePerFrame);
 
