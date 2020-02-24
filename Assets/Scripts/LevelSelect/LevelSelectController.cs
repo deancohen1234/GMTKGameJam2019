@@ -22,6 +22,13 @@ public class LevelSelectController : MonoBehaviour
     [Header("Camera Move Settings")]
     public float m_TransitionTotalTime = 1.5f; //in seconds
 
+    [Header("Secret Settings")]
+    public GameObject m_SlqthisssButton;
+    public float m_PercentageChance = 100f;
+    public string[] m_Spellings;
+
+    private EventSystem m_CurrentEventSystem;
+    private GameObject m_LastSelectedButton;
     private LevelSelect m_CurrentSelectedLevel;
 
     private Vector3 m_CamStartPosition;
@@ -31,10 +38,13 @@ public class LevelSelectController : MonoBehaviour
     private float m_TransitionStartTime;
     private bool m_IsTransitioning;
 
+
     private void Start()
     {
         //default panel to being invisible
         if (m_DetailsPanel.activeInHierarchy) { m_DetailsPanel.SetActive(false); }
+
+        m_CurrentEventSystem = EventSystem.current;
     }
 
     private void OnEnable()
@@ -83,6 +93,20 @@ public class LevelSelectController : MonoBehaviour
                 m_CurrentSelectedLevel = null;
             }
         }
+
+        //if button was slqthsss, randomize the spelling
+        if (!m_CurrentEventSystem.currentSelectedGameObject.Equals(m_LastSelectedButton))
+        {
+            if (m_LastSelectedButton != null && m_LastSelectedButton.Equals(m_SlqthisssButton))
+            {
+                //give it an random chance to switch
+                if (Random.Range(0.0f, 100f) <= m_PercentageChance)
+                {
+                    SetRandomizedSpelling();
+                }
+            }
+        }
+        m_LastSelectedButton = m_CurrentEventSystem.currentSelectedGameObject;
     }
 
     private void OnLevelSelected(LevelSelect level)
@@ -125,5 +149,11 @@ public class LevelSelectController : MonoBehaviour
     private void OnDescriptionButtonSelected(LevelSelect level)
     {
         level.LoadLevel();
+    }
+
+    private void SetRandomizedSpelling()
+    {
+        int randomIndex = Random.Range(0, m_Spellings.Length);
+        m_SlqthisssButton.transform.GetChild(0).GetComponent<Text>().text = m_Spellings[randomIndex];
     }
 }

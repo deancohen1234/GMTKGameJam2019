@@ -1779,6 +1779,13 @@ MonoBehaviour:
   m_GodDescription: {fileID: 1826696406}
   m_StartButton: {fileID: 1286520511}
   m_TransitionTotalTime: 1.5
+  m_SlqthisssButton: {fileID: 1966270885}
+  m_PercentageChance: 50
+  m_Spellings:
+  - A Sacrifice for Slqthi'sss
+  - A Sacrifice for Slqqths'ss
+  - A Sacrifice for Slqthsis's
+  - A Sacrifice for Slqthssis
 --- !u!4 &1436344730
 Transform:
   m_ObjectHideFlags: 0
