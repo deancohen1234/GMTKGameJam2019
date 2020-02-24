@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  m_FogColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 47.76
-  m_LinearFogEnd: 159.7
+  m_LinearFogEnd: 239.62
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -884,13 +884,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914954942}
-  m_LocalRotation: {x: 0.20642114, y: -0.7111441, z: 0.30371043, w: 0.5995202}
+  m_LocalRotation: {x: 0.23557286, y: -0.7671867, z: 0.28170055, w: 0.5259039}
   m_LocalPosition: {x: 18.47, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 511285614}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 42.802002, y: -97.57101, z: 5.519}
+  m_LocalEulerAnglesHint: {x: 42.845, y: -113.14101, z: -5.0990005}
 --- !u!1001 &1005146080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dd32e3fa88243dc4c8c401fa1bf8b4cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 3c838847005853c4ab23b63fe194340e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38966b916218fdf489c321d025acd54e, type: 3}
 --- !u!1001 &1097076814
@@ -2497,7 +2497,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 149.9
+  far clip plane: 250
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2762,7 +2762,7 @@ Transform:
   m_GameObject: {fileID: 2064052263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 413.09103, y: 413.09103, z: 413.09103}
+  m_LocalScale: {x: 280.40506, y: 280.40506, z: 280.40506}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
