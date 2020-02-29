@@ -11,6 +11,7 @@ public class RoundManager : MonoBehaviour
     [Header("Scene Objects")]
     public DivineStatue m_DivineStatue;
     public DivineWeapon m_DivineWeapon;
+    public LevelMechanicsContainer m_Container;
     public UIHandler m_UIHandler;
 
     [Header("Player Prefabs")]
@@ -72,6 +73,8 @@ public class RoundManager : MonoBehaviour
         m_UIHandler.SetPlayerReadyStatus(false, false);
 
         m_DivineStatue.OnGameIntialized();
+
+        m_Container.InitializeContainer(this);
     }
 
     private void StartRound()
@@ -209,5 +212,25 @@ public class RoundManager : MonoBehaviour
     {
         SceneManager.LoadScene("ArcadeIdleScreen");
     }
+    #endregion
+
+    #region Public Getters
+    public PlayerController GetPlayer(int playerIndex)
+    {
+        if (playerIndex == 0)
+        {
+            return m_PlayerOne;
+        }
+        else if (playerIndex == 1)
+        {
+            return m_PlayerTwo;
+        }
+        else
+        {
+            Debug.LogError("Get Player Function Index Not in Range. Index: " + playerIndex);
+            return null;
+        }
+    }
+
     #endregion
 }

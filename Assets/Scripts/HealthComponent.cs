@@ -12,6 +12,7 @@ public class HealthComponent : MonoBehaviour
     public Action m_OnDeath;
 
     private float m_CurrentHealth;
+    private float m_DamageMultiplier = 1.0f;
     private bool m_IsDead;
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class HealthComponent : MonoBehaviour
 
     public void DealDamage(float damage)
     {
-        m_CurrentHealth = Mathf.Clamp(m_CurrentHealth - damage, 0, m_StartingHealth);
+        m_CurrentHealth = Mathf.Clamp(m_CurrentHealth - (damage * m_DamageMultiplier), 0, m_StartingHealth);
 
         m_OnPlayerDamaged.DynamicInvoke(gameObject.GetComponent<PlayerController>(), m_CurrentHealth);
 
@@ -50,5 +51,10 @@ public class HealthComponent : MonoBehaviour
     public bool IsDead()
     {
         return m_IsDead;
+    }
+
+    public void SetDamageMultiplier(float multiplier)
+    {
+        m_DamageMultiplier = multiplier;
     }
 }

@@ -30,7 +30,6 @@ public class AnimationReskin : MonoBehaviour
         foreach (var renderer in GetComponentsInChildren<SpriteRenderer>())
         {
             string spriteName = renderer.sprite.name;
-            Debug.Log("Sprite Name: " + spriteName);
 
             var newSprite = Array.Find(allSubSprites, item => item.name == spriteName);
 

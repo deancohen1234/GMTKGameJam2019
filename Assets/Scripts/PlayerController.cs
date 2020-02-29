@@ -426,8 +426,11 @@ public class PlayerController : MonoBehaviour
         {
             m_AudioSource.clip = m_NudgeDisarm;
             m_AudioSource.Play();
-            //m_EquippedWeapon.RandomizeLocation();
+
+            m_AttackAction.ForceStopAction();
             DropWeapon(false);
+            m_CanMove = true;
+
         }
     }
 

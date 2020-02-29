@@ -28,7 +28,7 @@ public class SacrificeDagger : DivineWeapon
         base.OnWeaponAttackEnd();
 
         m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(false);
-
+ 
         m_PlayerRef.m_AttackHitboxController.DisableAllHitBoxes();
     }
 }
