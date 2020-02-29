@@ -379,6 +379,11 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
+    public void SetWeaponIcon(Sprite sprite)
+    {
+        m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
     {
         StartCoroutine(DisableAllMovement(0.2f));

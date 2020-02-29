@@ -7,7 +7,7 @@ public class PestilentialFlood : MonoBehaviour
     public LevelMechanicsContainer m_Container;
     public Animator m_Slime;
     public Totem[] m_Totems;
-
+    public Sprite m_2XWeaponIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,9 @@ public class PestilentialFlood : MonoBehaviour
         m_Slime.SetTrigger("RaiseSlime");
         m_Container.GetPlayerOne().GetHealthComponent().SetDamageMultiplier(2f);
         m_Container.GetPlayerTwo().GetHealthComponent().SetDamageMultiplier(2f);
+
+        m_Container.GetPlayerOne().SetWeaponIcon(m_2XWeaponIcon);
+        m_Container.GetPlayerTwo().SetWeaponIcon(m_2XWeaponIcon);
     }
 
     private void OnTotemStay(Collider other, GameObject owner)

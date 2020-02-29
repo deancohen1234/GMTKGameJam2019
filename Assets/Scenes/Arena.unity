@@ -31393,6 +31393,7 @@ MonoBehaviour:
   - {fileID: 1635541643}
   - {fileID: 1904925850}
   - {fileID: 1990541998}
+  m_2XWeaponIcon: {fileID: 21300000, guid: 99d701a53aeba7a48b7c522bb227aae7, type: 3}
 --- !u!1 &1904925848
 GameObject:
   m_ObjectHideFlags: 0
