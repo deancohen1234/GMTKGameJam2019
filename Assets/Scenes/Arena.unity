@@ -6064,7 +6064,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: db84e4bc019ebb14f8d42c7cbaf8aa0c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a039810fdc9832439a50c46d7008893, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.19
   m_Pitch: 1
@@ -7594,7 +7594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Test: {fileID: 0}
   m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
-  m_ImpatienceTime: 10
+  m_ImpatienceTime: 9.2
   m_TimeSavedPerAttack: 5
   m_StalagmitePrefab: {fileID: 5695513784316316208, guid: d428433b49397ef4e89d8a1a99d1a4ce,
     type: 3}

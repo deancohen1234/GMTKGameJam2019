@@ -15,6 +15,8 @@ public class PestilentialFlood : MonoBehaviour
         {
             m_Totems[i].GetComponent<TriggerCollider>().m_OnTriggerStay += OnTotemStay;
         }
+
+        m_Container.m_OnRoundEnd += ResetFlood;
     }
 
     // Update is called once per frame
@@ -60,6 +62,16 @@ public class PestilentialFlood : MonoBehaviour
         if (AreAllTotemsActivated())
         {
             ActivateFlood();
+        }
+    }
+
+    //player health doesn't need to be reset because players are destroyed and recreated
+    private void ResetFlood()
+    {
+        //set all totems back to inactive
+        for (int i = 0; i < m_Totems.Length; i++)
+        {
+            m_Totems[i].SetActivity(false);
         }
     }
 
