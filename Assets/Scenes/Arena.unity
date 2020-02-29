@@ -5889,7 +5889,7 @@ GameObject:
   - component: {fileID: 255075632}
   - component: {fileID: 255075631}
   m_Layer: 0
-  m_Name: Totem1
+  m_Name: Totem4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5907,7 +5907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.66262, z: 1}
   m_Children: []
   m_Father: {fileID: 1850085866}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &255075631
 MonoBehaviour:
@@ -5921,6 +5921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8a9668f2bdb3f45a0e943816665943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TotemMat: {fileID: 2100000, guid: 459ab889bab761b4ca746027dbcca69b, type: 2}
   m_CooldownTime: 3
 --- !u!114 &255075632
 MonoBehaviour:
@@ -7182,6 +7183,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5222354557406337218, guid: 73a06649e4c21fe4d9af2d45b582773c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459ab889bab761b4ca746027dbcca69b, type: 2}
     - target: {fileID: -4216859302048453862, guid: 73a06649e4c21fe4d9af2d45b582773c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7252,6 +7258,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3415909393853826583, guid: 73a06649e4c21fe4d9af2d45b582773c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: ee6b5f93f1dc59a4ca67399dc52cf767, type: 2}
+    - target: {fileID: 726158044406573553, guid: 73a06649e4c21fe4d9af2d45b582773c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8bf4e1e47b1f52244b7613b003055945, type: 2}
+    - target: {fileID: 8594515665977192009, guid: 73a06649e4c21fe4d9af2d45b582773c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcaca17220bbb0f41a32ac11dc254267, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73a06649e4c21fe4d9af2d45b582773c, type: 3}
 --- !u!1 &433363212
@@ -7765,7 +7786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Test: {fileID: 0}
-  m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
   m_ImpatienceTime: 9.2
   m_TimeSavedPerAttack: 5
   m_StalagmitePrefab: {fileID: 5695513784316316208, guid: d428433b49397ef4e89d8a1a99d1a4ce,
@@ -7775,6 +7795,11 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: -1.2}
   m_ArenaWidth: 2.3
   m_ArenaHeight: 1.1
+  m_Slam: {fileID: 8300000, guid: aae67fbc1bb8972448e1171fa1410fd4, type: 3}
+  m_ImpatienceSounds:
+  - {fileID: 8300000, guid: c4137b1ac639363458dc4aae2cd2feaa, type: 3}
+  - {fileID: 8300000, guid: f282d5aa067295449b5e2da98bf7289b, type: 3}
+  - {fileID: 8300000, guid: 5521c039bb130ea43915d7bc963eaf41, type: 3}
   m_SwishSystem: {fileID: 952847133}
   m_ImpatienceBurst: {fileID: 731195354}
   m_AuraIntensityCurve:
@@ -30450,6 +30475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8a9668f2bdb3f45a0e943816665943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TotemMat: {fileID: 2100000, guid: fcaca17220bbb0f41a32ac11dc254267, type: 2}
   m_CooldownTime: 3
 --- !u!114 &1635541644
 MonoBehaviour:
@@ -31349,6 +31375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1850085866}
   - component: {fileID: 1850085867}
+  - component: {fileID: 1850085868}
   m_Layer: 0
   m_Name: PestilentialFlood
   m_TagString: Untagged
@@ -31367,10 +31394,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 255075630}
-  - {fileID: 1635541642}
   - {fileID: 1904925849}
+  - {fileID: 1635541642}
   - {fileID: 1990541997}
+  - {fileID: 255075630}
   m_Father: {fileID: 926887055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31393,7 +31420,106 @@ MonoBehaviour:
   - {fileID: 1635541643}
   - {fileID: 1904925850}
   - {fileID: 1990541998}
+  m_Flood: {fileID: 8300000, guid: 6a29ed3cdc2fa8b49a58947741fcbf2b, type: 3}
   m_2XWeaponIcon: {fileID: 21300000, guid: 99d701a53aeba7a48b7c522bb227aae7, type: 3}
+  m_PlayerOneTotemColor: {r: 3.2166426, g: 0.5324098, b: 4.237095, a: 1}
+  m_PlayerTwoTotemColor: {r: 4.237095, g: 0.55459356, b: 0.55459356, a: 1}
+--- !u!82 &1850085868
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850085865}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.24
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1904925848
 GameObject:
   m_ObjectHideFlags: 0
@@ -31410,7 +31536,7 @@ GameObject:
   - component: {fileID: 1904925851}
   - component: {fileID: 1904925850}
   m_Layer: 0
-  m_Name: Totem3
+  m_Name: Totem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31428,7 +31554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.66262, z: 1}
   m_Children: []
   m_Father: {fileID: 1850085866}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1904925850
 MonoBehaviour:
@@ -31442,6 +31568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8a9668f2bdb3f45a0e943816665943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TotemMat: {fileID: 2100000, guid: ee6b5f93f1dc59a4ca67399dc52cf767, type: 2}
   m_CooldownTime: 3
 --- !u!114 &1904925851
 MonoBehaviour:
@@ -36580,7 +36707,7 @@ GameObject:
   - component: {fileID: 1990541999}
   - component: {fileID: 1990541998}
   m_Layer: 0
-  m_Name: Totem4
+  m_Name: Totem3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36598,7 +36725,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.66262, z: 1}
   m_Children: []
   m_Father: {fileID: 1850085866}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1990541998
 MonoBehaviour:
@@ -36612,6 +36739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8a9668f2bdb3f45a0e943816665943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TotemMat: {fileID: 2100000, guid: 8bf4e1e47b1f52244b7613b003055945, type: 2}
   m_CooldownTime: 3
 --- !u!114 &1990541999
 MonoBehaviour:

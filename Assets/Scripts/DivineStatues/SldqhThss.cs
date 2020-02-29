@@ -7,7 +7,6 @@ public enum SlamType {Impatient, RoundStarting}
 
 public class SldqhThss : DivineStatue
 {
-    public AudioClip m_Slam;
 
     public float m_ImpatienceTime = 20f; //in seconds
     public float m_TimeSavedPerAttack = 5f;
@@ -19,6 +18,10 @@ public class SldqhThss : DivineStatue
     public Vector3 m_Offset;
     public float m_ArenaWidth;
     public float m_ArenaHeight;
+
+    [Header("Audio Clips")]
+    public AudioClip m_Slam;
+    public AudioClip[] m_ImpatienceSounds;
 
     [Header("Aura Settings")]
     public ParticleSystem m_SwishSystem;
@@ -74,6 +77,11 @@ public class SldqhThss : DivineStatue
         {
             //he's impatient, he gonna slam
             StartSlam(SlamType.Impatient);
+
+            int randomIndex = UnityEngine.Random.Range(0, m_ImpatienceSounds.Length);
+            AudioClip randomSound = m_ImpatienceSounds[randomIndex];
+            m_AudioSource.clip = randomSound;
+            m_AudioSource.Play();
         }
     }
 
