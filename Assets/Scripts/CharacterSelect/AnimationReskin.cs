@@ -17,7 +17,6 @@ public class AnimationReskin : MonoBehaviour
             if (newSprite)
             {
                 renderer.sprite = newSprite;
-                Debug.Log(renderer.sprite.name);
             }
         }
     }
