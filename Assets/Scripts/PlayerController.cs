@@ -318,6 +318,8 @@ public class PlayerController : MonoBehaviour
     {
         if (m_EquippedWeapon != null)
         {
+            m_AttackAction.ForceStopAction();
+
             if (!loseCompletely)
             {
                 m_EquippedWeapon.Drop(this);
@@ -429,7 +431,6 @@ public class PlayerController : MonoBehaviour
             m_AudioSource.clip = m_NudgeDisarm;
             m_AudioSource.Play();
 
-            m_AttackAction.ForceStopAction();
             DropWeapon(false);
             m_CanMove = true;
 

@@ -5,8 +5,9 @@ using UnityEngine;
 public class PestilentialFlood : MonoBehaviour
 {
     public LevelMechanicsContainer m_Container;
-
+    public Animator m_Slime;
     public Totem[] m_Totems;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class PestilentialFlood : MonoBehaviour
     void ActivateFlood()
     {
         Debug.Log("Flood is coming...");
+        m_Slime.SetTrigger("RaiseSlime");
         m_Container.GetPlayerOne().GetHealthComponent().SetDamageMultiplier(2f);
         m_Container.GetPlayerTwo().GetHealthComponent().SetDamageMultiplier(2f);
     }
@@ -73,6 +75,8 @@ public class PestilentialFlood : MonoBehaviour
         {
             m_Totems[i].SetActivity(false);
         }
+
+        m_Slime.SetTrigger("ResetSlime");
     }
 
     private bool AreAllTotemsActivated()
