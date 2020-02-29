@@ -93,6 +93,7 @@ public class PestilentialFlood : MonoBehaviour
         for (int i = 0; i < m_Totems.Length; i++)
         {
             m_Totems[i].SetActivity(false, PlayerType.Player1);
+            m_Totems[i].SetTotemColor(Color.black);
         }
 
         m_Slime.SetTrigger("ResetSlime");
@@ -109,6 +110,7 @@ public class PestilentialFlood : MonoBehaviour
             }
         }
 
+        //check all totems are the same color
         int numPlayerOneTotems = 0;
         for (int j = 0; j < m_Totems.Length; j++)
         {
@@ -117,7 +119,6 @@ public class PestilentialFlood : MonoBehaviour
                 numPlayerOneTotems++;
             }
         }
-
         //if 0 p1 totems they are all p2
         //if Length p1 totems they are all p1
         if (numPlayerOneTotems > 0 && numPlayerOneTotems < m_Totems.Length)
