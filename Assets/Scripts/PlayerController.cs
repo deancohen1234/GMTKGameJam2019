@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     [Header("Death Properties")]
     public float m_DeathLength = 4.0f; //in seconds
 
+    [Header("References")]
+    public ParticleSystem m_RunSystem;
     public SpriteHandler m_SpriteHandler;
     public AttackHitboxController m_AttackHitboxController;
 
@@ -316,6 +318,8 @@ public class PlayerController : MonoBehaviour
     {
         if (m_EquippedWeapon != null)
         {
+            m_AttackAction.ForceStopAction();
+
             if (!loseCompletely)
             {
                 m_EquippedWeapon.Drop(this);
@@ -375,6 +379,11 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
+    public void SetWeaponIcon(Sprite sprite)
+    {
+        m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
     {
         StartCoroutine(DisableAllMovement(0.2f));
@@ -427,7 +436,6 @@ public class PlayerController : MonoBehaviour
             m_AudioSource.clip = m_NudgeDisarm;
             m_AudioSource.Play();
 
-            m_AttackAction.ForceStopAction();
             DropWeapon(false);
             m_CanMove = true;
 
@@ -465,12 +473,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttackStartDecider()
     {
-        Debug.Log("OnAttack Start");
-
         if (m_EquippedWeapon != null)
         {
             m_PlayerAnimation.SetAttackStatus(true);
             m_EffectsController.StartVisualAttack();
+
+            m_RunSystem.Emit(15);
+            m_RunSystem.Play();
 
             PlaySound(m_EquippedWeapon.m_AttackSound);
         }
@@ -508,6 +517,8 @@ public class PlayerController : MonoBehaviour
         {
             OnDisarmEnd();
         }
+
+        m_RunSystem.Stop(); //not in an if statement just incase player got knocked out of the attack
     }
 
     private void OnDefaultAttackStart()
@@ -559,6 +570,9 @@ public class PlayerController : MonoBehaviour
         m_PlayerAnimation.SetDashStatus(true);
         //GetComponent<Renderer>().material.color = Random.ColorHSV();
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
+
+        m_RunSystem.Emit(15);
+        m_RunSystem.Play();
     }
 
     public void Dash(PlayerController player, Vector3 direction)
@@ -573,9 +587,8 @@ public class PlayerController : MonoBehaviour
     private void OnDashEnd()
     {
         m_PlayerAnimation.SetDashStatus(false);
-        //m_AttackHitboxController.DisableAllHitBoxes();
-        //GetComponent<Renderer>().material.color = Color.white;
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.white;
+        m_RunSystem.Stop();
     }
 
     private void OnDashDisarmEnd()

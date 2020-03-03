@@ -106,6 +106,9 @@ public class RoundManager : MonoBehaviour
 
         //poof away player and then start new round
         PoofAwayLeftoverPlayer();
+
+        //end all level mechanics
+        m_Container.EndRound();
     }
 
 
