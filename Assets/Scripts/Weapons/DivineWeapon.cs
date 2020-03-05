@@ -43,7 +43,7 @@ public class DivineWeapon : MonoBehaviour
 
     private void Start()
     {
-        SetWeaponActive(false);
+        //SetWeaponActive(false);
 
         m_WeaponStartHeight = transform.position.y;
 
@@ -130,7 +130,8 @@ public class DivineWeapon : MonoBehaviour
         OnWeaponDropped();
     }
 
-    public virtual void OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
+    //retur true if hit was successful
+    public virtual bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
     {
         //attacking player loses weapon, no damage
         attackingPlayer.ApplyBounceBackForce(hitPlayer.transform.position);
@@ -139,6 +140,7 @@ public class DivineWeapon : MonoBehaviour
         if (hitPlayer.IsDisarming())
         {
             hitPlayer.DisarmOppponent(attackingPlayer);
+            return false;
         }
         else
         {
@@ -153,6 +155,7 @@ public class DivineWeapon : MonoBehaviour
             {
                 hitPlayer.GetEffectsController().ActivateDamagedSystem();
             }
+            return true;
 
         }
     }

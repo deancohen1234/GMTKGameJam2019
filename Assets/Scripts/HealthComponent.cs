@@ -30,7 +30,7 @@ public class HealthComponent : MonoBehaviour
     {
         m_CurrentHealth = Mathf.Clamp(m_CurrentHealth - (damage * m_DamageMultiplier), 0, m_StartingHealth);
 
-        m_OnPlayerDamaged.DynamicInvoke(gameObject.GetComponent<PlayerController>(), m_CurrentHealth);
+        m_OnPlayerDamaged?.DynamicInvoke(gameObject.GetComponent<PlayerController>(), m_CurrentHealth);
 
         if (m_CurrentHealth == 0)
         {

@@ -393,7 +393,13 @@ public class PlayerController : MonoBehaviour
 
         /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
         otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
+    }
 
+    public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
+    {
+        StartCoroutine(DisableAllMovement(hitStunTime));
+
+        m_Rigidbody.AddForce(direction.normalized * force);
     }
 
     #region Action Methods
