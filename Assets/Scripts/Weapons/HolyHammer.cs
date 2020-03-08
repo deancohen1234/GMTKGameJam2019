@@ -71,6 +71,8 @@ public class HolyHammer : DivineWeapon
         crack.GetComponent<ParticleSystem>().Play();
         m_CrackPrefab.GetComponent<ParticleSystem>().Emit(1); //create one crack
 
+        //shake the camera
+        m_CameraShake.AddTrauma(0.95f, .90f);
     }
 
     private void OnSlamHit(PlayerController hitPlayer, Vector3 origin)
@@ -88,7 +90,6 @@ public class HolyHammer : DivineWeapon
             hitPlayer.ApplyKnockbackForce(forceDirection, force, ((float)m_HitStunTime / 60f));
         }
 
-        m_CameraShake.AddTrauma(0.9f);
     }
 
     //deal damage and check for disarming
