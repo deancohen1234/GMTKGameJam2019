@@ -472,8 +472,13 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
-    public void ExternalDisablePlayerMovement(float time)
+    public void ExternalDisablePlayerMovement(float time, bool freezePlayerPosition = false)
     {
+        if (freezePlayerPosition)
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
+
         StartCoroutine(DisablePlayerMovement(time));
     }
 

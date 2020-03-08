@@ -31,4 +31,30 @@ public class SacrificeDagger : DivineWeapon
  
         m_PlayerRef.m_AttackHitboxController.DisableAllHitBoxes();
     }
+
+    public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
+    {
+
+        bool playerHit = base.OnHit(hitPlayer, attackingPlayer);
+        //attacking player loses weapon, no damage
+        attackingPlayer.ApplyBounceBackForce(hitPlayer.transform.position);
+        hitPlayer.ApplyBounceBackForce(attackingPlayer.transform.position);
+
+        if (playerHit)
+        {
+            //player failed to disarm they now take damage
+
+            hitPlayer.PlaySoundEffect(PlayerSound.Damaged);
+
+            HealthComponent h = hitPlayer.GetHealthComponent();
+            h.DealDamage(100);
+
+            if (!h.IsDead())
+            {
+                hitPlayer.GetEffectsController().ActivateDamagedSystem();
+            }
+        }
+
+        return playerHit;
+    }
 }
