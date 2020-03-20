@@ -4975,6 +4975,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5130787526742937382, guid: 2ce44d6ad18f0ac4db7d2598f469f337,
+        type: 3}
+      propertyPath: m_DisarmAction.ActionLength
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce44d6ad18f0ac4db7d2598f469f337, type: 3}
 --- !u!1 &1026376951
@@ -22261,7 +22266,7 @@ MonoBehaviour:
     IsAvailable: 1
     IsExecuting: 0
     CooldownTime: 3
-    StartDelay: 4
+    StartDelay: 30
     ActionLength: 60
   m_AttackSound: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
   m_KnockbackPrefab: {fileID: 769007356821239844, guid: de798207c2ca41c4e818c48419191ee7,

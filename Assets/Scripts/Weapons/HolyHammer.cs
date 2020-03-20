@@ -84,10 +84,17 @@ public class HolyHammer : DivineWeapon
         Vector3 forceDirection = distVector.normalized;
 
         bool hitSuccessful = OnHit(hitPlayer, m_PlayerRef);
+        Debug.Log("Hit Success: " + hitSuccessful);
 
-        if (hitPlayer)
+        if (hitSuccessful)
         {
             hitPlayer.ApplyKnockbackForce(forceDirection, force, ((float)m_HitStunTime / 60f));
+        }
+        else
+        {
+            //knock back player who is about to get disarmed
+            //by half as much force
+            m_PlayerRef.ApplyKnockbackForce(forceDirection, force = 0.5f, ((float)m_HitStunTime / 60f));
         }
 
     }
