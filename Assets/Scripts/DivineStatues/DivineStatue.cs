@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class DivineStatue : MonoBehaviour
 {
-    public Transform m_Test;
-
     //called from the round manager
     public abstract void OnGameIntialized();
     public abstract void OnGameComplete();
