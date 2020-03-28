@@ -43,9 +43,14 @@ public class DivineWeapon : MonoBehaviour
 
     private void Start()
     {
-        SetWeaponActive(false);
+        OverrideStart();
+    }
 
+    protected virtual void OverrideStart()
+    {
         m_WeaponStartHeight = transform.position.y;
+
+        //SetWeaponActive(false);
 
         //assign all actions for delegate when game starts
         m_AttackAction.OnActionStart += OnWeaponAttackStart;
@@ -130,30 +135,18 @@ public class DivineWeapon : MonoBehaviour
         OnWeaponDropped();
     }
 
-    public virtual void OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
+    //retur true if hit was successful
+    public virtual bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
     {
-        //attacking player loses weapon, no damage
-        attackingPlayer.ApplyBounceBackForce(hitPlayer.transform.position);
-        hitPlayer.ApplyBounceBackForce(attackingPlayer.transform.position);
-
+        //if is disarming return false
         if (hitPlayer.IsDisarming())
         {
             hitPlayer.DisarmOppponent(attackingPlayer);
+            return false;
         }
         else
         {
-            //player failed to disarm they now take damage
-
-            hitPlayer.PlaySoundEffect(PlayerSound.Damaged);
-
-            HealthComponent h = hitPlayer.GetHealthComponent();
-            h.DealDamage(100);
-
-            if (!h.IsDead())
-            {
-                hitPlayer.GetEffectsController().ActivateDamagedSystem();
-            }
-
+            return true;
         }
     }
 

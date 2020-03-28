@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private float m_MoveSpeed; //move speed that can be default or weapon effected;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
+    private bool m_ControllerDisabled = false; //enables controller to be disabled without killing whole player controller
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
     #region Monobehavior Methods
@@ -115,8 +116,7 @@ public class PlayerController : MonoBehaviour
             m_PlayerAnimation.SetAttackStatus(true);
         }
 
-        if (m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
-
+        if (m_ControllerDisabled || m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
 
         Vector2 input = Vector2.zero;
         bool LTriggerPressed = false;
@@ -283,10 +283,14 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
-    public void DisableAllMovement()
+    public void DisableController(bool stopAllVelocity = true)
     {
-        m_BlockAllInput = true;
-        m_Rigidbody.velocity = Vector3.zero;
+        m_ControllerDisabled = true;
+
+        if (stopAllVelocity)
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
     }
 
     public void PlayPoofSound()
@@ -393,7 +397,13 @@ public class PlayerController : MonoBehaviour
 
         /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
         otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
+    }
 
+    public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
+    {
+        StartCoroutine(DisableAllMovement(hitStunTime));
+
+        m_Rigidbody.AddForce(direction.normalized * force);
     }
 
     #region Action Methods
@@ -466,8 +476,13 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.Play();
     }
 
-    public void ExternalDisablePlayerMovement(float time)
+    public void ExternalDisablePlayerMovement(float time, bool freezePlayerPosition = false)
     {
+        if (freezePlayerPosition)
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
+
         StartCoroutine(DisablePlayerMovement(time));
     }
 

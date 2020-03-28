@@ -1,0 +1,6 @@
+Make Death State when falling off stage
+Make Agnithia (Empty Template)
+Make Actual Aginthia Stage
+  - Put in Agnithia
+  - Put in Round Manager
+  - Add to Level Select

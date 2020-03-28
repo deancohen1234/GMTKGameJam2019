@@ -149,7 +149,7 @@ public class RoundManager : MonoBehaviour
         //kill leftover player then start new round
         if (m_PlayerOne.GetHealthComponent().IsDead() == false)
         {
-            m_PlayerOne.DisableAllMovement();
+            m_PlayerOne.DisableController();
             m_PlayerOne.PlayPoofSound();
             m_PlayerOne.GetEffectsController().ActivatePoofSystem();
             m_PlayerOne.GetEffectsController().m_CharacterSprite.enabled = false;
@@ -157,7 +157,7 @@ public class RoundManager : MonoBehaviour
 
         if (m_PlayerTwo.GetHealthComponent().IsDead() == false)
         {
-            m_PlayerTwo.DisableAllMovement();
+            m_PlayerTwo.DisableController();
             m_PlayerTwo.PlayPoofSound();
             m_PlayerTwo.GetEffectsController().ActivatePoofSystem();
             m_PlayerTwo.GetEffectsController().m_CharacterSprite.enabled = false;
