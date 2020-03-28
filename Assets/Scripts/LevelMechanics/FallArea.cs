@@ -9,7 +9,6 @@ public class FallArea : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("In Fall Area");
             OnPlayerFall(other.GetComponent<PlayerController>());
         }
     }
@@ -18,7 +17,8 @@ public class FallArea : MonoBehaviour
     {
         //playerController.GetHealthComponent().Kill();
         //112 is only rotation bit mask
-        playerController.enabled = false;
+        playerController.DisableController(false);
+        //playerController.enabled = false;
 
         Rigidbody r = playerController.GetComponent<Rigidbody>();
         r.constraints = (RigidbodyConstraints)112;

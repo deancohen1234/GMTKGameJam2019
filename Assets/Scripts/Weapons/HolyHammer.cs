@@ -84,7 +84,6 @@ public class HolyHammer : DivineWeapon
         Vector3 forceDirection = distVector.normalized;
 
         bool hitSuccessful = OnHit(hitPlayer, m_PlayerRef);
-        Debug.Log("Hit Success: " + hitSuccessful);
 
         if (hitSuccessful)
         {

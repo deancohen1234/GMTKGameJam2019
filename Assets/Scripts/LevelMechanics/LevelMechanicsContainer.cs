@@ -17,7 +17,7 @@ public class LevelMechanicsContainer : MonoBehaviour
 
     public void EndRound()
     {
-        m_OnRoundEnd.Invoke();
+        m_OnRoundEnd?.Invoke();
     }
 
     public PlayerController GetPlayerOne()
