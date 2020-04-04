@@ -65,12 +65,16 @@ public class HolyHammer : DivineWeapon
         //lock player movement
         player.ExternalDisablePlayerMovement(m_AttackAction.ActionLength / 60f, true); //convert from frames to seconds
 
+        Vector3 effectsLocation = new Vector3(player.transform.position.x, m_ArenaCenter.position.y, player.transform.position.z);
+        /*
         //place crack effect
         GameObject crack = Instantiate(m_CrackPrefab);
-        //crack.transform.position = player.transform.position;
-        crack.transform.position = new Vector3(player.transform.position.x, m_ArenaCenter.position.y, player.transform.position.z);
+        crack.transform.position = effectsLocation;
         crack.GetComponent<ParticleSystem>().Play();
         m_CrackPrefab.GetComponent<ParticleSystem>().Emit(1); //create one crack
+        */
+        m_EffectsManager.ActivateEffect("Ground_Crack", effectsLocation);
+        m_EffectsManager.ActivateEffect("Weapon_Sparks", effectsLocation);
 
         //shake the camera
         m_CameraShake.AddTrauma(0.95f, .90f);

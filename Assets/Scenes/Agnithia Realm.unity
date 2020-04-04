@@ -22012,6 +22012,7 @@ GameObject:
   - component: {fileID: 2069114550}
   - component: {fileID: 2069114549}
   - component: {fileID: 2069114548}
+  - component: {fileID: 2069114557}
   m_Layer: 0
   m_Name: Hammer of Justice
   m_TagString: Untagged
@@ -22287,6 +22288,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069114557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069114547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b101c5c211a7e4daec93054c38a20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Effects:
+  - m_Name: Weapon_Sparks
+    m_SystemObject: {fileID: 3833842526178330675, guid: 86aaf9a0420fb924295ca0c130171a87,
+      type: 3}
+    m_IsBurst: 1
+    m_NeedsInstantiation: 1
+    m_TimeToLive: 2
+    m_BurstAmount: 4
 --- !u!1 &2076676211
 GameObject:
   m_ObjectHideFlags: 0

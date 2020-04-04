@@ -21,10 +21,11 @@ public class DivineWeapon : MonoBehaviour
 
     protected PlayerController m_PlayerRef;
 
-    private AudioSource m_AudioSource;
-    private SpriteRenderer m_SpriteRenderer;
-    private Rigidbody m_Rigidbody;
-    private Collider[] m_AllColliders;
+    protected AudioSource m_AudioSource;
+    protected SpriteRenderer m_SpriteRenderer;
+    protected Rigidbody m_Rigidbody;
+    protected Collider[] m_AllColliders;
+    protected EffectsManager m_EffectsManager;
 
     private float m_WeaponStartHeight;
     private bool m_IsLerping;
@@ -39,6 +40,7 @@ public class DivineWeapon : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AllColliders = GetComponents<Collider>();
+        m_EffectsManager = GetComponent<EffectsManager>();
     }
 
     private void Start()
