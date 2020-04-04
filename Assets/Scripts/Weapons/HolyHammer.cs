@@ -67,7 +67,8 @@ public class HolyHammer : DivineWeapon
 
         //place crack effect
         GameObject crack = Instantiate(m_CrackPrefab);
-        crack.transform.position = player.transform.position;
+        //crack.transform.position = player.transform.position;
+        crack.transform.position = new Vector3(player.transform.position.x, m_ArenaCenter.position.y, player.transform.position.z);
         crack.GetComponent<ParticleSystem>().Play();
         m_CrackPrefab.GetComponent<ParticleSystem>().Emit(1); //create one crack
 
