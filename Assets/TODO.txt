@@ -1,6 +1,2 @@
-Make Death State when falling off stage
-Make Agnithia (Empty Template)
-Make Actual Aginthia Stage
-  - Put in Agnithia
-  - Put in Round Manager
-  - Add to Level Select
+Make donut collider thing
+-Only allow players to fall off stage when hit by the hammer
