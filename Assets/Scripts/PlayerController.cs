@@ -696,6 +696,11 @@ public class PlayerController : MonoBehaviour
     {
         return m_IsDisarming;
     }
+
+    public bool IsStunned()
+    {
+        return m_BlockAllInput;
+    }
     #endregion
 }
 
