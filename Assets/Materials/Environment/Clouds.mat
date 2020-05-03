@@ -70,7 +70,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _CloudCutoff: 0.1
-    - _CloudHeight: 316.3
+    - _CloudHeight: 1
     - _CloudMiddleYPosition: 0
     - _CloudOffset: 1.5
     - _CloudSoftness: 0.28

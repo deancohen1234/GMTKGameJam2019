@@ -18,6 +18,8 @@ public class JusticeUser : MonoBehaviour
 
     private List<int> m_ColoredTriangles;
 
+    private bool m_IsHit; //true if player was hit by hammer
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,6 +34,7 @@ public class JusticeUser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {  
+        /*
         for (int i = 0; i < m_JusticeGuards.Length; i++)
         {
             float distance = Vector3.Distance(transform.position, m_JusticeGuards[i].transform.position);
@@ -48,8 +51,25 @@ public class JusticeUser : MonoBehaviour
                 PaintMesh(0);
             }
         }
+        */
 
 
+    }
+
+    public void SetAsHit(float time)
+    {
+        m_IsHit = true;
+        Invoke("ResetHitStatus", time);
+    }
+
+    private void ResetHitStatus()
+    {
+        m_IsHit = false;
+    }
+
+    public bool GetIsHit()
+    {
+        return m_IsHit;
     }
 
     private void DrawRays()

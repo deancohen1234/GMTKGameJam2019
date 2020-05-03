@@ -25092,6 +25092,7 @@ GameObject:
   - component: {fileID: 4482629906860492817}
   - component: {fileID: 1140291503}
   - component: {fileID: -5656065565238443539}
+  - component: {fileID: 7524976522035093401}
   m_Layer: 9
   m_Name: PlayerOne
   m_TagString: Player
@@ -25407,6 +25408,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteSheetName: Cultist_1
+--- !u!114 &7524976522035093401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482629906860492806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d664f9d21992d47962533778eaadad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DistanceThreshold: 2
+  m_RingCount: 2
+  m_RayDensity: 10
+  m_Radius: 1
+  m_LitColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &4482629906959125277
 GameObject:
   m_ObjectHideFlags: 0

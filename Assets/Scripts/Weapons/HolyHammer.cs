@@ -16,6 +16,7 @@ public class HolyHammer : DivineWeapon
     public float m_KnockbackRadius = 1.5f;
     public float m_BaseKnockbackForce = 200;
     public float m_DistanceForceStrength = 2.0f;
+    //public float m_DistanceMaxMagnitude = 2.0f;
     public int m_HitStunTime = 12; //in frames
 
     private PlayerController m_SlammingPlayer;
@@ -59,7 +60,7 @@ public class HolyHammer : DivineWeapon
         //instantiate shockwave object at player location
         KnockbackSphere sphere = Instantiate(m_KnockbackPrefab).GetComponent<KnockbackSphere>();
         sphere.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        sphere.CreateSphere(3.0f, 1.0f, player.gameObject.GetComponent<Collider>());
+        sphere.CreateSphere(3.0f, 10f/60f, player.gameObject.GetComponent<Collider>());
         sphere.m_OnSphereHit += OnSlamHit;
 
         //lock player movement
@@ -79,6 +80,7 @@ public class HolyHammer : DivineWeapon
         Vector3 distVector = hitPlayer.transform.position - origin;
         float distMagnitude = distVector.sqrMagnitude;
         float force = (m_DistanceForceStrength / Mathf.Clamp(distMagnitude, 0.05f, 3.0f)) + m_BaseKnockbackForce;
+        //float force = (1 / Mathf.Clamp(distMagnitude, 0.05f, 3.0f)) * m_DistanceMaxMagnitude + m_BaseKnockbackForce;
 
         Vector3 forceDirection = distVector.normalized;
 
@@ -87,12 +89,13 @@ public class HolyHammer : DivineWeapon
         if (hitSuccessful)
         {
             hitPlayer.ApplyKnockbackForce(forceDirection, force, ((float)m_HitStunTime / 60f));
+            hitPlayer.GetComponent<JusticeUser>().SetAsHit((float)m_HitStunTime / 60f);
         }
         else
         {
             //knock back player who is about to get disarmed
             //by half as much force
-            m_PlayerRef.ApplyKnockbackForce(forceDirection, force = 0.5f, ((float)m_HitStunTime / 60f));
+            m_PlayerRef.ApplyKnockbackForce(forceDirection, force * 0.5f, ((float)m_HitStunTime / 60f));
         }
 
     }
