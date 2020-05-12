@@ -19,10 +19,23 @@ public class HolyHammer : DivineWeapon
     //public float m_DistanceMaxMagnitude = 2.0f;
     public int m_HitStunTime = 12; //in frames
 
+    [Header("Jump Properties")]
+    public AnimationCurve m_JumpCurve;
+    public float m_JumpHeight;
+    public float m_LerpTightness = 2f;
+    public float m_ForwardDistance = 0.5f;
+
     private PlayerController m_SlammingPlayer;
     private CameraShake m_CameraShake;
     private System.Action<PlayerController> m_OnKnockbackHit; //global so we can set it to null
     private bool m_IsSlamming;
+
+    //jumping properties
+    private Vector3 m_JumpDirection;
+    private Vector3 m_PlayerStartingPos;
+
+    private float m_JumpStartTime;
+    private bool m_IsJumping;
 
     protected override void OverrideStart()
     {
@@ -38,11 +51,22 @@ public class HolyHammer : DivineWeapon
     public override void OnWeaponAttackStart()
     {
         base.OnWeaponAttackStart();
+
+        //set jump settings
+        m_JumpDirection = m_PlayerRef.GetComponent<Rigidbody>().velocity.normalized;
+        m_JumpStartTime = Time.time;
+        m_PlayerStartingPos = m_PlayerRef.transform.position;
+        m_IsJumping = true;
     }
 
     public override void WeaponAttack(PlayerController player, Vector3 direction)
     {
         base.WeaponAttack(player, direction);
+
+        m_IsJumping = false; //jump only lasts for windup
+        Vector3 playerStartingPos = new Vector3(m_PlayerRef.transform.position.x, m_PlayerStartingPos.y, m_PlayerRef.transform.position.z);
+        m_PlayerRef.transform.position = playerStartingPos;
+
         StartSlam(player, direction);
     }
 
@@ -111,5 +135,27 @@ public class HolyHammer : DivineWeapon
         }
 
         return playerHit;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        //Make player do a little hop
+        if (m_IsJumping)
+        {
+            float endTime = m_JumpStartTime + (m_AttackAction.StartDelay / 60f);
+            float clampedTime = Mathf.Clamp(Time.time, 0, endTime);
+            float time = DeanUtils.Map(Time.time, m_JumpStartTime, endTime, 0, 1f);
+
+            float jumpHeight = m_PlayerStartingPos.y + (m_JumpCurve.Evaluate(time) * m_JumpHeight);
+
+            Vector3 jumpDistance = Vector3.Lerp(Vector3.zero, m_JumpDirection * m_ForwardDistance, time);
+
+            Vector3 lerpEndPos = m_PlayerStartingPos + new Vector3(jumpDistance.x, jumpHeight, jumpDistance.z);
+            Vector3 newPosition = Vector3.Lerp(m_PlayerRef.transform.position, lerpEndPos, Time.deltaTime * m_LerpTightness);
+
+            m_PlayerRef.transform.position = newPosition;
+        }
     }
 }
