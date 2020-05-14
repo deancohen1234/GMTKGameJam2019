@@ -23308,8 +23308,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_JumpHeight: 4
+  m_JumpHeight: 1
   m_LerpTightness: 10
+  m_ForwardDistance: 0.5
 --- !u!95 &2069114554
 Animator:
   serializedVersion: 3
