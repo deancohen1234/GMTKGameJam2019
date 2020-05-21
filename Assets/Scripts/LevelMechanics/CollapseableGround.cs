@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +7,38 @@ using UnityEngine;
     //changes Justice Guards around stage
     //if player on collapsing ground, they die
 
+//each ground has a connect chunk
+//if there is no connected chunk then piece can fall
+
 public class CollapseableGround : MonoBehaviour
 {
     public LevelMechanicsContainer m_LevelMechanic;
+    public CollapseableGround m_ConnectedChunk;
     public int m_NumberOfHitsToBreak = 3;
 
     public float m_PerlinScale = 0.5f;
     public float m_MaxShake = 1.0f;
     public float m_Frequecy = 1.0f;
 
+    public Action m_OnCollapse;
+
+    private Animator m_Animator;
+
     private Vector3 m_StartingPos;
+    private int m_CurrentNumHitsRemaining = 0;
+    private bool m_IsCollapsed = false;
+
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         m_StartingPos = transform.position;
+
+        m_CurrentNumHitsRemaining = m_NumberOfHitsToBreak;
     }
 
     private void Update()
@@ -31,23 +49,38 @@ public class CollapseableGround : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        m_ConnectedChunk.m_OnCollapse += OnConnectChunkCollapse;
+    }
+
+    private void OnDisable()
+    {
+        m_ConnectedChunk.m_OnCollapse -= OnConnectChunkCollapse;
+    }
+
     //called from Hammer
     public void HitGround()
     {
         //decrease total hit count by 1
-        //if hit is less than 0
-            //trigger collapse
+        m_CurrentNumHitsRemaining--;
+
+        //if hit is less than 0 then trigger collapse
+        if (m_CurrentNumHitsRemaining <= 0)
+        {
+            TriggerCollapse();
+        }
     }
 
     private void TriggerCollapse()
     {
         //play falling animation
-
-        //change which level is falling
-            //tell neighboring piece to activate wall
+        m_Animator.SetTrigger("TriggerCollapse");
 
         //if player is in area (maybe by doing a raycast from the player down to see if they hit the falling piece)
-            //kill player
+        //m_LevelMechanic.GetPlayerOne()
+
+        m_OnCollapse?.Invoke();
     }
 
     //called from Update
@@ -61,5 +94,15 @@ public class CollapseableGround : MonoBehaviour
 
         Vector3 newPosition = new Vector3(m_StartingPos.x + x, transform.position.y, m_StartingPos.z + z);
         transform.position = newPosition;
+    }
+
+    private void OnConnectChunkCollapse()
+    {
+
+    }
+
+    public bool IsCollapsed()
+    {
+        return m_IsCollapsed;
     }
 }
