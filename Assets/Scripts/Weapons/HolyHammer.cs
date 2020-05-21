@@ -95,6 +95,18 @@ public class HolyHammer : DivineWeapon
         m_EffectsManager.ActivateEffect("Ground_Crack", effectsLocation);
         m_EffectsManager.ActivateEffect("Weapon_Sparks", effectsLocation);
 
+        //hit stage
+        Ray ray = new Ray(player.transform.position, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 5.0f, ~LayerMask.NameToLayer("IgnoreFloor"))) //ignore everything but "ignorefloor"
+        {
+            CollapseableGround ground = hit.transform.gameObject.GetComponent<CollapseableGround>();
+            if (ground != null)
+            {
+                ground.HitGround();
+            }
+        }
+
         //shake the camera
         m_CameraShake.AddTrauma(0.98f, .97f);
     }
