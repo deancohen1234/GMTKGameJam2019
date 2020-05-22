@@ -18,12 +18,11 @@ public class FallArea : MonoBehaviour
         //playerController.GetHealthComponent().Kill();
         //112 is only rotation bit mask
         playerController.DisableController(false);
-        //playerController.enabled = false;
 
         Rigidbody r = playerController.GetComponent<Rigidbody>();
         r.constraints = (RigidbodyConstraints)112;
         r.useGravity = true;
 
-        //r.velocity = new Vector3(0, 20.0f, 0);
+        playerController.gameObject.layer = LayerMask.NameToLayer("IgnoreFloor");
     }
 }

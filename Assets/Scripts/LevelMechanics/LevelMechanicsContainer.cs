@@ -19,6 +19,7 @@ public class LevelMechanicsContainer : MonoBehaviour
 
     public void EndRound()
     {
+        Debug.Log("End Round...");
         m_OnRoundEnd?.Invoke();
     }
 

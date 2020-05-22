@@ -16,6 +16,7 @@ public class CollapseableGround : MonoBehaviour
     public CollapseableGround m_ConnectedChunk;
     public GameObject m_ConnectedWall;
     public int m_NumberOfHitsToBreak = 3;
+    public bool m_IsUnbreakable = false;
 
     public float m_PerlinScale = 0.5f;
     public float m_MaxShake = 1.0f;
@@ -28,12 +29,10 @@ public class CollapseableGround : MonoBehaviour
     private Vector3 m_StartingPos;
     private int m_CurrentNumHitsRemaining = 0;
     private bool m_IsCollapsed = false;
-    private bool m_IsCrumbling = false;
 
     private void Awake()
     {
         m_Animator = GetComponent<Animator>();
-        m_Animator.enabled = false;
     }
 
     // Start is called before the first frame update
@@ -51,10 +50,7 @@ public class CollapseableGround : MonoBehaviour
 
     private void Update()
     {
-        if(m_IsCrumbling || Input.GetKey(KeyCode.Space))
-        {
-            VibrateGround();
-        }
+        //VibrateGround();
     }
 
     private void OnEnable()
@@ -63,6 +59,8 @@ public class CollapseableGround : MonoBehaviour
         {
             m_ConnectedChunk.m_OnCollapse += OnConnectChunkCollapse;
         }
+
+        m_LevelMechanic.m_OnRoundEnd += OnRoundEnd;
     }
 
     private void OnDisable()
@@ -71,12 +69,17 @@ public class CollapseableGround : MonoBehaviour
         {
             m_ConnectedChunk.m_OnCollapse -= OnConnectChunkCollapse;
         }
+
+        if (m_LevelMechanic.m_OnRoundEnd != null)
+        {
+            m_LevelMechanic.m_OnRoundEnd -= OnRoundEnd;
+        }
     }
 
     //called from Hammer
     public void HitGround()
     {
-        if (m_ConnectedChunk != null) { return; }
+        if (m_ConnectedChunk != null || m_IsUnbreakable) { return; }
 
         //decrease total hit count by 1
         m_CurrentNumHitsRemaining--;
@@ -92,27 +95,41 @@ public class CollapseableGround : MonoBehaviour
 
     private void DelayToCollapse(float timeToCollapse)
     {
-        m_IsCrumbling = true;
         Invoke("TriggerCollapse", timeToCollapse);
     }
 
     private void TriggerCollapse()
     {
-        //stop crumbling to start collapse
-        m_IsCrumbling = false;
-
         //play falling animation
-        m_Animator.enabled = true;
         m_Animator.SetBool("IsCollapsed", true);
 
         m_ConnectedWall.SetActive(false);
 
         //if player is in area (maybe by doing a raycast from the player down to see if they hit the falling piece)
-        //m_LevelMechanic.GetPlayerOne()
+        PlayerController p1 = m_LevelMechanic.GetPlayerOne();
+        PlayerController p2 = m_LevelMechanic.GetPlayerTwo();
+
+        if (IsPlayerOnCollapsedGround(p1)) { p1.GetHealthComponent().Kill(); }
+        if (IsPlayerOnCollapsedGround(p2)) { p2.GetHealthComponent().Kill(); }
 
         m_OnCollapse?.Invoke();
     }
 
+    private bool IsPlayerOnCollapsedGround(PlayerController player)
+    {
+        Ray ray = new Ray(player.transform.position, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 5.0f, ~LayerMask.NameToLayer("IgnoreFloor"))) //ignore everything but "ignorefloor"
+        {
+            CollapseableGround ground = hit.transform.gameObject.GetComponent<CollapseableGround>();
+            if (ground.Equals(this))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     //called from Update
     private void VibrateGround()
     {
@@ -131,6 +148,12 @@ public class CollapseableGround : MonoBehaviour
     {
         m_ConnectedWall.SetActive(true);
         m_ConnectedChunk = null;
+    }
+
+    private void OnRoundEnd()
+    {
+        Debug.Log("Round ending");
+        m_Animator.SetBool("IsCollapsed", false);
     }
 
     public bool IsCollapsed()

@@ -80,8 +80,12 @@ public class RoundManager : MonoBehaviour
     private void StartRound()
     {
         //Spawn/initialize players
-        InitializePlayer(ref m_PlayerOne, m_PlayerOnePrefab);
-        InitializePlayer(ref m_PlayerTwo, m_PlayerTwoPrefab);
+        InitializePlayer(ref m_PlayerOne, m_PlayerOnePrefab, 0);
+        InitializePlayer(ref m_PlayerTwo, m_PlayerTwoPrefab, 1);
+
+        //set player spawn locations
+        //m_PlayerOne.transform.position = m_PlayerOneStartPosition.position;
+        //m_PlayerTwo.transform.position = m_PlayerTwoStartPosition.position;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_PlayerOneRoundWins + m_PlayerTwoRoundWins + 1)); //+1 for 0 based
 
@@ -134,11 +138,24 @@ public class RoundManager : MonoBehaviour
     #region Helper Methods
     //send a REFERENCE of the player
     //instantiates and adds needed events to player then returns object instantiated
-    private void InitializePlayer(ref PlayerController player, GameObject playerPrefab)
+    private void InitializePlayer(ref PlayerController player, GameObject playerPrefab, int playerIndex)
     {
         if (player) { Destroy(player.gameObject); player = null; }
 
-        player = Instantiate(playerPrefab).GetComponent<PlayerController>();
+        //get start position
+        Vector3 startPos = Vector3.zero;
+        if (playerIndex == 0)
+        {
+            startPos = m_PlayerOneStartPosition.position;
+        }
+        else if (playerIndex == 1)
+        {
+            startPos = m_PlayerTwoStartPosition.position;
+        }
+
+        //instantiate player and spawn at location
+        player = Instantiate(playerPrefab, startPos, Quaternion.identity).GetComponent<PlayerController>();
+
         player.m_OnDeathComplete += OnRoundComplete;
         player.PlayPoofSound();
         player.GetEffectsController().ActivatePoofSystem();
