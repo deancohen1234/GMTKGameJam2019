@@ -33,6 +33,10 @@ public class HolyHammer : DivineWeapon
     //jumping properties
     private Vector3 m_JumpDirection;
     private Vector3 m_PlayerStartingPos;
+    private float m_CollisionWithWallTime;
+
+    //DEBUG
+    private Vector3 m_PredictedPosition;
 
     private float m_JumpStartTime;
     private bool m_IsJumping;
@@ -160,14 +164,48 @@ public class HolyHammer : DivineWeapon
             float clampedTime = Mathf.Clamp(Time.time, 0, endTime);
             float time = DeanUtils.Map(Time.time, m_JumpStartTime, endTime, 0, 1f);
 
-            float jumpHeight = m_PlayerStartingPos.y + (m_JumpCurve.Evaluate(time) * m_JumpHeight);
-
-            Vector3 jumpDistance = Vector3.Lerp(Vector3.zero, m_JumpDirection * m_ForwardDistance, time);
-
-            Vector3 lerpEndPos = m_PlayerStartingPos + new Vector3(jumpDistance.x, jumpHeight, jumpDistance.z);
-            Vector3 newPosition = Vector3.Lerp(m_PlayerRef.transform.position, lerpEndPos, Time.deltaTime * m_LerpTightness);
+            //if player is predicted to hit wall, their jump distance should be zero
+            bool lockForwardJump = IsPredictedToHitWall(time);
+            Vector3 newPosition = GetJumpPosition(time, lockForwardJump);
 
             m_PlayerRef.transform.position = newPosition;
+        }
+    }
+
+    private bool IsPredictedToHitWall(float time)
+    {
+        time = time + 0.1f; //get time in future
+
+        Vector3 predictedPos = GetJumpPosition(time);
+        m_PredictedPosition = predictedPos;
+
+        Collider[] hitColliders = Physics.OverlapSphere(predictedPos, 0.05f);
+        if (hitColliders.Length >= 1)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private Vector3 GetJumpPosition(float time, bool lockForwardJump = false)
+    {
+        float jumpHeight = m_PlayerStartingPos.y + (m_JumpCurve.Evaluate(time) * m_JumpHeight);
+        float jumpDistanceTime = lockForwardJump ? 0.0f : time;
+
+        Vector3 jumpDistance = Vector3.Lerp(Vector3.zero, m_JumpDirection * m_ForwardDistance, jumpDistanceTime);
+
+        Vector3 lerpEndPos = m_PlayerStartingPos + new Vector3(jumpDistance.x, jumpHeight, jumpDistance.z);
+        Vector3 newPosition = Vector3.Lerp(m_PlayerRef.transform.position, lerpEndPos, Time.deltaTime * m_LerpTightness);
+
+        return newPosition;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (m_PredictedPosition != Vector3.zero)
+        {
+            //Gizmos
         }
     }
 }
