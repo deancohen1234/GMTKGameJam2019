@@ -12944,7 +12944,7 @@ GameObject:
   - component: {fileID: 1240747082}
   - component: {fileID: 1240747081}
   - component: {fileID: 1240747080}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Death Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

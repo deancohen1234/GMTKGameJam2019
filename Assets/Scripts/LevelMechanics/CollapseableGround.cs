@@ -79,7 +79,8 @@ public class CollapseableGround : MonoBehaviour
     //called from Hammer
     public void HitGround()
     {
-        if (m_ConnectedChunk != null || m_IsUnbreakable) { return; }
+        //if connected chunk exists, and it's either collapsed or unbreakable then bail out of function
+        if (m_ConnectedChunk != null && (m_ConnectedChunk.IsCollapsed() || m_IsUnbreakable)) { return; }
 
         //decrease total hit count by 1
         m_CurrentNumHitsRemaining--;
@@ -147,13 +148,26 @@ public class CollapseableGround : MonoBehaviour
     private void OnConnectChunkCollapse()
     {
         m_ConnectedWall.SetActive(true);
-        m_ConnectedChunk = null;
+        m_IsCollapsed = true;
     }
 
     private void OnRoundEnd()
     {
-        Debug.Log("Round ending");
         m_Animator.SetBool("IsCollapsed", false);
+
+        ResetGround();
+    }
+
+    public void ResetGround()
+    {
+        m_IsCollapsed = false;
+        m_CurrentNumHitsRemaining = m_NumberOfHitsToBreak;
+        m_ConnectedWall.SetActive(true);
+
+        if (m_ConnectedChunk != null)
+        {
+            m_ConnectedWall.SetActive(false);
+        }
     }
 
     public bool IsCollapsed()

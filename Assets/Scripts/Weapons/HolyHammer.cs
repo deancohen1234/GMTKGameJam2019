@@ -95,7 +95,7 @@ public class HolyHammer : DivineWeapon
         player.ExternalDisablePlayerMovement(m_AttackAction.ActionLength / 60f, true); //convert from frames to seconds
 
         //add effects
-        Vector3 effectsLocation = new Vector3(player.transform.position.x, m_ArenaCenter.position.y, player.transform.position.z);
+        Vector3 effectsLocation = new Vector3(player.transform.position.x, m_ArenaCenter.position.y + 0.05f, player.transform.position.z);
         m_EffectsManager.ActivateEffect("Ground_Crack", effectsLocation);
         m_EffectsManager.ActivateEffect("Weapon_Sparks", effectsLocation);
 
