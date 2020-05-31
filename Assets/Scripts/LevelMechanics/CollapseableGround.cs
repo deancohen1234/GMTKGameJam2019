@@ -15,6 +15,7 @@ public class CollapseableGround : MonoBehaviour
     public LevelMechanicsContainer m_LevelMechanic;
     public CollapseableGround m_ConnectedChunk;
     public GameObject m_ConnectedWall;
+    public AudioClip m_CollpaseClip;
     public int m_NumberOfHitsToBreak = 3;
     public bool m_IsUnbreakable = false;
 
@@ -25,6 +26,7 @@ public class CollapseableGround : MonoBehaviour
     public Action m_OnCollapse;
 
     private Animator m_Animator;
+    private AudioSource m_Source;
 
     private Vector3 m_StartingPos;
     private int m_CurrentNumHitsRemaining = 0;
@@ -33,6 +35,7 @@ public class CollapseableGround : MonoBehaviour
     private void Awake()
     {
         m_Animator = GetComponent<Animator>();
+        m_Source = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -80,7 +83,13 @@ public class CollapseableGround : MonoBehaviour
     public void HitGround()
     {
         //if connected chunk exists, and it's either collapsed or unbreakable then bail out of function
-        if (m_ConnectedChunk != null && (m_ConnectedChunk.IsCollapsed() || m_IsUnbreakable)) { return; }
+
+        if (m_ConnectedChunk!= null)
+        {
+            Debug.Log("Is Collapsed: "  + m_ConnectedChunk.IsCollapsed());
+        }
+
+        if (m_ConnectedChunk != null && (m_ConnectedChunk.IsCollapsed() == false || m_IsUnbreakable)) { return; }
 
         //decrease total hit count by 1
         m_CurrentNumHitsRemaining--;
@@ -96,6 +105,9 @@ public class CollapseableGround : MonoBehaviour
 
     private void DelayToCollapse(float timeToCollapse)
     {
+        //start collapsing audio
+        PlayAudio();
+
         Invoke("TriggerCollapse", timeToCollapse);
     }
 
@@ -104,12 +116,14 @@ public class CollapseableGround : MonoBehaviour
         //play falling animation
         m_Animator.SetBool("IsCollapsed", true);
 
+        m_IsCollapsed = true;
         m_ConnectedWall.SetActive(false);
 
         //if player is in area (maybe by doing a raycast from the player down to see if they hit the falling piece)
         PlayerController p1 = m_LevelMechanic.GetPlayerOne();
         PlayerController p2 = m_LevelMechanic.GetPlayerTwo();
 
+        //kill players on collapsing ground
         if (IsPlayerOnCollapsedGround(p1)) { p1.GetHealthComponent().Kill(); }
         if (IsPlayerOnCollapsedGround(p2)) { p2.GetHealthComponent().Kill(); }
 
@@ -148,7 +162,12 @@ public class CollapseableGround : MonoBehaviour
     private void OnConnectChunkCollapse()
     {
         m_ConnectedWall.SetActive(true);
-        m_IsCollapsed = true;
+    }
+
+    private void PlayAudio()
+    {
+        m_Source.clip = m_CollpaseClip;
+        m_Source.Play();
     }
 
     private void OnRoundEnd()
