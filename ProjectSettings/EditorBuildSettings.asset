@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Slthdths Pit.unity
     guid: 87b21f77dcd97ef4aa7406e04e99eb15
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Agnithia Realm.unity
+    guid: 062bcf7363c27e64d9a491dca21a2fe6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9fa2058e0e77c6e4c9cc6790b7319b5b,
       type: 2}

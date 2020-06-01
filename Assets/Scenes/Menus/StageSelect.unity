@@ -726,6 +726,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748469281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1312257582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61086aace581a104d9f8fd4d1b8bfba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &829231680
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,13 +762,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829231680}
-  m_LocalRotation: {x: 0.14185752, y: 0.62946624, z: 0.1181578, w: -0.7547765}
-  m_LocalPosition: {x: -11.617523, y: -2.3022728, z: -11.109009}
+  m_LocalRotation: {x: -0.008835367, y: 0.38350597, z: -0.0138621135, w: -0.9233921}
+  m_LocalPosition: {x: -6.61, y: 6.61, z: -15.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491167095}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.544, y: -45.094, z: 1.079}
 --- !u!20 &829231682
 Camera:
   m_ObjectHideFlags: 0
@@ -1585,7 +1597,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CamTransform
       value: 
-      objectReference: {fileID: 341389833}
+      objectReference: {fileID: 829231681}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_WeaponSprite
@@ -1613,22 +1625,32 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_PanelColor.r
-      value: 0.9811321
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_PanelColor.g
-      value: 0.11569952
+      value: 0.8765813
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_PanelColor.b
-      value: 0.11569952
+      value: 0.627451
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_PanelColor.a
-      value: 0.12941177
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_LevelName
+      value: Agnithia Realm
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_GodDescription
+      value: fghjnk
       objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
@@ -1648,7 +1670,7 @@ PrefabInstance:
     - target: {fileID: 4100416900853404671, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_Text
-      value: Coming in January
+      value: A Champion For Agnithia
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70e515130429a9d4fbf46cdf5c84d7eb, type: 3}
@@ -1770,6 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Levels:
   - {fileID: 226462154}
+  - {fileID: 748469281}
   m_MainCamera: {fileID: 1961030779}
   m_DetailsPanel: {fileID: 1900548833}
   m_Title: {fileID: 202539094}
@@ -3119,6 +3142,11 @@ PrefabInstance:
       value: "Sldqgh\u2019Thss is the god of disease and mortality who takes the form
         of a hooded figure with a protruding jowl of sharp teeth ending in a snubbed
         and gruesome nose."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
+        type: 3}
+      propertyPath: m_LevelName
+      value: Slthdths Pit
       objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}

@@ -36,6 +36,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Select()
     {
+        Debug.Log("Selecing: " + this);
         m_OnSelected?.DynamicInvoke(this);
     }
 }
