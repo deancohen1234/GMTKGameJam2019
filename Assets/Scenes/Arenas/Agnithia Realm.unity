@@ -1460,7 +1460,7 @@ Transform:
   m_GameObject: {fileID: 219594151}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.000000043711392}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3931133, y: 1.3931148, z: 1.3931148}
+  m_LocalScale: {x: 1.4070444, y: 1.407046, z: 1.407046}
   m_Children:
   - {fileID: 165657974}
   - {fileID: 1158524466}
@@ -2123,6 +2123,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &280488952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3661,6 +3662,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &374312607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6815,6 +6817,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!1 &846463151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7072,6 +7075,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &884152938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7478,6 +7482,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &925969859
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9496,6 +9501,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &1185374772
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9921,6 +9927,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &1235418807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10632,6 +10639,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!1 &1285549533
 GameObject:
   m_ObjectHideFlags: 0
@@ -11462,6 +11470,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &1387050906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19886,6 +19895,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &1809633052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20074,7 +20084,7 @@ Transform:
   m_GameObject: {fileID: 1845646094}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.000000043711392}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98223114, y: 0.9822322, z: 0.9822322}
+  m_LocalScale: {x: 0.99205345, y: 0.9920545, z: 0.9920545}
   m_Children:
   - {fileID: 569324354}
   - {fileID: 1447624842}
@@ -20270,6 +20280,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!1 &1886128135
 GameObject:
   m_ObjectHideFlags: 0
@@ -20423,6 +20434,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!65 &1899545813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21252,7 +21264,7 @@ Transform:
   m_GameObject: {fileID: 2040569382}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.000000043711392}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.064046, y: 1.0640467, z: 1.0640467}
+  m_LocalScale: {x: 1.0746865, y: 1.0746872, z: 1.0746872}
   m_Children:
   - {fileID: 659529127}
   - {fileID: 1224087337}
@@ -21581,7 +21593,7 @@ MonoBehaviour:
     type: 3}
   m_CrackPrefab: {fileID: 5371428430568646248, guid: e4dc27d4dbec04f4b88f2071ae4fc4b0,
     type: 3}
-  m_KnockbackRadius: 1.5
+  m_KnockbackRadius: 1.7
   m_BaseKnockbackForce: 100
   m_DistanceForceStrength: 100
   m_HitStunTime: 12
@@ -21620,7 +21632,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_JumpHeight: 1
   m_LerpTightness: 10
-  m_ForwardDistance: 0.5
+  m_ForwardDistance: 1.6
 --- !u!95 &2069114554
 Animator:
   serializedVersion: 3
@@ -22490,6 +22502,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!64 &498914057793062727
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22851,6 +22864,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!64 &1700348704650455873
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24163,6 +24177,7 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_Health: 3
 --- !u!64 &7553733300099452625
 MeshCollider:
   m_ObjectHideFlags: 0

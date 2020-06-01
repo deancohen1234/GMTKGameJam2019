@@ -88,7 +88,7 @@ public class HolyHammer : DivineWeapon
         //instantiate shockwave object at player location
         KnockbackSphere sphere = Instantiate(m_KnockbackPrefab).GetComponent<KnockbackSphere>();
         sphere.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        sphere.CreateSphere(3.0f, 10f/60f, player.gameObject.GetComponent<Collider>());
+        sphere.CreateSphere(m_KnockbackRadius, 10f/60f, player.gameObject.GetComponent<Collider>());
         sphere.m_OnSphereHit += OnSlamHit;
 
         //lock player movement

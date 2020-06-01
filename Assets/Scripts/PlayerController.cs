@@ -401,6 +401,8 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
     {
+        m_Rigidbody.velocity = Vector3.zero;
+
         StartCoroutine(DisableAllMovement(hitStunTime));
 
         m_Rigidbody.AddForce(direction.normalized * force);
