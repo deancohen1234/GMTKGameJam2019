@@ -84,12 +84,16 @@ public class CollapseableGround : MonoBehaviour
     {
         //if connected chunk exists, and it's either collapsed or unbreakable then bail out of function
 
-        if (m_ConnectedChunk!= null)
+        if (m_CurrentNumHitsRemaining <= 0)
         {
-            Debug.Log("Is Collapsed: "  + m_ConnectedChunk.IsCollapsed());
+            return;
         }
 
-        if (m_ConnectedChunk != null && (m_ConnectedChunk.IsCollapsed() == false || m_IsUnbreakable)) { return; }
+        if (m_ConnectedChunk != null && (m_ConnectedChunk.IsCollapsed() == false || m_IsUnbreakable))
+        {
+            m_ConnectedChunk.HitGround();
+            return;
+        }
 
         //decrease total hit count by 1
         m_CurrentNumHitsRemaining--;
@@ -108,6 +112,8 @@ public class CollapseableGround : MonoBehaviour
         //start collapsing audio
         PlayAudio();
 
+        m_IsCollapsed = true;
+
         Invoke("TriggerCollapse", timeToCollapse);
     }
 
@@ -116,7 +122,6 @@ public class CollapseableGround : MonoBehaviour
         //play falling animation
         m_Animator.SetBool("IsCollapsed", true);
 
-        m_IsCollapsed = true;
         m_ConnectedWall.SetActive(false);
 
         //if player is in area (maybe by doing a raycast from the player down to see if they hit the falling piece)
@@ -182,10 +187,12 @@ public class CollapseableGround : MonoBehaviour
         m_IsCollapsed = false;
         m_CurrentNumHitsRemaining = m_NumberOfHitsToBreak;
         m_ConnectedWall.SetActive(true);
+        m_ConnectedWall.GetComponent<JusticeGuard>().ResetWall();
 
         if (m_ConnectedChunk != null)
         {
             m_ConnectedWall.SetActive(false);
+            
         }
     }
 

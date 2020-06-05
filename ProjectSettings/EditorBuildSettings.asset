@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/ArcadeIdleScreen.unity
+    path: Assets/Scenes/Menus/ArcadeIdleScreen.unity
     guid: b036eb067a27d6e458999dc4fb482357
   - enabled: 0
     path: Assets/Scenes/Menus/StartScreen.unity

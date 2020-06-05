@@ -846,7 +846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105593306}
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.000000043711392}
+  m_LocalRotation: {x: -0.00000001117587, y: -0.0000000021787057, z: -0.995019, w: -0.09968588}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4070451, y: 1.4070476, z: 1.4070476}
   m_Children:
@@ -867,7 +867,7 @@ Transform:
   - {fileID: 361704810}
   m_Father: {fileID: 6297116512632714946}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 168.55801}
 --- !u!1 &107004576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,6 +2688,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &280488952
 BoxCollider:
@@ -3707,7 +3709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 0
+  m_ArcadeMode: 1
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4851,6 +4853,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &374312607
 BoxCollider:
@@ -9046,6 +9050,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!1 &846463151
 GameObject:
@@ -9616,6 +9622,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &884152938
 BoxCollider:
@@ -10023,6 +10031,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &925969859
 BoxCollider:
@@ -12354,6 +12364,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &1185374772
 BoxCollider:
@@ -12988,6 +13000,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &1235418807
 BoxCollider:
@@ -13745,6 +13759,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!1 &1285549533
 GameObject:
@@ -14680,6 +14696,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &1387050906
 BoxCollider:
@@ -24145,6 +24163,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &1809633052
 BoxCollider:
@@ -24634,6 +24654,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!1 &1886128135
 GameObject:
@@ -24788,6 +24810,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!65 &1899545813
 BoxCollider:
@@ -26288,8 +26312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ArenaCenter: {fileID: 574776829}
-  m_ArenaWidth: 2.3
-  m_ArenaHeight: 1.1
+  m_ArenaWidth: 1.9
+  m_ArenaHeight: 0.9
   m_Offset: {x: 0, y: 0, z: -1.38}
   m_FallSpeed: 1
   m_PlayerSpeedModifier: 0.9
@@ -27317,6 +27341,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!64 &498914057793062727
 MeshCollider:
@@ -27849,7 +27875,9 @@ GameObject:
   - component: {fileID: 9089848420341924949}
   - component: {fileID: 1697934288731806064}
   - component: {fileID: 1697934288731806065}
-  m_Layer: 0
+  - component: {fileID: 1697934288731806066}
+  - component: {fileID: 1697934288731806067}
+  m_Layer: 11
   m_Name: Stage_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27891,11 +27919,121 @@ MonoBehaviour:
   m_ConnectedChunk: {fileID: 0}
   m_ConnectedWall: {fileID: 7558434061049451323}
   m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
-  m_NumberOfHitsToBreak: 3
+  m_NumberOfHitsToBreak: 10
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
   m_MaxShake: 1
   m_Frequecy: 1
+--- !u!64 &1697934288731806066
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697934288731806063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -6378499918388123593, guid: 3d7e4d72294bd1540b36aaf1da614f90, type: 3}
+--- !u!82 &1697934288731806067
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697934288731806063}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1700348704650455871
 GameObject:
   m_ObjectHideFlags: 0
@@ -27931,6 +28069,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!64 &1700348704650455873
 MeshCollider:
@@ -27995,6 +28135,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!1 &1716285422935274595
 GameObject:
@@ -28277,7 +28419,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -552335941545300879, guid: 3d7e4d72294bd1540b36aaf1da614f90, type: 3}
+  - {fileID: 2100000, guid: ce3658c151281e149852053755d1106d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28309,7 +28451,10 @@ GameObject:
   - component: {fileID: 2278306302740274787}
   - component: {fileID: 1151070925167046639}
   - component: {fileID: 2153208470213275507}
-  m_Layer: 0
+  - component: {fileID: 2153208470213275508}
+  - component: {fileID: 2153208470213275509}
+  - component: {fileID: 2153208470213275510}
+  m_Layer: 11
   m_Name: Stage_Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28332,11 +28477,140 @@ MonoBehaviour:
   m_ConnectedChunk: {fileID: 7236212384605836227}
   m_ConnectedWall: {fileID: 1704728948767405771}
   m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
-  m_NumberOfHitsToBreak: 3
-  m_IsUnbreakable: 1
+  m_NumberOfHitsToBreak: 500
+  m_IsUnbreakable: 0
   m_PerlinScale: 0.5
   m_MaxShake: 1
   m_Frequecy: 1
+--- !u!95 &2153208470213275508
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153208470213275506}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &2153208470213275509
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153208470213275506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 3760909858768608201, guid: 3d7e4d72294bd1540b36aaf1da614f90, type: 3}
+--- !u!82 &2153208470213275510
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153208470213275506}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &2213088668725684311
 Transform:
   m_ObjectHideFlags: 0
@@ -28590,7 +28864,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2577684789042830381, guid: 3d7e4d72294bd1540b36aaf1da614f90, type: 3}
+  - {fileID: 2100000, guid: ce3658c151281e149852053755d1106d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30051,7 +30325,9 @@ GameObject:
   - component: {fileID: 7285508388412436241}
   - component: {fileID: 7236212384605836226}
   - component: {fileID: 7236212384605836227}
-  m_Layer: 0
+  - component: {fileID: 7236212384605836228}
+  - component: {fileID: 7236212384605836229}
+  m_Layer: 11
   m_Name: Stage_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30093,11 +30369,121 @@ MonoBehaviour:
   m_ConnectedChunk: {fileID: 1697934288731806065}
   m_ConnectedWall: {fileID: 8759596009628696385}
   m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
-  m_NumberOfHitsToBreak: 3
+  m_NumberOfHitsToBreak: 13
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
   m_MaxShake: 1
   m_Frequecy: 1
+--- !u!64 &7236212384605836228
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7236212384605836225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 2388439156343293467, guid: 3d7e4d72294bd1540b36aaf1da614f90, type: 3}
+--- !u!82 &7236212384605836229
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7236212384605836225}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &7256777795708703118
 Transform:
   m_ObjectHideFlags: 0
@@ -30211,6 +30597,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!64 &7553733300099452625
 MeshCollider:
@@ -30275,6 +30663,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!1 &7560540630892159339
 GameObject:
@@ -31013,6 +31403,8 @@ MonoBehaviour:
   m_ForceThreshold: 9
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
+  m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}
+  m_PlayerTwoMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   m_Health: 3
 --- !u!33 &9033026616043613634
 MeshFilter:

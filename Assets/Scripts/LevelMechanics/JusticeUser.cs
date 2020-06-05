@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
 public class JusticeUser : MonoBehaviour
 {
     public float m_DistanceThreshold = 2;
@@ -13,16 +14,19 @@ public class JusticeUser : MonoBehaviour
     [ColorUsage(true, true)]
     public Color m_LitColor = Color.yellow;
 
+    private PlayerController m_Player;
     private JusticeGuard[] m_JusticeGuards;
     private Color[] m_MeshColors;
 
     private List<int> m_ColoredTriangles;
 
     private bool m_IsHit; //true if player was hit by hammer
+    private bool m_IsMemorized; //wall has marked player as passable through it
 
     // Start is called before the first frame update
     void Awake()
     {
+        m_Player = GetComponent<PlayerController>();
         m_JusticeGuards = FindObjectsOfType<JusticeGuard>();
     }
 
@@ -146,6 +150,21 @@ public class JusticeUser : MonoBehaviour
         Color color = m_LitColor * Mathf.Pow(2, intensity);
         color.a = intensity;
         m.SetColor("_EmissionColor", color);
+    }
+
+    public PlayerController GetAssociatedPlayer()
+    {
+        return m_Player;
+    }
+
+    public void SetIsMemorized(bool isMemorized)
+    {
+        m_IsMemorized = isMemorized;
+    }
+
+    public bool GetIsMemorized()
+    {
+        return m_IsMemorized;
     }
 
 }
