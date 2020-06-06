@@ -397,13 +397,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341389832}
-  m_LocalRotation: {x: 0.029434606, y: -0.37861207, z: 0.012046181, w: 0.92500883}
-  m_LocalPosition: {x: -13.460523, y: 2.6986625, z: 11.443314}
+  m_LocalRotation: {x: 0.15181504, y: -0.37367252, z: 0.062137295, w: 0.9129403}
+  m_LocalPosition: {x: -12.65, y: 3.81, z: 10.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491167095}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 23.357, y: 56.628002, z: 6.2250004}
+  m_LocalEulerAnglesHint: {x: 18.883001, y: -44.519, z: 0}
 --- !u!20 &341389835
 Camera:
   m_ObjectHideFlags: 0
@@ -762,13 +762,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829231680}
-  m_LocalRotation: {x: -0.008835367, y: 0.38350597, z: -0.0138621135, w: -0.9233921}
-  m_LocalPosition: {x: -6.61, y: 6.61, z: -15.4}
+  m_LocalRotation: {x: -0.16688743, y: 0.3427187, z: -0.07226817, w: -0.9216669}
+  m_LocalPosition: {x: -0.62, y: 12.32, z: -26.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1491167095}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 1.544, y: -45.094, z: 1.079}
+  m_LocalEulerAnglesHint: {x: 20.926, y: -40.582, z: 1.1550001}
 --- !u!20 &829231682
 Camera:
   m_ObjectHideFlags: 0
@@ -1235,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000048637, y: 28}
+  m_AnchoredPosition: {x: -0.000048637, y: -131}
   m_SizeDelta: {x: 63.4, y: 63.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177765745
@@ -1607,20 +1607,24 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_Title
-      value: The Festering Pit
+      value: The High Mountain Altar
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_WeaponDescription
-      value: This evil weapon feeds off the blood of wounds and misery. With every
-        kill Slqth'sss' temper cools.
+      value: Sacred tower of Agnithia, goddess of Justice and Virtue. To her followers
+        she bestows gifts of strength and in ancient days she taught her followers
+        the working of steel that they might defend the weak and gird themselves against
+        those who would do the world harm. From this perch her Steelborne Knights
+        watch the land with vigilant eyes.
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_StageDescription
-      value: The Festering Pits are the prime for arena for those who follow Slqth;sssjdsko.
-        His vile liquids flow into a large monument made to his name. He is a bit
-        of a dick and kinda stinky.
+      value: The Altar is surrounded by a magical wall that a fighter must be knocked
+        into once before they can fall. Beware though, as the fight goes on the layers
+        of the central pillar will collapse and the arena will become ever smaller
+        placing both fighters in danger of falling.
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
@@ -1650,7 +1654,9 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_GodDescription
-      value: fghjnk
+      value: "Agnithia\u2019s weapon is the Ruling Hammer. It does not deal direct
+        damage but instead pushes the opponent with great force. The winner in this
+        fight is the last one standing on solid ground."
       objectReference: {fileID: 0}
     - target: {fileID: 4100416900853404670, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
@@ -2018,8 +2024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2001038, y: 188.8}
-  m_SizeDelta: {x: -140.6, y: -859.1}
+  m_AnchoredPosition: {x: 1.2001038, y: 65.225006}
+  m_SizeDelta: {x: -140.6, y: -797.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754489705
 MonoBehaviour:
@@ -2099,7 +2105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.2001038, y: 100}
+  m_AnchoredPosition: {x: 1.2001038, y: -59.799927}
   m_SizeDelta: {x: -42.8, y: 4.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790063459
@@ -2173,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2001038, y: -111}
+  m_AnchoredPosition: {x: 1.2001038, y: -270.00006}
   m_SizeDelta: {x: -140.6, y: -859.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826696406
@@ -2660,8 +2666,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.80005, y: -173.9}
-  m_SizeDelta: {x: 471.4, y: 80.5}
+  m_AnchoredPosition: {x: 0.80005, y: -195}
+  m_SizeDelta: {x: 471.4, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011134561
 MonoBehaviour:
@@ -3106,15 +3112,19 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_WeaponDescription
-      value: "The divine weapon of Sldqh\u2019Thss is a sharp sacrificial knife which
-        allows the wielder to dash forward and deliver cutting blows to their opponent."
+      value: Cult center of Sldqgh'Thss, god of pestilence and mortality. From this
+        place comes the befoulment of Icthuumuk, a harsh and rugged land populated
+        by the crass and the estranged. People who made themselves outsiders in their
+        homelands, became infected with the Mortal Blight, or by choice came to revel
+        in the chaos of the Hooded Cretin.
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_StageDescription
-      value: "The Bleeding Pit is the inner sanctum of the Sldqh\u2019Thssian cult.
-        A raw floor of decayed earth surrounded by jagged walls of stone. Here is
-        where the Hooded Cretin\u2019s cult performs their most holy rituals and sacrifices."
+      value: "A raw floor of decayed earth surrounded by jagged walls of stone forms
+        this arena where the Sldqhth\u2019ssian cultists perform their most holy rituals
+        and sacrifices. You must be quick in attacking your opponents here or the
+        god's Bitter Patience may take the weapon from you."
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
@@ -3139,9 +3149,8 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_GodDescription
-      value: "Sldqgh\u2019Thss is the god of disease and mortality who takes the form
-        of a hooded figure with a protruding jowl of sharp teeth ending in a snubbed
-        and gruesome nose."
+      value: The Letting Knife. The Holy weapon of Sldqh'Thss. The fighter in possession
+        of this blade dashes forward in an attempt to stab their opponent.
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
