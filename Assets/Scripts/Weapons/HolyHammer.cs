@@ -174,24 +174,28 @@ public class HolyHammer : DivineWeapon
 
     private bool IsPredictedToHitWall(float time)
     {
-        time = time + 0.1f; //get time in future
+        time = Mathf.Max(time + 0.2f, 0, 1); //get time in future
 
-        Vector3 predictedPos = GetJumpPosition(time);
+        Vector3 predictedPos = GetJumpPosition(time, false, true);
+        predictedPos += new Vector3(0, 0.1f, 0); //ensure collsion does not hit ground
         m_PredictedPosition = predictedPos;
 
-        Collider[] hitColliders = Physics.OverlapSphere(predictedPos, 0.05f);
+        //check collision with everything but players
+        Collider[] hitColliders = Physics.OverlapSphere(predictedPos, 0.3f, LayerMask.NameToLayer("Player"));
         if (hitColliders.Length >= 1)
         {
+            Debug.Log("Collider hit: " + hitColliders[0].name);
             return true;
         }
 
         return false;
     }
 
-    private Vector3 GetJumpPosition(float time, bool lockForwardJump = false)
+    private Vector3 GetJumpPosition(float time, bool lockForwardJump = false, bool noVerticalHeight = false)
     {
         float jumpHeight = m_PlayerStartingPos.y + (m_JumpCurve.Evaluate(time) * m_JumpHeight);
         float jumpDistanceTime = lockForwardJump ? 0.0f : time;
+        jumpHeight = noVerticalHeight ? 0.0f : jumpHeight;
 
         Vector3 jumpDistance = Vector3.Lerp(Vector3.zero, m_JumpDirection * m_ForwardDistance, jumpDistanceTime);
 
@@ -206,6 +210,7 @@ public class HolyHammer : DivineWeapon
         if (m_PredictedPosition != Vector3.zero)
         {
             //Gizmos
+            Gizmos.DrawSphere(m_PredictedPosition, 0.3f);
         }
     }
 }
