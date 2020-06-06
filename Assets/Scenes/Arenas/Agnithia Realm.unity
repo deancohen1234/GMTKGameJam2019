@@ -3709,7 +3709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 1
+  m_ArcadeMode: 0
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26331,6 +26331,7 @@ MonoBehaviour:
   m_KnockbackRadius: 1.7
   m_BaseKnockbackForce: 100
   m_DistanceForceStrength: 100
+  m_HitForwardDistance: 0.5
   m_HitStunTime: 12
   m_JumpCurve:
     serializedVersion: 2
@@ -26345,8 +26346,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
-      value: 1
+      time: 0.89582825
+      value: 0.9858475
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -30660,7 +30661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a214646bb63f6174e853dd38162abffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceThreshold: 9
+  m_ForceThreshold: 0.5
   m_BouncebackForce: 300
   m_BouncebackThreshold: 5
   m_PlayerOneMemoryColor: {r: 0, g: 0, b: 1, a: 1}

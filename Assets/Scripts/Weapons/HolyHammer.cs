@@ -16,7 +16,7 @@ public class HolyHammer : DivineWeapon
     public float m_KnockbackRadius = 1.5f;
     public float m_BaseKnockbackForce = 200;
     public float m_DistanceForceStrength = 2.0f;
-    //public float m_DistanceMaxMagnitude = 2.0f;
+    public float m_HitForwardDistance = 0.5f;
     public int m_HitStunTime = 12; //in frames
 
     [Header("Jump Properties")]
@@ -87,7 +87,7 @@ public class HolyHammer : DivineWeapon
 
         //instantiate shockwave object at player location
         KnockbackSphere sphere = Instantiate(m_KnockbackPrefab).GetComponent<KnockbackSphere>();
-        sphere.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        sphere.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z) + (player.transform.forward * m_HitForwardDistance);
         sphere.CreateSphere(m_KnockbackRadius, 10f/60f, player.gameObject.GetComponent<Collider>());
         sphere.m_OnSphereHit += OnSlamHit;
 

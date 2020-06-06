@@ -9,6 +9,7 @@ public class JusticeGuard : MonoBehaviour
     public float m_ForceThreshold = 300f;
     public float m_BouncebackForce = 3.0f;
     public float m_BouncebackThreshold = 1.0f;
+    public float m_WallCooldown = 0.3f; //time before wall can be hit again
 
     public Color m_PlayerOneMemoryColor = Color.blue;
     public Color m_PlayerTwoMemoryColor = Color.red;
@@ -18,7 +19,11 @@ public class JusticeGuard : MonoBehaviour
     private JusticeUser m_MemorizedPlayer;
     private Material m_WallMaterial;
     private Color m_DefaultColor;
+
+    private float m_LastTimeWallHit = 0.0f;
     private int m_CurrentHealth = 0;
+    private bool m_IsHittingWall = false;
+    
 
     private void Awake()
     {
@@ -36,26 +41,10 @@ public class JusticeGuard : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Player")
         {
-            JusticeUser user = collision.collider.GetComponent<JusticeUser>();
-
-            if (user.GetIsHit())
+            if (Time.time - m_LastTimeWallHit >= m_WallCooldown)
             {
-                //if player can't break through wall, then they are set in the memory to be able to break through later
-                if (CanBreakThroughWall(user))
-                {
-                    Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
-                }
-                else
-                {
-                    SetPlayerMemory(user);
-                }
-            }
-            else if (collision.impulse.magnitude > m_BouncebackThreshold)
-            {
-                Vector3 direction = collision.contacts[0].point - collision.collider.transform.position;
-                direction = direction.normalized;
-
-                collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(-direction * m_BouncebackForce);
+                Debug.Log("Hit wall damnit: " + m_LastTimeWallHit);
+                HitWall(collision);
             }
         }
     }
@@ -63,6 +52,34 @@ public class JusticeGuard : MonoBehaviour
     private void OnDestroy()
     {
         m_WallMaterial.SetColor("_MainColor", m_DefaultColor);
+    }
+
+    //only do wall hit when impulse is strong enough
+    private void HitWall(Collision collision)
+    {
+        JusticeUser user = collision.collider.GetComponent<JusticeUser>();
+
+        if (user.GetIsHit())
+        {
+            m_LastTimeWallHit = Time.time; //so wall cannot be hit again for a small cooldown to prevent just walking through it
+
+            //if player can't break through wall, then they are set in the memory to be able to break through later
+            if (CanBreakThroughWall(user))
+            {
+                Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+            }
+            else
+            {
+                SetPlayerMemory(user);
+            }
+        }
+        else if (collision.impulse.magnitude > m_BouncebackThreshold)
+        {
+            Vector3 direction = collision.contacts[0].point - collision.collider.transform.position;
+            direction = direction.normalized;
+
+            collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(-direction * m_BouncebackForce);
+        }
     }
 
     //returns true if successful
