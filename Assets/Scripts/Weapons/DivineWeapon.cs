@@ -117,6 +117,8 @@ public class DivineWeapon : MonoBehaviour
     public virtual void OnWeaponAttackStart()
     {
         m_PlayerRef.PlaySound(m_AttackSound);
+
+        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(true);
     }
 
     public virtual void WeaponAttack(PlayerController player, Vector3 direction)
@@ -126,7 +128,7 @@ public class DivineWeapon : MonoBehaviour
 
     public virtual void OnWeaponAttackEnd()
     {
-
+        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(false);
     }
 
     //player drops weapon

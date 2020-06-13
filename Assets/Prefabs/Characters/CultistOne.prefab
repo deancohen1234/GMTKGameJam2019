@@ -25094,7 +25094,7 @@ GameObject:
   - component: {fileID: -5656065565238443539}
   - component: {fileID: 7524976522035093401}
   m_Layer: 9
-  m_Name: PlayerOne
+  m_Name: CultistOne
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

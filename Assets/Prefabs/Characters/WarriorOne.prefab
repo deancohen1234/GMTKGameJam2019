@@ -20597,7 +20597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438bf2656ecbbb941a3a818d59cb83f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpriteSheetName: Cultist_1
+  m_SpriteSheetName: Knight_1
 --- !u!114 &7524976522035093401
 MonoBehaviour:
   m_ObjectHideFlags: 0
