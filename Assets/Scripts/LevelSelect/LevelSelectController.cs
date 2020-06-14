@@ -9,6 +9,7 @@ public class LevelSelectController : MonoBehaviour
     [Header("Scene References")]
     public LevelSelect[] m_Levels;
     public Camera m_MainCamera;
+    public ArcadeTimer m_Timer;
 
     [Header("UI References")]
     public GameObject m_DetailsPanel;
@@ -45,6 +46,7 @@ public class LevelSelectController : MonoBehaviour
         if (m_DetailsPanel.activeInHierarchy) { m_DetailsPanel.SetActive(false); }
 
         m_CurrentEventSystem = EventSystem.current;
+        m_Timer.StartTimer();
     }
 
     private void OnEnable()
@@ -155,5 +157,10 @@ public class LevelSelectController : MonoBehaviour
     {
         int randomIndex = Random.Range(0, m_Spellings.Length);
         m_SlqthisssButton.transform.GetChild(0).GetComponent<Text>().text = m_Spellings[randomIndex];
+    }
+
+    public void ReturnToTitleScreen()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ArcadeIdleScreen");
     }
 }
