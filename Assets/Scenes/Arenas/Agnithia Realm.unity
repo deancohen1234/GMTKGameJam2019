@@ -1123,7 +1123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &121805470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1349,7 +1349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &157158497
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2374,7 +2374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &235653862
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4444,6 +4444,7 @@ MonoBehaviour:
   m_RoundText: {fileID: 1714631286}
   m_VictoryPanel: {fileID: 1063642467}
   m_VictoryText: {fileID: 1667548456}
+  m_DisableHealthUI: 1
 --- !u!1 &367728538
 GameObject:
   m_ObjectHideFlags: 0
@@ -6201,7 +6202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573757232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7929,7 +7930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &760603309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13601,7 +13602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1243652157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17896,7 +17897,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 08384640c7ce56f468d510c0b9b7d2a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0bed00bde478d2d42992e427adccf2cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18138,7 +18139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1658458442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23541,7 +23542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1717077823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25267,7 +25268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1924494515
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25715,7 +25716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1989221844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25933,7 +25934,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fb31b73d5b7ee5f44813472b392ad5f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42ae3c087c4b477429c338f36188551a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26550,7 +26551,7 @@ Animator:
   m_GameObject: {fileID: 2069114547}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5ceae13d00b5254c8940292312afd3b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0c9fbab8a0477be498f3705dbb181768, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -26576,7 +26577,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d07206112eff6a14b9af0d91fd19e747, type: 2}
+  - {fileID: 2100000, guid: 203c7a3f5f86c854c97d533809e382b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
