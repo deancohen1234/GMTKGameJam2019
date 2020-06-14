@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public float m_DeadZone = 0.15f;
 
     private GameInput m_GlobalInput; //input used for entire game
+    private float m_LastInputTime;
 
     public void InitializeInput(bool useArcadeControls)
     {
@@ -96,8 +97,6 @@ public class InputManager : MonoBehaviour
                     else if (p2_Stick == null)
                     {
                         p2_Stick = joystick;
-
-                        Debug.Log("P2: " + p2_Stick.name);
                     }
                 }
             }
@@ -115,7 +114,12 @@ public class InputManager : MonoBehaviour
         m_GlobalInput.P2_ActionButton = gameInput.P2_ActionButton;
         m_GlobalInput.P2_DashButton = gameInput.P2_DashButton;
         m_GlobalInput.P2_ConfirmButton = gameInput.P2_ConfirmButton;
+    }
 
+    private void SetLastInputTime(bool isPressed)
+    {
+        //set last action time
+        m_LastInputTime = isPressed ? Time.time : m_LastInputTime;
     }
 
     ////////////////////INPUT GETTERS////////////////////////////
@@ -129,6 +133,9 @@ public class InputManager : MonoBehaviour
         if (Mathf.Abs(value.x) <= m_DeadZone) { value.x = 0; }
         if (Mathf.Abs(value.y) <= m_DeadZone) { value.y = 0; }
 
+        bool isMoved = value.magnitude > 0.5f ? true : false;
+        SetLastInputTime(isMoved);
+
         return value;
     }
 
@@ -136,6 +143,9 @@ public class InputManager : MonoBehaviour
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ActionButton : m_GlobalInput.P2_ActionButton;
         bool isPressed = gameButton.GetButtonInput();
+
+        SetLastInputTime(isPressed);
+
         return isPressed;
     }
 
@@ -143,6 +153,9 @@ public class InputManager : MonoBehaviour
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_DashButton : m_GlobalInput.P2_DashButton;
         bool isPressed = gameButton.GetButtonInput();
+
+        SetLastInputTime(isPressed);
+
         return isPressed;
     }
 
@@ -150,6 +163,9 @@ public class InputManager : MonoBehaviour
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ConfirmButton : m_GlobalInput.P2_ConfirmButton;
         bool isPressed = gameButton.GetButtonInput();
+
+        SetLastInputTime(isPressed);
+
         return isPressed;
     }
 
@@ -163,6 +179,11 @@ public class InputManager : MonoBehaviour
     {
         bool isPressed = Input.GetButtonDown("StartGame");
         return isPressed;
+    }
+
+    public float GetLastInputTime()
+    {
+        return m_LastInputTime;
     }
 
 }

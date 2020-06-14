@@ -228,7 +228,7 @@ public class RoundManager : MonoBehaviour
         return gameIsComplete;
     }
 
-    private void LoadArcadeIdleScreen()
+    public void LoadArcadeIdleScreen()
     {
         SceneManager.LoadScene("ArcadeIdleScreen");
     }
