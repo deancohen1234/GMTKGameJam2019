@@ -72,7 +72,7 @@ Material:
     - _CloudCutoff: 0.1
     - _CloudHeight: 33.11
     - _CloudMiddleYPosition: -2.46
-    - _CloudOffset: 1.44
+    - _CloudOffset: 1.62
     - _CloudSoftness: 0.02
     - _CloudSpeed: 0.1
     - _Cutoff: 0.5

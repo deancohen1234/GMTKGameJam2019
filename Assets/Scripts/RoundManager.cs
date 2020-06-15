@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum WinState {P1Wins, P2Wins, Tie}
+
 public class RoundManager : MonoBehaviour
 {
     [Header("Round Settings")]
@@ -116,19 +118,23 @@ public class RoundManager : MonoBehaviour
     }
 
 
-    private void OnMatchComplete(bool playerOneWon)
+    private void OnMatchComplete(WinState state)
     {
         m_UIHandler.SetVictoryCanvasActive(true);
 
-        if (m_PlayerOne.GetHealthComponent().IsDead())
+        if (state == WinState.P1Wins)
         {
             //PlayerTwo wins
             m_UIHandler.SetVictoryText("Player Two Wins!!!");
         }
-        else
+        else if (state == WinState.P2Wins)
         {
             //PlayerOne wins
             m_UIHandler.SetVictoryText("Player One Wins!!!");
+        }
+        else if (state == WinState.Tie)
+        {
+            m_UIHandler.SetVictoryText("Tie Game!!!");
         }
 
         Invoke("LoadArcadeIdleScreen", 5.0f); //after game is complete, load back to start screen
@@ -190,16 +196,23 @@ public class RoundManager : MonoBehaviour
         {
             m_DEBUG_RestartRound = false;
         }
+        else if (m_PlayerOne.GetHealthComponent().IsDead() && m_PlayerTwo.GetHealthComponent().IsDead())
+        {
+            //tie, both players score a point
+            m_PlayerOneRoundWins++;
+            m_PlayerTwoRoundWins++;
+        }
         else if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
             m_PlayerTwoRoundWins++;
         }
-        else
+        else if (m_PlayerTwo.GetHealthComponent().IsDead())
         {
             //PlayerOne wins
             m_PlayerOneRoundWins++;
         }
+
         m_UIHandler.UpdateRoundScore(m_PlayerOneRoundWins, m_PlayerTwoRoundWins);
     }
 
@@ -213,15 +226,19 @@ public class RoundManager : MonoBehaviour
     {
         bool gameIsComplete = false;
 
-        if (m_PlayerOneRoundWins >= m_RoundsNeededToWin)
+        if (m_PlayerOneRoundWins >= m_RoundsNeededToWin && m_PlayerTwoRoundWins >= m_RoundsNeededToWin)
         {
-            //End Game
-            OnMatchComplete(true);
+            OnMatchComplete(WinState.Tie);
+            gameIsComplete = true;
+        }
+        else if (m_PlayerOneRoundWins >= m_RoundsNeededToWin)
+        {
+            OnMatchComplete(WinState.P1Wins);
             gameIsComplete = true;
         }
         else if (m_PlayerTwoRoundWins >= m_RoundsNeededToWin)
         {
-            OnMatchComplete(false);
+            OnMatchComplete(WinState.P2Wins);
             gameIsComplete = true;
         }
 

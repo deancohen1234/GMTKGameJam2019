@@ -23,6 +23,9 @@ public class CollapseableGround : MonoBehaviour
     public float m_MaxShake = 1.0f;
     public float m_Frequecy = 1.0f;
 
+    public float m_NewArenaWidth = 0;
+    public float m_NewArenaHeight = 0;
+
     public Action m_OnCollapse;
 
     private Animator m_Animator;
@@ -54,6 +57,14 @@ public class CollapseableGround : MonoBehaviour
     private void Update()
     {
         //VibrateGround();
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("Ground Doing Stuff");
+            if (m_ConnectedChunk == null)
+            {
+                DelayToCollapse(3.0f);
+            }
+        }
     }
 
     private void OnEnable()
@@ -111,8 +122,10 @@ public class CollapseableGround : MonoBehaviour
     {
         //start collapsing audio
         PlayAudio();
+        m_Animator.SetTrigger("AboutToCollapse");
 
-        m_IsCollapsed = true;
+        m_LevelMechanic.m_Weapon.m_ArenaHeight = m_NewArenaHeight;
+        m_LevelMechanic.m_Weapon.m_ArenaWidth = m_NewArenaWidth;
 
         Invoke("TriggerCollapse", timeToCollapse);
     }
@@ -121,6 +134,7 @@ public class CollapseableGround : MonoBehaviour
     {
         //play falling animation
         m_Animator.SetBool("IsCollapsed", true);
+        m_IsCollapsed = true;
 
         m_ConnectedWall.SetActive(false);
 
@@ -129,15 +143,25 @@ public class CollapseableGround : MonoBehaviour
         PlayerController p2 = m_LevelMechanic.GetPlayerTwo();
 
         //kill players on collapsing ground
-        if (IsPlayerOnCollapsedGround(p1)) { p1.GetHealthComponent().Kill(); }
-        if (IsPlayerOnCollapsedGround(p2)) { p2.GetHealthComponent().Kill(); }
+        if (IsObjectOnCollapsedGround(p1.gameObject)) { p1.GetHealthComponent().Kill(); }
+        if (IsObjectOnCollapsedGround(p2.gameObject)) { p2.GetHealthComponent().Kill(); }
+
+        //check for weapon on the falling ground
+        if (m_LevelMechanic.m_Weapon.IsPickedUp() == false)
+        {
+            if (IsObjectOnCollapsedGround(m_LevelMechanic.m_Weapon.gameObject))
+            {
+                m_LevelMechanic.m_Weapon.RandomizeLocation();
+            }
+        }
+        
 
         m_OnCollapse?.Invoke();
     }
 
-    private bool IsPlayerOnCollapsedGround(PlayerController player)
+    private bool IsObjectOnCollapsedGround(GameObject obj)
     {
-        Ray ray = new Ray(player.transform.position, Vector3.down);
+        Ray ray = new Ray(obj.transform.position, Vector3.down);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 5.0f, ~LayerMask.NameToLayer("IgnoreFloor"))) //ignore everything but "ignorefloor"
         {
@@ -150,6 +174,7 @@ public class CollapseableGround : MonoBehaviour
 
         return false;
     }
+
     //called from Update
     private void VibrateGround()
     {
@@ -191,8 +216,7 @@ public class CollapseableGround : MonoBehaviour
 
         if (m_ConnectedChunk != null)
         {
-            m_ConnectedWall.SetActive(false);
-            
+            m_ConnectedWall.SetActive(false);          
         }
     }
 

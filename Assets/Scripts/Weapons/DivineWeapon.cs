@@ -208,6 +208,18 @@ public class DivineWeapon : MonoBehaviour
         m_IsLerping = true;
     }
 
+    public bool IsPickedUp()
+    {
+        if (m_PlayerRef == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private bool IsValidPosition(Vector3 position)
     {
         bool check = Physics.CheckSphere(position + new Vector3(0, 0.5f, 0), 0.1f);

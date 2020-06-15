@@ -10,6 +10,7 @@ using System;
 public class LevelMechanicsContainer : MonoBehaviour
 {
     public Action m_OnRoundEnd;
+    public DivineWeapon m_Weapon;
     private RoundManager m_RoundManager;
 
     public void InitializeContainer(RoundManager roundManager)

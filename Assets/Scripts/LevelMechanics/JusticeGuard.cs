@@ -85,20 +85,6 @@ public class JusticeGuard : MonoBehaviour
     //returns true if successful
     private bool CanBreakThroughWall(JusticeUser user)
     {
-        /*
-        m_CurrentHealth--;
-
-        if (m_CurrentHealth <= 0)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
-        */
-
         return user.GetIsMemorized();
     }
 

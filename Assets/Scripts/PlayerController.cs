@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         //TESTING
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_PlayerAnimation.SetAttackStatus(true);
+            m_HealthComponent.Kill();
         }
 
         if (m_ControllerDisabled || m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
@@ -656,7 +656,7 @@ public class PlayerController : MonoBehaviour
 
     private void CompleteDeath()
     {
-        m_OnDeathComplete.Invoke();
+        m_OnDeathComplete?.Invoke();
     }
 
     //inclusive min and exclusive max
