@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     private PlayerOrientation m_PlayerOrientation;
 
     private float m_MoveSpeed; //move speed that can be default or weapon effected;
+    private bool m_IsInvincible = false;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
     private bool m_ControllerDisabled = false; //enables controller to be disabled without killing whole player controller
@@ -386,6 +387,11 @@ public class PlayerController : MonoBehaviour
     public void SetWeaponIcon(Sprite sprite)
     {
         m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    public void SetIsInvincible (bool b)
+    {
+        m_IsInvincible = b;
     }
 
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
@@ -702,6 +708,11 @@ public class PlayerController : MonoBehaviour
     public bool IsStunned()
     {
         return m_BlockAllInput;
+    }
+
+    public bool IsInvincible()
+    {
+        return m_IsInvincible;
     }
     #endregion
 }

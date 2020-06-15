@@ -23,6 +23,6 @@ public class FallArea : MonoBehaviour
         r.constraints = (RigidbodyConstraints)112;
         r.useGravity = true;
 
-        playerController.gameObject.layer = LayerMask.NameToLayer("IgnoreFloor");
+        playerController.gameObject.layer = LayerMask.NameToLayer("IgnoreAllButDeath");
     }
 }

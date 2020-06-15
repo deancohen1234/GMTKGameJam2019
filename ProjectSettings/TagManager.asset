@@ -19,7 +19,7 @@ TagManager:
   - IgnoreFloor
   - Floor
   - DeathArea
-  - 
+  - IgnoreAllButDeath
   - 
   - 
   - 

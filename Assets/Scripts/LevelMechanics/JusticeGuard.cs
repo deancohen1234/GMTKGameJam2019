@@ -32,9 +32,7 @@ public class JusticeGuard : MonoBehaviour
 
     private void Start()
     {
-        m_CurrentHealth = m_Health;
-
-        m_DefaultColor = m_WallMaterial.GetColor("_MainColor");
+        Initialize();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -43,7 +41,6 @@ public class JusticeGuard : MonoBehaviour
         {
             if (Time.time - m_LastTimeWallHit >= m_WallCooldown)
             {
-                Debug.Log("Hit wall damnit: " + m_LastTimeWallHit);
                 HitWall(collision);
             }
         }
@@ -52,6 +49,13 @@ public class JusticeGuard : MonoBehaviour
     private void OnDestroy()
     {
         m_WallMaterial.SetColor("_MainColor", m_DefaultColor);
+    }
+
+    public void Initialize()
+    {
+        m_CurrentHealth = m_Health;
+
+        m_DefaultColor = m_WallMaterial.GetColor("_MainColor");
     }
 
     //only do wall hit when impulse is strong enough
@@ -63,9 +67,25 @@ public class JusticeGuard : MonoBehaviour
         {
             m_LastTimeWallHit = Time.time; //so wall cannot be hit again for a small cooldown to prevent just walking through it
 
+            Debug.Log("User Hit Wall: " + user.gameObject.name);
+
+            if (m_MemorizedPlayer != null)
+            {
+                Debug.Log("Memory: " + m_MemorizedPlayer.gameObject.name);
+            }
+
+            Debug.Log("Can Break Through: " + CanBreakThroughWall(user));
+
             //if player can't break through wall, then they are set in the memory to be able to break through later
             if (CanBreakThroughWall(user))
             {
+                Vector3 direction = collision.contacts[0].point - collision.collider.transform.position;
+                direction = direction.normalized;
+
+                collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(direction * 150);
+
+                //collision.collider.gameObject.layer = LayerMask.NameToLayer("IgnoreAllButDeath");
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
             }
             else
@@ -85,7 +105,14 @@ public class JusticeGuard : MonoBehaviour
     //returns true if successful
     private bool CanBreakThroughWall(JusticeUser user)
     {
-        return user.GetIsMemorized();
+        if (m_MemorizedPlayer == null || m_MemorizedPlayer.Equals(user) == false)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private PlayerType GetPlayerType(JusticeUser user)
@@ -119,6 +146,12 @@ public class JusticeGuard : MonoBehaviour
     public void ResetWall()
     {
         m_WallMaterial.SetColor("_MainColor", m_DefaultColor);
-        m_MemorizedPlayer = null;
+
+        if (m_MemorizedPlayer != null)
+        {
+            m_MemorizedPlayer.SetIsMemorized(false);
+            m_MemorizedPlayer = null;
+        } 
+       
     }
 }

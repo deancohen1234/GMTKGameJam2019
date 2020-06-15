@@ -109,7 +109,7 @@ public class CollapseableGround : MonoBehaviour
         //decrease total hit count by 1
         m_CurrentNumHitsRemaining--;
 
-        Debug.Log("Chunk: " + transform.name + " hit. " + m_CurrentNumHitsRemaining + " Left");
+        //Debug.Log("Chunk: " + transform.name + " hit. " + m_CurrentNumHitsRemaining + " Left");
 
         //if hit is less than 0 then trigger collapse
         if (m_CurrentNumHitsRemaining <= 0)
@@ -166,7 +166,7 @@ public class CollapseableGround : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 5.0f, ~LayerMask.NameToLayer("IgnoreFloor"))) //ignore everything but "ignorefloor"
         {
             CollapseableGround ground = hit.transform.gameObject.GetComponent<CollapseableGround>();
-            if (ground.Equals(this))
+            if (ground != null && ground.Equals(this))
             {
                 return true;
             }
@@ -192,6 +192,7 @@ public class CollapseableGround : MonoBehaviour
     private void OnConnectChunkCollapse()
     {
         m_ConnectedWall.SetActive(true);
+        m_ConnectedWall.GetComponent<JusticeGuard>().Initialize();
     }
 
     private void PlayAudio()

@@ -61,6 +61,9 @@ public class HolyHammer : DivineWeapon
         m_JumpStartTime = Time.time;
         m_PlayerStartingPos = m_PlayerRef.transform.position;
         m_IsJumping = true;
+
+        //add invicibility to player controller
+        m_PlayerRef.SetIsInvincible(true);
     }
 
     public override void WeaponAttack(PlayerController player, Vector3 direction)
@@ -68,6 +71,10 @@ public class HolyHammer : DivineWeapon
         base.WeaponAttack(player, direction);
 
         m_IsJumping = false; //jump only lasts for windup
+
+        //add invicibility to player controller
+        m_PlayerRef.SetIsInvincible(false);
+
         Vector3 playerStartingPos = new Vector3(m_PlayerRef.transform.position.x, m_PlayerStartingPos.y, m_PlayerRef.transform.position.z);
         m_PlayerRef.transform.position = playerStartingPos;
 
