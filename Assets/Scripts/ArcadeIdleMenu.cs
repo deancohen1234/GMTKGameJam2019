@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Video;
+
 
 public class ArcadeIdleMenu : MonoBehaviour
 {
@@ -24,15 +26,23 @@ public class ArcadeIdleMenu : MonoBehaviour
 
     public Text m_CreditText;
 
+    [Header("Video Settings")]
+    public VideoPlayer m_VideoPlayer;
+    public RawImage m_VideoCanvas;
+    public Animator m_ScreenFade;
+    public float m_IdleTimeToVideo = 10f; //in seconds
+
     public string m_StageSelectName = "StageSelect";
 
     private bool m_GameIsReadyToStart;
 
     private bool m_PlayerOneReady;
     private bool m_PlayerTwoReady;
+    private bool m_VideoIsPlaying;
 
     private void Start()
     {
+        m_ScreenFade.SetTrigger("TriggerFade");
         m_CreditText.text = "Credits: " + CreditsManager.m_Singleton.GetNumCredits().ToString();
 
         menuBool = false;
@@ -49,10 +59,16 @@ public class ArcadeIdleMenu : MonoBehaviour
         {
             m_CoinInsertedText.gameObject.SetActive(true);
         }
+
+        InvokeRepeating("CheckForVideoPlay", m_IdleTimeToVideo, 1.0f);
     }
 
     void Update()
-    {
+    {   
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+
+        }
 
         if (ApplicationSettings.m_Singleton.m_InputManager.IsCoinButtonPressedDown())
         {
@@ -111,5 +127,50 @@ public class ArcadeIdleMenu : MonoBehaviour
         CreditsManager.m_Singleton.ModifyCredits(-1);
 
         SceneManager.LoadScene(m_StageSelectName);
+    }
+
+    private void CheckForVideoPlay()
+    {
+        float lastInputTime = ApplicationSettings.m_Singleton.m_InputManager.GetLastInputTime();
+
+        if (m_VideoIsPlaying == false)
+        {
+            if (Time.time - lastInputTime >= m_IdleTimeToVideo)
+            {
+                SwapToVideoMode();
+            }
+        }
+        else
+        {
+            Debug.Log("LastInput Time: " + (Time.time - lastInputTime));
+            if (Time.time - lastInputTime <= m_IdleTimeToVideo)
+            {
+                SwapToMainScreen();
+            }
+        }
+    }
+
+    private void SwapToVideoMode()
+    {
+        m_VideoIsPlaying = true;
+        m_ScreenFade.SetTrigger("TriggerFade");
+        Invoke("DelaySwapVideoMode", 3.0f);
+    }
+
+    private void DelaySwapVideoMode()
+    {
+        m_ScreenFade.SetTrigger("TriggerFade");
+        m_VideoCanvas.color = Color.white;
+        m_VideoPlayer.time = 0;
+        m_VideoPlayer.Play();
+    }
+
+    private void SwapToMainScreen()
+    {
+        m_VideoIsPlaying = false;
+        Color noAlphaWhite = new Color(1, 1, 1, 0);
+        m_VideoCanvas.color = noAlphaWhite;
+
+        m_VideoPlayer.Stop();
     }
 }

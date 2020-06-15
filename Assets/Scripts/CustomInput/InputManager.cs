@@ -172,12 +172,18 @@ public class InputManager : MonoBehaviour
     public bool IsCoinButtonPressedDown()
     {
         bool isPressed = Input.GetButtonDown("ArcadeSpecialInputThree") | Input.GetButtonDown("ArcadeSpecialInputTwo") | Input.GetButtonDown("ArcadeSpecialInputOne");
+
+        SetLastInputTime(isPressed);
+
         return isPressed;
     }
 
     public bool IsStartButtonPressedDown()
     {
         bool isPressed = Input.GetButtonDown("StartGame");
+
+        SetLastInputTime(isPressed);
+
         return isPressed;
     }
 
