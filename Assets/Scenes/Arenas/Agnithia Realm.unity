@@ -21559,7 +21559,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_JumpHeight: 0.2
   m_LerpTightness: 10
-  m_ForwardDistance: 1.2
+  m_ForwardDistance: 1.5
 --- !u!95 &2069114554
 Animator:
   serializedVersion: 3
