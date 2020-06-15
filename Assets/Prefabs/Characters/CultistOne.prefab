@@ -25395,6 +25395,7 @@ MonoBehaviour:
     type: 3}
   m_Force: 100
   m_LaunchVariance: 0.5
+  m_UseHeadLaunch: 1
 --- !u!114 &-5656065565238443539
 MonoBehaviour:
   m_ObjectHideFlags: 0

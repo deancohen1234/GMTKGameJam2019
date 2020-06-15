@@ -29150,7 +29150,7 @@ GameObject:
   - component: {fileID: 4585008311844633013}
   - component: {fileID: 4033241255127160736}
   m_Layer: 9
-  m_Name: PlayerTwo
+  m_Name: CultistTwo
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29452,6 +29452,7 @@ MonoBehaviour:
     type: 3}
   m_Force: 100
   m_LaunchVariance: 0.5
+  m_UseHeadLaunch: 1
 --- !u!114 &4585008311844633013
 MonoBehaviour:
   m_ObjectHideFlags: 0

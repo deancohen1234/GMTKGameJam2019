@@ -649,6 +649,7 @@ public class PlayerController : MonoBehaviour
         //gameObject.SetActive(false);
         m_EffectsController.m_CharacterSprite.enabled = false; //hide player sprite
         m_EffectsController.ActivateOnDeathSystem();
+
         m_HeadLauncher.LaunchHead(transform.position, m_CameraShake.gameObject.transform.position);
 
         int randomClipIndex = UnityEngine.Random.Range(0, m_DeathSounds.Length - 1);

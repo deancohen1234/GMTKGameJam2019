@@ -15,7 +15,8 @@ public class CollapseableGround : MonoBehaviour
     public LevelMechanicsContainer m_LevelMechanic;
     public CollapseableGround m_ConnectedChunk;
     public GameObject m_ConnectedWall;
-    public AudioClip m_CollpaseClip;
+    public AudioClip m_BeginCollpaseClip;
+    public AudioClip m_CollapsingClip;
     public int m_NumberOfHitsToBreak = 3;
     public bool m_IsUnbreakable = false;
 
@@ -121,7 +122,7 @@ public class CollapseableGround : MonoBehaviour
     private void DelayToCollapse(float timeToCollapse)
     {
         //start collapsing audio
-        PlayAudio();
+        PlayAudio(m_BeginCollpaseClip);
         m_Animator.SetTrigger("AboutToCollapse");
 
         m_LevelMechanic.m_Weapon.m_ArenaHeight = m_NewArenaHeight;
@@ -137,6 +138,8 @@ public class CollapseableGround : MonoBehaviour
         m_IsCollapsed = true;
 
         m_ConnectedWall.SetActive(false);
+
+        PlayAudio(m_CollapsingClip);
 
         //if player is in area (maybe by doing a raycast from the player down to see if they hit the falling piece)
         PlayerController p1 = m_LevelMechanic.GetPlayerOne();
@@ -195,9 +198,9 @@ public class CollapseableGround : MonoBehaviour
         m_ConnectedWall.GetComponent<JusticeGuard>().Initialize();
     }
 
-    private void PlayAudio()
+    private void PlayAudio(AudioClip clip)
     {
-        m_Source.clip = m_CollpaseClip;
+        m_Source.clip = clip;
         m_Source.Play();
     }
 

@@ -150,7 +150,7 @@ public class ArcadeIdleMenu : MonoBehaviour
         }
     }
 
-    private void SwapToVideoMode()
+    public void SwapToVideoMode()
     {
         m_VideoIsPlaying = true;
         m_ScreenFade.SetTrigger("TriggerFade");
