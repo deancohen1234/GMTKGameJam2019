@@ -29224,7 +29224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNum: 1
-  m_DefaultMoveSpeed: 2.1
+  m_DefaultMoveSpeed: 2.5
   m_DashSpeed: 7
   m_DisabledMovementTime: 6
   m_AttackDistance: 0.35

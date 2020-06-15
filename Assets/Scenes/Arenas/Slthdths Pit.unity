@@ -6365,7 +6365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2a039810fdc9832439a50c46d7008893, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.19
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6475,7 +6475,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 237ecfd6089c73247bd044894f1f4271, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.145
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6934,7 +6934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 1
+  m_ArcadeMode: 0
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7252,6 +7252,7 @@ MonoBehaviour:
   m_RoundText: {fileID: 1714631286}
   m_VictoryPanel: {fileID: 1063642467}
   m_VictoryText: {fileID: 1667548456}
+  m_DisableHealthUI: 0
 --- !u!1 &367728538
 GameObject:
   m_ObjectHideFlags: 0
@@ -19577,6 +19578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ab6486c6c86d743a9ff27003911093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 0}
 --- !u!4 &926887055
 Transform:
   m_ObjectHideFlags: 0

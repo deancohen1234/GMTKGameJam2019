@@ -2246,9 +2246,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: db84e4bc019ebb14f8d42c7cbaf8aa0c, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.19
+  m_audioClip: {fileID: 8300000, guid: 2a039810fdc9832439a50c46d7008893, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6974,7 +6974,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SACRIFICE!
+  m_Text: BATTLE!
 --- !u!222 &802677319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21514,7 +21514,7 @@ MonoBehaviour:
     CooldownTime: 30
     StartDelay: 8
     ActionLength: 15
-  m_AttackSound: {fileID: 8300000, guid: 05131628a00ff1449bfbcc414f6bb8eb, type: 3}
+  m_AttackSound: {fileID: 8300000, guid: de131735aae27034fbe50166fc743d26, type: 3}
   m_KnockbackPrefab: {fileID: 769007356821239844, guid: de798207c2ca41c4e818c48419191ee7,
     type: 3}
   m_CrackPrefab: {fileID: 5371428430568646248, guid: e4dc27d4dbec04f4b88f2071ae4fc4b0,
@@ -21559,7 +21559,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_JumpHeight: 0.2
   m_LerpTightness: 10
-  m_ForwardDistance: 1
+  m_ForwardDistance: 1.2
 --- !u!95 &2069114554
 Animator:
   serializedVersion: 3
@@ -22903,7 +22903,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 0}
   m_ConnectedWall: {fileID: 7558434061049451323}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 8300000, guid: 2a9f4d58b40391047a6212085ad0e084, type: 3}
+  m_CollapsingClip: {fileID: 8300000, guid: 025ab27109a676b4c8d0cb6f35a1d3fc, type: 3}
   m_NumberOfHitsToBreak: 10
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
@@ -23228,7 +23229,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 7560540630892159340}
   m_ConnectedWall: {fileID: 498914057793062725}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 0}
+  m_CollapsingClip: {fileID: 0}
   m_NumberOfHitsToBreak: 3
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
@@ -23467,7 +23469,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 7236212384605836227}
   m_ConnectedWall: {fileID: 1704728948767405771}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 0}
+  m_CollapsingClip: {fileID: 0}
   m_NumberOfHitsToBreak: 500
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
@@ -25170,7 +25173,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 1950086449543654342}
   m_ConnectedWall: {fileID: 7553733300099452623}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 0}
+  m_CollapsingClip: {fileID: 0}
   m_NumberOfHitsToBreak: 3
   m_IsUnbreakable: 1
   m_PerlinScale: 0.5
@@ -25339,7 +25343,7 @@ Animator:
   m_GameObject: {fileID: 7236212384605836225}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8907329af19eb6542869d1f4699bf901, type: 2}
+  m_Controller: {fileID: 9100000, guid: e338e82a63a2edd4d93217a665be2ccf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -25363,7 +25367,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 1697934288731806065}
   m_ConnectedWall: {fileID: 8759596009628696385}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 8300000, guid: 2a9f4d58b40391047a6212085ad0e084, type: 3}
+  m_CollapsingClip: {fileID: 8300000, guid: 025ab27109a676b4c8d0cb6f35a1d3fc, type: 3}
   m_NumberOfHitsToBreak: 13
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5
@@ -25702,7 +25707,8 @@ MonoBehaviour:
   m_LevelMechanic: {fileID: 820646370}
   m_ConnectedChunk: {fileID: 0}
   m_ConnectedWall: {fileID: 1700348704650455871}
-  m_CollpaseClip: {fileID: 8300000, guid: 22ad96e0e8c04f84a8b06cd8fcd4607b, type: 3}
+  m_BeginCollpaseClip: {fileID: 0}
+  m_CollapsingClip: {fileID: 0}
   m_NumberOfHitsToBreak: 3
   m_IsUnbreakable: 0
   m_PerlinScale: 0.5

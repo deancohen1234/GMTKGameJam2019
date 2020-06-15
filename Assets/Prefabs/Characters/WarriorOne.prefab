@@ -20357,7 +20357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNum: 0
-  m_DefaultMoveSpeed: 2.1
+  m_DefaultMoveSpeed: 2.5
   m_DashSpeed: 7
   m_DisabledMovementTime: 6
   m_AttackDistance: 0.35
@@ -20384,21 +20384,21 @@ MonoBehaviour:
   m_NudgeDisarm: {fileID: 8300000, guid: 351902ea8338619479dedd35af249d6e, type: 3}
   m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
   m_DamageSounds:
-  - {fileID: 8300000, guid: 42db1224a4d96c644ad5daf0cb176688, type: 3}
-  - {fileID: 8300000, guid: 64076f01d34885e47b5f7fb15743d740, type: 3}
-  - {fileID: 8300000, guid: 7b09060b9492e434b8764345aa1cd1b9, type: 3}
-  - {fileID: 8300000, guid: b217e27f6911cc74aad3bf01d84acf73, type: 3}
-  - {fileID: 8300000, guid: c294beddffeb3a84dbbb7381ce2b6667, type: 3}
+  - {fileID: 8300000, guid: 03fe589a9310e0a4a8d327be193900a6, type: 3}
+  - {fileID: 8300000, guid: 7437b14bd08cc8c4b844a60875ee98ca, type: 3}
+  - {fileID: 8300000, guid: e00578f51a368734883de45304725b57, type: 3}
+  - {fileID: 8300000, guid: 8d9bfb93928c8b1469579b0cca7fca79, type: 3}
+  - {fileID: 8300000, guid: 8997115c18dc03b489216ba4ca37f076, type: 3}
   m_DisarmSounds:
-  - {fileID: 8300000, guid: 9cfd052709e54314dae3b7a0fa00dd19, type: 3}
-  - {fileID: 8300000, guid: fc197b18d7e68de43920c5ccd38530b0, type: 3}
-  - {fileID: 8300000, guid: 733f125074c6cbb4b89642a9721ffe40, type: 3}
-  - {fileID: 8300000, guid: 964d22b0113af8b49849bde59c783b6d, type: 3}
+  - {fileID: 8300000, guid: 56f53630b14ff254b83aae35304af5de, type: 3}
+  - {fileID: 8300000, guid: bb4ee41bca3e10043ac26ead6e371938, type: 3}
+  - {fileID: 8300000, guid: f75ad66eaf3ff914f9e796285e5c2a1b, type: 3}
+  - {fileID: 8300000, guid: b5c7d2335bfd0d740b034e021a298614, type: 3}
   m_DeathSounds:
-  - {fileID: 8300000, guid: 2cecd018afc7c1b4fb2cd3eb68b89218, type: 3}
-  - {fileID: 8300000, guid: 7f939b492fa296942b01c3cf8bc188bd, type: 3}
-  - {fileID: 8300000, guid: 1e066ffff26baa448af0a4dcf90cc442, type: 3}
-  - {fileID: 8300000, guid: 16e778af8a9bd734cbf5a2890f92e619, type: 3}
+  - {fileID: 8300000, guid: 17de83df7209d534491ca7d741f128b1, type: 3}
+  - {fileID: 8300000, guid: 73519697a43cd444d87b7b597698adee, type: 3}
+  - {fileID: 8300000, guid: 41e1c78a64879e544998507f49ba077a, type: 3}
+  - {fileID: 8300000, guid: 51ae61203b8d7b34d8811729131e1f8f, type: 3}
   m_WeaponIcon: {fileID: 4482629905225165959}
 --- !u!114 &4482629906860492811
 MonoBehaviour:
@@ -20585,6 +20585,7 @@ MonoBehaviour:
     type: 3}
   m_Force: 100
   m_LaunchVariance: 0.5
+  m_UseHeadLaunch: 0
 --- !u!114 &-5656065565238443539
 MonoBehaviour:
   m_ObjectHideFlags: 0
