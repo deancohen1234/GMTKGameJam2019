@@ -14,6 +14,8 @@ public class IdlePlayerCheck : MonoBehaviour
 
     private void Start()
     {
+        m_InputManager.ForceInput(); //stop auto fuck off
+
         InvokeRepeating("CheckPlayerIdleTime", 0, m_CheckInterval);
     }
 

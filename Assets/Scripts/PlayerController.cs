@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] m_DisarmSounds;
     public AudioClip[] m_DeathSounds;
 
+    public float m_PitchMin = 0.7f;
+    public float m_PitchMax = 1.3f;
+
     public GameObject m_WeaponIcon;
     public Action m_OnDeathComplete;
 
@@ -370,7 +373,7 @@ public class PlayerController : MonoBehaviour
         int randomClipIndex = UnityEngine.Random.Range(0, allSoundClips.Length - 1);
         AudioClip clip = allSoundClips[randomClipIndex];
 
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
@@ -378,7 +381,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
@@ -655,7 +658,7 @@ public class PlayerController : MonoBehaviour
         int randomClipIndex = UnityEngine.Random.Range(0, m_DeathSounds.Length - 1);
         AudioClip clip = m_DeathSounds[randomClipIndex];
         m_AudioSource.clip = clip;
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
         m_AudioSource.Play();
 
         Invoke("CompleteDeath", m_DeathLength);

@@ -48,6 +48,11 @@ public class RoundManager : MonoBehaviour
             OnRoundComplete();
         }
         
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnMatchComplete(WinState.Tie);
+        }
+        
     }
 
     private void OnDestroy()
@@ -125,12 +130,12 @@ public class RoundManager : MonoBehaviour
         if (state == WinState.P1Wins)
         {
             //PlayerTwo wins
-            m_UIHandler.SetVictoryText("Player Two Wins!!!");
+            m_UIHandler.SetVictoryText("Player One Wins!!!");
         }
         else if (state == WinState.P2Wins)
         {
             //PlayerOne wins
-            m_UIHandler.SetVictoryText("Player One Wins!!!");
+            m_UIHandler.SetVictoryText("Player Two Wins!!!");
         }
         else if (state == WinState.Tie)
         {

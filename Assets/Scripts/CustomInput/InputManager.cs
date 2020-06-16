@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
 
     private GameInput m_GlobalInput; //input used for entire game
     private float m_LastInputTime;
+    private bool m_BlockInput = false;
 
     public void InitializeInput(bool useArcadeControls)
     {
@@ -120,6 +121,11 @@ public class InputManager : MonoBehaviour
     {
         //set last action time
         m_LastInputTime = isPressed ? Time.time : m_LastInputTime;
+    }
+
+    public void ForceInput()
+    {
+        SetLastInputTime(true);
     }
 
     ////////////////////INPUT GETTERS////////////////////////////

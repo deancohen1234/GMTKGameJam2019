@@ -154,7 +154,7 @@ public class HolyHammer : DivineWeapon
 
         if (playerHit)
         {
-
+            hitPlayer.PlaySoundEffect(PlayerSound.Damaged);
         }
 
         return playerHit;

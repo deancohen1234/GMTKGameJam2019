@@ -6365,7 +6365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2a039810fdc9832439a50c46d7008893, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6934,7 +6934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 0
+  m_ArcadeMode: 1
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7288,7 +7288,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 6.160034, y: -170.545}
-  m_SizeDelta: {x: 581, y: 60}
+  m_SizeDelta: {x: 688, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &367728540
 MonoBehaviour:
@@ -7323,7 +7323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: press a to restart
+  m_Text: Press Action to Return
 --- !u!222 &367728541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13606,7 +13606,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 6.160034, y: -230.545}
-  m_SizeDelta: {x: 581, y: 60}
+  m_SizeDelta: {x: 688, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727466424
 MonoBehaviour:
@@ -13641,7 +13641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press esc to quit
+  m_Text: to Main Menu
 --- !u!222 &727466425
 CanvasRenderer:
   m_ObjectHideFlags: 0

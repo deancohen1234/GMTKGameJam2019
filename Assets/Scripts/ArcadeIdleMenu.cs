@@ -60,14 +60,16 @@ public class ArcadeIdleMenu : MonoBehaviour
             m_CoinInsertedText.gameObject.SetActive(true);
         }
 
-        InvokeRepeating("CheckForVideoPlay", m_IdleTimeToVideo, 1.0f);
+        InvokeRepeating("CheckForVideoPlay", 0, 1.0f);
+
+        ApplicationSettings.m_Singleton.m_InputManager.ForceInput();
     }
 
     void Update()
     {   
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-
+            m_VideoPlayer.frame = 2200;
         }
 
         if (ApplicationSettings.m_Singleton.m_InputManager.IsCoinButtonPressedDown())
@@ -142,11 +144,16 @@ public class ArcadeIdleMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("LastInput Time: " + (Time.time - lastInputTime));
-            if (Time.time - lastInputTime <= m_IdleTimeToVideo)
+            if (m_VideoPlayer.frame >= 150)
             {
-                SwapToMainScreen();
+                Debug.Log(Time.time - lastInputTime);
+                if (Time.time - lastInputTime <= 5.0f || (ulong)m_VideoPlayer.frame + 1 >= m_VideoPlayer.frameCount)
+                {
+                    ApplicationSettings.m_Singleton.m_InputManager.ForceInput();
+                    SwapToMainScreen();
+                }
             }
+
         }
     }
 
@@ -167,6 +174,8 @@ public class ArcadeIdleMenu : MonoBehaviour
 
     private void SwapToMainScreen()
     {
+        Debug.Log("Swapping to Main Mode");
+
         m_VideoIsPlaying = false;
         Color noAlphaWhite = new Color(1, 1, 1, 0);
         m_VideoCanvas.color = noAlphaWhite;
