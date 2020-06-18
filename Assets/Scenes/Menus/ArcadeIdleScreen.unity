@@ -12145,7 +12145,7 @@ MonoBehaviour:
   m_VideoPlayer: {fileID: 1399512347}
   m_VideoCanvas: {fileID: 1342909800}
   m_ScreenFade: {fileID: 976645805}
-  m_IdleTimeToVideo: 10
+  m_IdleTimeToVideo: 180
   m_StageSelectName: StageSelect
 --- !u!4 &840769279 stripped
 Transform:
