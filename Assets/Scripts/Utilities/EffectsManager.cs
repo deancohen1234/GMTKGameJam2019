@@ -25,7 +25,7 @@ public class EffectsManager : MonoBehaviour
             return;
         }
 
-        PlayEffect(effect, Vector3.zero);
+        PlayEffect(effect, Vector3.zero, Quaternion.identity);
 
     }
 
@@ -48,11 +48,34 @@ public class EffectsManager : MonoBehaviour
             return;
         }
 
-        PlayEffect(effect, position);
+        PlayEffect(effect, position, Quaternion.identity);
 
     }
 
-    private void PlayEffect(Effect effect, Vector3 position)
+    public void ActivateEffect(string effectName, Vector3 position, Quaternion quaternion)
+    {
+        //find effect object
+        Effect effect = null;
+        for (int i = 0; i < m_Effects.Length; i++)
+        {
+            if (effectName == m_Effects[i].m_Name)
+            {
+                effect = m_Effects[i];
+                break;
+            }
+        }
+
+        if (effect == null)
+        {
+            Debug.LogError("Activate Effect Failed because [" + effectName + "] wasn't found");
+            return;
+        }
+
+        PlayEffect(effect, position, quaternion);
+
+    }
+
+    private void PlayEffect(Effect effect, Vector3 position, Quaternion quaternion)
     {
         //instatiate if necessary
         if (effect.m_NeedsInstantiation)
@@ -75,6 +98,12 @@ public class EffectsManager : MonoBehaviour
         if (position != Vector3.zero)
         {
             effect.GetParticleSystem().gameObject.transform.position = position;
+        }
+
+        //set effect rotation
+        if (quaternion != Quaternion.identity)
+        {
+            effect.GetParticleSystem().gameObject.transform.rotation = quaternion;
         }
         
         if (!effect.GetParticleSystem().isPlaying) { effect.GetParticleSystem().Play(); }

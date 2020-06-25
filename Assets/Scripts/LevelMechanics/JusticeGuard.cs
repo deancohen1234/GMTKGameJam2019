@@ -16,6 +16,10 @@ public class JusticeGuard : MonoBehaviour
 
     public int m_Health = 3;
 
+    public float m_TimeSlowAmount = 0.5f;
+    public float m_TimeSlowTime = 1.0f;
+
+    private EffectsManager m_EffectsManager;
     private JusticeUser m_MemorizedPlayer;
     private Material m_WallMaterial;
     private Color m_DefaultColor;
@@ -28,6 +32,7 @@ public class JusticeGuard : MonoBehaviour
     private void Awake()
     {
         m_WallMaterial = GetComponent<MeshRenderer>().material;
+        m_EffectsManager = GetComponent<EffectsManager>();
     }
 
     private void Start()
@@ -79,14 +84,7 @@ public class JusticeGuard : MonoBehaviour
             //if player can't break through wall, then they are set in the memory to be able to break through later
             if (CanBreakThroughWall(user))
             {
-                Vector3 direction = collision.contacts[0].point - collision.collider.transform.position;
-                direction = direction.normalized;
-
-                collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(direction * 150);
-
-                //collision.collider.gameObject.layer = LayerMask.NameToLayer("IgnoreAllButDeath");
-
-                Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+                OnBrokenWall(collision);
             }
             else
             {
@@ -100,6 +98,24 @@ public class JusticeGuard : MonoBehaviour
 
             collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(-direction * m_BouncebackForce);
         }
+    }
+
+    private void OnBrokenWall(Collision collision)
+    {
+        //let player through wall
+        Vector3 direction = collision.contacts[0].point - collision.collider.transform.position;
+        direction = direction.normalized;
+
+        collision.collider.gameObject.GetComponent<Rigidbody>().AddForce(direction * 150);
+
+        Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+
+        //slow down time
+        StartCoroutine(SlowTimeForDuration(m_TimeSlowTime));
+
+        //play particle effect
+        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, -direction);
+        m_EffectsManager.ActivateEffect("BreakSystem", collision.contacts[0].point, rot);
     }
 
     //returns true if successful
@@ -153,5 +169,14 @@ public class JusticeGuard : MonoBehaviour
             m_MemorizedPlayer = null;
         } 
        
+    }
+
+    private IEnumerator SlowTimeForDuration(float time)
+    {
+        Time.timeScale = m_TimeSlowAmount;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        Time.timeScale = 1.0f;
     }
 }
