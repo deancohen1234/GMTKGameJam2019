@@ -133,7 +133,8 @@ public class InputManager : MonoBehaviour
     {
         StickControl stick = isPlayerOne ? m_GlobalInput.P1_Stick : m_GlobalInput.P2_Stick;
 
-        
+        if (stick == null) { return Vector2.zero; }
+      
         Vector2 value = stick.ReadValue();
 
         if (Mathf.Abs(value.x) <= m_DeadZone) { value.x = 0; }
@@ -148,6 +149,9 @@ public class InputManager : MonoBehaviour
     public bool IsActionButtonPressedDown(bool isPlayerOne)
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ActionButton : m_GlobalInput.P2_ActionButton;
+
+        if (gameButton == null) { return false; }
+
         bool isPressed = gameButton.GetButtonInput();
 
         SetLastInputTime(isPressed);
@@ -158,6 +162,9 @@ public class InputManager : MonoBehaviour
     public bool IsDashButtonPressedDown(bool isPlayerOne)
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_DashButton : m_GlobalInput.P2_DashButton;
+
+        if (gameButton == null) { return false; }
+
         bool isPressed = gameButton.GetButtonInput();
 
         SetLastInputTime(isPressed);
@@ -168,6 +175,9 @@ public class InputManager : MonoBehaviour
     public bool IsConfirmButtonPressedDown(bool isPlayerOne)
     {
         GameButton gameButton = isPlayerOne ? m_GlobalInput.P1_ConfirmButton : m_GlobalInput.P2_ConfirmButton;
+
+        if (gameButton == null) { return false; }
+
         bool isPressed = gameButton.GetButtonInput();
 
         SetLastInputTime(isPressed);

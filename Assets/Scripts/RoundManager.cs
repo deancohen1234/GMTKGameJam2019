@@ -9,6 +9,7 @@ public class RoundManager : MonoBehaviour
 {
     [Header("Round Settings")]
     public int m_RoundsNeededToWin = 2;
+    public float m_RoundMaxDuration = 6000f; //in seconds
 
     [Header("Scene Objects")]
     public DivineStatue m_DivineStatue;
@@ -25,6 +26,7 @@ public class RoundManager : MonoBehaviour
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
+    private float m_RoundEndTime;
     private bool m_RoundComplete;
 
     private int m_PlayerOneRoundWins;
@@ -36,12 +38,16 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         InitializeGame();
-
         StartRound();
     }
 
     private void Update()
     {
+        if (Time.time > m_RoundEndTime)
+        {
+            OnMatchComplete(WinState.Tie);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             m_DEBUG_RestartRound = true;
@@ -101,7 +107,9 @@ public class RoundManager : MonoBehaviour
         m_DivineStatue.OnRoundStarted();
 
         //prevents a double pickup of the weapon incase the weapon was left there from the previous round
-        m_DivineWeapon.SetWeaponActive(false); 
+        m_DivineWeapon.SetWeaponActive(false);
+
+        m_RoundEndTime = Time.time + m_RoundMaxDuration;
     }
 
     public void OnRoundComplete()
