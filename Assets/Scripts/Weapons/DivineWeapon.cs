@@ -135,8 +135,12 @@ public class DivineWeapon : MonoBehaviour
     //has parameter of the player who dropped the weapon
     public virtual void Drop(PlayerController lastControlledPlayer)
     {
-        RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
-        OnWeaponDropped();
+        if (lastControlledPlayer != null)
+        {
+            RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
+            OnWeaponDropped();
+        }
+        
     }
 
     //retur true if hit was successful

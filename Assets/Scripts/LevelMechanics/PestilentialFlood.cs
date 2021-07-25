@@ -19,6 +19,8 @@ public class PestilentialFlood : MonoBehaviour
     [ColorUsage(true, true)]
     public Color m_PlayerTwoTotemColor;
 
+    private bool isFlooded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class PestilentialFlood : MonoBehaviour
 
     void ActivateFlood()
     {
+        isFlooded = true;
+
         GetComponent<AudioSource>().clip = m_Flood;
         GetComponent<AudioSource>().Play();
 
@@ -96,7 +100,12 @@ public class PestilentialFlood : MonoBehaviour
             m_Totems[i].SetTotemColor(Color.black);
         }
 
-        m_Slime.SetTrigger("ResetSlime");
+        if (isFlooded)
+        {
+            m_Slime.SetTrigger("ResetSlime");
+            isFlooded = false;
+        }
+        
     }
 
     private bool AreAllTotemsActivated()
@@ -110,6 +119,9 @@ public class PestilentialFlood : MonoBehaviour
             }
         }
 
+        return true;
+
+        /*
         //check all totems are the same color
         int numPlayerOneTotems = 0;
         for (int j = 0; j < m_Totems.Length; j++)
@@ -128,6 +140,7 @@ public class PestilentialFlood : MonoBehaviour
         }
 
         return true;
+        */
     }
 
     private void OnDestroy()

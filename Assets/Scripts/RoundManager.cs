@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum WinState {P1Wins, P2Wins, Tie}
+public enum WinState {P1Wins, P2Wins, Tie, Timeout}
 
 public class RoundManager : MonoBehaviour
 {
@@ -45,7 +45,7 @@ public class RoundManager : MonoBehaviour
     {
         if (Time.time > m_RoundEndTime)
         {
-            OnMatchComplete(WinState.Tie);
+            OnMatchComplete(WinState.Timeout);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -148,6 +148,10 @@ public class RoundManager : MonoBehaviour
         else if (state == WinState.Tie)
         {
             m_UIHandler.SetVictoryText("Tie Game!!!");
+        }
+        else if (state == WinState.Timeout)
+        {
+            m_UIHandler.SetVictoryText("Game Timeout");
         }
 
         Invoke("LoadArcadeIdleScreen", 5.0f); //after game is complete, load back to start screen

@@ -256,7 +256,7 @@ public class SldqhThss : DivineStatue
             }
 
             GameObject s = Instantiate(m_StalagmitePrefab);
-            s.transform.position = FindValidStalagmitePosition();
+            s.transform.position = spawnPosition;
 
             float degX = UnityEngine.Random.Range(-20, 20f);
             float degY = UnityEngine.Random.Range(-1.0f, 1.0f);
