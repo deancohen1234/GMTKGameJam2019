@@ -25,14 +25,19 @@ public class AttackHitbox : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
+                PlayerController pc = other.gameObject.GetComponent<PlayerController>();
 
-                if (Time.time - m_AttackStartTime >= m_AttackDelayTime)
+                if (pc.IsInvincible() == false)
                 {
-                    //deal damage
-                    other.gameObject.GetComponent<PlayerController>().AttemptAttack(m_ParentPlayerController);
+                    if (Time.time - m_AttackStartTime >= m_AttackDelayTime)
+                    {
+                        //deal damage
+                        pc.AttemptAttack(m_ParentPlayerController);
 
-                    m_AttackStartTime = Time.time;
+                        m_AttackStartTime = Time.time;
+                    }
                 }
+                
             }
 
         }

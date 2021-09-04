@@ -41,6 +41,9 @@ public class UIHandler : MonoBehaviour
     public GameObject m_VictoryPanel;
     public Text m_VictoryText;
 
+    [Header("Additional Setting")]
+    public bool m_DisableHealthUI = false;
+
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
@@ -52,21 +55,25 @@ public class UIHandler : MonoBehaviour
         m_PlayerOne.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
         m_PlayerTwo.GetHealthComponent().m_OnPlayerDamaged += OnPlayerDamaged;
 
-        //set all health to visible on initialize
-        m_P1_Health_1.gameObject.SetActive(true);
-        m_P1_Health_2.gameObject.SetActive(true);
-        m_P1_Health_3.gameObject.SetActive(true);
-        m_P1_Health_4.gameObject.SetActive(true);
-        m_P1_Health_5.gameObject.SetActive(true);
-
-        m_P2_Health_1.gameObject.SetActive(true);
-        m_P2_Health_2.gameObject.SetActive(true);
-        m_P2_Health_3.gameObject.SetActive(true);
-        m_P2_Health_4.gameObject.SetActive(true);
-        m_P2_Health_5.gameObject.SetActive(true);
-
         m_MainPanel.GetComponent<Animator>().SetTrigger("StartRound");
         m_RoundText.text = "Round " + roundCount;
+
+        if (!m_DisableHealthUI)
+        {
+            //set all health to visible on initialize
+            m_P1_Health_1.gameObject.SetActive(true);
+            m_P1_Health_2.gameObject.SetActive(true);
+            m_P1_Health_3.gameObject.SetActive(true);
+            m_P1_Health_4.gameObject.SetActive(true);
+            m_P1_Health_5.gameObject.SetActive(true);
+
+            m_P2_Health_1.gameObject.SetActive(true);
+            m_P2_Health_2.gameObject.SetActive(true);
+            m_P2_Health_3.gameObject.SetActive(true);
+            m_P2_Health_4.gameObject.SetActive(true);
+            m_P2_Health_5.gameObject.SetActive(true);
+        }
+        
     }
 
     public void UpdateRoundScore(int p1RoundsWon, int p2RoundsWon)
@@ -127,10 +134,12 @@ public class UIHandler : MonoBehaviour
 
     }
 
-        private void OnPlayerDamaged(PlayerController player, float currentHealth)
+    private void OnPlayerDamaged(PlayerController player, float currentHealth)
     {
         //total health is 500
         //dividing by 100 gives correct numbers for divisors
+
+        if (m_DisableHealthUI) { return; }
 
         int divisor = Mathf.CeilToInt(currentHealth / 100f);
 

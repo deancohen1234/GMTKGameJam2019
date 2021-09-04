@@ -16,10 +16,10 @@ TagManager:
   - AttackBox
   - Player
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
+  - IgnoreFloor
+  - Floor
+  - DeathArea
+  - IgnoreAllButDeath
   - 
   - 
   - 

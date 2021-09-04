@@ -70,10 +70,10 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _CloudCutoff: 0.1
-    - _CloudHeight: 1
-    - _CloudMiddleYPosition: 0
-    - _CloudOffset: 1.5
-    - _CloudSoftness: 0.28
+    - _CloudHeight: 33.11
+    - _CloudMiddleYPosition: -2.46
+    - _CloudOffset: 1.62
+    - _CloudSoftness: 0.02
     - _CloudSpeed: 0.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -81,7 +81,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MainCloudSpeed: 0.05
+    - _MainCloudSpeed: 0.01
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -92,7 +92,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StepAmount: 1
-    - _TaperPower: 389.39
+    - _TaperPower: 176.94
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

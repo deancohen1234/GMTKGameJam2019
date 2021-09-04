@@ -21,10 +21,11 @@ public class DivineWeapon : MonoBehaviour
 
     protected PlayerController m_PlayerRef;
 
-    private AudioSource m_AudioSource;
-    private SpriteRenderer m_SpriteRenderer;
-    private Rigidbody m_Rigidbody;
-    private Collider[] m_AllColliders;
+    protected AudioSource m_AudioSource;
+    protected SpriteRenderer m_SpriteRenderer;
+    protected Rigidbody m_Rigidbody;
+    protected Collider[] m_AllColliders;
+    protected EffectsManager m_EffectsManager;
 
     private float m_WeaponStartHeight;
     private bool m_IsLerping;
@@ -39,6 +40,7 @@ public class DivineWeapon : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AllColliders = GetComponents<Collider>();
+        m_EffectsManager = GetComponent<EffectsManager>();
     }
 
     private void Start()
@@ -115,6 +117,8 @@ public class DivineWeapon : MonoBehaviour
     public virtual void OnWeaponAttackStart()
     {
         m_PlayerRef.PlaySound(m_AttackSound);
+
+        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(true);
     }
 
     public virtual void WeaponAttack(PlayerController player, Vector3 direction)
@@ -124,15 +128,19 @@ public class DivineWeapon : MonoBehaviour
 
     public virtual void OnWeaponAttackEnd()
     {
-
+        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(false);
     }
 
     //player drops weapon
     //has parameter of the player who dropped the weapon
     public virtual void Drop(PlayerController lastControlledPlayer)
     {
-        RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
-        OnWeaponDropped();
+        if (lastControlledPlayer != null)
+        {
+            RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
+            OnWeaponDropped();
+        }
+        
     }
 
     //retur true if hit was successful
@@ -202,6 +210,18 @@ public class DivineWeapon : MonoBehaviour
 
         transform.position = m_StartPos;
         m_IsLerping = true;
+    }
+
+    public bool IsPickedUp()
+    {
+        if (m_PlayerRef == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private bool IsValidPosition(Vector3 position)

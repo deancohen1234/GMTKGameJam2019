@@ -9,8 +9,12 @@ public class HeadLauncher : MonoBehaviour
     public float m_Force;
     public float m_LaunchVariance = 0.5f;
 
+    public bool m_UseHeadLaunch;
+
     public void LaunchHead(Vector3 startPos, Vector3 goalPos)
     {
+        if (m_UseHeadLaunch == false) { return; }
+
         GameObject head = Instantiate(m_HeadPrefab, startPos, Quaternion.Euler(42.0f, 0, 0));
         head.transform.position = startPos;
 

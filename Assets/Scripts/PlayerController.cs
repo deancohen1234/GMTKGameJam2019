@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] m_DisarmSounds;
     public AudioClip[] m_DeathSounds;
 
+    public float m_PitchMin = 0.7f;
+    public float m_PitchMax = 1.3f;
+
     public GameObject m_WeaponIcon;
     public Action m_OnDeathComplete;
 
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour
     private PlayerOrientation m_PlayerOrientation;
 
     private float m_MoveSpeed; //move speed that can be default or weapon effected;
+    private bool m_IsInvincible = false;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
     private bool m_ControllerDisabled = false; //enables controller to be disabled without killing whole player controller
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
         //TESTING
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_PlayerAnimation.SetAttackStatus(true);
+            m_HealthComponent.Kill();
         }
 
         if (m_ControllerDisabled || m_BlockAllInput || m_HealthComponent.IsDead()) { return; }
@@ -369,7 +373,7 @@ public class PlayerController : MonoBehaviour
         int randomClipIndex = UnityEngine.Random.Range(0, allSoundClips.Length - 1);
         AudioClip clip = allSoundClips[randomClipIndex];
 
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
@@ -377,7 +381,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
@@ -386,6 +390,11 @@ public class PlayerController : MonoBehaviour
     public void SetWeaponIcon(Sprite sprite)
     {
         m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    public void SetIsInvincible (bool b)
+    {
+        m_IsInvincible = b;
     }
 
     public void ApplyBounceBackForce(Vector3 otherPlayerPos)
@@ -401,6 +410,8 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
     {
+        m_Rigidbody.velocity = Vector3.zero;
+
         StartCoroutine(DisableAllMovement(hitStunTime));
 
         m_Rigidbody.AddForce(direction.normalized * force);
@@ -641,12 +652,13 @@ public class PlayerController : MonoBehaviour
         //gameObject.SetActive(false);
         m_EffectsController.m_CharacterSprite.enabled = false; //hide player sprite
         m_EffectsController.ActivateOnDeathSystem();
+
         m_HeadLauncher.LaunchHead(transform.position, m_CameraShake.gameObject.transform.position);
 
         int randomClipIndex = UnityEngine.Random.Range(0, m_DeathSounds.Length - 1);
         AudioClip clip = m_DeathSounds[randomClipIndex];
         m_AudioSource.clip = clip;
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
         m_AudioSource.Play();
 
         Invoke("CompleteDeath", m_DeathLength);
@@ -654,7 +666,7 @@ public class PlayerController : MonoBehaviour
 
     private void CompleteDeath()
     {
-        m_OnDeathComplete.Invoke();
+        m_OnDeathComplete?.Invoke();
     }
 
     //inclusive min and exclusive max
@@ -695,6 +707,16 @@ public class PlayerController : MonoBehaviour
     public bool IsDisarming()
     {
         return m_IsDisarming;
+    }
+
+    public bool IsStunned()
+    {
+        return m_BlockAllInput;
+    }
+
+    public bool IsInvincible()
+    {
+        return m_IsInvincible;
     }
     #endregion
 }

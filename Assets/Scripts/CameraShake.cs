@@ -96,12 +96,7 @@ public class CameraShake : MonoBehaviour {
 
     public void AddTrauma(float value, float falloffSpeed)
     {
-        if (m_Trauma + value > 1)
-        {
-            return;
-        }
-
         m_FalloffSpeed = falloffSpeed;
-        m_Trauma += value;
+        m_Trauma = Mathf.Clamp01(m_Trauma + value);
     }
 }

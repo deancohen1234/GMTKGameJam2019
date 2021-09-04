@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum WinState {P1Wins, P2Wins, Tie, Timeout}
+
 public class RoundManager : MonoBehaviour
 {
     [Header("Round Settings")]
     public int m_RoundsNeededToWin = 2;
+    public float m_RoundMaxDuration = 6000f; //in seconds
 
     [Header("Scene Objects")]
     public DivineStatue m_DivineStatue;
@@ -23,6 +26,7 @@ public class RoundManager : MonoBehaviour
     private PlayerController m_PlayerOne;
     private PlayerController m_PlayerTwo;
 
+    private float m_RoundEndTime;
     private bool m_RoundComplete;
 
     private int m_PlayerOneRoundWins;
@@ -34,16 +38,25 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         InitializeGame();
-
         StartRound();
     }
 
     private void Update()
     {
+        if (Time.time > m_RoundEndTime)
+        {
+            OnMatchComplete(WinState.Timeout);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             m_DEBUG_RestartRound = true;
             OnRoundComplete();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnMatchComplete(WinState.Tie);
         }
         
     }
@@ -80,8 +93,12 @@ public class RoundManager : MonoBehaviour
     private void StartRound()
     {
         //Spawn/initialize players
-        InitializePlayer(ref m_PlayerOne, m_PlayerOnePrefab);
-        InitializePlayer(ref m_PlayerTwo, m_PlayerTwoPrefab);
+        InitializePlayer(ref m_PlayerOne, m_PlayerOnePrefab, 0);
+        InitializePlayer(ref m_PlayerTwo, m_PlayerTwoPrefab, 1);
+
+        //set player spawn locations
+        //m_PlayerOne.transform.position = m_PlayerOneStartPosition.position;
+        //m_PlayerTwo.transform.position = m_PlayerTwoStartPosition.position;
 
         m_UIHandler.Initialize(m_PlayerOne, m_PlayerTwo, (m_PlayerOneRoundWins + m_PlayerTwoRoundWins + 1)); //+1 for 0 based
 
@@ -90,7 +107,9 @@ public class RoundManager : MonoBehaviour
         m_DivineStatue.OnRoundStarted();
 
         //prevents a double pickup of the weapon incase the weapon was left there from the previous round
-        m_DivineWeapon.SetWeaponActive(false); 
+        m_DivineWeapon.SetWeaponActive(false);
+
+        m_RoundEndTime = Time.time + m_RoundMaxDuration;
     }
 
     public void OnRoundComplete()
@@ -112,19 +131,27 @@ public class RoundManager : MonoBehaviour
     }
 
 
-    private void OnMatchComplete(bool playerOneWon)
+    private void OnMatchComplete(WinState state)
     {
         m_UIHandler.SetVictoryCanvasActive(true);
 
-        if (m_PlayerOne.GetHealthComponent().IsDead())
+        if (state == WinState.P1Wins)
         {
             //PlayerTwo wins
-            m_UIHandler.SetVictoryText("Player Two Wins!!!");
+            m_UIHandler.SetVictoryText("Player One Wins!!!");
         }
-        else
+        else if (state == WinState.P2Wins)
         {
             //PlayerOne wins
-            m_UIHandler.SetVictoryText("Player One Wins!!!");
+            m_UIHandler.SetVictoryText("Player Two Wins!!!");
+        }
+        else if (state == WinState.Tie)
+        {
+            m_UIHandler.SetVictoryText("Tie Game!!!");
+        }
+        else if (state == WinState.Timeout)
+        {
+            m_UIHandler.SetVictoryText("Game Timeout");
         }
 
         Invoke("LoadArcadeIdleScreen", 5.0f); //after game is complete, load back to start screen
@@ -134,11 +161,24 @@ public class RoundManager : MonoBehaviour
     #region Helper Methods
     //send a REFERENCE of the player
     //instantiates and adds needed events to player then returns object instantiated
-    private void InitializePlayer(ref PlayerController player, GameObject playerPrefab)
+    private void InitializePlayer(ref PlayerController player, GameObject playerPrefab, int playerIndex)
     {
         if (player) { Destroy(player.gameObject); player = null; }
 
-        player = Instantiate(playerPrefab).GetComponent<PlayerController>();
+        //get start position
+        Vector3 startPos = Vector3.zero;
+        if (playerIndex == 0)
+        {
+            startPos = m_PlayerOneStartPosition.position;
+        }
+        else if (playerIndex == 1)
+        {
+            startPos = m_PlayerTwoStartPosition.position;
+        }
+
+        //instantiate player and spawn at location
+        player = Instantiate(playerPrefab, startPos, Quaternion.identity).GetComponent<PlayerController>();
+
         player.m_OnDeathComplete += OnRoundComplete;
         player.PlayPoofSound();
         player.GetEffectsController().ActivatePoofSystem();
@@ -173,16 +213,23 @@ public class RoundManager : MonoBehaviour
         {
             m_DEBUG_RestartRound = false;
         }
+        else if (m_PlayerOne.GetHealthComponent().IsDead() && m_PlayerTwo.GetHealthComponent().IsDead())
+        {
+            //tie, both players score a point
+            m_PlayerOneRoundWins++;
+            m_PlayerTwoRoundWins++;
+        }
         else if (m_PlayerOne.GetHealthComponent().IsDead())
         {
             //PlayerTwo wins
             m_PlayerTwoRoundWins++;
         }
-        else
+        else if (m_PlayerTwo.GetHealthComponent().IsDead())
         {
             //PlayerOne wins
             m_PlayerOneRoundWins++;
         }
+
         m_UIHandler.UpdateRoundScore(m_PlayerOneRoundWins, m_PlayerTwoRoundWins);
     }
 
@@ -196,22 +243,26 @@ public class RoundManager : MonoBehaviour
     {
         bool gameIsComplete = false;
 
-        if (m_PlayerOneRoundWins >= m_RoundsNeededToWin)
+        if (m_PlayerOneRoundWins >= m_RoundsNeededToWin && m_PlayerTwoRoundWins >= m_RoundsNeededToWin)
         {
-            //End Game
-            OnMatchComplete(true);
+            OnMatchComplete(WinState.Tie);
+            gameIsComplete = true;
+        }
+        else if (m_PlayerOneRoundWins >= m_RoundsNeededToWin)
+        {
+            OnMatchComplete(WinState.P1Wins);
             gameIsComplete = true;
         }
         else if (m_PlayerTwoRoundWins >= m_RoundsNeededToWin)
         {
-            OnMatchComplete(false);
+            OnMatchComplete(WinState.P2Wins);
             gameIsComplete = true;
         }
 
         return gameIsComplete;
     }
 
-    private void LoadArcadeIdleScreen()
+    public void LoadArcadeIdleScreen()
     {
         SceneManager.LoadScene("ArcadeIdleScreen");
     }

@@ -165,7 +165,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 20.8
+    value: -19
   tint:
     overrideState: 1
     value: 0
@@ -189,10 +189,10 @@ MonoBehaviour:
     value: 0
   mixerRedOutRedIn:
     overrideState: 1
-    value: 119
+    value: 123
   mixerRedOutGreenIn:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 45
   mixerRedOutBlueIn:
     overrideState: 0
     value: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerGreenOutGreenIn:
-    overrideState: 0
+    overrideState: 1
     value: 100
   mixerGreenOutBlueIn:
     overrideState: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerBlueOutBlueIn:
-    overrideState: 0
+    overrideState: 1
     value: 100
   lift:
     overrideState: 0

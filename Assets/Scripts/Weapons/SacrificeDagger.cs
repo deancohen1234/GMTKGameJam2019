@@ -12,7 +12,6 @@ public class SacrificeDagger : DivineWeapon
     public override void OnWeaponAttackStart()
     {
         base.OnWeaponAttackStart();
-        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(true);
     }
 
     public override void WeaponAttack(PlayerController player, Vector3 direction)
@@ -26,8 +25,6 @@ public class SacrificeDagger : DivineWeapon
     public override void OnWeaponAttackEnd()
     {
         base.OnWeaponAttackEnd();
-
-        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(false);
  
         m_PlayerRef.m_AttackHitboxController.DisableAllHitBoxes();
     }

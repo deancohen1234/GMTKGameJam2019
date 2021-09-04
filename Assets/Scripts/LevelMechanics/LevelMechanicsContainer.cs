@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//TODO maybe make all level mechanics inherit this in some fashion
+
 //called from Round Manager that holds basic information for level mechanics to use
 //Singleton
 public class LevelMechanicsContainer : MonoBehaviour
 {
     public Action m_OnRoundEnd;
+    public DivineWeapon m_Weapon;
     private RoundManager m_RoundManager;
 
     public void InitializeContainer(RoundManager roundManager)
@@ -17,6 +20,7 @@ public class LevelMechanicsContainer : MonoBehaviour
 
     public void EndRound()
     {
+        Debug.Log("End Round...");
         m_OnRoundEnd?.Invoke();
     }
 

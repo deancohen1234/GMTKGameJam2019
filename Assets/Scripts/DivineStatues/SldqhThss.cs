@@ -11,13 +11,16 @@ public class SldqhThss : DivineStatue
     public float m_ImpatienceTime = 20f; //in seconds
     public float m_TimeSavedPerAttack = 5f;
 
-    public GameObject m_StalagmitePrefab;
-    public int m_NumStalagmites = 2;
-
     public Transform m_ArenaCenter;
     public Vector3 m_Offset;
     public float m_ArenaWidth;
     public float m_ArenaHeight;
+
+    [Header("Stalagmites")]
+    public GameObject m_StalagmitePrefab;
+    public Vector3 m_StalagmiteCheckBoxSize;
+    public LayerMask checkBoxLayerMask = ~0;
+    public int m_NumStalagmites = 2;
 
     [Header("Audio Clips")]
     public AudioClip m_Slam;
@@ -53,6 +56,8 @@ public class SldqhThss : DivineStatue
     private Stalagmite[] m_Stalagmites;
 
     private float m_LastSlamTime;
+
+    private const int MAXSTALAGMITEPOSITIONTESTS = 5;
 
     #region Monobehavior Methods
     void Awake()
@@ -242,12 +247,16 @@ public class SldqhThss : DivineStatue
                 m_Stalagmites[i].Hide();
             }
 
-            float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
-            float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
-            Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, .25f, randomY) + m_Offset;
+            //check to make sure position doesn't have player in it
+            Vector3 spawnPosition = FindValidStalagmitePosition();
+            //if spawn is 0 then just don't spawn this stalagmite
+            if (spawnPosition == Vector3.zero)
+            {
+                continue;
+            }
 
             GameObject s = Instantiate(m_StalagmitePrefab);
-            s.transform.position = newPosition;
+            s.transform.position = spawnPosition;
 
             float degX = UnityEngine.Random.Range(-20, 20f);
             float degY = UnityEngine.Random.Range(-1.0f, 1.0f);
@@ -256,6 +265,26 @@ public class SldqhThss : DivineStatue
 
             m_Stalagmites[i] = s.GetComponent<Stalagmite>();
         }
+        
+    }
+
+    private Vector3 FindValidStalagmitePosition()
+    {
+        for (int i = 0; i < MAXSTALAGMITEPOSITIONTESTS; i++)
+        {
+            float randomX = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
+            float randomY = UnityEngine.Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
+            Vector3 newPosition = m_ArenaCenter.position + new Vector3(randomX, .25f, randomY) + m_Offset;
+
+            bool isBlocked = Physics.CheckBox(newPosition, m_StalagmiteCheckBoxSize, Quaternion.identity, checkBoxLayerMask);
+
+            if (!isBlocked)
+            {
+                return newPosition;
+            }
+        }
+
+        return Vector3.zero;
         
     }
 
