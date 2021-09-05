@@ -11,7 +11,6 @@ public class CloudGenerator : MonoBehaviour
     float offset;
 
     public int layer;
-    public Camera camera;
     private Matrix4x4 matrix;
 
     // Update is called once per frame

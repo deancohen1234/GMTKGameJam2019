@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public AttackHitboxController m_AttackHitboxController;
 
     private InputStrings m_InputStrings;
+    private Collider m_MainCollider;
     private Rigidbody m_Rigidbody;
     private AudioSource m_AudioSource;
     private HealthComponent m_HealthComponent;
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
     #region Monobehavior Methods
     private void Awake()
     {
+        m_MainCollider = GetComponent<Collider>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AudioSource = GetComponent<AudioSource>();
         m_HealthComponent = GetComponent<HealthComponent>();
@@ -287,6 +289,8 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
+    #region Public Methods
+
     public void DisableController(bool stopAllVelocity = true)
     {
         m_ControllerDisabled = true;
@@ -313,7 +317,7 @@ public class PlayerController : MonoBehaviour
             m_EquippedWeapon = weapon;
             m_WeaponIcon.SetActive(true);
 
-            m_EquippedWeapon.OnWeaponPickup(this);
+            m_EquippedWeapon.OnPickup(this);
             m_AttackAction = m_EquippedWeapon.m_AttackAction;
 
             //set player move speed to weapon move speed
@@ -436,6 +440,7 @@ public class PlayerController : MonoBehaviour
             AttemptDashHit(attackingPlayer);
         }
     }
+    #endregion
 
     private void AttemptAttackHit(PlayerController attackingPlayer)
     {
@@ -717,6 +722,21 @@ public class PlayerController : MonoBehaviour
     public bool IsInvincible()
     {
         return m_IsInvincible;
+    }
+
+    public Vector3 GetMoveDirection()
+    {
+        if (m_Rigidbody != null)
+        {
+            return m_Rigidbody.velocity.normalized;
+        }
+
+        return Vector3.zero;
+    }
+
+    public Collider GetMainCollider()
+    {
+        return m_MainCollider;
     }
     #endregion
 }

@@ -47,43 +47,43 @@ public class HolyHammer : DivineWeapon
         m_CameraShake = FindObjectOfType<CameraShake>();
     }
 
-    public override void OnWeaponPickup(PlayerController player)
+    public override void OnPickup(PlayerController player)
     {
-        base.OnWeaponPickup(player);
+        base.OnPickup(player);
     }
 
-    public override void OnWeaponAttackStart()
+    public override void OnAttackStart()
     {
-        base.OnWeaponAttackStart();
+        base.OnAttackStart();
 
         //set jump settings
-        m_JumpDirection = m_PlayerRef.GetComponent<Rigidbody>().velocity.normalized;
+        m_JumpDirection = m_OwningPlayer.GetComponent<Rigidbody>().velocity.normalized;
         m_JumpStartTime = Time.time;
-        m_PlayerStartingPos = m_PlayerRef.transform.position;
+        m_PlayerStartingPos = m_OwningPlayer.transform.position;
         m_IsJumping = true;
 
         //add invicibility to player controller
-        m_PlayerRef.SetIsInvincible(true);
+        m_OwningPlayer.SetIsInvincible(true);
     }
 
-    public override void WeaponAttack(PlayerController player, Vector3 direction)
+    public override void Attack(PlayerController player, Vector3 direction)
     {
-        base.WeaponAttack(player, direction);
+        base.Attack(player, direction);
 
         m_IsJumping = false; //jump only lasts for windup
 
         //add invicibility to player controller
-        m_PlayerRef.SetIsInvincible(false);
+        m_OwningPlayer.SetIsInvincible(false);
 
-        Vector3 playerStartingPos = new Vector3(m_PlayerRef.transform.position.x, m_PlayerStartingPos.y, m_PlayerRef.transform.position.z);
-        m_PlayerRef.transform.position = playerStartingPos;
+        Vector3 playerStartingPos = new Vector3(m_OwningPlayer.transform.position.x, m_PlayerStartingPos.y, m_OwningPlayer.transform.position.z);
+        m_OwningPlayer.transform.position = playerStartingPos;
 
         StartSlam(player, direction);
     }
 
-    public override void OnWeaponAttackEnd()
+    public override void OnAttackEnd()
     {
-        base.OnWeaponAttackEnd();
+        base.OnAttackEnd();
         m_IsSlamming = false;
     }
 
@@ -131,7 +131,7 @@ public class HolyHammer : DivineWeapon
 
         Vector3 forceDirection = distVector.normalized;
 
-        bool hitSuccessful = OnHit(hitPlayer, m_PlayerRef);
+        bool hitSuccessful = OnHit(hitPlayer, m_OwningPlayer);
 
         if (hitSuccessful)
         {
@@ -142,7 +142,7 @@ public class HolyHammer : DivineWeapon
         {
             //knock back player who is about to get disarmed
             //by half as much force
-            m_PlayerRef.ApplyKnockbackForce(forceDirection, force * 0.5f, ((float)m_HitStunTime / 60f));
+            m_OwningPlayer.ApplyKnockbackForce(forceDirection, force * 0.5f, ((float)m_HitStunTime / 60f));
         }
 
     }
@@ -175,7 +175,7 @@ public class HolyHammer : DivineWeapon
             bool lockForwardJump = IsPredictedToHitWall(time);
             Vector3 newPosition = GetJumpPosition(time, lockForwardJump);
 
-            m_PlayerRef.transform.position = newPosition;
+            m_OwningPlayer.transform.position = newPosition;
         }
     }
 
@@ -207,7 +207,7 @@ public class HolyHammer : DivineWeapon
         Vector3 jumpDistance = Vector3.Lerp(Vector3.zero, m_JumpDirection * m_ForwardDistance, jumpDistanceTime);
 
         Vector3 lerpEndPos = m_PlayerStartingPos + new Vector3(jumpDistance.x, jumpHeight, jumpDistance.z);
-        Vector3 newPosition = Vector3.Lerp(m_PlayerRef.transform.position, lerpEndPos, Time.deltaTime * m_LerpTightness);
+        Vector3 newPosition = Vector3.Lerp(m_OwningPlayer.transform.position, lerpEndPos, Time.deltaTime * m_LerpTightness);
 
         return newPosition;
     }

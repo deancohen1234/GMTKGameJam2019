@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DivineWeapon : MonoBehaviour
+public class DivineWeapon : MonoBehaviour, IWeapon
 {
     public Transform m_ArenaCenter;
     public float m_ArenaWidth;
@@ -19,7 +19,7 @@ public class DivineWeapon : MonoBehaviour
     [Header("Sounds")]
     public AudioClip m_AttackSound;
 
-    protected PlayerController m_PlayerRef;
+    protected PlayerController m_OwningPlayer;
 
     protected AudioSource m_AudioSource;
     protected SpriteRenderer m_SpriteRenderer;
@@ -55,17 +55,17 @@ public class DivineWeapon : MonoBehaviour
         //SetWeaponActive(false);
 
         //assign all actions for delegate when game starts
-        m_AttackAction.OnActionStart += OnWeaponAttackStart;
-        m_AttackAction.ActionHandler += WeaponAttack; //currently isn't set up
-        m_AttackAction.OnActionEnd += OnWeaponAttackEnd;
+        m_AttackAction.OnActionStart += OnAttackStart;
+        m_AttackAction.ActionHandler += Attack; //currently isn't set up
+        m_AttackAction.OnActionEnd += OnAttackEnd;
     }
 
     //When closing remove all delegates
     private void OnDestroy()
     {
-        m_AttackAction.OnActionStart -= OnWeaponAttackStart;
-        m_AttackAction.ActionHandler -= WeaponAttack;
-        m_AttackAction.OnActionEnd -= OnWeaponAttackEnd;
+        m_AttackAction.OnActionStart -= OnAttackStart;
+        m_AttackAction.ActionHandler -= Attack;
+        m_AttackAction.OnActionEnd -= OnAttackEnd;
     }
 
     protected virtual void Update()
@@ -102,33 +102,27 @@ public class DivineWeapon : MonoBehaviour
     }
 
     //on weapon pickup set player reference for this weapon's attack action
-    public virtual void OnWeaponPickup(PlayerController player)
+    public virtual void OnPickup(PlayerController player)
     {
-        m_PlayerRef = player;
+        m_OwningPlayer = player;
         m_AttackAction.SetPlayerReference(player);
     }
 
-    protected virtual void OnWeaponDropped()
+    public virtual void OnAttackStart()
     {
-        m_PlayerRef = null;
-        m_AttackAction.SetPlayerReference(null); //set reference for actions to null
+        m_OwningPlayer.PlaySound(m_AttackSound);
+
+        m_OwningPlayer.GetComponent<PlayerAnimation>().SetAttackStatus(true);
     }
 
-    public virtual void OnWeaponAttackStart()
-    {
-        m_PlayerRef.PlaySound(m_AttackSound);
-
-        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(true);
-    }
-
-    public virtual void WeaponAttack(PlayerController player, Vector3 direction)
+    public virtual void Attack(PlayerController player, Vector3 direction)
     {
 
     }
 
-    public virtual void OnWeaponAttackEnd()
+    public virtual void OnAttackEnd()
     {
-        m_PlayerRef.GetComponent<PlayerAnimation>().SetAttackStatus(false);
+        m_OwningPlayer.GetComponent<PlayerAnimation>().SetAttackStatus(false);
     }
 
     //player drops weapon
@@ -137,8 +131,11 @@ public class DivineWeapon : MonoBehaviour
     {
         if (lastControlledPlayer != null)
         {
+            SetWeaponActive(true);
             RandomizeLocationFromPlayer(lastControlledPlayer.transform.position);
-            OnWeaponDropped();
+
+            m_OwningPlayer = null;
+            m_AttackAction.SetPlayerReference(null); //set reference for actions to null
         }
         
     }
@@ -159,7 +156,7 @@ public class DivineWeapon : MonoBehaviour
     }
 
     //when weapon is picked up set weapon inactive without disabling monobehavior
-    public void SetWeaponActive(bool isActive)
+    public virtual void SetWeaponActive(bool isActive)
     {
         //hide/show sprite
         m_SpriteRenderer.enabled = isActive;
@@ -182,8 +179,6 @@ public class DivineWeapon : MonoBehaviour
 
     public void RandomizeLocation()
     {
-        SetWeaponActive(true);
-
         float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);
@@ -212,9 +207,24 @@ public class DivineWeapon : MonoBehaviour
         m_IsLerping = true;
     }
 
+    public void SetCollidersIgnore(Collider ignoreCollider, bool isIgnored)
+    {
+        for (int i = 0; i < m_AllColliders.Length; i++)
+        {
+            Physics.IgnoreCollision(ignoreCollider, m_AllColliders[i], isIgnored);
+        }
+    }
+    public void SetCollidersActive(bool isActive)
+    {
+        for (int i = 0; i < m_AllColliders.Length; i++)
+        {
+            m_AllColliders[i].enabled = isActive;
+        }
+    }
+
     public bool IsPickedUp()
     {
-        if (m_PlayerRef == null)
+        if (m_OwningPlayer == null)
         {
             return false;
         }

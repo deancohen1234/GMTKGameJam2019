@@ -25,8 +25,6 @@ public class JusticeGuard : MonoBehaviour
     private Color m_DefaultColor;
 
     private float m_LastTimeWallHit = 0.0f;
-    private int m_CurrentHealth = 0;
-    private bool m_IsHittingWall = false;
     
 
     private void Awake()
@@ -58,8 +56,6 @@ public class JusticeGuard : MonoBehaviour
 
     public void Initialize()
     {
-        m_CurrentHealth = m_Health;
-
         m_DefaultColor = m_WallMaterial.GetColor("_MainColor");
     }
 
