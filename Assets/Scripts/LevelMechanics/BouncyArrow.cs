@@ -13,9 +13,10 @@ public class BouncyArrow : DivineWeapon
 
     [Header("Detection Properties")]
     public LayerMask m_HitboxMask;
-    public LayerMask m_BouncingHitBox;
+    public LayerMask m_BouncingHitBoxMask;
     public float raycastDistanceModifier = 1f;
     public float m_HitboxRadius = 0.5f;
+    public float m_SpherecastRadius = 0.5f;
 
     private Collider[] arrowHitColliders;
     private RaycastHit[] arrowHitWallHits;
@@ -151,7 +152,6 @@ public class BouncyArrow : DivineWeapon
                 body.drag += m_DragPerBounce;
             }
 
-            Debug.Log("Reflecting shot");
             body.velocity = Vector3.Reflect(body.velocity, contactNormal);
         }
         
@@ -178,16 +178,21 @@ public class BouncyArrow : DivineWeapon
 
 
         Vector3 direction = Vector3.ProjectOnPlane(m_Rigidbody.velocity.normalized, Vector3.up);
-
+        //Debug.DrawLine(transform.position, transform.position + direction * m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime);
+        //Debug.Break();
         //check for wall collisions
-        if (Physics.RaycastNonAlloc(transform.position, direction, arrowHitWallHits, m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, m_BouncingHitBox) > 0) 
+        //if (Physics.RaycastNonAlloc(transform.position, direction, arrowHitWallHits, m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, m_BouncingHitBoxMask) > 0)
+        if (Physics.SphereCastNonAlloc(transform.position, 0.25f, direction, arrowHitWallHits, m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, m_BouncingHitBoxMask) > 0) 
         {
             for (int i = 0; i < arrowHitWallHits.Length; i++)
             {
-                Debug.Log("Hit " + i + "\nWall dist: " + arrowHitWallHits[i].distance);
                 if (arrowHitWallHits[i].collider != null && arrowHitWallHits[i].distance > 0)
                 {
-                    OnSurfaceCollision(arrowHitWallHits[i].normal);
+                    Vector3 normal = Vector3.ProjectOnPlane(arrowHitWallHits[i].normal, Vector3.up);
+                    Vector3 point = arrowHitWallHits[i].point;
+                    point.y = transform.position.y;
+                    //transform.position = point + normal * m_SpherecastRadius * 2f;
+                    OnSurfaceCollision(normal);
                     break;
                 }
             }

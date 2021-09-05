@@ -16593,7 +16593,7 @@ GameObject:
   - component: {fileID: 1707093508}
   - component: {fileID: 1707093507}
   - component: {fileID: 1707093506}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22671,17 +22671,18 @@ MonoBehaviour:
     ActionLength: 12
   m_AttackSound: {fileID: 8300000, guid: 443b164aa6178d246b20dd274c931fc5, type: 3}
   m_StartingSpeed: 100
-  m_StartingFreeBounces: 125
+  m_StartingFreeBounces: 60
   m_DragPerBounce: 2.5
   m_PickupSpeedThreshold: 1
   m_HitboxMask:
     serializedVersion: 2
     m_Bits: 512
-  m_BouncingHitBox:
+  m_BouncingHitBoxMask:
     serializedVersion: 2
-    m_Bits: 32055
-  raycastDistanceModifier: 1.25
+    m_Bits: 11575
+  raycastDistanceModifier: 1
   m_HitboxRadius: 0.5
+  m_SpherecastRadius: 0.5
 --- !u!95 &2069114554
 Animator:
   serializedVersion: 3
