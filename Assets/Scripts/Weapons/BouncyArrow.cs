@@ -49,7 +49,7 @@ public class BouncyArrow : DivineWeapon
     {
         if (!Physics.autoSimulation)
         {
-            if (Input.GetKey(KeyCode.Alpha9))
+            if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 RunPhysics();
                 Physics.Simulate(Time.fixedDeltaTime);
@@ -146,7 +146,7 @@ public class BouncyArrow : DivineWeapon
         //disable pickup collider
         SetCollidersActive(false);
 
-        transform.position = m_OwningPlayer.transform.position;
+        body.position = m_OwningPlayer.transform.position;
 
         body.useGravity = false;
         body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; //don't freeze X and Z position
@@ -170,26 +170,25 @@ public class BouncyArrow : DivineWeapon
         isLaunched = false;
     }
 
-
     #region Arrow Collision
     private void CheckArrowCollision()
     {
         //check if we hit player
-        PlayerSphereCheck();
+        //PlayerSphereCheck();
 
         Vector3 direction = Vector3.ProjectOnPlane(m_Rigidbody.velocity.normalized, Vector3.up);
 
         //there is something right in front of us so bail, this guy's got it
         if (PreRaycastCheck(direction)) { return; }
 
-        Debug.DrawLine(transform.position, transform.position + direction * m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, Color.white);
+        Debug.DrawLine(body.position, body.position + direction * m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, Color.white);
         //Debug.Break();
         SphereCastCheck(direction);
     }
 
     private void PlayerSphereCheck()
     {
-        int playerHits = Physics.OverlapSphereNonAlloc(transform.position, m_HitboxRadius, arrowHitColliders, m_HitboxMask);
+        int playerHits = Physics.OverlapSphereNonAlloc(body.position, m_HitboxRadius, arrowHitColliders, m_HitboxMask);
         if (playerHits > 0)
         {
             for (int i = 0; i < playerHits; i++)
@@ -210,7 +209,9 @@ public class BouncyArrow : DivineWeapon
     //make sure something isn't immediately infront of arrow
     private bool PreRaycastCheck(Vector3 direction)
     {
-        int wallHits = Physics.RaycastNonAlloc(transform.position, direction, arrowPreWallHits, m_SpherecastRadius * raycastDistanceModifier * 1.25f, m_BouncingHitBoxMask);
+        //Debug.Log("Pos 1: " + (transform.position - direction * m_SpherecastRadius));
+        //Debug.Log("Pos 2: " + (transform.position + (direction * m_SpherecastRadius * raycastDistanceModifier * 2f)));
+        int wallHits = Physics.RaycastNonAlloc(body.position - direction * m_SpherecastRadius, direction, arrowPreWallHits, m_SpherecastRadius * raycastDistanceModifier * 2f, m_BouncingHitBoxMask);
 
         if (wallHits > 0)
         {
@@ -218,9 +219,19 @@ public class BouncyArrow : DivineWeapon
             {
                 if (arrowPreWallHits[i].collider != null && arrowPreWallHits[i].distance > 0)
                 {
-                    Debug.Log("Arrow Wall Pre Hit: " + arrowPreWallHits[i].collider.name);
-                    BufferSurfaceCollision(arrowPreWallHits[i].point, arrowPreWallHits[i].normal, arrowPreWallHits[i].collider, arrowPreWallHits[i].collider.name);
-                    return true;
+                    if (arrowPreWallHits[i].normal != lastBufferedNormal)
+                    {
+                        Debug.Log("Arrow Wall Pre Hit: " + arrowPreWallHits[i].collider.name);
+                        BufferSurfaceCollision(arrowPreWallHits[i].point, arrowPreWallHits[i].normal, arrowPreWallHits[i].collider, arrowPreWallHits[i].collider.name);
+                        return true;
+                    }
+                    else
+                    {
+                        Debug.Break();
+                        Debug.Log("Double Hit: " + arrowPreWallHits[i].normal + "\nName: " + arrowPreWallHits[i].collider.name);
+                        //Debug.Log("Double hitting normal");
+                    }
+                    
                 }
             }
         }
@@ -233,9 +244,8 @@ public class BouncyArrow : DivineWeapon
     {
         float castDist = (m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime) + m_SpherecastRadius + Mathf.Epsilon;
         //check for wall collisions
-        //int wallHits = Physics.RaycastNonAlloc(transform.position, direction, arrowHitWallHits, m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, m_BouncingHitBoxMask);
-        int wallHits = Physics.SphereCastNonAlloc(transform.position, m_SpherecastRadius, direction, arrowWallHits, castDist, m_BouncingHitBoxMask);
-        Debug.Log("Wall Hits: " + wallHits);
+        //int wallHits = Physics.RaycastNonAlloc(transform.position, direction, arrowWallHits, m_Rigidbody.velocity.magnitude * raycastDistanceModifier * Time.fixedDeltaTime, m_BouncingHitBoxMask);
+        int wallHits = Physics.SphereCastNonAlloc(body.position, m_SpherecastRadius, direction, arrowWallHits, castDist, m_BouncingHitBoxMask);
         if (wallHits > 0)
         {
             int shortestDistIndex = -1;
@@ -257,7 +267,7 @@ public class BouncyArrow : DivineWeapon
             {
                 Vector3 normal = Vector3.ProjectOnPlane(arrowWallHits[shortestDistIndex].normal, Vector3.up);
                 Vector3 point = arrowWallHits[shortestDistIndex].point;
-                point.y = transform.position.y;
+                point.y = body.position.y;
 
                 if (normal != lastBufferedNormal)
                 {
@@ -266,7 +276,7 @@ public class BouncyArrow : DivineWeapon
                     Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
                     arrowWallHits[shortestDistIndex].collider.gameObject.GetComponent<MeshRenderer>().material.color = randomColor;
                     BufferSurfaceCollision(point, normal, arrowWallHits[shortestDistIndex].collider, arrowWallHits[shortestDistIndex].collider.name);
-                }
+                }              
             }
         }
     }
@@ -295,7 +305,7 @@ public class BouncyArrow : DivineWeapon
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, (foundPos - transform.position).normalized, out hit, 100f, m_BouncingHitBoxMask))
+        if (Physics.Raycast(body.position - (foundPos - body.position).normalized, (foundPos - body.position).normalized, out hit, 100f, m_BouncingHitBoxMask))
         {
             return hit.point;
         }
@@ -317,14 +327,18 @@ public class BouncyArrow : DivineWeapon
         wallCollisionBuffer.collider = collider;
         wallCollisionBuffer.isBuffered = true;
 
-        lastBufferedNormal = normal;
-
         //body.MovePosition(position);
         body.velocity = Vector3.zero;
         body.position = position;
 
         Vector3 reflectedVel = Vector3.Reflect(wallCollisionBuffer.velocity, normal);
         Debug.DrawLine(position, position + reflectedVel * raycastDistanceModifier * Time.fixedDeltaTime, Color.green);
+
+        //dean buffer check
+        lastBufferedNormal = normal;
+        Vector3 dirToCenter = Vector3.zero - position;
+        float normalDot = Vector3.Dot(dirToCenter.normalized, normal);
+
 
         //Debug.Log("Buffering Hit: " + name + " " + DELETEME);
 
@@ -350,8 +364,17 @@ public class BouncyArrow : DivineWeapon
             else
             {
                 //just reverse the direction
-                body.velocity *= -1f;
-                Debug.Log("reversing direction");
+                body.velocity = Vector3.Reflect(buffer.velocity, -buffer.velocity.normalized);
+            }
+
+            Vector3 dirToCenter = Vector3.zero - body.position;
+            float normalDot = Vector3.Dot(dirToCenter.normalized, buffer.normal);
+
+            if (normalDot < 0.7f)
+            {
+                //Debug.Break();
+                Debug.Log("hol up!!");
+                body.position = body.position + dirToCenter * m_SpherecastRadius * 2f * raycastDistanceModifier;
             }
 
             //empty buffer
