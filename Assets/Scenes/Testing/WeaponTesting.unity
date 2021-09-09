@@ -2099,7 +2099,7 @@ Transform:
   m_GameObject: {fileID: 433363212}
   m_LocalRotation: {x: -0, y: 0.7088328, z: -0, w: 0.7053766}
   m_LocalPosition: {x: -0.13, y: 0.413, z: -3.36}
-  m_LocalScale: {x: 1.7980791, y: 0.93607885, z: 6.4518676}
+  m_LocalScale: {x: 1.7980791, y: 0.93607885, z: 9.975232}
   m_Children: []
   m_Father: {fileID: 574776829}
   m_RootOrder: 3
@@ -22537,7 +22537,7 @@ Transform:
   m_GameObject: {fileID: 2017124862}
   m_LocalRotation: {x: -0, y: 0.7150328, z: -0, w: 0.6990909}
   m_LocalPosition: {x: -0.06, y: 0.453, z: 3.84}
-  m_LocalScale: {x: 2.837146, y: 0.89276797, z: 6.533141}
+  m_LocalScale: {x: 2.837146, y: 0.89276797, z: 10.100889}
   m_Children: []
   m_Father: {fileID: 574776829}
   m_RootOrder: 2
@@ -22967,8 +22967,8 @@ MonoBehaviour:
     StartDelay: 5
     ActionLength: 12
   m_AttackSound: {fileID: 8300000, guid: 443b164aa6178d246b20dd274c931fc5, type: 3}
-  m_StartingSpeed: 100
-  m_StartingFreeBounces: 120
+  m_StartingSpeed: 20
+  m_StartingFreeBounces: 5
   m_DragPerBounce: 2.5
   m_PickupSpeedThreshold: 1
   m_HitboxMask:
