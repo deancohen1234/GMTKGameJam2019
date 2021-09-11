@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 101229748}
   - component: {fileID: 101229747}
   - component: {fileID: 101229749}
+  - component: {fileID: 101229745}
   m_Layer: 0
   m_Name: MegaWeapon
   m_TagString: Untagged
@@ -563,6 +564,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &101229745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101229740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7791f7d9dfe6d0c49bc12ec7938f18d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ArenaCenter: {fileID: 574776829}
+  m_ArenaWidth: 1.7
+  m_ArenaHeight: 0.9
+  m_Offset: {x: 0, y: 0, z: -0.75}
+  m_FallSpeed: 1
+  m_PlayerSpeedModifier: 1
+  m_AttackAction:
+    IsAvailable: 1
+    IsExecuting: 0
+    CooldownTime: 3
+    StartDelay: 5
+    ActionLength: 12
+  m_AttackSound: {fileID: 8300000, guid: 443b164aa6178d246b20dd274c931fc5, type: 3}
+  m_StartingSpeed: 20
+  m_StartingFreeBounces: 5
+  m_DragPerBounce: 2.5
+  m_PickupSpeedThreshold: 1
+  m_HitboxMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_BouncingHitBoxMask:
+    serializedVersion: 2
+    m_Bits: 11575
+  raycastDistanceModifier: 1.1
+  m_HitboxRadius: 0.5
+  m_SpherecastRadius: 0.25
 --- !u!65 &101229746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7017,7 +7056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289475}
-  m_ArcadeMode: 1
+  m_ArcadeMode: 0
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
