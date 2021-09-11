@@ -146,7 +146,7 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         //if is disarming return false
         if (hitPlayer.IsDisarming())
         {
-            hitPlayer.DisarmOppponent(attackingPlayer);
+            hitPlayer.DisarmOppponent(this, attackingPlayer);
             return false;
         }
         else
@@ -177,8 +177,10 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    public void RandomizeLocation()
+    public void RandomizeLocationFromCeiling()
     {
+        SetWeaponActive(true);
+
         float randomX = Random.Range(-1.0f, 1.0f) * m_ArenaWidth;
         float randomY = Random.Range(-1.0f, 1.0f) * m_ArenaHeight;
         Vector3 newPosition = m_ArenaCenter.position + m_Offset + new Vector3(randomX, 0, randomY);

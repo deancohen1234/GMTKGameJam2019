@@ -1,24 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Agnithia : DivineStatue
+public class Gongwa : DivineStatue
 {
     private DivineWeapon m_Weapon;
 
     public override void OnGameComplete()
     {
-        
+
     }
 
     public override void OnGameIntialized()
     {
-        
+
     }
 
     public override void OnRoundComplete()
     {
-        
+
     }
 
     public override void OnRoundStarted()
@@ -33,7 +33,7 @@ public class Agnithia : DivineStatue
 
     public override void SetPlayers(PlayerController p1, PlayerController p2)
     {
-        
+
     }
 
     private void DelayedStart()

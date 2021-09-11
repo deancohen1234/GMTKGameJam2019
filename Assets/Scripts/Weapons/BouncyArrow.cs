@@ -30,9 +30,6 @@ public class BouncyArrow : DivineWeapon
     private Rigidbody body;
     private WallCollisionBuffer wallCollisionBuffer;
 
-    private Vector3 lastBufferedNormal;
-
-    private int DELETEME = 0;
     private bool isLaunched = false;
 
     private const float VERTICALDOTTHRESHOLD = 0.90f; //make sure we don't get collisions from the ground
@@ -69,6 +66,18 @@ public class BouncyArrow : DivineWeapon
 
     #region Weapon Overrides
 
+    public override void SetWeaponActive(bool isActive)
+    {
+        base.SetWeaponActive(isActive);
+        
+        if (isActive)
+        {
+            body.useGravity = true;
+        }
+
+        ResetSpeed();
+    }
+
     public override void OnAttackStart()
     {
         base.OnAttackStart();
@@ -87,6 +96,32 @@ public class BouncyArrow : DivineWeapon
     {
         //make sure on player drop don't randomize weapon position
         SetWeaponActive(true);
+    }
+
+    public override bool OnHit( PlayerController hitPlayer, PlayerController attackingPlayer)
+    {
+        bool playerHit = base.OnHit(hitPlayer, attackingPlayer);
+        //attacking player loses weapon, no damage
+        hitPlayer.ApplyBounceBackForce(body.position);
+
+        if (playerHit)
+        {
+            //player failed to disarm they now take damage
+            hitPlayer.PlaySoundEffect(PlayerSound.Damaged);
+
+            HealthComponent h = hitPlayer.GetHealthComponent();
+            h.DealDamage(100);
+
+            if (!h.IsDead())
+            {
+                hitPlayer.GetEffectsController().ActivateDamagedSystem();
+            }
+        }
+
+        body.drag = 50f;
+
+        return playerHit;
+
     }
 
     #endregion
@@ -118,7 +153,6 @@ public class BouncyArrow : DivineWeapon
 
     private void RunPhysics()
     {
-        DELETEME++;
         if (isLaunched)
         {
             if (wallCollisionBuffer.isBuffered)
@@ -174,7 +208,7 @@ public class BouncyArrow : DivineWeapon
     private void CheckArrowCollision()
     {
         //check if we hit player
-        //PlayerSphereCheck();
+        PlayerSphereCheck();
 
         Vector3 direction = Vector3.ProjectOnPlane(m_Rigidbody.velocity.normalized, Vector3.up);
 
@@ -332,12 +366,6 @@ public class BouncyArrow : DivineWeapon
 
         Vector3 reflectedVel = Vector3.Reflect(wallCollisionBuffer.velocity, normal);
         Debug.DrawLine(position, position + reflectedVel * raycastDistanceModifier * Time.fixedDeltaTime, Color.green);
-
-        Vector3 dirToCenter = Vector3.zero - body.position;
-        float normalDot = Vector3.Dot(dirToCenter.normalized, normal);
-
-        //dean buffer check
-        lastBufferedNormal = normal;
     }
 
     private void EmptyAndUseWallCollisionBuffer(ref WallCollisionBuffer buffer)
@@ -368,7 +396,7 @@ public class BouncyArrow : DivineWeapon
 
     private void HitPlayer(PlayerController player)
     {
-        player.AttemptAttack(m_OwningPlayer);
+        player.AttackHit(this, m_OwningPlayer);
     }
 }
 

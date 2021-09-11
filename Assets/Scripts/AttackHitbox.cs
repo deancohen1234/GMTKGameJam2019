@@ -32,7 +32,7 @@ public class AttackHitbox : MonoBehaviour
                     if (Time.time - m_AttackStartTime >= m_AttackDelayTime)
                     {
                         //deal damage
-                        pc.AttemptAttack(m_ParentPlayerController);
+                        pc.AttemptMeleeAttack(m_ParentPlayerController);
 
                         m_AttackStartTime = Time.time;
                     }

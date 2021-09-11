@@ -154,7 +154,7 @@ public class CollapseableGround : MonoBehaviour
         {
             if (IsObjectOnCollapsedGround(m_LevelMechanic.m_Weapon.gameObject))
             {
-                m_LevelMechanic.m_Weapon.RandomizeLocation();
+                m_LevelMechanic.m_Weapon.RandomizeLocationFromCeiling();
             }
         }
         

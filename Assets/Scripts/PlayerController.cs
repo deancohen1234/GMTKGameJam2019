@@ -401,11 +401,11 @@ public class PlayerController : MonoBehaviour
         m_IsInvincible = b;
     }
 
-    public void ApplyBounceBackForce(Vector3 otherPlayerPos)
+    public void ApplyBounceBackForce(Vector3 forceOrigin)
     {
         StartCoroutine(DisableAllMovement(0.2f));
 
-        Vector3 direction = transform.position - otherPlayerPos;
+        Vector3 direction = transform.position - forceOrigin;
         m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
 
         /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
     #region Action Methods
 
     //when player is attacking this object
-    public void AttemptAttack(PlayerController attackingPlayer)
+    public void AttemptMeleeAttack(PlayerController attackingPlayer)
     {
         m_CameraShake.AddTrauma(0.5f);
 
@@ -432,23 +432,29 @@ public class PlayerController : MonoBehaviour
         {
             if (!attackingPlayer.m_DashAction.IsExecuting)
             {
-                AttemptAttackHit(attackingPlayer);
+                AttackHit(attackingPlayer.m_EquippedWeapon, attackingPlayer);
             }
         }
         else
         {
-            AttemptDashHit(attackingPlayer);
+            DashHit(attackingPlayer);
         }
     }
     #endregion
 
-    private void AttemptAttackHit(PlayerController attackingPlayer)
+    public void AttackHit(IWeapon attackingWeapon, PlayerController attackingPlayer)
     {
-        attackingPlayer.m_EquippedWeapon.OnHit(this, attackingPlayer);
-        
+        if (attackingPlayer != null)
+        {
+            attackingWeapon.OnHit(this, attackingPlayer);
+        }
+        else
+        {
+            Debug.LogError("Attack hit has null attacking");
+        }
     }
 
-    private void AttemptDashHit(PlayerController attackingPlayer)
+    private void DashHit(PlayerController attackingPlayer)
     {
         Debug.Log("Has Weapon, About to Lose it");
 
@@ -468,20 +474,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DisarmOppponent(PlayerController attackingPlayer)
+    public void DisarmOppponent(DivineWeapon weapon, PlayerController attackingPlayer)
     {
         m_RippleEffect.ActivateRipple(transform.position);
-
         m_AttackAction.ForceStopAction();
-        attackingPlayer.m_AttackAction.ForceStopAction();
 
-        //store reference to weapon, then have attacking player drop the weapon and have disarming player equip it
-        DivineWeapon weapon = attackingPlayer.m_EquippedWeapon;
-        attackingPlayer.DropWeapon(true);
         EquipWeapon(weapon);
 
-        attackingPlayer.m_CanMove = true;
         m_CanMove = true;
+
+        //if there is an attacking disarm them
+        if (attackingPlayer)
+        {
+            attackingPlayer.m_AttackAction.ForceStopAction();
+
+            //store reference to weapon, then have attacking player drop the weapon and have disarming player equip it
+            attackingPlayer.DropWeapon(true);
+
+            attackingPlayer.m_CanMove = true;
+        }
+        
 
         m_EffectsController.ActivateOnDisarmedSystem(transform.position);
 

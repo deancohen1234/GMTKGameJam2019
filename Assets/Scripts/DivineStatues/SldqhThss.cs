@@ -218,7 +218,7 @@ public class SldqhThss : DivineStatue
     
     private void RoundSlamComplete()
     {
-        m_Weapon.RandomizeLocation();
+        m_Weapon.RandomizeLocationFromCeiling();
         MusicController.m_Singleton.Play();
 
         m_CameraShake.AddTrauma(2.0f);
