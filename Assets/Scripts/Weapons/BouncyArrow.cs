@@ -10,13 +10,17 @@ public class BouncyArrow : DivineWeapon
     public int m_StartingFreeBounces = 1;
     public float m_DragPerBounce = 2.5f;
     public float m_PickupSpeedThreshold = 1f;
+    public float m_PickupDelayDuration = 0.5f; //duration in seconds after weapon is below speed threshold before it can be picked up
 
     [Header("Detection Properties")]
     public LayerMask m_HitboxMask;
     public LayerMask m_BouncingHitBoxMask;
     public float raycastDistanceModifier = 1f;
-    public float m_HitboxRadius = 0.5f;
     public float m_SpherecastRadius = 0.5f;
+
+    [Header("Damage Properties")]
+    public float m_HitboxRadius = 0.5f;
+    public float m_DamageCooldownDuration = 0.5f;
 
     private Collider[] arrowHitColliders;
     private Collider[] arrowOverlapColliders;
@@ -26,6 +30,8 @@ public class BouncyArrow : DivineWeapon
     private float launchSpeed;
     private float pickSqrSpeedThreshold;
     private int freeBouncesRemaining; //when this is at 0, each bounce will add drag
+
+    private float pickupCooldownEndTime;
 
     private Rigidbody body;
     private WallCollisionBuffer wallCollisionBuffer;
@@ -98,9 +104,13 @@ public class BouncyArrow : DivineWeapon
         SetWeaponActive(true);
     }
 
-    public override bool OnHit( PlayerController hitPlayer, PlayerController attackingPlayer)
+    public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
     {
         bool playerHit = base.OnHit(hitPlayer, attackingPlayer);
+
+        //add cooldown to stop multiple hits
+        OnSpeedBelowThreshold();
+
         //attacking player loses weapon, no damage
         hitPlayer.ApplyBounceBackForce(body.position);
 
@@ -121,7 +131,6 @@ public class BouncyArrow : DivineWeapon
         body.drag = 50f;
 
         return playerHit;
-
     }
 
     #endregion
@@ -162,9 +171,20 @@ public class BouncyArrow : DivineWeapon
 
             CheckArrowCollision();
 
-            if (body.velocity.sqrMagnitude <= pickSqrSpeedThreshold && !wallCollisionBuffer.isBuffered)
+            if (IsBelowSpeedThreshold())
             {
                 OnSpeedBelowThreshold();
+            }
+        }
+        else
+        {
+            //only if cooldown for pickup is ended then you can activate pickup colliders
+            if (Time.time >= pickupCooldownEndTime)
+            {
+                if (!ArePickupCollidersActive())
+                {
+                    SetCollidersActive(true);
+                }
             }
         }
     }
@@ -189,6 +209,8 @@ public class BouncyArrow : DivineWeapon
         body.velocity = direction * launchSpeed;
     }
 
+    #region Speed Control
+
     public void ResetSpeed()
     {
         launchSpeed = m_StartingSpeed;
@@ -198,17 +220,27 @@ public class BouncyArrow : DivineWeapon
         wallCollisionBuffer.isBuffered = false;
     }
 
+    private bool IsBelowSpeedThreshold()
+    {
+        return body.velocity.sqrMagnitude <= pickSqrSpeedThreshold && !wallCollisionBuffer.isBuffered;
+    }
+
     private void OnSpeedBelowThreshold()
     {
-        SetCollidersActive(true);
         isLaunched = false;
+        pickupCooldownEndTime = Time.time + m_PickupDelayDuration;
     }
+    #endregion
 
     #region Arrow Collision
     private void CheckArrowCollision()
     {
         //check if we hit player
-        PlayerSphereCheck();
+        //but only check of we are below speed threshold
+        if (!IsBelowSpeedThreshold())
+        {
+            PlayerSphereCheck();
+        }
 
         Vector3 direction = Vector3.ProjectOnPlane(m_Rigidbody.velocity.normalized, Vector3.up);
 
@@ -220,6 +252,7 @@ public class BouncyArrow : DivineWeapon
         SphereCastCheck(direction);
     }
 
+    #region Casting
     private void PlayerSphereCheck()
     {
         int playerHits = Physics.OverlapSphereNonAlloc(body.position, m_HitboxRadius, arrowHitColliders, m_HitboxMask);
@@ -349,10 +382,10 @@ public class BouncyArrow : DivineWeapon
         }
     }
 
-    //store for 1 physics timestep, the position and normal that will happen next time step
+    #endregion
 
-    //NOTE: May need to do an overlap sphere at the position, to make sure we aren't too close to another wall
-    //Could be that a raycast is better too
+    #region Buffering
+    //store for 1 physics timestep, the position and normal that will happen next time step
     private void BufferSurfaceCollision(Vector3 position, Vector3 normal, Collider collider, string name)
     {
         wallCollisionBuffer.velocity = m_Rigidbody.velocity;
@@ -392,12 +425,14 @@ public class BouncyArrow : DivineWeapon
         }
 
     }
+
     #endregion
 
     private void HitPlayer(PlayerController player)
     {
         player.AttackHit(this, m_OwningPlayer);
     }
+    #endregion
 }
 
 public struct WallCollisionBuffer

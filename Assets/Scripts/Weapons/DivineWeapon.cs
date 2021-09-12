@@ -20,20 +20,19 @@ public class DivineWeapon : MonoBehaviour, IWeapon
     public AudioClip m_AttackSound;
 
     protected PlayerController m_OwningPlayer;
-
     protected AudioSource m_AudioSource;
     protected SpriteRenderer m_SpriteRenderer;
     protected Rigidbody m_Rigidbody;
     protected Collider[] m_AllColliders;
     protected EffectsManager m_EffectsManager;
 
-    private float m_WeaponStartHeight;
     private bool m_IsLerping;
-    private float m_StartFallTime;
+    private bool m_ArePickupCollidersActive;
     private Vector3 m_DestinationPos;
     private Vector3 m_StartPos;
     private float m_Timer;
 
+    #region Monobehavior
     private void Awake()
     {
         m_AudioSource = GetComponent<AudioSource>();
@@ -50,10 +49,6 @@ public class DivineWeapon : MonoBehaviour, IWeapon
 
     protected virtual void OverrideStart()
     {
-        m_WeaponStartHeight = transform.position.y;
-
-        //SetWeaponActive(false);
-
         //assign all actions for delegate when game starts
         m_AttackAction.OnActionStart += OnAttackStart;
         m_AttackAction.ActionHandler += Attack; //currently isn't set up
@@ -100,7 +95,9 @@ public class DivineWeapon : MonoBehaviour, IWeapon
             SetWeaponActive(false);
         }
     }
+    #endregion
 
+    #region Virtual Methods
     //on weapon pickup set player reference for this weapon's attack action
     public virtual void OnPickup(PlayerController player)
     {
@@ -176,7 +173,9 @@ public class DivineWeapon : MonoBehaviour, IWeapon
             gameObject.transform.GetChild(i).gameObject.SetActive(isActive);
         }
     }
+    #endregion
 
+    #region Public Setters
     public void RandomizeLocationFromCeiling()
     {
         SetWeaponActive(true);
@@ -222,8 +221,12 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         {
             m_AllColliders[i].enabled = isActive;
         }
-    }
 
+        m_ArePickupCollidersActive = isActive;
+    }
+    #endregion
+
+    #region Public Getters
     public bool IsPickedUp()
     {
         if (m_OwningPlayer == null)
@@ -236,11 +239,9 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    private bool IsValidPosition(Vector3 position)
+    public bool ArePickupCollidersActive()
     {
-        bool check = Physics.CheckSphere(position + new Vector3(0, 0.5f, 0), 0.1f);
-
-        //if true then good position, if false then try a new position
-        return !check;
+        return m_ArePickupCollidersActive;
     }
+    #endregion
 }

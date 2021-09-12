@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     private bool m_ControllerDisabled = false; //enables controller to be disabled without killing whole player controller
     private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
-    #region Monobehavior Methods
+    #region Monobehavior
     private void Awake()
     {
         m_MainCollider = GetComponent<Collider>();
@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //TESTING
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -213,6 +212,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Input
     private void SetupInputStrings(PlayerType playerNum)
     {
         switch (playerNum)
@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.velocity = inputVelocity;
     }
 
-    #region Public Methods
+    #endregion
 
     public void DisableController(bool stopAllVelocity = true)
     {
@@ -299,12 +299,6 @@ public class PlayerController : MonoBehaviour
         {
             m_Rigidbody.velocity = Vector3.zero;
         }
-    }
-
-    public void PlayPoofSound()
-    {
-        m_AudioSource.clip = m_Poof;
-        m_AudioSource.Play();
     }
 
     #region Weapon Methods
@@ -352,6 +346,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Audio
     public void PlaySoundEffect(PlayerSound playerSound)
     {
         switch (playerSound)
@@ -372,6 +367,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
+
+        m_AudioSource.clip = clip;
+        m_AudioSource.Play();
+    }
+
+    public void PlayPoofSound()
+    {
+        m_AudioSource.clip = m_Poof;
+        m_AudioSource.Play();
+    }
+
     private void PlaySoundFromArray(AudioClip[] allSoundClips)
     {
         int randomClipIndex = UnityEngine.Random.Range(0, allSoundClips.Length - 1);
@@ -382,47 +391,9 @@ public class PlayerController : MonoBehaviour
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
     }
-
-    public void PlaySound(AudioClip clip)
-    {
-        m_AudioSource.pitch = UnityEngine.Random.Range(m_PitchMin, m_PitchMax);
-
-        m_AudioSource.clip = clip;
-        m_AudioSource.Play();
-    }
-
-    public void SetWeaponIcon(Sprite sprite)
-    {
-        m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
-    }
-
-    public void SetIsInvincible (bool b)
-    {
-        m_IsInvincible = b;
-    }
-
-    public void ApplyBounceBackForce(Vector3 forceOrigin)
-    {
-        StartCoroutine(DisableAllMovement(0.2f));
-
-        Vector3 direction = transform.position - forceOrigin;
-        m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
-
-        /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
-        otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
-    }
-
-    public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
-    {
-        m_Rigidbody.velocity = Vector3.zero;
-
-        StartCoroutine(DisableAllMovement(hitStunTime));
-
-        m_Rigidbody.AddForce(direction.normalized * force);
-    }
+    #endregion
 
     #region Action Methods
-
     //when player is attacking this object
     public void AttemptMeleeAttack(PlayerController attackingPlayer)
     {
@@ -440,7 +411,6 @@ public class PlayerController : MonoBehaviour
             DashHit(attackingPlayer);
         }
     }
-    #endregion
 
     public void AttackHit(IWeapon attackingWeapon, PlayerController attackingPlayer)
     {
@@ -493,7 +463,7 @@ public class PlayerController : MonoBehaviour
 
             attackingPlayer.m_CanMove = true;
         }
-        
+
 
         m_EffectsController.ActivateOnDisarmedSystem(transform.position);
 
@@ -502,16 +472,6 @@ public class PlayerController : MonoBehaviour
 
         m_AudioSource.clip = clip;
         m_AudioSource.Play();
-    }
-
-    public void ExternalDisablePlayerMovement(float time, bool freezePlayerPosition = false)
-    {
-        if (freezePlayerPosition)
-        {
-            m_Rigidbody.velocity = Vector3.zero;
-        }
-
-        StartCoroutine(DisablePlayerMovement(time));
     }
 
     private void OnAttackStartDecider()
@@ -531,21 +491,6 @@ public class PlayerController : MonoBehaviour
             OnDisarmStart();
         }
     }
-
-    /*
-    //press right trigger and do action based on whether or not you have weapon
-    private void AttackDecider(Vector3 direction)
-    {
-        Debug.Log("Attacking...");
-        if (m_EquippedWeapon != null)
-        {
-            m_EquippedWeapon.WeaponAttack(this, direction);
-        }
-        else
-        {
-            Disarm(direction);
-        }
-    }*/
 
     private void OnAttackEndDecider()
     {
@@ -571,17 +516,6 @@ public class PlayerController : MonoBehaviour
         m_EffectsController.StartVisualAttack();
     }
 
-    /*private void Attack(Vector3 direction)
-    {
-        Dash(direction);
-
-        m_AudioSource.clip = m_SwordSlash;
-        m_AudioSource.pitch = UnityEngine.Random.Range(.7f, 1.3f);
-        m_AudioSource.Play();
-
-        m_AttackHitboxController.ActivateHitBox(m_PlayerOrientation);
-    }*/
-
     private void OnAttackEnd()
     {
         m_AttackHitboxController.DisableAllHitBoxes();
@@ -589,6 +523,52 @@ public class PlayerController : MonoBehaviour
 
         m_EffectsController.EndVisualAttack();
     }
+
+    #endregion
+
+    public void SetWeaponIcon(Sprite sprite)
+    {
+        m_WeaponIcon.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+    public void SetIsInvincible (bool b)
+    {
+        m_IsInvincible = b;
+    }
+
+    public void ApplyBounceBackForce(Vector3 forceOrigin)
+    {
+        StartCoroutine(DisableAllMovement(0.2f));
+
+        Vector3 direction = transform.position - forceOrigin;
+        m_Rigidbody.AddForce(direction.normalized * m_KnockbackForce);
+
+        /*m_Rigidbody.velocity = -direction.normalized * m_KnockbackForce;
+        otherPlayer.m_Rigidbody.velocity = direction.normalized * m_KnockbackForce;*/
+    }
+
+    public void ApplyKnockbackForce(Vector3 direction, float force, float hitStunTime)
+    {
+        m_Rigidbody.velocity = Vector3.zero;
+
+        StartCoroutine(DisableAllMovement(hitStunTime));
+
+        m_Rigidbody.AddForce(direction.normalized * force);
+    }
+
+
+
+    public void ExternalDisablePlayerMovement(float time, bool freezePlayerPosition = false)
+    {
+        if (freezePlayerPosition)
+        {
+            m_Rigidbody.velocity = Vector3.zero;
+        }
+
+        StartCoroutine(DisablePlayerMovement(time));
+    }
+
+    
 
     private IEnumerator DisablePlayerMovement(float time)
     {
@@ -608,6 +588,7 @@ public class PlayerController : MonoBehaviour
         m_BlockAllInput = false;
     }
 
+    #region Dashing
     private void OnDashStart()
     {
         m_PlayerAnimation.SetDashStatus(true);
@@ -639,6 +620,9 @@ public class PlayerController : MonoBehaviour
         m_AttackHitboxController.DisableAllHitBoxes();
     }
 
+    #endregion
+
+    #region Disarming
     private void OnDisarmStart()
     {
         m_SpriteHandler.GetComponent<SpriteRenderer>().color = Color.black;
@@ -663,7 +647,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    //player dies
+    #region Death
     private void OnPlayerDeath()
     {
         //gameObject.SetActive(false);
@@ -685,19 +669,7 @@ public class PlayerController : MonoBehaviour
     {
         m_OnDeathComplete?.Invoke();
     }
-
-    //inclusive min and exclusive max
-    private bool IsInRange(float value, float min, float max)
-    {
-        if (value >= min && value < max)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    #endregion
 
     #region Getter Methods
     public PlayerOrientation GetPlayerOrientation()
@@ -749,6 +721,19 @@ public class PlayerController : MonoBehaviour
     public Collider GetMainCollider()
     {
         return m_MainCollider;
+    }
+
+    //inclusive min and exclusive max
+    private bool IsInRange(float value, float min, float max)
+    {
+        if (value >= min && value < max)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     #endregion
 }
