@@ -42,6 +42,7 @@ public class BouncyArrow : DivineWeapon
 
     private float pickupCooldownEndTime;
 
+    private PlayerController lastHeldPlayer;
     private Rigidbody body;
     private WallCollisionBuffer wallCollisionBuffer;
 
@@ -112,9 +113,7 @@ public class BouncyArrow : DivineWeapon
     {
         base.OnAttackStart();
 
-        m_OwningPlayer.DropWeapon(false); //need to drop/throw weapon
-
-        Shoot(m_OwningPlayer.GetMoveDirection());
+        Shoot();
     }
 
     public override void OnAttackEnd()
@@ -126,6 +125,9 @@ public class BouncyArrow : DivineWeapon
     {
         //make sure on player drop don't randomize weapon position
         SetWeaponActive(true);
+
+        m_OwningPlayer = null;
+        //m_AttackAction.SetPlayerReference(null); //set reference for actions to null
     }
 
     public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
@@ -133,7 +135,7 @@ public class BouncyArrow : DivineWeapon
         bool playerHit = base.OnHit(hitPlayer, attackingPlayer);
 
         //add cooldown to stop multiple hits
-        OnSpeedBelowThreshold();
+        //OnSpeedBelowThreshold();
 
         //attacking player loses weapon, no damage
         hitPlayer.ApplyBounceBackForce(body.position);
@@ -182,22 +184,22 @@ public class BouncyArrow : DivineWeapon
     {
         if (arrowHitColliders == null || arrowHitColliders.Length > 0)
         {
-            arrowHitColliders = new Collider[5];
+            arrowHitColliders = new Collider[30];
         }
 
         if (arrowWallHits == null || arrowWallHits.Length > 0)
         {
-            arrowWallHits = new RaycastHit[5];
+            arrowWallHits = new RaycastHit[30];
         }
 
         if (arrowOverlapColliders == null || arrowOverlapColliders.Length > 0)
         {
-            arrowOverlapColliders = new Collider[5];
+            arrowOverlapColliders = new Collider[30];
         }
 
         if (arrowPreWallHits == null || arrowPreWallHits.Length > 0)
         {
-            arrowPreWallHits = new RaycastHit[5];
+            arrowPreWallHits = new RaycastHit[30];
         }
 
         pickSqrSpeedThreshold = m_PickupSpeedThreshold * m_PickupSpeedThreshold;
@@ -216,7 +218,8 @@ public class BouncyArrow : DivineWeapon
 
             CheckArrowCollision();
 
-            if (IsBelowSpeedThreshold())
+            //make sure weapon isn't picked up so this doesn't occur
+            if (IsBelowSpeedThreshold() && !IsPickedUp())
             {
                 OnSpeedBelowThreshold();
             }
@@ -240,22 +243,29 @@ public class BouncyArrow : DivineWeapon
         }
     }
 
-    public void Shoot(Vector3 direction)
+    public void Shoot()
     {
         //Physics.autoSimulation = false;
+
+        lastHeldPlayer = m_OwningPlayer;
+
+        //cache this now since DropWeapon will kill the OwningPlayer reference
+        Vector3 launchPosition = m_OwningPlayer.transform.position;
+
+        m_OwningPlayer.DropWeapon(false); //need to drop/throw weapon to make sprite appear and allow pickup
 
         isLaunched = true;
 
         //disable pickup collider
         SetCollidersActive(false);
 
-        body.position = m_OwningPlayer.transform.position;
+        body.position = launchPosition;
 
         body.useGravity = false;
         body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; //don't freeze X and Z position
         body.isKinematic = false;
 
-        body.velocity = direction * launchSpeed;
+        body.velocity = lastHeldPlayer.GetMoveDirection() * launchSpeed;
     }
 
     #region Speed Control
@@ -287,6 +297,7 @@ public class BouncyArrow : DivineWeapon
     {
         isLaunched = false;
         pickupCooldownEndTime = Time.time + m_PickupDelayDuration;
+        Debug.Log("Speed Below Threshold");
     }
     #endregion
 
@@ -321,7 +332,7 @@ public class BouncyArrow : DivineWeapon
                 if (arrowHitColliders[i] != null)
                 {
                     PlayerController player = arrowHitColliders[i].GetComponent<PlayerController>();
-                    if (player != null && !player.Equals(m_OwningPlayer)) //make sure original shooter can't be hit by own arrow
+                    if (player != null && !player.Equals(lastHeldPlayer)) //make sure original shooter can't be hit by own arrow
                     {
                         HitPlayer(player);
                         break;
@@ -488,7 +499,7 @@ public class BouncyArrow : DivineWeapon
 
     private void HitPlayer(PlayerController player)
     {
-        player.AttackHit(this, m_OwningPlayer);
+        player.AttackHit(this, lastHeldPlayer);
     }
     #endregion
 }
