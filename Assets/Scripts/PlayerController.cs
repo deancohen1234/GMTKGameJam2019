@@ -78,12 +78,13 @@ public class PlayerController : MonoBehaviour
 
     private PlayerOrientation m_PlayerOrientation;
 
+    private Vector3 lastMoveDirection;
+
     private float m_MoveSpeed; //move speed that can be default or weapon effected;
     private bool m_IsInvincible = false;
     private bool m_CanMove = true;
     private bool m_BlockAllInput = false;
     private bool m_ControllerDisabled = false; //enables controller to be disabled without killing whole player controller
-    private Vector3 m_AttackDirection; //need to store attack direction for dash attacking
 
     #region Monobehavior
     private void Awake()
@@ -287,6 +288,11 @@ public class PlayerController : MonoBehaviour
         Vector3 inputVelocity = new Vector3(x, 0f, y) * m_MoveSpeed; //no delta time because physcis is doing that for us
 
         m_Rigidbody.velocity = inputVelocity;
+
+        if (x != 0 || y != 0)
+        {
+            lastMoveDirection = m_Rigidbody.velocity.normalized;
+        }
     }
 
     #endregion
@@ -449,6 +455,7 @@ public class PlayerController : MonoBehaviour
         m_RippleEffect.ActivateRipple(transform.position);
         m_AttackAction.ForceStopAction();
 
+        weapon.SetWeaponActive(false);
         EquipWeapon(weapon);
 
         m_CanMove = true;
@@ -712,7 +719,14 @@ public class PlayerController : MonoBehaviour
     {
         if (m_Rigidbody != null)
         {
-            return m_Rigidbody.velocity.normalized;
+            if (m_Rigidbody.velocity == Vector3.zero)
+            {
+                return lastMoveDirection;
+            }
+            else
+            {
+                return m_Rigidbody.velocity.normalized;
+            }
         }
 
         return Vector3.zero;

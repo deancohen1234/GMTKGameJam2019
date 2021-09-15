@@ -26398,11 +26398,14 @@ MonoBehaviour:
     StartDelay: 5
     ActionLength: 12
   m_AttackSound: {fileID: 8300000, guid: 443b164aa6178d246b20dd274c931fc5, type: 3}
-  m_StartingSpeed: 20
-  m_StartingFreeBounces: 5
+  m_StartingSpeed: 5
+  m_StartingFreeBounces: 1
   m_DragPerBounce: 2.5
   m_PickupSpeedThreshold: 1
   m_PickupDelayDuration: 0.5
+  m_RotationSpeed: 500
+  speedPerDisarm: 2
+  bounceIncreaseInterval: 2
   m_HitboxMask:
     serializedVersion: 2
     m_Bits: 512
@@ -27347,11 +27350,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2648183058484994692}
   m_LocalRotation: {x: -0.63101435, y: -0.31909388, z: -0.31909388, w: 0.63101435}
-  m_LocalPosition: {x: 7.932, y: -2.43, z: 3.43}
-  m_LocalScale: {x: 447.02557, y: 447.02557, z: 447.02557}
+  m_LocalPosition: {x: -0.19928455, y: 0.29969, z: 0.18872094}
+  m_LocalScale: {x: 447.02557, y: 447.0256, z: 447.02557}
   m_Children: []
-  m_Father: {fileID: 2256166979773526018}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -53.65}
 --- !u!23 &34501284946313237
 MeshRenderer:
@@ -27529,22 +27532,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1442369343159380664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2256166979773526018}
-  m_Layer: 0
-  m_Name: BaweLevelFirstTestBevel_FINAL
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &1793210212381668950
 Transform:
   m_ObjectHideFlags: 0
@@ -27619,21 +27606,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2256166979773526018
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442369343159380664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.131285, y: 2.72969, z: -3.2412791}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 21392637410140077}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2504416201572901691
 GameObject:
   m_ObjectHideFlags: 0

@@ -143,7 +143,7 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         //if is disarming return false
         if (hitPlayer.IsDisarming())
         {
-            hitPlayer.DisarmOppponent(this, attackingPlayer);
+            OnDisarmed(hitPlayer, attackingPlayer);
             return false;
         }
         else
@@ -172,6 +172,11 @@ public class DivineWeapon : MonoBehaviour, IWeapon
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(isActive);
         }
+    }
+
+    public virtual void OnDisarmed(PlayerController hitPlayer, PlayerController attackingPlayer)
+    {
+        hitPlayer.DisarmOppponent(this, attackingPlayer);
     }
     #endregion
 

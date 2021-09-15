@@ -11,6 +11,11 @@ public class BouncyArrow : DivineWeapon
     public float m_DragPerBounce = 2.5f;
     public float m_PickupSpeedThreshold = 1f;
     public float m_PickupDelayDuration = 0.5f; //duration in seconds after weapon is below speed threshold before it can be picked up
+    public float m_RotationSpeed = 250f;
+
+    [Header("Scaling Properties")]
+    public float speedPerDisarm = 2.0f;
+    public int bounceIncreaseInterval = 2; //every interval of disarms, increase bounces 
 
     [Header("Detection Properties")]
     public LayerMask m_HitboxMask;
@@ -27,9 +32,13 @@ public class BouncyArrow : DivineWeapon
     private RaycastHit[] arrowWallHits;
     private RaycastHit[] arrowPreWallHits;
 
+    private Vector3 lastDirection;
     private float launchSpeed;
     private float pickSqrSpeedThreshold;
     private int freeBouncesRemaining; //when this is at 0, each bounce will add drag
+
+    private int currentFreeBounceStart;
+    private int disarmCount;
 
     private float pickupCooldownEndTime;
 
@@ -58,6 +67,16 @@ public class BouncyArrow : DivineWeapon
                 Physics.Simulate(Time.fixedDeltaTime);
             }
         }
+
+        //rotate sprite
+        if (lastDirection != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(lastDirection.x, -lastDirection.z);
+
+            Quaternion rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, transform.forward);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * m_RotationSpeed);
+        }
+        
     }
 
     private void FixedUpdate()
@@ -72,6 +91,13 @@ public class BouncyArrow : DivineWeapon
 
     #region Weapon Overrides
 
+    public override void OnPickup(PlayerController player)
+    {
+        base.OnPickup(player);
+
+        ResetRigidbody();
+    }
+
     public override void SetWeaponActive(bool isActive)
     {
         base.SetWeaponActive(isActive);
@@ -80,8 +106,6 @@ public class BouncyArrow : DivineWeapon
         {
             body.useGravity = true;
         }
-
-        ResetSpeed();
     }
 
     public override void OnAttackStart()
@@ -126,11 +150,30 @@ public class BouncyArrow : DivineWeapon
             {
                 hitPlayer.GetEffectsController().ActivateDamagedSystem();
             }
+
+            ResetWeapon();
+
+            body.drag = 50f;
         }
 
-        body.drag = 50f;
-
         return playerHit;
+    }
+
+    //I will come back to this later, kinda feel like poop right now (just stressed)
+    //you got this... for real
+    public override void OnDisarmed(PlayerController hitPlayer, PlayerController attackingPlayer)
+    {
+        base.OnDisarmed(hitPlayer, attackingPlayer);
+
+        disarmCount++;
+        //add speed
+        launchSpeed += speedPerDisarm;
+
+        if (disarmCount % bounceIncreaseInterval == 0)
+        {
+            currentFreeBounceStart++;
+            freeBouncesRemaining = currentFreeBounceStart;
+        }
     }
 
     #endregion
@@ -158,6 +201,8 @@ public class BouncyArrow : DivineWeapon
         }
 
         pickSqrSpeedThreshold = m_PickupSpeedThreshold * m_PickupSpeedThreshold;
+
+        ResetWeapon();
     }
 
     private void RunPhysics()
@@ -187,13 +232,17 @@ public class BouncyArrow : DivineWeapon
                 }
             }
         }
+
+        //cache last direction
+        if (body.velocity.sqrMagnitude >= 0.01f)
+        {
+            lastDirection = body.velocity.normalized;
+        }
     }
 
     public void Shoot(Vector3 direction)
     {
         //Physics.autoSimulation = false;
-
-        ResetSpeed();
 
         isLaunched = true;
 
@@ -211,12 +260,21 @@ public class BouncyArrow : DivineWeapon
 
     #region Speed Control
 
-    public void ResetSpeed()
+    public void ResetWeapon()
     {
         launchSpeed = m_StartingSpeed;
-        freeBouncesRemaining = m_StartingFreeBounces;
-        body.drag = 0; //only set drag on bounces
+        currentFreeBounceStart = m_StartingFreeBounces;
 
+        freeBouncesRemaining = currentFreeBounceStart;
+
+        disarmCount = 0;
+
+        ResetRigidbody();
+    }
+
+    public void ResetRigidbody()
+    {
+        body.drag = 0; //only set drag on bounces
         wallCollisionBuffer.isBuffered = false;
     }
 
