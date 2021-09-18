@@ -70,14 +70,20 @@ public class BouncyArrow : DivineWeapon
         }
 
         //rotate sprite
-        if (lastDirection != Vector3.zero)
+        
+        if (!isLaunched)
+        {
+            Quaternion rotation = Quaternion.AngleAxis(0f, transform.forward);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * m_RotationSpeed);
+        }
+        else if (lastDirection != Vector3.zero)
         {
             float angle = Mathf.Atan2(lastDirection.x, -lastDirection.z);
 
             Quaternion rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, transform.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * m_RotationSpeed);
         }
-        
+
     }
 
     private void FixedUpdate()
