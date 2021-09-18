@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Arenas/Agnithia Realm.unity
     guid: 062bcf7363c27e64d9a491dca21a2fe6
   - enabled: 1
-    path: Assets/Scenes/Arenas/Desert Arrow.unity
+    path: Assets/Scenes/Arenas/Boways Tree.unity
     guid: f5d74b8b1a340694aad4bfa4255c6625
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9fa2058e0e77c6e4c9cc6790b7319b5b,

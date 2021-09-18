@@ -297,7 +297,6 @@ public class BouncyArrow : DivineWeapon
     {
         isLaunched = false;
         pickupCooldownEndTime = Time.time + m_PickupDelayDuration;
-        Debug.Log("Speed Below Threshold");
     }
     #endregion
 
@@ -390,7 +389,7 @@ public class BouncyArrow : DivineWeapon
         {
             int shortestDistIndex = -1;
             float shortestDist = float.MaxValue;
-            for (int i = 0; i < wallHits; i++)
+            for (int i = 0; i < arrowWallHits.Length; i++)
             {
                 if (arrowWallHits[i].collider != null && arrowWallHits[i].distance > 0)
                 {
