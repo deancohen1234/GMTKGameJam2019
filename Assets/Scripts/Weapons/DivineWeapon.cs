@@ -120,6 +120,7 @@ public class DivineWeapon : MonoBehaviour, IWeapon
     public virtual void OnAttackEnd()
     {
         m_OwningPlayer.GetComponent<PlayerAnimation>().SetAttackStatus(false);
+        m_OwningPlayer.m_AttackHitboxController.DisableAllHitBoxes();
     }
 
     //player drops weapon

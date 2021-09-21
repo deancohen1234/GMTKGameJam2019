@@ -183,7 +183,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //
     private void OnEnable()
     {
         m_DashAction.OnActionStart += OnDashStart;
@@ -432,7 +431,7 @@ public class PlayerController : MonoBehaviour
 
     private void DashHit(PlayerController attackingPlayer)
     {
-        Debug.Log("Has Weapon, About to Lose it");
+        attackingPlayer.m_DashAction.ForceStopAction();
 
         //attacking player loses weapon, no damage
         attackingPlayer.ApplyBounceBackForce(transform.position);
@@ -545,6 +544,8 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyBounceBackForce(Vector3 forceOrigin)
     {
+        Debug.Log("Bounce Back Force applied");
+
         StartCoroutine(DisableAllMovement(0.2f));
 
         Vector3 direction = transform.position - forceOrigin;
@@ -625,6 +626,7 @@ public class PlayerController : MonoBehaviour
     private void OnDashDisarmEnd()
     {
         m_AttackHitboxController.DisableAllHitBoxes();
+        Debug.Log("Ending hitboxes");
     }
 
     #endregion

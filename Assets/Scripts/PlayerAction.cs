@@ -50,7 +50,9 @@ public class PlayerAction
         }
     }
 
-    public void ForceStopAction()
+    //make sure all child actions stop their events
+    //mainly dash disarm
+    public virtual void ForceStopAction()
     {
         IsExecuting = false;
 
