@@ -1,619 +1,191 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.8f1 (507919d4fff5) revision 5273881'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19042.1165; Version 2009; 64bit' Language: 'en' Physical Memory: 32702 MB
+OS: 'Windows 10 Home; OS build 19041.1237; Version 2004; 64bit' Language: 'en' Physical Memory: 32583 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.8f1\Editor\Unity.exe
+C:\Program Files\UnityInstalls\2020.3.8f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-D:/GitHub/GMTKGameJam2019
+C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49884
-Successfully changed project path to: D:/GitHub/GMTKGameJam2019
-D:/GitHub/GMTKGameJam2019
+65199
+Successfully changed project path to: C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
+C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 40.14 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 51.66 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.8f1 (507919d4fff5)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/GitHub/GMTKGameJam2019/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2080 Ti (ID=0x1e07)
+    Renderer: NVIDIA GeForce RTX 2070 Super (ID=0x1e91)
     Vendor:   
-    VRAM:     11048 MB
+    VRAM:     8011 MB
     Driver:   30.0.14.7196
 Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56596
+Mono path[0] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001344 seconds.
+Register platform support module: C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001583 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 34.60 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 45.70 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.699 seconds
+- Completed reload, in  0.885 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001334 seconds.
+Registered in 0.001713 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.28 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 45.66 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.757 seconds
+- Completed reload, in  0.924 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.80 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2129 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.6 MB.
-System memory in use after: 169.6 MB.
+System memory in use before: 95.9 MB.
+System memory in use after: 96.0 MB.
 
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2559.
-Total: 4.007300 ms (FindLiveObjects: 0.158900 ms CreateObjectMapping: 0.064500 ms MarkObjects: 3.708200 ms  DeleteObjects: 0.075200 ms)
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2545.
+Total: 8.243300 ms (FindLiveObjects: 0.380500 ms CreateObjectMapping: 0.305500 ms MarkObjects: 7.448800 ms  DeleteObjects: 0.107000 ms)
 
 ========================================================================
 Received Import Request.
+  path: Assets/Art
+  artifactKey: Guid(dd48a738b95b9c94f9f15c8b3f63428a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Art using Guid(dd48a738b95b9c94f9f15c8b3f63428a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8654903f17c4f6f1cb3d7f15c59bab1') in 0.011576 seconds
+  Import took 0.015997 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000302 seconds.
+  path: Assets/Audio
+  artifactKey: Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio using Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b82d1a107fa49d6006aba4d72ab085c') in 0.007674 seconds
+  Import took 0.012465 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Input
+  artifactKey: Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Input using Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2234a85dff8725f015b08a4b7a8722d2') in 0.006733 seconds
+  Import took 0.011562 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.383623 seconds.
+  path: Assets/Animation
+  artifactKey: Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation using Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccefb926594ca1fff781b3825145d20c') in 0.006047 seconds
+  Import took 0.009263 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.505977 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83e024a49e2a46e968b4aa5b99a5f2f2') in 0.005611 seconds
+  Import took 0.010346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.153012 seconds.
+  path: Assets/Scenes/Arenas
+  artifactKey: Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Arenas using Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f11377926ab2b2fbe4583ed868829e7') in 0.005498 seconds
+  Import took 0.009101 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.450577 seconds.
+  path: Assets/Scenes/Arenas/Boways Tree.unity
+  artifactKey: Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Arenas/Boways Tree.unity using Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd148364e5719696612d31e1057442be1') in 0.012154 seconds
+  Import took 0.015333 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 139.634100 seconds.
+  path: Assets/Models/ArrowLevel
+  artifactKey: Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel using Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf32bc958f9c1aa281036f0ecb63563') in 0.007325 seconds
+  Import took 0.010779 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036902 seconds.
   path: Assets/Models/ArrowLevel/B_Test_01.fbx
   artifactKey: Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_01.fbx using Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b2e75b21573433977724a138a84d0ff') in 0.090519 seconds
-  Import took 0.093030 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001300 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.688 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.1 MB.
-System memory in use after: 169.3 MB.
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 2572.
-Total: 4.065300 ms (FindLiveObjects: 0.144000 ms CreateObjectMapping: 0.052700 ms MarkObjects: 3.823200 ms  DeleteObjects: 0.044600 ms)
+Start importing Assets/Models/ArrowLevel/B_Test_01.fbx using Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3753fbb2f7944cc2867a6937a4a031a') in 0.284900 seconds
+  Import took 0.288663 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 250.801756 seconds.
+  Time since last request: 0.000137 seconds.
+  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
+  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfd09176474a9d20b183b24384d7d549') in 0.021781 seconds
+  Import took 0.024454 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx
+  artifactKey: Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx using Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ce1cfb3da6d6591f1ff05f3cffe4ff0') in 0.031732 seconds
+  Import took 0.035490 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
   path: Assets/Models/ArrowLevel/B_Test_02.fbx
   artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eeac95e82459ba3215a42a0415134cd2') in 0.060496 seconds
-  Import took 0.063274 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001462 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.725 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.2 MB.
-System memory in use after: 169.3 MB.
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 2576.
-Total: 4.247300 ms (FindLiveObjects: 0.177100 ms CreateObjectMapping: 0.066400 ms MarkObjects: 3.978300 ms  DeleteObjects: 0.024500 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001370 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.678 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.2 MB.
-System memory in use after: 169.3 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2579.
-Total: 4.334600 ms (FindLiveObjects: 0.169400 ms CreateObjectMapping: 0.055500 ms MarkObjects: 4.090800 ms  DeleteObjects: 0.018400 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001464 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.673 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.2 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2582.
-Total: 4.078000 ms (FindLiveObjects: 0.144700 ms CreateObjectMapping: 0.056600 ms MarkObjects: 3.857200 ms  DeleteObjects: 0.018900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001323 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.672 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2585.
-Total: 3.902100 ms (FindLiveObjects: 0.139000 ms CreateObjectMapping: 0.051900 ms MarkObjects: 3.694800 ms  DeleteObjects: 0.015800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001482 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.682 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2588.
-Total: 4.280600 ms (FindLiveObjects: 0.173700 ms CreateObjectMapping: 0.050600 ms MarkObjects: 4.034800 ms  DeleteObjects: 0.020700 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001411 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.680 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2591.
-Total: 4.145300 ms (FindLiveObjects: 0.204000 ms CreateObjectMapping: 0.085900 ms MarkObjects: 3.838000 ms  DeleteObjects: 0.016700 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001367 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.684 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2594.
-Total: 3.946700 ms (FindLiveObjects: 0.152200 ms CreateObjectMapping: 0.057500 ms MarkObjects: 3.718000 ms  DeleteObjects: 0.018200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001587 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.674 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2597.
-Total: 4.297000 ms (FindLiveObjects: 0.148200 ms CreateObjectMapping: 0.053600 ms MarkObjects: 4.077200 ms  DeleteObjects: 0.017300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001892 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.678 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2600.
-Total: 4.144700 ms (FindLiveObjects: 0.139900 ms CreateObjectMapping: 0.052900 ms MarkObjects: 3.936000 ms  DeleteObjects: 0.015300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001385 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.678 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2603.
-Total: 4.250600 ms (FindLiveObjects: 0.168900 ms CreateObjectMapping: 0.050200 ms MarkObjects: 4.012700 ms  DeleteObjects: 0.018200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001449 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.674 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2606.
-Total: 3.800500 ms (FindLiveObjects: 0.131700 ms CreateObjectMapping: 0.045900 ms MarkObjects: 3.606400 ms  DeleteObjects: 0.015900 ms)
+Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.017096 seconds
+  Import took 0.020186 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1129.608045 seconds.
-  path: Assets/Scenes/Arenas/Desert Arrow.unity
-  artifactKey: Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas/Desert Arrow.unity using Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7589a1e7d277d4ac3e770311dbaf2abe') in 0.100362 seconds
-  Import took 0.103130 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001299 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.674 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.3 MB.
-System memory in use after: 169.4 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2609.
-Total: 4.069900 ms (FindLiveObjects: 0.136000 ms CreateObjectMapping: 0.048300 ms MarkObjects: 3.869000 ms  DeleteObjects: 0.016000 ms)
+  Time since last request: 0.000146 seconds.
+  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx
+  artifactKey: Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx using Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cd6f26bf6425368bc62bf62e00700e6') in 0.029764 seconds
+  Import took 0.033262 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 149.428733 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '117f336a2b6a022b482d95fd79e4b35b') in 0.060209 seconds
-  Import took 0.062929 seconds .
+  Time since last request: 0.000222 seconds.
+  path: Assets/Models/ArrowLevel/B_Test_02.fbx
+  artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.011328 seconds
+  Import took 0.014810 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.011099 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '117f336a2b6a022b482d95fd79e4b35b') in 0.009524 seconds
-  Import took 0.012198 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 81.545426 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '326de2ca290c2aecce91c00c06acf4e9') in 0.016575 seconds
-  Import took 0.019305 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.067820 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0828122809d341e8961fcbd00961a724') in 0.008008 seconds
-  Import took 0.010698 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.031984 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7471d7fef48a5f275ca603c4235dbfe7') in 0.009129 seconds
-  Import took 0.011883 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.905899 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1f4aca12f5fe6c51104c7120f7cb223') in 0.010287 seconds
-  Import took 0.012996 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.532158 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e28700f387835a09d960adf1a3db505') in 0.009893 seconds
-  Import took 0.012665 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.169583 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '761d7e24f5e5891262f8339607de1612') in 0.012951 seconds
-  Import took 0.015662 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.606675 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71749c0a9c536f1a58308f350f8f89ed') in 0.015311 seconds
-  Import took 0.017927 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.759498 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '452724db62d719fb37384dd1609453af') in 0.007380 seconds
-  Import took 0.010041 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.729411 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25b3968b99c9e84f8b19cf16cbd3f19b') in 0.008398 seconds
-  Import took 0.011134 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001341 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.675 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 2613.
-Total: 4.209700 ms (FindLiveObjects: 0.136900 ms CreateObjectMapping: 0.048600 ms MarkObjects: 4.003700 ms  DeleteObjects: 0.019900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001359 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.677 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2616.
-Total: 4.056400 ms (FindLiveObjects: 0.152400 ms CreateObjectMapping: 0.056100 ms MarkObjects: 3.828300 ms  DeleteObjects: 0.018800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001341 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.665 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2619.
-Total: 4.098600 ms (FindLiveObjects: 0.148100 ms CreateObjectMapping: 0.053500 ms MarkObjects: 3.881000 ms  DeleteObjects: 0.015300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001359 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.664 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2622.
-Total: 4.372900 ms (FindLiveObjects: 0.198100 ms CreateObjectMapping: 0.090300 ms MarkObjects: 4.061800 ms  DeleteObjects: 0.021900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001379 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.676 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2625.
-Total: 3.950600 ms (FindLiveObjects: 0.156800 ms CreateObjectMapping: 0.061300 ms MarkObjects: 3.716300 ms  DeleteObjects: 0.015600 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001370 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.670 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2628.
-Total: 4.037500 ms (FindLiveObjects: 0.155600 ms CreateObjectMapping: 0.060800 ms MarkObjects: 3.804100 ms  DeleteObjects: 0.016200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001547 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.675 seconds
-Platform modules already initialized, skipping
-Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.4 MB.
-System memory in use after: 169.5 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2631.
-Total: 4.159600 ms (FindLiveObjects: 0.175300 ms CreateObjectMapping: 0.073000 ms MarkObjects: 3.895200 ms  DeleteObjects: 0.015300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 1167.198706 seconds.
-  path: Assets/Scenes/Arenas/Desert Arrow.unity
-  artifactKey: Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas/Desert Arrow.unity using Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63d708a7163f326326f01765b4b0ea97') in 0.066813 seconds
-  Import took 0.069472 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 50.383328 seconds.
-  path: Assets/Models/Agnithia/Agnithia_Arena_Mountains.fbx
-  artifactKey: Guid(461b07c1ad498c24f8a86c2c9c10b7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Agnithia/Agnithia_Arena_Mountains.fbx using Guid(461b07c1ad498c24f8a86c2c9c10b7b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7405c9e4eb80d013c49a0e5b5b6dfaeb') in 0.075913 seconds
-  Import took 0.078635 seconds .
+  Time since last request: 372.619697 seconds.
+  path: Assets/Models/ArrowLevel/TestWalls_01.fbx
+  artifactKey: Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/TestWalls_01.fbx using Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7642b5d835437359de933a72c9b3b40') in 0.020205 seconds
+  Import took 0.023821 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
