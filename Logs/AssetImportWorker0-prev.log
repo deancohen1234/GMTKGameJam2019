@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.8f1 (507919d4fff5) revision 5273881'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19041.1237; Version 2004; 64bit' Language: 'en' Physical Memory: 32583 MB
+OS: 'Windows 10 Home; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 32702 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65199
-Successfully changed project path to: C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
-C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
+55667
+Successfully changed project path to: D:/GitHub/GMTKGameJam2019
+D:/GitHub/GMTKGameJam2019
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 51.66 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 40.76 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.8f1 (507919d4fff5)
 [Subsystems] Discovering subsystems at path C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -33,159 +33,47 @@ Direct3D:
     Driver:   30.0.14.7196
 Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Initialize mono
-Mono path[0] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56372
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001583 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001385 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 45.70 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 35.29 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.885 seconds
+- Completed reload, in  0.720 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001713 seconds.
+Registered in 0.001308 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 45.66 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 37.92 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.924 seconds
+- Completed reload, in  0.784 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.80 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2129 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 95.9 MB.
-System memory in use after: 96.0 MB.
+System memory in use before: 169.6 MB.
+System memory in use after: 169.7 MB.
 
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2545.
-Total: 8.243300 ms (FindLiveObjects: 0.380500 ms CreateObjectMapping: 0.305500 ms MarkObjects: 7.448800 ms  DeleteObjects: 0.107000 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Art
-  artifactKey: Guid(dd48a738b95b9c94f9f15c8b3f63428a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art using Guid(dd48a738b95b9c94f9f15c8b3f63428a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8654903f17c4f6f1cb3d7f15c59bab1') in 0.011576 seconds
-  Import took 0.015997 seconds .
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2559.
+Total: 4.365000 ms (FindLiveObjects: 0.175300 ms CreateObjectMapping: 0.068100 ms MarkObjects: 4.028800 ms  DeleteObjects: 0.091700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000302 seconds.
-  path: Assets/Audio
-  artifactKey: Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio using Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b82d1a107fa49d6006aba4d72ab085c') in 0.007674 seconds
-  Import took 0.012465 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000195 seconds.
-  path: Assets/Input
-  artifactKey: Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Input using Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2234a85dff8725f015b08a4b7a8722d2') in 0.006733 seconds
-  Import took 0.011562 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.383623 seconds.
-  path: Assets/Animation
-  artifactKey: Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation using Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccefb926594ca1fff781b3825145d20c') in 0.006047 seconds
-  Import took 0.009263 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.505977 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83e024a49e2a46e968b4aa5b99a5f2f2') in 0.005611 seconds
-  Import took 0.010346 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.153012 seconds.
-  path: Assets/Scenes/Arenas
-  artifactKey: Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas using Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f11377926ab2b2fbe4583ed868829e7') in 0.005498 seconds
-  Import took 0.009101 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.450577 seconds.
-  path: Assets/Scenes/Arenas/Boways Tree.unity
-  artifactKey: Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas/Boways Tree.unity using Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd148364e5719696612d31e1057442be1') in 0.012154 seconds
-  Import took 0.015333 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 139.634100 seconds.
-  path: Assets/Models/ArrowLevel
-  artifactKey: Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel using Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf32bc958f9c1aa281036f0ecb63563') in 0.007325 seconds
-  Import took 0.010779 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.036902 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_01.fbx
-  artifactKey: Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_01.fbx using Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3753fbb2f7944cc2867a6937a4a031a') in 0.284900 seconds
-  Import took 0.288663 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000137 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfd09176474a9d20b183b24384d7d549') in 0.021781 seconds
-  Import took 0.024454 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx
-  artifactKey: Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx using Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ce1cfb3da6d6591f1ff05f3cffe4ff0') in 0.031732 seconds
-  Import took 0.035490 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_02.fbx
-  artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.017096 seconds
-  Import took 0.020186 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx
-  artifactKey: Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx using Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cd6f26bf6425368bc62bf62e00700e6') in 0.029764 seconds
-  Import took 0.033262 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_02.fbx
-  artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.011328 seconds
-  Import took 0.014810 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 372.619697 seconds.
-  path: Assets/Models/ArrowLevel/TestWalls_01.fbx
-  artifactKey: Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/TestWalls_01.fbx using Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7642b5d835437359de933a72c9b3b40') in 0.020205 seconds
-  Import took 0.023821 seconds .
+  path: Assets/Scripts/Weapons/BouncyArrow.cs
+  artifactKey: Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/BouncyArrow.cs using Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ee17915bfcbfc6b7673ead1643ab83') in 0.017477 seconds
+  Import took 0.019953 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

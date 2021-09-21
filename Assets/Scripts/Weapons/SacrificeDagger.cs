@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class SacrificeDagger : DivineWeapon
 {
-    public override void OnPickup(PlayerController player)
-    {
-        base.OnPickup(player);
-    }
-
-    public override void OnAttackStart()
-    {
-        base.OnAttackStart();
-    }
-
     public override void Attack(PlayerController player, Vector3 direction)
     {
         base.Attack(player, direction);
@@ -22,16 +12,9 @@ public class SacrificeDagger : DivineWeapon
         player.m_AttackHitboxController.ActivateHitBox(player.GetPlayerOrientation());
     }
 
-    public override void OnAttackEnd()
-    {
-        base.OnAttackEnd();
- 
-        m_OwningPlayer.m_AttackHitboxController.DisableAllHitBoxes();
-    }
 
     public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
     {
-
         bool playerHit = base.OnHit(hitPlayer, attackingPlayer);
         //attacking player loses weapon, no damage
         attackingPlayer.ApplyBounceBackForce(hitPlayer.transform.position);

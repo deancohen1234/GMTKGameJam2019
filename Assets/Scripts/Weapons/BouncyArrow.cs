@@ -48,6 +48,7 @@ public class BouncyArrow : DivineWeapon
 
     private bool isLaunched = false;
 
+    private const float ARROWYHEIGHT = 0.28f;
     private const float VERTICALDOTTHRESHOLD = 0.90f; //make sure we don't get collisions from the ground
 
     #region Monobehavior
@@ -129,11 +130,19 @@ public class BouncyArrow : DivineWeapon
 
     public override void Drop(PlayerController lastControlledPlayer)
     {
-        //make sure on player drop don't randomize weapon position
-        SetWeaponActive(true);
+        base.Drop(lastControlledPlayer);
+        //player is throwing/shooting weapon
+        
+        /*
+        if (lastControlledPlayer.Equals(m_OwningPlayer))
+        {
+            //make sure on player drop don't randomize weapon position
+            SetWeaponActive(true);
 
-        m_OwningPlayer = null;
-        //m_AttackAction.SetPlayerReference(null); //set reference for actions to null
+            m_OwningPlayer = null;
+            m_AttackAction.SetPlayerReference(null); //set reference for actions to null
+        } 
+        */
     }
 
     public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
@@ -252,11 +261,12 @@ public class BouncyArrow : DivineWeapon
     public void Shoot()
     {
         //Physics.autoSimulation = false;
+        body.constraints = RigidbodyConstraints.FreezeRotation;
 
         lastHeldPlayer = m_OwningPlayer;
 
         //cache this now since DropWeapon will kill the OwningPlayer reference
-        Vector3 launchPosition = m_OwningPlayer.transform.position;
+        Vector3 launchPosition = new Vector3(m_OwningPlayer.transform.position.x, ARROWYHEIGHT, m_OwningPlayer.transform.position.x);
 
         m_OwningPlayer.DropWeapon(false); //need to drop/throw weapon to make sprite appear and allow pickup
 
@@ -266,12 +276,13 @@ public class BouncyArrow : DivineWeapon
         SetCollidersActive(false);
 
         body.position = launchPosition;
+        transform.position = launchPosition;
 
         body.useGravity = false;
         body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; //don't freeze X and Z position
         body.isKinematic = false;
 
-        body.velocity = lastHeldPlayer.GetMoveDirection() * launchSpeed;
+        body.velocity = Vector3.ProjectOnPlane(lastHeldPlayer.GetMoveDirection() * launchSpeed, Vector3.up);
     }
 
     #region Speed Control
@@ -290,6 +301,7 @@ public class BouncyArrow : DivineWeapon
 
     public void ResetRigidbody()
     {
+        //body.position = new Vector3(body.position.x, ARROWYHEIGHT, body.position.z);
         body.drag = 0; //only set drag on bounces
         wallCollisionBuffer.isBuffered = false;
     }
