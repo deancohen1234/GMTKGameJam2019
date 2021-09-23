@@ -15,7 +15,6 @@ public class DashAction : PlayerAction
 
         if (IsExecuting)
         {
-            Debug.Log("Is Executing: " + (Time.frameCount - StartingFrame) + "\nDisarm Length: " + (DashDisarmLength + StartDelay));
             //Dash disarm window is over
             if (Time.frameCount - StartingFrame >= DashDisarmLength + StartDelay)
             {
