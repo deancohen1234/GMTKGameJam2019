@@ -1,10 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.8f1 (507919d4fff5) revision 5273881'; Using compiler version '192528614'; Build Type 'Release'
-<<<<<<< HEAD
 OS: 'Windows 10 Home; OS build 19041.1237; Version 2004; 64bit' Language: 'en' Physical Memory: 32583 MB
-=======
-OS: 'Windows 10 Home; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 32702 MB
->>>>>>> master
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -20,17 +16,17 @@ C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 Logs/AssetImportWorker0.log
 -srvPort
 <<<<<<< HEAD
-65199
+61199
 Successfully changed project path to: C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 C:/Users/AC_Dev/Documents/ksapoWARE/Projects/Devout/DevoutRepo/GMTKGameJam2019
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 51.66 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 52.34 ms, found 0 plugins.
 =======
-55667
+51922
 Successfully changed project path to: D:/GitHub/GMTKGameJam2019
 D:/GitHub/GMTKGameJam2019
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 40.76 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 41.00 ms, found 0 plugins.
 >>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.8f1 (507919d4fff5)
@@ -49,48 +45,48 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/UnityInstalls/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56492
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001385 seconds.
+Registered in 0.001367 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.29 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 36.27 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.720 seconds
+- Completed reload, in  0.745 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001308 seconds.
+Registered in 0.001377 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 37.92 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 36.26 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.924 seconds
+- Completed reload, in  0.865 seconds
 =======
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56372
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56920
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001385 seconds.
+Registered in 0.001367 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.29 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 36.27 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.720 seconds
+- Completed reload, in  0.745 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001308 seconds.
+Registered in 0.001377 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 37.92 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 36.26 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.784 seconds
+- Completed reload, in  0.771 seconds
 >>>>>>> master
 Platform modules already initialized, skipping
 ========================================================================
@@ -98,149 +94,1248 @@ Worker process is ready to serve import requests
 Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
 <<<<<<< HEAD
-Refreshing native plugins compatible for Editor in 0.80 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+=======
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+>>>>>>> master
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2129 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.6 MB.
-System memory in use after: 169.7 MB.
+System memory in use before: 96.2 MB.
+System memory in use after: 96.3 MB.
 
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2559.
-Total: 4.365000 ms (FindLiveObjects: 0.175300 ms CreateObjectMapping: 0.068100 ms MarkObjects: 4.028800 ms  DeleteObjects: 0.091700 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Scripts/Weapons/BouncyArrow.cs
-  artifactKey: Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Weapons/BouncyArrow.cs using Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ee17915bfcbfc6b7673ead1643ab83') in 0.017477 seconds
-  Import took 0.019953 seconds .
+<<<<<<< HEAD
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2546.
+Total: 4.480000 ms (FindLiveObjects: 0.165400 ms CreateObjectMapping: 0.069800 ms MarkObjects: 4.177100 ms  DeleteObjects: 0.066900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000302 seconds.
-  path: Assets/Audio
-  artifactKey: Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio using Guid(4c8a52473df92ba42946f57f5435d207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b82d1a107fa49d6006aba4d72ab085c') in 0.007674 seconds
-  Import took 0.012465 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000195 seconds.
-  path: Assets/Input
-  artifactKey: Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Input using Guid(810d9c9e379624c46b1a640808f89e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2234a85dff8725f015b08a4b7a8722d2') in 0.006733 seconds
-  Import took 0.011562 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.383623 seconds.
-  path: Assets/Animation
-  artifactKey: Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animation using Guid(57e49957f19b9114683dff53a6ca3e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccefb926594ca1fff781b3825145d20c') in 0.006047 seconds
-  Import took 0.009263 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.505977 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(8e7af0ee6d79b9d43a08e770318e7a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83e024a49e2a46e968b4aa5b99a5f2f2') in 0.005611 seconds
-  Import took 0.010346 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.153012 seconds.
-  path: Assets/Scenes/Arenas
-  artifactKey: Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas using Guid(479bafb79301fe446806abf914f0ee70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f11377926ab2b2fbe4583ed868829e7') in 0.005498 seconds
-  Import took 0.009101 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.450577 seconds.
-  path: Assets/Scenes/Arenas/Boways Tree.unity
-  artifactKey: Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Arenas/Boways Tree.unity using Guid(f5d74b8b1a340694aad4bfa4255c6625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd148364e5719696612d31e1057442be1') in 0.012154 seconds
-  Import took 0.015333 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 139.634100 seconds.
-  path: Assets/Models/ArrowLevel
-  artifactKey: Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel using Guid(1e9be3edd30a25a42a84ae6dbefd8f52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf32bc958f9c1aa281036f0ecb63563') in 0.007325 seconds
-  Import took 0.010779 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.036902 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_01.fbx
-  artifactKey: Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_01.fbx using Guid(eeadc639f53b25c44957254dedce9bbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3753fbb2f7944cc2867a6937a4a031a') in 0.284900 seconds
-  Import took 0.288663 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000137 seconds.
-  path: Assets/Models/ArrowLevel/B_Thiccagon.fbx
-  artifactKey: Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Thiccagon.fbx using Guid(43d8902fe9c028641b738bcc30078121) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfd09176474a9d20b183b24384d7d549') in 0.021781 seconds
-  Import took 0.024454 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx
-  artifactKey: Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel.fbx using Guid(d60fad1a683a46749a28cf2122744df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ce1cfb3da6d6591f1ff05f3cffe4ff0') in 0.031732 seconds
-  Import took 0.035490 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_02.fbx
-  artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.017096 seconds
-  Import took 0.020186 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx
-  artifactKey: Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/BaweLevelFirstTestBevel_FINAL.fbx using Guid(16e1c46ecbf0602459fc04e2a9f05d61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cd6f26bf6425368bc62bf62e00700e6') in 0.029764 seconds
-  Import took 0.033262 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Models/ArrowLevel/B_Test_02.fbx
-  artifactKey: Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/B_Test_02.fbx using Guid(a9cc6bd6692252e41b981d91be8490a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5892a5c5fd69fe15c64b3771b8e4ad8') in 0.011328 seconds
-  Import took 0.014810 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 372.619697 seconds.
-  path: Assets/Models/ArrowLevel/TestWalls_01.fbx
-  artifactKey: Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/ArrowLevel/TestWalls_01.fbx using Guid(f05e99ecdd5124b42bea9573a5b15b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7642b5d835437359de933a72c9b3b40') in 0.020205 seconds
-  Import took 0.023821 seconds .
+  path: Assets/Models/ArrowLevel/AGardenerForBawe_FBX.fbx
+  artifactKey: Guid(e7c86c52ce01e5f48994e6342cac6735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/ArrowLevel/AGardenerForBawe_FBX.fbx using Guid(e7c86c52ce01e5f48994e6342cac6735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9806aaae9b7650f26561d146a97cecb8') in 0.231674 seconds
+  Import took 0.234740 seconds .
 =======
+Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2559.
+Total: 4.407200 ms (FindLiveObjects: 0.164900 ms CreateObjectMapping: 0.071500 ms MarkObjects: 4.080300 ms  DeleteObjects: 0.089600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001382 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.700 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 2570.
+Total: 4.128400 ms (FindLiveObjects: 0.140300 ms CreateObjectMapping: 0.095600 ms MarkObjects: 3.843000 ms  DeleteObjects: 0.048600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001500 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.693 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2573.
+Total: 3.961600 ms (FindLiveObjects: 0.169700 ms CreateObjectMapping: 0.057100 ms MarkObjects: 3.717500 ms  DeleteObjects: 0.016500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001438 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.701 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2576.
+Total: 4.032100 ms (FindLiveObjects: 0.145900 ms CreateObjectMapping: 0.051800 ms MarkObjects: 3.816600 ms  DeleteObjects: 0.017200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001337 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2579.
+Total: 3.917000 ms (FindLiveObjects: 0.138000 ms CreateObjectMapping: 0.047800 ms MarkObjects: 3.714700 ms  DeleteObjects: 0.015700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001430 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.697 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2582.
+Total: 4.016100 ms (FindLiveObjects: 0.138800 ms CreateObjectMapping: 0.050600 ms MarkObjects: 3.804700 ms  DeleteObjects: 0.021100 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Prefabs/Characters/CultistTwo.prefab
+  artifactKey: Guid(2ce44d6ad18f0ac4db7d2598f469f337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/CultistTwo.prefab using Guid(2ce44d6ad18f0ac4db7d2598f469f337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15aaa40c01ddf001b0b02522a91686b8') in 0.106482 seconds
+  Import took 0.110271 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001382 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.700 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 2570.
+Total: 4.128400 ms (FindLiveObjects: 0.140300 ms CreateObjectMapping: 0.095600 ms MarkObjects: 3.843000 ms  DeleteObjects: 0.048600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001500 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.693 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2573.
+Total: 3.961600 ms (FindLiveObjects: 0.169700 ms CreateObjectMapping: 0.057100 ms MarkObjects: 3.717500 ms  DeleteObjects: 0.016500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001438 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.701 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.2 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2576.
+Total: 4.032100 ms (FindLiveObjects: 0.145900 ms CreateObjectMapping: 0.051800 ms MarkObjects: 3.816600 ms  DeleteObjects: 0.017200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001337 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.1 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2579.
+Total: 3.917000 ms (FindLiveObjects: 0.138000 ms CreateObjectMapping: 0.047800 ms MarkObjects: 3.714700 ms  DeleteObjects: 0.015700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001430 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.697 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2582.
+Total: 4.016100 ms (FindLiveObjects: 0.138800 ms CreateObjectMapping: 0.050600 ms MarkObjects: 3.804700 ms  DeleteObjects: 0.021100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 709.027597 seconds.
+  path: Assets/Scripts/Weapons/DivineWeapon.cs
+  artifactKey: Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/DivineWeapon.cs using Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b94067b0d938b1bd18ae1633c528dc76') in 0.009879 seconds
+  Import took 0.012919 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.015339 seconds.
+  path: Assets/Scripts/Weapons/DivineWeapon.cs
+  artifactKey: Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/DivineWeapon.cs using Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b94067b0d938b1bd18ae1633c528dc76') in 0.001432 seconds
+  Import took 0.004445 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.469844 seconds.
+  path: Assets/Scripts/Weapons/HolyHammer.cs
+  artifactKey: Guid(f83fd482b368d164ca50f75a03e85fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/HolyHammer.cs using Guid(f83fd482b368d164ca50f75a03e85fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2eb4900f13035fe53654edb895104b6') in 0.004369 seconds
+  Import took 0.007033 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001393 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.688 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2585.
+Total: 3.975800 ms (FindLiveObjects: 0.150500 ms CreateObjectMapping: 0.054400 ms MarkObjects: 3.753200 ms  DeleteObjects: 0.016900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.112376 seconds.
+  path: Assets/Scripts/Weapons/SacrificeDagger.cs
+  artifactKey: Guid(d720f89dc38a95c4e9fc5290338e3d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/SacrificeDagger.cs using Guid(d720f89dc38a95c4e9fc5290338e3d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53f89485c68ef1c3fa5d984102e776dc') in 0.006441 seconds
+  Import took 0.008974 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002158 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.706 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2588.
+Total: 4.238900 ms (FindLiveObjects: 0.162900 ms CreateObjectMapping: 0.060100 ms MarkObjects: 3.995800 ms  DeleteObjects: 0.019200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001418 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.683 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2591.
+Total: 3.913300 ms (FindLiveObjects: 0.143300 ms CreateObjectMapping: 0.051500 ms MarkObjects: 3.702300 ms  DeleteObjects: 0.015400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001438 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2594.
+Total: 3.958100 ms (FindLiveObjects: 0.164000 ms CreateObjectMapping: 0.057700 ms MarkObjects: 3.718900 ms  DeleteObjects: 0.016700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001486 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.680 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2597.
+Total: 3.949300 ms (FindLiveObjects: 0.165400 ms CreateObjectMapping: 0.062000 ms MarkObjects: 3.704500 ms  DeleteObjects: 0.016700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001498 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2600.
+Total: 4.698400 ms (FindLiveObjects: 0.174900 ms CreateObjectMapping: 0.052600 ms MarkObjects: 4.450200 ms  DeleteObjects: 0.019900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001402 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2603.
+Total: 4.103700 ms (FindLiveObjects: 0.141000 ms CreateObjectMapping: 0.049600 ms MarkObjects: 3.893800 ms  DeleteObjects: 0.018600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001407 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.689 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2606.
+Total: 4.440700 ms (FindLiveObjects: 0.178600 ms CreateObjectMapping: 0.057900 ms MarkObjects: 4.182800 ms  DeleteObjects: 0.020500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001558 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.689 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2609.
+Total: 4.005700 ms (FindLiveObjects: 0.142700 ms CreateObjectMapping: 0.050800 ms MarkObjects: 3.794500 ms  DeleteObjects: 0.017000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001453 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.688 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2612.
+Total: 3.923000 ms (FindLiveObjects: 0.151100 ms CreateObjectMapping: 0.054000 ms MarkObjects: 3.699600 ms  DeleteObjects: 0.017500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001661 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.717 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2615.
+Total: 4.881400 ms (FindLiveObjects: 0.186000 ms CreateObjectMapping: 0.061900 ms MarkObjects: 4.605200 ms  DeleteObjects: 0.027100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001520 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.699 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2618.
+Total: 4.724100 ms (FindLiveObjects: 0.180600 ms CreateObjectMapping: 0.055800 ms MarkObjects: 4.467600 ms  DeleteObjects: 0.019500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001482 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.677 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2621.
+Total: 3.998100 ms (FindLiveObjects: 0.185500 ms CreateObjectMapping: 0.062600 ms MarkObjects: 3.730400 ms  DeleteObjects: 0.018700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001412 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2624.
+Total: 4.353100 ms (FindLiveObjects: 0.187200 ms CreateObjectMapping: 0.053500 ms MarkObjects: 4.092800 ms  DeleteObjects: 0.018600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001526 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.675 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2627.
+Total: 4.643300 ms (FindLiveObjects: 0.152600 ms CreateObjectMapping: 0.053200 ms MarkObjects: 4.417200 ms  DeleteObjects: 0.019500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001481 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.691 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2630.
+Total: 4.157700 ms (FindLiveObjects: 0.204400 ms CreateObjectMapping: 0.054100 ms MarkObjects: 3.879400 ms  DeleteObjects: 0.019000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001562 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.702 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2633.
+Total: 4.274500 ms (FindLiveObjects: 0.188800 ms CreateObjectMapping: 0.071300 ms MarkObjects: 3.992300 ms  DeleteObjects: 0.021300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2143.981572 seconds.
+  path: Assets/Prefabs/Characters/WarriorOne.prefab
+  artifactKey: Guid(d64f3ec959398a1408cfd9ec9d6d006a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/WarriorOne.prefab using Guid(d64f3ec959398a1408cfd9ec9d6d006a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faaae79e4eb948b2cc05da13d0bdebfd') in 0.263850 seconds
+  Import took 0.267879 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001446 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.703 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
 Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2129 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 169.6 MB.
-System memory in use after: 169.7 MB.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
 
-Unloading 51 unused Assets to reduce memory usage. Loaded Objects now: 2559.
-Total: 4.365000 ms (FindLiveObjects: 0.175300 ms CreateObjectMapping: 0.068100 ms MarkObjects: 4.028800 ms  DeleteObjects: 0.091700 ms)
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 2637.
+Total: 4.301400 ms (FindLiveObjects: 0.194200 ms CreateObjectMapping: 0.063600 ms MarkObjects: 3.995200 ms  DeleteObjects: 0.047400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001416 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.703 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2640.
+Total: 4.184900 ms (FindLiveObjects: 0.153000 ms CreateObjectMapping: 0.055600 ms MarkObjects: 3.954700 ms  DeleteObjects: 0.020600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001397 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2643.
+Total: 4.413900 ms (FindLiveObjects: 0.143000 ms CreateObjectMapping: 0.052500 ms MarkObjects: 4.179900 ms  DeleteObjects: 0.037900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001426 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.709 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.4 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2646.
+Total: 5.178400 ms (FindLiveObjects: 0.169600 ms CreateObjectMapping: 0.055400 ms MarkObjects: 4.931100 ms  DeleteObjects: 0.021400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001426 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.690 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.4 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2649.
+Total: 4.121500 ms (FindLiveObjects: 0.166100 ms CreateObjectMapping: 0.057400 ms MarkObjects: 3.878600 ms  DeleteObjects: 0.018800 ms)
+>>>>>>> master
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Weapons/BouncyArrow.cs
-  artifactKey: Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Weapons/BouncyArrow.cs using Guid(7791f7d9dfe6d0c49bc12ec7938f18d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ee17915bfcbfc6b7673ead1643ab83') in 0.017477 seconds
-  Import took 0.019953 seconds .
->>>>>>> master
+  Time since last request: 67.661923 seconds.
+  path: Assets/Materials/Particles/Fire.mat
+  artifactKey: Guid(6b192e46eee13e54cbc867a6f885b2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Particles/Fire.mat using Guid(6b192e46eee13e54cbc867a6f885b2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '485cc42186bc2e480900d70354229401') in 0.062734 seconds
+  Import took 0.066680 seconds .
 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+========================================================================
+Received Import Request.
+  Time since last request: 0.015339 seconds.
+  path: Assets/Scripts/Weapons/DivineWeapon.cs
+  artifactKey: Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/DivineWeapon.cs using Guid(947b0bb55537ddd46ad88d99d15e780f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b94067b0d938b1bd18ae1633c528dc76') in 0.001432 seconds
+  Import took 0.004445 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.469844 seconds.
+  path: Assets/Scripts/Weapons/HolyHammer.cs
+  artifactKey: Guid(f83fd482b368d164ca50f75a03e85fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/HolyHammer.cs using Guid(f83fd482b368d164ca50f75a03e85fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2eb4900f13035fe53654edb895104b6') in 0.004369 seconds
+  Import took 0.007033 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001393 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.688 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2585.
+Total: 3.975800 ms (FindLiveObjects: 0.150500 ms CreateObjectMapping: 0.054400 ms MarkObjects: 3.753200 ms  DeleteObjects: 0.016900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.112376 seconds.
+  path: Assets/Scripts/Weapons/SacrificeDagger.cs
+  artifactKey: Guid(d720f89dc38a95c4e9fc5290338e3d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapons/SacrificeDagger.cs using Guid(d720f89dc38a95c4e9fc5290338e3d36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53f89485c68ef1c3fa5d984102e776dc') in 0.006441 seconds
+  Import took 0.008974 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002158 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.706 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2588.
+Total: 4.238900 ms (FindLiveObjects: 0.162900 ms CreateObjectMapping: 0.060100 ms MarkObjects: 3.995800 ms  DeleteObjects: 0.019200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001418 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.683 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2591.
+Total: 3.913300 ms (FindLiveObjects: 0.143300 ms CreateObjectMapping: 0.051500 ms MarkObjects: 3.702300 ms  DeleteObjects: 0.015400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001438 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2594.
+Total: 3.958100 ms (FindLiveObjects: 0.164000 ms CreateObjectMapping: 0.057700 ms MarkObjects: 3.718900 ms  DeleteObjects: 0.016700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001486 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.680 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2597.
+Total: 3.949300 ms (FindLiveObjects: 0.165400 ms CreateObjectMapping: 0.062000 ms MarkObjects: 3.704500 ms  DeleteObjects: 0.016700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001498 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2600.
+Total: 4.698400 ms (FindLiveObjects: 0.174900 ms CreateObjectMapping: 0.052600 ms MarkObjects: 4.450200 ms  DeleteObjects: 0.019900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001402 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2603.
+Total: 4.103700 ms (FindLiveObjects: 0.141000 ms CreateObjectMapping: 0.049600 ms MarkObjects: 3.893800 ms  DeleteObjects: 0.018600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001407 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.689 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2606.
+Total: 4.440700 ms (FindLiveObjects: 0.178600 ms CreateObjectMapping: 0.057900 ms MarkObjects: 4.182800 ms  DeleteObjects: 0.020500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001558 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.689 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2609.
+Total: 4.005700 ms (FindLiveObjects: 0.142700 ms CreateObjectMapping: 0.050800 ms MarkObjects: 3.794500 ms  DeleteObjects: 0.017000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001453 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.688 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.3 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2612.
+Total: 3.923000 ms (FindLiveObjects: 0.151100 ms CreateObjectMapping: 0.054000 ms MarkObjects: 3.699600 ms  DeleteObjects: 0.017500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001661 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.717 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2615.
+Total: 4.881400 ms (FindLiveObjects: 0.186000 ms CreateObjectMapping: 0.061900 ms MarkObjects: 4.605200 ms  DeleteObjects: 0.027100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001520 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.699 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.2 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2618.
+Total: 4.724100 ms (FindLiveObjects: 0.180600 ms CreateObjectMapping: 0.055800 ms MarkObjects: 4.467600 ms  DeleteObjects: 0.019500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001482 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.677 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2621.
+Total: 3.998100 ms (FindLiveObjects: 0.185500 ms CreateObjectMapping: 0.062600 ms MarkObjects: 3.730400 ms  DeleteObjects: 0.018700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001412 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.695 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2624.
+Total: 4.353100 ms (FindLiveObjects: 0.187200 ms CreateObjectMapping: 0.053500 ms MarkObjects: 4.092800 ms  DeleteObjects: 0.018600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001526 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.675 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2627.
+Total: 4.643300 ms (FindLiveObjects: 0.152600 ms CreateObjectMapping: 0.053200 ms MarkObjects: 4.417200 ms  DeleteObjects: 0.019500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001481 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.691 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2630.
+Total: 4.157700 ms (FindLiveObjects: 0.204400 ms CreateObjectMapping: 0.054100 ms MarkObjects: 3.879400 ms  DeleteObjects: 0.019000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001562 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.702 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2633.
+Total: 4.274500 ms (FindLiveObjects: 0.188800 ms CreateObjectMapping: 0.071300 ms MarkObjects: 3.992300 ms  DeleteObjects: 0.021300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2143.981572 seconds.
+  path: Assets/Prefabs/Characters/WarriorOne.prefab
+  artifactKey: Guid(d64f3ec959398a1408cfd9ec9d6d006a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/WarriorOne.prefab using Guid(d64f3ec959398a1408cfd9ec9d6d006a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faaae79e4eb948b2cc05da13d0bdebfd') in 0.263850 seconds
+  Import took 0.267879 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001446 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.703 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 2637.
+Total: 4.301400 ms (FindLiveObjects: 0.194200 ms CreateObjectMapping: 0.063600 ms MarkObjects: 3.995200 ms  DeleteObjects: 0.047400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001416 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.703 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.4 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2640.
+Total: 4.184900 ms (FindLiveObjects: 0.153000 ms CreateObjectMapping: 0.055600 ms MarkObjects: 3.954700 ms  DeleteObjects: 0.020600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001397 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.3 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2643.
+Total: 4.413900 ms (FindLiveObjects: 0.143000 ms CreateObjectMapping: 0.052500 ms MarkObjects: 4.179900 ms  DeleteObjects: 0.037900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001426 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.709 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.4 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2646.
+Total: 5.178400 ms (FindLiveObjects: 0.169600 ms CreateObjectMapping: 0.055400 ms MarkObjects: 4.931100 ms  DeleteObjects: 0.021400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001426 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.690 seconds
+Platform modules already initialized, skipping
+Shader 'FX/Aura Outline': fallback shader 'Toon/Basic' not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2086 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 169.4 MB.
+System memory in use after: 169.5 MB.
+
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 2649.
+Total: 4.121500 ms (FindLiveObjects: 0.166100 ms CreateObjectMapping: 0.057400 ms MarkObjects: 3.878600 ms  DeleteObjects: 0.018800 ms)
+
