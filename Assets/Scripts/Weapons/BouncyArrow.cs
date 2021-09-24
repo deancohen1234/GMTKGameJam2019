@@ -278,6 +278,8 @@ public class BouncyArrow : DivineWeapon
         body.position = launchPosition;
         transform.position = launchPosition;
 
+        Physics.SyncTransforms();
+
         body.useGravity = false;
         body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; //don't freeze X and Z position
         body.isKinematic = false;
