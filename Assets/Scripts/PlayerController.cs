@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private InputStrings m_InputStrings;
     private Collider m_MainCollider;
-    private Rigidbody m_Rigidbody;
+    public Rigidbody m_Rigidbody { get; private set; }
     private AudioSource m_AudioSource;
     private HealthComponent m_HealthComponent;
     private CameraShake m_CameraShake;
@@ -626,7 +626,6 @@ public class PlayerController : MonoBehaviour
     private void OnDashDisarmEnd()
     {
         m_AttackHitboxController.DisableAllHitBoxes();
-        Debug.Log("Ending hitboxes");
     }
 
     #endregion

@@ -37,7 +37,7 @@ MonoBehaviour:
     value: 0.79
   threshold:
     overrideState: 1
-    value: 1
+    value: 1.45
   softKnee:
     overrideState: 1
     value: 0.5
@@ -165,7 +165,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 32
+    value: 69
   tint:
     overrideState: 1
     value: 0

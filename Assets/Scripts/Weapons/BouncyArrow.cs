@@ -130,10 +130,8 @@ public class BouncyArrow : DivineWeapon
 
     public override void Drop(PlayerController lastControlledPlayer)
     {
-        base.Drop(lastControlledPlayer);
         //player is throwing/shooting weapon
         
-        /*
         if (lastControlledPlayer.Equals(m_OwningPlayer))
         {
             //make sure on player drop don't randomize weapon position
@@ -142,7 +140,7 @@ public class BouncyArrow : DivineWeapon
             m_OwningPlayer = null;
             m_AttackAction.SetPlayerReference(null); //set reference for actions to null
         } 
-        */
+        
     }
 
     public override bool OnHit(PlayerController hitPlayer, PlayerController attackingPlayer)
@@ -266,7 +264,8 @@ public class BouncyArrow : DivineWeapon
         lastHeldPlayer = m_OwningPlayer;
 
         //cache this now since DropWeapon will kill the OwningPlayer reference
-        Vector3 launchPosition = new Vector3(m_OwningPlayer.transform.position.x, ARROWYHEIGHT, m_OwningPlayer.transform.position.x);
+        //Vector3 launchPosition = new Vector3(m_OwningPlayer.transform.position.x, ARROWYHEIGHT, m_OwningPlayer.transform.position.x);
+        Vector3 launchPosition = new Vector3(m_OwningPlayer.m_Rigidbody.position.x, ARROWYHEIGHT, m_OwningPlayer.m_Rigidbody.position.z);
 
         m_OwningPlayer.DropWeapon(false); //need to drop/throw weapon to make sprite appear and allow pickup
 
@@ -275,10 +274,7 @@ public class BouncyArrow : DivineWeapon
         //disable pickup collider
         SetCollidersActive(false);
 
-        body.position = launchPosition;
-        transform.position = launchPosition;
-
-        Physics.SyncTransforms();
+        body.MovePosition(launchPosition);
 
         body.useGravity = false;
         body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; //don't freeze X and Z position
