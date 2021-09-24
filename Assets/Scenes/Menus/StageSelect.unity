@@ -1323,7 +1323,7 @@ PrefabInstance:
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}
       propertyPath: m_LevelName
-      value: Desert Arrow
+      value: "Baw\xE9 Tree"
       objectReference: {fileID: 0}
     - target: {fileID: 4100416901003836068, guid: 70e515130429a9d4fbf46cdf5c84d7eb,
         type: 3}

@@ -24672,7 +24672,6 @@ GameObject:
   - component: {fileID: 5130787526742937381}
   - component: {fileID: 5130787526742937387}
   - component: {fileID: 5130787526742937386}
-  - component: {fileID: 3587837933513019723}
   - component: {fileID: 4585008311844633013}
   - component: {fileID: 4033241255127160736}
   m_Layer: 9
@@ -24775,23 +24774,13 @@ MonoBehaviour:
     ActionLength: 9
   m_Poof: {fileID: 8300000, guid: b9dd262ddddd92849a47c3412dfc6a44, type: 3}
   m_NudgeDisarm: {fileID: 8300000, guid: 351902ea8338619479dedd35af249d6e, type: 3}
-  m_SwordSlash: {fileID: 8300000, guid: 994af5236318c76419a0670398bd9616, type: 3}
+  m_SwordSlash: {fileID: 8300000, guid: 33c32daf7bbe0b64d95210dc0630f7ae, type: 3}
   m_DamageSounds:
-  - {fileID: 8300000, guid: 42db1224a4d96c644ad5daf0cb176688, type: 3}
-  - {fileID: 8300000, guid: 64076f01d34885e47b5f7fb15743d740, type: 3}
-  - {fileID: 8300000, guid: 7b09060b9492e434b8764345aa1cd1b9, type: 3}
-  - {fileID: 8300000, guid: b217e27f6911cc74aad3bf01d84acf73, type: 3}
-  - {fileID: 8300000, guid: c294beddffeb3a84dbbb7381ce2b6667, type: 3}
+  - {fileID: 8300000, guid: e8afdf51e61e5a342813f5f98e714ffa, type: 3}
   m_DisarmSounds:
-  - {fileID: 8300000, guid: 9cfd052709e54314dae3b7a0fa00dd19, type: 3}
-  - {fileID: 8300000, guid: fc197b18d7e68de43920c5ccd38530b0, type: 3}
-  - {fileID: 8300000, guid: 733f125074c6cbb4b89642a9721ffe40, type: 3}
-  - {fileID: 8300000, guid: 964d22b0113af8b49849bde59c783b6d, type: 3}
+  - {fileID: 8300000, guid: e79804df10e9c9e4899ec01adcf02afe, type: 3}
   m_DeathSounds:
-  - {fileID: 8300000, guid: 2cecd018afc7c1b4fb2cd3eb68b89218, type: 3}
-  - {fileID: 8300000, guid: 7f939b492fa296942b01c3cf8bc188bd, type: 3}
-  - {fileID: 8300000, guid: 1e066ffff26baa448af0a4dcf90cc442, type: 3}
-  - {fileID: 8300000, guid: 16e778af8a9bd734cbf5a2890f92e619, type: 3}
+  - {fileID: 8300000, guid: e8afdf51e61e5a342813f5f98e714ffa, type: 3}
   m_PitchMin: 0.7
   m_PitchMax: 1.3
   m_WeaponIcon: {fileID: 5130787525799176140}
@@ -24964,23 +24953,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3587837933513019723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130787526742937384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66f242fdd7bd7449bf06ea2c3852875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HeadPrefab: {fileID: 3395506490530013309, guid: f351a4d260ed13e4fa436ff9d43fb9bc,
-    type: 3}
-  m_Force: 100
-  m_LaunchVariance: 0.5
-  m_UseHeadLaunch: 1
 --- !u!114 &4585008311844633013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25974,15 +25946,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e396a0024b76d04887e390ad77d0251, type: 3}
---- !u!4 &2863134370955821781 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2319074221156211849, guid: 1e396a0024b76d04887e390ad77d0251,
-    type: 3}
-  m_PrefabInstance: {fileID: 546312409267084892}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &2863134370955821782 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2319074221156211850, guid: 1e396a0024b76d04887e390ad77d0251,
+    type: 3}
+  m_PrefabInstance: {fileID: 546312409267084892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2863134370955821781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2319074221156211849, guid: 1e396a0024b76d04887e390ad77d0251,
     type: 3}
   m_PrefabInstance: {fileID: 546312409267084892}
   m_PrefabAsset: {fileID: 0}

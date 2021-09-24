@@ -27,6 +27,9 @@ public class BouncyArrow : DivineWeapon
     public float m_HitboxRadius = 0.5f;
     public float m_DamageCooldownDuration = 0.5f;
 
+    [Header("Sound Properties")]
+    public AudioClip[] wallBounceSounds;
+
     private Collider[] arrowHitColliders;
     private Collider[] arrowOverlapColliders;
     private RaycastHit[] arrowWallHits;
@@ -44,6 +47,7 @@ public class BouncyArrow : DivineWeapon
 
     private PlayerController lastHeldPlayer;
     private Rigidbody body;
+    private AudioSource source;
     private WallCollisionBuffer wallCollisionBuffer;
 
     private bool isLaunched = false;
@@ -55,6 +59,7 @@ public class BouncyArrow : DivineWeapon
     private void OnEnable()
     {
         body = GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
 
         Initialize();
     }
@@ -113,6 +118,7 @@ public class BouncyArrow : DivineWeapon
         if (isActive)
         {
             body.useGravity = true;
+            body.drag = 0;
         }
     }
 
@@ -481,8 +487,11 @@ public class BouncyArrow : DivineWeapon
         body.velocity = Vector3.zero;
         body.position = position;
 
-        Vector3 reflectedVel = Vector3.Reflect(wallCollisionBuffer.velocity, normal);
-        Debug.DrawLine(position, position + reflectedVel * raycastDistanceModifier * Time.fixedDeltaTime, Color.green);
+        //play random wall bounce sound
+        int randomSoundIndex = Random.Range(0, wallBounceSounds.Length);
+        source.clip = wallBounceSounds[randomSoundIndex];
+        source.pitch = Random.Range(0.9f, 1.1f);
+        source.Play();
     }
 
     private void EmptyAndUseWallCollisionBuffer(ref WallCollisionBuffer buffer)
