@@ -77,7 +77,9 @@ public class ArcadeIdleMenu : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
+        CheckForVideoPlay();
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             m_VideoPlayer.frame = 2200;

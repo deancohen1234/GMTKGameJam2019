@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputManager: {fileID: 346289472}
-  m_ArcadeMode: 1
+  m_ArcadeMode: 0
 --- !u!114 &346289471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12324,7 +12324,7 @@ MonoBehaviour:
   m_VideoPlayer: {fileID: 1399512347}
   m_VideoCanvas: {fileID: 1342909800}
   m_ScreenFade: {fileID: 976645805}
-  m_IdleTimeToVideo: 60
+  m_IdleTimeToVideo: 150
   m_OnCoinSound: {fileID: 8300000, guid: 443b164aa6178d246b20dd274c931fc5, type: 3}
   m_OnSelectSound: {fileID: 8300000, guid: 0ee3eb49607c6e542a3b168290e4d49c, type: 3}
   m_StageSelectName: StageSelect
@@ -20687,7 +20687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 0371bd646d1ca564784051fdd47d3bb3, type: 2}
+  m_Texture: {fileID: 8400000, guid: 3bc7d32abe9222a488ef7c57a03c1303, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -20982,11 +20982,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399512345}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8a66b0a439127cf4bba0d6f00c15159c, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: e2c10618b5813f24489a5642a27e1536, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 3bc7d32abe9222a488ef7c57a03c1303, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
@@ -20998,7 +20998,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00

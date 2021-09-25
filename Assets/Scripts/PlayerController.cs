@@ -454,11 +454,6 @@ public class PlayerController : MonoBehaviour
         m_RippleEffect.ActivateRipple(transform.position);
         m_AttackAction.ForceStopAction();
 
-        weapon.SetWeaponActive(false);
-        EquipWeapon(weapon);
-
-        m_CanMove = true;
-
         //if there is an attacking disarm them
         if (attackingPlayer)
         {
@@ -469,6 +464,11 @@ public class PlayerController : MonoBehaviour
 
             attackingPlayer.m_CanMove = true;
         }
+
+        weapon.SetWeaponActive(false);
+        EquipWeapon(weapon);
+
+        m_CanMove = true;
 
 
         m_EffectsController.ActivateOnDisarmedSystem(transform.position);
@@ -502,6 +502,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_EquippedWeapon != null)
         {
+            Debug.Log("Attack Ending");
             m_AttackHitboxController.DisableAllHitBoxes();
             m_PlayerAnimation.SetAttackStatus(false);
 
@@ -544,8 +545,6 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyBounceBackForce(Vector3 forceOrigin)
     {
-        Debug.Log("Bounce Back Force applied");
-
         StartCoroutine(DisableAllMovement(0.2f));
 
         Vector3 direction = transform.position - forceOrigin;
