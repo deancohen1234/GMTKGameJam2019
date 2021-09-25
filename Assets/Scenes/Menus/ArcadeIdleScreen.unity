@@ -324,30 +324,30 @@ MonoBehaviour:
     are only too happy to appease. The catch? Only the God''s knife may perform the
     kill. How will the combatants fair in an arena with just one weapon?
 
-    
+
 
     At
     the start Sludqh''This will drop his knife into the fighting pit, be the first
     to reach it and go on the offensive.
 
-    
 
-    The cultists may run around
-    the pit as they please. The left trigger (LT) performs a short sprint that the
-    combatants may use to either gain distance or close the gap and go in for the
-    kill.
 
-    
+    The cultists may run around the pit
+    as they please. The left trigger (LT) performs a short sprint that the combatants
+    may use to either gain distance or close the gap and go in for the kill.
 
-    When unarmed the right trigger (RT) will perform a parry that,
-    if expertly executed just before taking damage, will disarm the opponent and
-    the knife will trade hands.
 
-    
 
-    When in possession of the knife the
-    right trigger (RT) will make the player lunge forward and attack their opponent.
-    Be the first to score three hits and win.'
+    When
+    unarmed the right trigger (RT) will perform a parry that, if expertly executed
+    just before taking damage, will disarm the opponent and the knife will trade
+    hands.
+
+
+
+    When in possession of the knife the right trigger (RT) will make
+    the player lunge forward and attack their opponent. Be the first to score three
+    hits and win.'
 --- !u!222 &64693365
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20982,7 +20982,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399512345}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 8a66b0a439127cf4bba0d6f00c15159c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
